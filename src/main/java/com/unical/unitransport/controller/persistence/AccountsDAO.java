@@ -58,6 +58,38 @@ public class AccountsDAO {
 		}
 	}
 	
+	public static boolean updateEmail( Account account, String newEmail ) {
+		initialize();
+		try {
+			String sql = "update unitransport.accounts set email = ? where email = ? ;";
+			PreparedStatement statement = DatabaseManager.getConnection().prepareStatement( sql );
+			statement.setString( 1, newEmail );
+			statement.setString( 2, account.getEmail() );
+			statement.executeUpdate();
+			statement.close();
+			return true;
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return false;
+		}
+	}
+	
+	public static boolean updatePassword( Account account, String newPassword ) {
+		initialize();
+		try {
+			String sql = "update unitransport.accounts set password = ? where email = ? ;";
+			PreparedStatement statement = DatabaseManager.getConnection().prepareStatement( sql );
+			statement.setString( 1, newPassword );
+			statement.setString( 2, account.getEmail() );
+			statement.executeUpdate();
+			statement.close();
+			return true;
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return false;
+		}
+	}
+	
 	public static Account getByEmail( String email ) {
 		initialize();
 		Account account = null;

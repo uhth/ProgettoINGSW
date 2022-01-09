@@ -73,6 +73,20 @@ public class AccountRoleDAO {
 		}
 	}
 	
+	public static boolean removeAllFor( Role role ) {
+		initialize();
+		try {
+			String sql = "remove from unitransport.account_roles where role_id = ? ;";
+			PreparedStatement statement = DatabaseManager.getConnection().prepareStatement( sql );
+			statement.setInt( 1 , role.getRoleId() );
+			statement.executeUpdate( sql );			
+			statement.close();
+			return true;
+		} catch (SQLException e) {
+			return false;
+		}
+	}
+	
 	public static boolean remove( AccountRole accountRole ) {
 		initialize();
 		try {
