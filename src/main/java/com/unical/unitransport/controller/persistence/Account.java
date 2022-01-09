@@ -13,6 +13,10 @@ public class Account {
 	public Account( int user_id, String email, String password, Timestamp created_on, Timestamp last_login ) {
 
 	}
+	
+	public Account( String email, String password ) {
+		
+	}
 
 	public int getUserId() {
 		return user_id;

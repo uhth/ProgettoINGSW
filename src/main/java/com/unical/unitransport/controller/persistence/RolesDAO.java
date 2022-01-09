@@ -35,7 +35,7 @@ public class RolesDAO {
 		}
 	}
 	
-	public static void insert( Role role ) {
+	public static boolean insert( Role role ) {
 		initialize();
 		try {
 			String sql = "insert or replace into unitransport.roles( role_name ) values( ? ); ";
@@ -43,9 +43,29 @@ public class RolesDAO {
 			statement.setString( 1, role.getRoleName() );
 			statement.executeUpdate();
 			statement.close();
+			return true;
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return false;
+		}
+	}
+	
+	public static Role getByName( String name ) {
+		initialize();
+		Role role = null;
+		try {
+			String sql = "select * from unitransport.roles where role_name = ? ; ";
+			PreparedStatement statement = DatabaseManager.getConnection().prepareStatement( sql );
+			statement.setString( 1, name );
+			ResultSet rs = statement.executeQuery();
+			while( rs.next() ) {
+				role = new Role( rs.getInt( 0 ), rs.getString( 1 ) );
+			}
+			statement.close();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
+		return role;
 	}
 	
 	public static List<Role> getAll() {

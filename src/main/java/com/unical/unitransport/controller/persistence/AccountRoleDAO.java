@@ -4,8 +4,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.sql.Timestamp;
-import java.time.Instant;
+import java.util.ArrayList;
+import java.util.List;
 
 public class AccountRoleDAO {
 
@@ -40,43 +40,70 @@ public class AccountRoleDAO {
 			e.printStackTrace();
 		}
 	}
-	public static void insertAccountRole( Account account, Role role ) {
-		insertAccountRole( account, role, Timestamp.from( Instant.now() ) );
-	}
 	
 	
-	public static void insertAccountRole( Account account, Role role, Timestamp grant_date ) {
+	public static boolean insert( AccountRole accountRole ) {
 		initialize();
 		try {
 			String sql = "insert or replace into unitransport.account_roles ( user_id, role_id, grant_date ) "
 					+ "values( ?, ?, ? ); ";
 			PreparedStatement statement = DatabaseManager.getConnection().prepareStatement( sql );
-			statement.setInt( 1 , account.getUserId() );
-			statement.setInt( 2 , role.getRoleId() );
-			statement.setTimestamp( 3, grant_date );
+			statement.setInt( 1 , accountRole.getUserId() );
+			statement.setInt( 2 , accountRole.getRoleId() );
+			statement.setTimestamp( 3, accountRole.getGrantDate() );
 			statement.executeUpdate( sql );				
 			statement.close();
+			return true;
 		} catch (SQLException e) {
-		
+			return false;
 		}
 	}
 	
-	public static int getRoleId( Account account ) {
+	public static boolean removeAllFor( Account account ) {
 		initialize();
-		int role_id = -1;
 		try {
-			String sql = "select role_id from unitransport.account_roles where user_id = ? ;";
+			String sql = "remove from unitransport.account_roles where account_id = ? ;";
 			PreparedStatement statement = DatabaseManager.getConnection().prepareStatement( sql );
 			statement.setInt( 1 , account.getUserId() );
+			statement.executeUpdate( sql );			
+			statement.close();
+			return true;
+		} catch (SQLException e) {
+			return false;
+		}
+	}
+	
+	public static boolean remove( AccountRole accountRole ) {
+		initialize();
+		try {
+			String sql = "remove from unitransport.account_roles where account_id = ? and role_id = ? ;";
+			PreparedStatement statement = DatabaseManager.getConnection().prepareStatement( sql );
+			statement.setInt( 1 , accountRole.getUserId() );
+			statement.setInt( 2 , accountRole.getRoleId() );
+			statement.executeUpdate( sql );			
+			statement.close();
+			return true;
+		} catch (SQLException e) {
+			return false;
+		}
+	}
+		
+	public static List<AccountRole> get( Account account ) {
+		initialize();
+		List<AccountRole> accountRoles = new ArrayList<AccountRole>();
+		try {
+			String sql = "select * from unitransport.account_roles";
+			Statement statement = DatabaseManager.getConnection().createStatement();
 			ResultSet rs = statement.executeQuery( sql );
 			while( rs.next() ) {
-				role_id = rs.getInt( 0 );
+				AccountRole accountRole = new AccountRole( rs.getInt( 0 ), rs.getInt( 1 ), rs.getTimestamp( 2 ) );
+				accountRoles.add( accountRole );
 			}					
 			statement.close();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		return role_id;
+		return accountRoles;
 	}
 	
 }

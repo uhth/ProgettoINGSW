@@ -40,7 +40,7 @@ public class AccountsDAO {
 		}
 	}
 	
-	public static void insert( Account account ) {
+	public static boolean insert( Account account ) {
 		initialize();
 		try {
 			String sql = "insert or replace into unitransport.accounts( email, password, created_on ) values( ?, ?, ? ); ";
@@ -50,9 +50,29 @@ public class AccountsDAO {
 			statement.setTimestamp( 3 , Timestamp.from( Instant.now() ));
 			statement.executeUpdate();
 			statement.close();
+			return true;
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return false;
+		}
+	}
+	
+	public static Account getByEmail( String email ) {
+		initialize();
+		Account account = null;
+		try {
+			String sql = "select * from unitransport.accounts where email = ? ;";
+			PreparedStatement statement = DatabaseManager.getConnection().prepareStatement(sql);
+			statement.setString( 1, email );
+			ResultSet rs = statement.executeQuery( sql );
+			while( rs.next() ) {
+				account = new Account( rs.getInt( 0 ), rs.getString( 1 ), rs.getString( 2 ), rs.getTimestamp( 3 ), rs.getTimestamp( 4 ) );
+			}					
+			statement.close();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
+		return account;
 	}
 	
 	public static List<Account> getAll() {
@@ -71,5 +91,20 @@ public class AccountsDAO {
 			e.printStackTrace();
 		}
 		return accounts;
+	}
+
+	public static boolean remove( Account account ) {
+		initialize();
+		try {
+			String sql = "remove from unitransport.accounts where email = ? ;";
+			PreparedStatement statement = DatabaseManager.getConnection().prepareStatement(sql);
+			statement.setString( 1, account.getEmail() );
+			statement.executeUpdate();				
+			statement.close();
+			return true;
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return false;
+		}
 	}
 }
