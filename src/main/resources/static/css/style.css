@@ -37,6 +37,27 @@ img {
     width: 100%;
 }
 
+form {
+	position: relative;
+	top: 500;
+	left: 150px;
+	padding: 250px;
+}
+
+.intro_benvenuto {
+	font-family: "Courier New", monospace;
+	font-weight: bold;
+	color: #fff;
+	position: absolute;
+	top:12%;
+	left: 1%;
+	font-size: 14px;
+	width: 115px;
+	height: 64px;
+	padding: 15px;
+	border-style: inset;
+}
+
 .divider {
     width:5px;
     height:auto;
@@ -47,7 +68,7 @@ img {
     width: 100%;
     height: 93vh;
     position: relative;
-    background: url('img/back2.jpeg') no-repeat center center/cover;
+    background: url('../immagini/back2.jpeg') no-repeat center center/cover;
 }
 
 .showcase::after {
@@ -146,6 +167,17 @@ img {
     padding: 3rem 0;
     background: #000;
     color: #fff;
+}
+
+/* Nascondi contenuto iniziale */
+#tab-1-content,
+#tab-2-content,
+#tab-3-content {
+    display: none;
+}
+
+.show {
+    display: block !important;
 }
 
 
@@ -355,7 +387,23 @@ img {
 
 }
 
+
+
 @media(max-width: 700px){
+	
+	.intro_benvenuto {
+	font-family: default;
+	font-weight: bold;
+	color: #fff;
+	position: absolute;
+	top:72%;
+	left: 79%;
+	font-size: 10px;
+	width: 80px;
+	height: 41px;
+	padding: 6px;
+	border-style: inset;
+}
 
     .showcase::after {
         box-shadow: inset 80px 80px 250px #000, inset -80px -80px -250px #000;
