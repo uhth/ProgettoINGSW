@@ -8,13 +8,13 @@ import java.util.ArrayList;
 import java.util.List;
 import com.unical.unitransport.controller.persistence.DatabaseManager;
 
-public class ShipmentSenderReceiverDAO {
+public class ShipmentsSenderReceiverDAO {
 	
-	private ShipmentSenderReceiverDAO() {}
-	private static ShipmentSenderReceiverDAO instance;
-	private static ShipmentSenderReceiverDAO initialize() {
+	private ShipmentsSenderReceiverDAO() {}
+	private static ShipmentsSenderReceiverDAO instance;
+	private static ShipmentsSenderReceiverDAO initialize() {
 		if( instance == null ) {
-			instance = new ShipmentSenderReceiverDAO();
+			instance = new ShipmentsSenderReceiverDAO();
 			createTable();
 		}
 		return instance;
