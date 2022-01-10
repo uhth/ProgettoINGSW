@@ -3,7 +3,7 @@ package com.unical.unitransport;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-import com.unical.unitransport.controller.persistence.AccountsDAO;
+import com.unical.unitransport.controller.persistence.account.AccountsDAO;
 
 @SpringBootApplication
 public class UniTransportApplication {

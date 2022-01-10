@@ -1,13 +1,13 @@
-package com.unical.unitransport.controller.persistence;
+package com.unical.unitransport.controller.persistence.account;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.sql.Timestamp;
-import java.time.Instant;
 import java.util.ArrayList;
 import java.util.List;
+
+import com.unical.unitransport.controller.persistence.DatabaseManager;
 
 public class AccountsDAO {
 
@@ -48,7 +48,7 @@ public class AccountsDAO {
 			PreparedStatement statement = DatabaseManager.getConnection().prepareStatement( sql );
 			statement.setString( 1, account.getEmail() );
 			statement.setString( 2, account.getPassword() );
-			statement.setTimestamp( 3 , Timestamp.from( Instant.now() ));
+			statement.setTimestamp( 3 , account.getCreatedOn() );
 			statement.executeUpdate();
 			statement.close();
 			return true;

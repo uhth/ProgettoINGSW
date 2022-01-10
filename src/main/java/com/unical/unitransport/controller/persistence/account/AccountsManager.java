@@ -1,4 +1,4 @@
-package com.unical.unitransport.controller.persistence;
+package com.unical.unitransport.controller.persistence.account;
 
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
@@ -60,6 +60,6 @@ public interface AccountsManager {
 			BCryptPasswordEncoder pwEncoder = new BCryptPasswordEncoder();
 			String encodedPw = pwEncoder.encode(password);
 			return AccountsDAO.updatePassword( account , encodedPw );
-		}
+	}
 
 }

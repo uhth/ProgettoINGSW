@@ -1,4 +1,4 @@
-package com.unical.unitransport.controller.persistence;
+package com.unical.unitransport.controller.persistence.account;
 
 import java.sql.Timestamp;
 import java.time.Instant;

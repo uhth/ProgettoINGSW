@@ -1,6 +1,7 @@
-package com.unical.unitransport.controller.persistence;
+package com.unical.unitransport.controller.persistence.account;
 
 import java.sql.Timestamp;
+import java.time.Instant;
 
 public class Account {
 	
@@ -15,7 +16,7 @@ public class Account {
 	}
 	
 	public Account( String email, String password ) {
-		
+		this.created_on = Timestamp.from( Instant.now() );
 	}
 
 	public int getUserId() {
