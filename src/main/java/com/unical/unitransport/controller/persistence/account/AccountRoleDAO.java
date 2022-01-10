@@ -11,8 +11,6 @@ import com.unical.unitransport.controller.persistence.DatabaseManager;
 
 public class AccountRoleDAO {
 
-	
-	//AdminDAO creation methods
 	private AccountRoleDAO() {}
 	private static AccountRoleDAO instance;
 	private static AccountRoleDAO initialize() {

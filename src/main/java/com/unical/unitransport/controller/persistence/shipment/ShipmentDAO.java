@@ -12,9 +12,6 @@ import com.unical.unitransport.controller.persistence.DatabaseManager;
 
 public class ShipmentDAO {
 
-	//
-	
-	//AdminDAO creation methods
 	private ShipmentDAO() {}
 	private static ShipmentDAO instance;
 	private static ShipmentDAO initialize() {
@@ -32,7 +29,7 @@ public class ShipmentDAO {
 					+ "unitransport.shipments( "
 					+ "shipment_id serial PRIMARY KEY, "
 					+ "tracking_number VARCHAR ( 255 ) UNIQUE NOT NULL, "
-					+ "status integer NOT NULL, "
+					+ "status INT NOT NULL, "
 					+ "created_on TIMESTAMP NOT NULL, "
 				    + "last_update TIMESTAMP );";
 			statement.executeUpdate( sql );	

@@ -9,6 +9,8 @@ public class Shipment {
 	public static final int SHIPPED = 1;
 	public static final int OUT_FOR_DELIVERY = 2;
 	public static final int DELIVERY = 3;
+	public static final int COMPLETED = 4;
+	public static final int CANCELED = 5;
 	
 	private int shipment_id;
 	private String tracking_number;

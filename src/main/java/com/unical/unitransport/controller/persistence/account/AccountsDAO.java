@@ -11,9 +11,6 @@ import com.unical.unitransport.controller.persistence.DatabaseManager;
 
 public class AccountsDAO {
 
-	//
-	
-	//AdminDAO creation methods
 	private AccountsDAO() {}
 	private static AccountsDAO instance;
 	private static AccountsDAO initialize() {
