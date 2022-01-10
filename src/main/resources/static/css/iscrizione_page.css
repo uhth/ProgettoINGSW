@@ -45,7 +45,7 @@ a {
 }*/
 
 
-.loginForm {
+.iscrizioneForm {
 	width: 320px;
 	height: 580px;
 	background: #000;
@@ -59,18 +59,18 @@ a {
 	border-radius: 25px;
 }
 
-.loginForm p {
+.iscrizioneForm p {
 	margin: 0;
 	padding: 0;
 	font-weight: bold;
 }
 
-.loginForm input {
+.iscrizioneForm input {
 	width: 100%;
 	margin-bottom: 20px;
 }
 
-.loginForm input[type="text"], input[type="password"]{
+.iscrizioneForm input[type="text"], input[type="password"]{
     border: none;
     border-bottom: 1px solid #fff;
     background: transparent;
@@ -80,7 +80,7 @@ a {
     font-size: 16px;
 }
 
-.loginForm input[type="submit"]{
+.iscrizioneForm input[type="submit"]{
 	border: none;
 	outline: none;
 	height: 40px;
@@ -88,7 +88,7 @@ a {
 	color: #fff;
 	font-size: 18px;
 }
-.loginForm input[type="submit"]:hover{
+.iscrizioneForm input[type="submit"]:hover{
 	opacity: 0.9;
 }
 

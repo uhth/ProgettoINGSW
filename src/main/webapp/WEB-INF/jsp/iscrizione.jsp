@@ -12,10 +12,10 @@
     <img src="/immagini/b1.png" alt="" class="img_logo">
     <a href="/" id="btn1" class="btn btn-rounded">Home Page</a>
 
-    <div class="loginForm">
+    <div class="iscrizioneForm">
         <img src="/immagini/avatarPrimary.png" class="avatar">
         <h1>Effettua l'iscrizione</h1>
-        <form method="post" action="loginService">
+        <form method="post" action="iscrizioneService">
             <p>Username:</p>
             <input type="text" name="username_new" placeholder="Inserisci nome utente"/>
             <p>E-mail:</p>
