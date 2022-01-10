@@ -10,13 +10,13 @@ import java.util.ArrayList;
 import java.util.List;
 import com.unical.unitransport.controller.persistence.DatabaseManager;
 
-public class ShipmentDAO {
+public class ShipmentsDAO {
 
-	private ShipmentDAO() {}
-	private static ShipmentDAO instance;
-	private static ShipmentDAO initialize() {
+	private ShipmentsDAO() {}
+	private static ShipmentsDAO instance;
+	private static ShipmentsDAO initialize() {
 		if( instance == null ) {
-			instance = new ShipmentDAO();
+			instance = new ShipmentsDAO();
 			createTable();
 		}
 		return instance;

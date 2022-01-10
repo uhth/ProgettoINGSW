@@ -4,20 +4,22 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 public interface AccountsManager {
 	
-	public static boolean registerAccount( String email, String password, String role_name ) {
+	public static Account registerAccount( String email, String password, String role_name ) {
+		if( AccountsDAO.getByEmail( email ) != null ) return null;
 		BCryptPasswordEncoder pwEncoder = new BCryptPasswordEncoder();
 		String encodedPw = pwEncoder.encode(password);
 		Role role = RolesDAO.getByName( role_name );
-		if( role == null ) return false;
+		if( role == null ) return null;
 		Account account = new Account( email, encodedPw );
 		if( AccountsDAO.insert( account ) ) {
+			account = AccountsDAO.getByEmail( email );
 			AccountRole accountRole = new AccountRole( AccountsDAO.getByEmail( email ).getUserId(), role.getRoleId() );
 			if ( AccountRoleDAO.insert( accountRole ) )
-				return true;
+				return account;
 			else
 				AccountsDAO.remove( account );
 		}
-		return false;
+		return null;
 	}
 	
 	public static void unregisterAccount( String email ) {
