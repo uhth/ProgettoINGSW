@@ -23,11 +23,7 @@ public class Login {
 	public String loginPage() {
 		return "login";
 	}
-	
-	@GetMapping("/iscrizione")
-	public String iscrizionePage() {
-		return "iscrizione";
-	}
+
 	
 	@GetMapping("/logout")
 	public void logout (HttpServletRequest req, HttpServletResponse res) throws IOException {
@@ -37,7 +33,9 @@ public class Login {
 	}
 	
 	@PostMapping("/loginService")
-	public String login(HttpServletRequest req, HttpServletResponse res, String username, String password) throws IOException{
+	public String login(HttpServletRequest req, HttpServletResponse res, String username, String pass) throws IOException{
+		
+
 		
 		String sql = "select * from users where username = '" + username + "'";
 		HttpSession session = req.getSession(true);

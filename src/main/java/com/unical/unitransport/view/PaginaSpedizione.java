@@ -10,5 +10,20 @@ public class PaginaSpedizione {
 	public String spedisci() {
 		return "effettua_spedizione";
 	}
+	
+	@GetMapping("spedizione_tracciabile")
+	public String spedizioneTracciabile() {
+		return "effettua_spedizione_tracciabile";
+	}
+	
+	@GetMapping("spedizione_express")
+	public String spedizioneExpress() {
+		return "effettua_spedizione_express";
+	}
+	
+	@GetMapping("spedizione_assicurata")
+	public String spedizioneAssicurata() {
+		return "effettua_spedizione_assicurata";
+	}
 
 }

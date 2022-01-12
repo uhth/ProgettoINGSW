@@ -25,10 +25,11 @@
 
 <div class="container my-5 text-center" style="max-width: 580px;">
     <img src="../immagini/logoNome.png" alt="" style="width:30%;">
-    <p class="lead">In questa sezione puoi scegliere il tipo di spedizione che più si adatta alle tue esigenze </p>
+    <p class="lead">Scegli, in base al peso, la spedizione assicurata che si adatta alle tue esigenze. </p>
     <button type="button" class="btn btn-primary"><a href="/" class="text-decoration-none" style="color: white;">Home Page</a></button>
 	<button type="button" class="btn btn-success"><a href="profilo_utente" class="text-decoration-none" style="color: white;">Profilo</a></button>
 	<button type="button" class="btn btn-secondary"><a href="tracking_page" class="text-decoration-none" style="color: white;">Traccia spedizione</a></button>
+	<button type="button" class="btn btn-danger"><a href="spedisci" class="text-decoration-none" style="color: white;">Torna indietro</a></button>
 </div>
 
 
@@ -39,25 +40,11 @@
 				      
 
 				         <div class="card" style="width: 18rem;">
-							  <img src="../immagini/camionUnicalTracciabile.png" class="card-img-top" alt="...">
+							  <img src="../immagini/camionUnicalTracciabileExpressAssicurata.png" class="card-img-top" alt="...">
 							  <div class="card-body">
-							    <h5 class="card-title">SPEDIZIONE TRACCIABILE</h5>
-							    <p class="card-text" style="color: black;" style="font-size: 10px;"> Soluzione più economica.<br>Qualita Prezzo imbattibile.</p>
-							    <a href="spedizione_tracciabile" class="btn btn-primary">Acquista</a>
-							  </div>
-						</div>     
-
-
-				    </div>
-				    <div class="col">
-				      
-
-				         <div class="card" style="width: 18rem;">
-							  <img src="../immagini/camionUnicalTracciabileExpress.png" class="card-img-top" alt="...">
-							  <div class="card-body">
-							    <h5 class="card-title">SPEDIZIONE EXPRESS</h5>
-							    <p class="card-text" style="color: black;"> Soluzione per una spedizione immediata.</p>
-							    <a href="spedizione_express" class="btn btn-primary">Acquista</a>
+							    <h5 class="card-title">FINO A 10Kg</h5>
+							    <p class="card-text" style="color: black;">15.99€</p>
+							    <a href="#" class="btn btn-primary">Acquista</a>
 							  </div>
 						</div>     
 
@@ -69,9 +56,23 @@
 				         <div class="card" style="width: 18rem;">
 							  <img src="../immagini/camionUnicalTracciabileExpressAssicurata.png" class="card-img-top" alt="...">
 							  <div class="card-body">
-							    <h5 class="card-title">SPEDIZIONE TRACCIABILE ASSICURATA</h5>
-							    <p class="card-text" style="color: black;"> Soluzione per trasporti di valore.</p>
-							    <a href="spedizione_assicurata" class="btn btn-primary">Acquista</a>
+							    <h5 class="card-title">FINO A 15Kg</h5>
+							    <p class="card-text" style="color: black;">17.99€</p>
+							    <a href="#" class="btn btn-primary">Acquista</a>
+							  </div>
+						</div>     
+
+
+				    </div>
+				    <div class="col">
+				      
+
+				         <div class="card" style="width: 18rem;">
+							  <img src="../immagini/camionUnicalTracciabileExpressAssicurata.png" class="card-img-top" alt="...">
+							  <div class="card-body">
+							    <h5 class="card-title">OLTRE 25Kg</h5>
+							    <p class="card-text" style="color: black;">26.99€</p>
+							    <a href="#" class="btn btn-primary">Acquista</a>
 							  </div>
 						</div>     
 

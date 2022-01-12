@@ -9,41 +9,33 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+
+import com.unical.unitransport.controller.persistence.account.AccountsManager;
 
 @Controller
 public class Iscrizione {
 	
-
+	
+	@GetMapping("/iscrizione")
+	public String iscrizionePage() {
+		return "iscrizione";
+	}
 	
 	@PostMapping("/iscrizioneService")
-	public String login(HttpServletRequest req, HttpServletResponse res, String username_new, String password_new) throws IOException{
+	public String login(HttpServletRequest req, HttpServletResponse res, String username_new, String pass_new) throws IOException{
 		
 		
-		//if (tuttoVaBene)
-		HttpSession session = req.getSession(true);
-
-
-		String sql = "INSERT INTO users VALUES ("
-				+ "'" + username_new + "' , '" + password_new + "')";
 		
-		try {
-			Connection db = DriverManager.getConnection("jdbc:postgresql://localhost:5432/postgres", "postgres", "postgres");
-			Statement st = db.createStatement();
-			st.executeUpdate(sql);
-			
+	//	HttpSession session = req.getSession(true);
+		
+		if (AccountsManager.registerAccount(username_new, pass_new, "1"))
 			return "iscrizionePositiva";
-				
 		
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
-		return null;
+		return "index";
 		
 	}
 	 
-
 
 }
