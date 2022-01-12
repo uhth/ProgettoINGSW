@@ -30,7 +30,7 @@ public class ShipmentsSenderReceiverDAO {
 					+ "receiver_email VARCHAR ( 255 ) NOT NULL, "
 					+ "PRIMARY KEY (shipment_id, sender_email, receiver_email), "
 					+ "FOREIGN KEY (sender_email) "
-					+ "		REFERENCES accounts (email) ); ";
+					+ "		REFERENCES unitransport.accounts (email) ); ";
 			statement.executeUpdate( sql );	
 			statement.close();
 		} catch (SQLException e) {
@@ -65,7 +65,7 @@ public class ShipmentsSenderReceiverDAO {
 			statement.setString( 1, shipment_id );
 			ResultSet rs = statement.executeQuery( sql );
 			while( rs.next() ) {
-				shipmentSenderReceiver = new ShipmentSenderReceiver( rs.getInt( 0 ), rs.getString( 1 ), rs.getString( 2 ) );
+				shipmentSenderReceiver = new ShipmentSenderReceiver( rs.getInt( 1 ), rs.getString( 2 ), rs.getString( 3 ) );
 			}					
 			statement.close();
 		} catch (SQLException e) {
@@ -83,7 +83,7 @@ public class ShipmentsSenderReceiverDAO {
 			statement.setString( 1, sender_email );
 			ResultSet rs = statement.executeQuery( sql );
 			while( rs.next() ) {
-				shipmentSenderReceiver = new ShipmentSenderReceiver( rs.getInt( 0 ), rs.getString( 1 ), rs.getString( 2 ) );
+				shipmentSenderReceiver = new ShipmentSenderReceiver( rs.getInt( 1 ), rs.getString( 2 ), rs.getString( 3 ) );
 			}					
 			statement.close();
 		} catch (SQLException e) {
@@ -100,7 +100,7 @@ public class ShipmentsSenderReceiverDAO {
 			Statement statement = DatabaseManager.getConnection().createStatement();
 			ResultSet rs = statement.executeQuery( sql );
 			while( rs.next() ) {
-				ShipmentSenderReceiver shipmentSenderReceiver = new ShipmentSenderReceiver( rs.getInt( 0 ), rs.getString( 1 ), rs.getString( 2 ) );
+				ShipmentSenderReceiver shipmentSenderReceiver = new ShipmentSenderReceiver( rs.getInt( 1 ), rs.getString( 2 ), rs.getString( 3 ) );
 				shipmentSenderReceivers.add( shipmentSenderReceiver );
 			}					
 			statement.close();

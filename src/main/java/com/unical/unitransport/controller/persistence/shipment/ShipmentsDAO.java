@@ -66,7 +66,7 @@ public class ShipmentsDAO {
 			statement.setString( 1, tacking_number );
 			ResultSet rs = statement.executeQuery( sql );
 			while( rs.next() ) {
-				shipment = new Shipment( rs.getInt( 0 ), rs.getString( 1 ), rs.getInt( 2 ), rs.getTimestamp( 3 ), rs.getTimestamp( 4 ) );
+				shipment = new Shipment( rs.getInt( 1 ), rs.getString( 2 ), rs.getInt( 3 ), rs.getTimestamp( 4 ), rs.getTimestamp( 5 ) );
 			}					
 			statement.close();
 		} catch (SQLException e) {
@@ -83,7 +83,7 @@ public class ShipmentsDAO {
 			Statement statement = DatabaseManager.getConnection().createStatement();
 			ResultSet rs = statement.executeQuery( sql );
 			while( rs.next() ) {
-				Shipment shipment = new Shipment( rs.getInt( 0 ), rs.getString( 1 ), rs.getInt( 2 ), rs.getTimestamp( 3 ), rs.getTimestamp( 4 ) );
+				Shipment shipment = new Shipment( rs.getInt( 1 ), rs.getString( 2 ), rs.getInt( 3 ), rs.getTimestamp( 4 ), rs.getTimestamp( 5 ) );
 				shipments.add( shipment );
 			}					
 			statement.close();

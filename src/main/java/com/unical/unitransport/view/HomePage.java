@@ -10,7 +10,6 @@ public class HomePage {
 	@GetMapping("/")
 	@RequestMapping
 	public String homePage() {
-		System.out.println("s");
 		return "index";
 	}
 

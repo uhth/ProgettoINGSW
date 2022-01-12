@@ -38,13 +38,27 @@ public class RolesDAO {
 	public static boolean insert( Role role ) {
 		initialize();
 		try {
-			String sql = "insert into unitransport.roles( role_name ) values( ? ); ";
+			String sql = "insert into unitransport.roles( role_name ) values( ? ) ;";
 			PreparedStatement statement = DatabaseManager.getConnection().prepareStatement( sql );
 			statement.setString( 1, role.getRoleName() );
 			statement.executeUpdate();
 			statement.close();
 			return true;
 		} catch (SQLException e) {
+			e.printStackTrace();
+			return false;
+		}
+	}
+	
+	public static boolean removeAll() {
+		initialize();
+		try {
+			String sql = "delete from unitransport.roles";
+			Statement statement = DatabaseManager.getConnection().createStatement();
+			statement.executeUpdate( sql );
+			statement.close();
+			return true;
+		} catch ( SQLException e ) {
 			e.printStackTrace();
 			return false;
 		}
@@ -59,7 +73,7 @@ public class RolesDAO {
 			statement.setString( 1, name );
 			ResultSet rs = statement.executeQuery();
 			while( rs.next() ) {
-				role = new Role( rs.getInt( 0 ), rs.getString( 1 ) );
+				role = new Role( rs.getInt( 1 ), rs.getString( 2 ) );
 			}
 			statement.close();
 		} catch (SQLException e) {
@@ -76,7 +90,7 @@ public class RolesDAO {
 			Statement statement = DatabaseManager.getConnection().createStatement();
 			ResultSet rs = statement.executeQuery( sql );
 			while( rs.next() ) {
-				Role role = new Role( rs.getInt( 0 ), rs.getString( 1 ) );
+				Role role = new Role( rs.getInt( 1 ), rs.getString( 2 ) );
 				roles.add( role );
 			}					
 			statement.close();

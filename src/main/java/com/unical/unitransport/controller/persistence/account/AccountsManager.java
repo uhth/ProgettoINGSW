@@ -24,7 +24,7 @@ public interface AccountsManager {
 	
 	public static void unregisterAccount( String email ) {
 		Account account = AccountsDAO.getByEmail( email );
-		AccountRoleDAO.removeAllFor( account );
+		AccountRoleDAO.remove( account );
 		AccountsDAO.remove( account );
 	}
 	
@@ -33,7 +33,7 @@ public interface AccountsManager {
 	}
 	
 	public static boolean unregisterRole( String role_name ) {
-		return AccountRoleDAO.removeAllFor( RolesDAO.getByName( role_name ) );
+		return AccountRoleDAO.remove( RolesDAO.getByName( role_name ) );
 	}
 	
 	public static boolean login( String email, String password ) {
