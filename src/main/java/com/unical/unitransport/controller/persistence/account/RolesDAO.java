@@ -38,7 +38,7 @@ public class RolesDAO {
 	public static boolean insert( Role role ) {
 		initialize();
 		try {
-			String sql = "insert or replace into unitransport.roles( role_name ) values( ? ); ";
+			String sql = "insert into unitransport.roles( role_name ) values( ? ); ";
 			PreparedStatement statement = DatabaseManager.getConnection().prepareStatement( sql );
 			statement.setString( 1, role.getRoleName() );
 			statement.executeUpdate();

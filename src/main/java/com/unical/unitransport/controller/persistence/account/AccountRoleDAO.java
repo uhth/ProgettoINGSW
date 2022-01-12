@@ -45,7 +45,7 @@ public class AccountRoleDAO {
 	public static boolean insert( AccountRole accountRole ) {
 		initialize();
 		try {
-			String sql = "insert or replace into unitransport.account_roles ( user_id, role_id, grant_date ) "
+			String sql = "insert into unitransport.account_roles ( user_id, role_id, grant_date ) "
 					+ "values( ?, ?, ? ); ";
 			PreparedStatement statement = DatabaseManager.getConnection().prepareStatement( sql );
 			statement.setInt( 1 , accountRole.getUserId() );

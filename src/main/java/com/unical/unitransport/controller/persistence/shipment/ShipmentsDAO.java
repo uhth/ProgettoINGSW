@@ -42,7 +42,7 @@ public class ShipmentsDAO {
 	public static boolean insert( Shipment shipment ) {
 		initialize();
 		try {
-			String sql = "insert or replace into unitransport.shipments( tracking_number, status, created_on ) values( ?, ?, ? ); ";
+			String sql = "insert into unitransport.shipments( tracking_number, status, created_on ) values( ?, ?, ? ); ";
 			PreparedStatement statement = DatabaseManager.getConnection().prepareStatement( sql );
 			statement.setString( 1, shipment.getTrackingNumber() );
 			statement.setInt( 2, shipment.getStatus() );

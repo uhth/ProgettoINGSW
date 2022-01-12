@@ -41,7 +41,7 @@ public class AccountsDAO {
 	public static boolean insert( Account account ) {
 		initialize();
 		try {
-			String sql = "insert or replace into unitransport.accounts( email, password, created_on ) values( ?, ?, ? ); ";
+			String sql = "insert into unitransport.accounts( email, password, created_on ) values( ?, ?, ? ); ";
 			PreparedStatement statement = DatabaseManager.getConnection().prepareStatement( sql );
 			statement.setString( 1, account.getEmail() );
 			statement.setString( 2, account.getPassword() );
