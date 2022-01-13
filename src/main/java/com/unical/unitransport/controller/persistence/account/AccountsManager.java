@@ -36,9 +36,9 @@ public interface AccountsManager {
 		return null;
 	}
 	
-	public static void unregisterAccount( String email ) {
+	public static boolean unregisterAccount( String email ) {
 		Account account = AccountsDAO.getByEmail( email );
-		AccountsDAO.remove( account );
+		return AccountsDAO.remove( account );
 	}
 	
 	public static boolean registerRole( String role_name ) {

@@ -7,6 +7,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import com.unical.unitransport.controller.persistence.account.Account;
+import com.unical.unitransport.controller.persistence.account.AccountRoleDAO;
 import com.unical.unitransport.controller.persistence.account.AccountsDAO;
 import com.unical.unitransport.controller.persistence.account.AccountsManager;
 import com.unical.unitransport.controller.persistence.account.Role;
@@ -31,6 +32,8 @@ class UniTransportApplicationTests {
 		assertEquals( "user", RolesDAO.getByName( "user").getRoleName() );
 		//add existing role
 		assertEquals( false, RolesDAO.insert( new Role( "user" ) ) );
+		//delete role
+		assertEquals( true, RolesDAO.remove( new Role( "user" ) ) );
 	}
 	
 	
@@ -54,7 +57,7 @@ class UniTransportApplicationTests {
 	}
 	
 	@Test
-	@DisplayName( "AccountsManager test" )
+	@DisplayName( "AccountsManager Test" )
 	void accountManagerTest() {
 		//add new account
 		assertEquals( Account.class, AccountsManager.registerAccount( "mail@mail.com", "rawPass", "test1" ).getClass() );
@@ -66,6 +69,10 @@ class UniTransportApplicationTests {
 		assertEquals( true, AccountsManager.login( "mail@mail.com", "rawPass") );
 		//bad login
 		assertEquals( false, AccountsManager.login( "mail@mail.com", "badRawPass") );
+		//remove account
+		assertEquals( true, AccountsManager.unregisterAccount( "mail@mail.com" ) );
+		assertEquals( null, AccountsDAO.getByEmail( "mail@mail.com" ) );
+		assertEquals( null, AccountRoleDAO.getFor( new Account( "mail@mail.com", "" ) ) );
 		
 	}
 

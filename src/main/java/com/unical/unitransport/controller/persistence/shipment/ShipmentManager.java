@@ -10,10 +10,19 @@ public interface ShipmentManager {
 			tracking_number = UUID.randomUUID().toString();
 		
 		Shipment shipment = new Shipment( tracking_number );
-		ShipmentsDAO.insert( shipment );
+		if( !ShipmentsDAO.insert( shipment ) ) return null;
 		shipment = ShipmentsDAO.getByTrackingNumber( tracking_number );
 		ShipmentSenderReceiver shipmentSenderReceiver = new ShipmentSenderReceiver( shipment.getShipmentId(), sender_email, receiver_email );
-		ShipmentsSenderReceiverDAO.insert( shipmentSenderReceiver );
+		if( !ShipmentsSenderReceiverDAO.insert( shipmentSenderReceiver ) ) {
+			ShipmentsDAO.remove( shipment );
+			return null;
+		}
 		return shipment;
 	}
+	
+	public static boolean unregisterShipment( String trackingNumber ) {
+		Shipment shipment = ShipmentsDAO.getByTrackingNumber( trackingNumber );
+		return ShipmentsDAO.remove( shipment );
+	}
+	
 }

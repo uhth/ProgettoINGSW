@@ -64,6 +64,21 @@ public class RolesDAO {
 		}
 	}
 	
+	public static boolean remove( Role role ) {
+		initialize();
+		try {
+			String sql = "delete from unitransport.roles where role_name = ? ;";
+			PreparedStatement statement = DatabaseManager.getConnection().prepareStatement( sql );
+			statement.setString( 1 , role.getRoleName() );
+			statement.executeUpdate();
+			statement.close();
+			return true;
+		} catch ( SQLException e ) {
+			e.printStackTrace();
+			return false;
+		}
+	}
+	
 	public static Role getByName( String name ) {
 		initialize();
 		Role role = null;
