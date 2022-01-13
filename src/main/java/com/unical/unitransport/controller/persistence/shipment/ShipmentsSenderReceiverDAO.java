@@ -43,7 +43,7 @@ public class ShipmentsSenderReceiverDAO {
 	public static boolean insert( ShipmentSenderReceiver shipmentSenderReceiver ) {
 		initialize();
 		try {
-			String sql = "insert or replace into unitransport.shipments_sender_receiver( shipment_id, sender_email, receiver_email ) values( ?, ?, ? ); ";
+			String sql = "insert into unitransport.shipments_sender_receiver( shipment_id, sender_email, receiver_email ) values( ?, ?, ? ) ;";
 			PreparedStatement statement = DatabaseManager.getConnection().prepareStatement( sql );
 			statement.setInt( 1, shipmentSenderReceiver.getShipmentId() );
 			statement.setString( 2, shipmentSenderReceiver.getSenderEmail() );
@@ -65,7 +65,7 @@ public class ShipmentsSenderReceiverDAO {
 			String sql = "select * from unitransport.shipments_sender_receiver where shipment_id = ? ;";
 			PreparedStatement statement = DatabaseManager.getConnection().prepareStatement(sql);
 			statement.setString( 1, shipment_id );
-			ResultSet rs = statement.executeQuery( sql );
+			ResultSet rs = statement.executeQuery();
 			while( rs.next() ) {
 				shipmentSenderReceiver = new ShipmentSenderReceiver( rs.getInt( 1 ), rs.getString( 2 ), rs.getString( 3 ) );
 			}					
@@ -83,7 +83,7 @@ public class ShipmentsSenderReceiverDAO {
 			String sql = "select * from unitransport.shipments_sender_receiver where sender_email = ? ;";
 			PreparedStatement statement = DatabaseManager.getConnection().prepareStatement(sql);
 			statement.setString( 1, sender_email );
-			ResultSet rs = statement.executeQuery( sql );
+			ResultSet rs = statement.executeQuery();
 			while( rs.next() ) {
 				shipmentSenderReceiver = new ShipmentSenderReceiver( rs.getInt( 1 ), rs.getString( 2 ), rs.getString( 3 ) );
 			}					

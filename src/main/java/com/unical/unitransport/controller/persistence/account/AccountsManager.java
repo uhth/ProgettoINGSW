@@ -63,17 +63,17 @@ public interface AccountsManager {
 		return AccountRoleDAO.insert( new AccountRole( account.getUserId(), role.getRoleId() ) );
 	}
 	
-	public static boolean changeAccountEmail( String email ) {
-		Account account = AccountsDAO.getByEmail( email );
+	public static boolean updateEmail( String oldEmail, String newEmail ) {
+		Account account = AccountsDAO.getByEmail( oldEmail );
 		if( account == null ) return false;
-		return AccountsDAO.updateEmail( account, email );
+		return AccountsDAO.updateEmail( account, newEmail );
 	}
 	
-	public static boolean changeAccountPassword( String email, String password ) {
+	public static boolean updatePassword( String email, String newPassword ) {
 			Account account = AccountsDAO.getByEmail( email );
 			if( account == null ) return false;
 			BCryptPasswordEncoder pwEncoder = new BCryptPasswordEncoder();
-			String encodedPw = pwEncoder.encode(password);
+			String encodedPw = pwEncoder.encode(newPassword);
 			return AccountsDAO.updatePassword( account , encodedPw );
 	}
 

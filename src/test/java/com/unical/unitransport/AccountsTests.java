@@ -1,11 +1,11 @@
 package com.unical.unitransport;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
-
 import com.unical.unitransport.controller.persistence.account.Account;
 import com.unical.unitransport.controller.persistence.account.AccountRoleDAO;
 import com.unical.unitransport.controller.persistence.account.AccountsDAO;
@@ -14,8 +14,8 @@ import com.unical.unitransport.controller.persistence.account.Role;
 import com.unical.unitransport.controller.persistence.account.RolesDAO;
 
 @SpringBootTest
-class UniTransportApplicationTests {
-		
+public class AccountsTests {
+	
 	@BeforeAll
 	public static void resetRoles() {
 		AccountsDAO.removeAll(); //AccountsRole should be updated to due to its constraints
@@ -61,6 +61,7 @@ class UniTransportApplicationTests {
 	void accountManagerTest() {
 		//add new account
 		assertEquals( Account.class, AccountsManager.registerAccount( "mail@mail.com", "rawPass", "test1" ).getClass() );
+		assertEquals( Account.class, AccountsManager.registerAccount( "mail2@mail.com", "rawPass", "test1" ).getClass() );
 		//insert existing account
 		assertEquals( null, AccountsManager.registerAccount( "mail@mail.com", "xasd", "test1" ) );
 		//add new account with wrong role
@@ -75,5 +76,5 @@ class UniTransportApplicationTests {
 		assertEquals( null, AccountRoleDAO.getFor( new Account( "mail@mail.com", "" ) ) );
 		
 	}
-
+	
 }
