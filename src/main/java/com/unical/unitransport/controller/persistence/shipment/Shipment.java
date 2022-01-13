@@ -17,18 +17,20 @@ public class Shipment {
 	private int status;
 	private Timestamp created_on;
 	private Timestamp last_update;
+	private String last_location;
 	
 	public Shipment( String tracking_number ) {
 		this.tracking_number = tracking_number;
 		this.status = LABEL_CREATED;
 	}
 	
-	public Shipment(int shipment_id, String tracking_number, int status, Timestamp created_on, Timestamp last_update) {
+	public Shipment(int shipment_id, String tracking_number, int status, Timestamp created_on, Timestamp last_update, String last_location ) {
 		this.shipment_id = shipment_id;
 		this.tracking_number = tracking_number;
 		this.status = status;
 		this.created_on = created_on;
 		this.last_update = last_update;
+		this.last_location = last_location;
 	}
 
 	public int getShipmentId() {
@@ -69,6 +71,46 @@ public class Shipment {
 	
 	public void setCreatedOn( Timestamp created_on ) {
 		this.created_on = created_on;
+	}
+	
+	public String getLastLocation() {
+		return last_location;
+	}
+	
+	public void setLastLocation( String last_location ) {
+		this.last_location = last_location;
+	}
+	
+	
+
+	public String stato() {
+		String state = "";
+		if(status==Shipment.UNKNOWN)
+			state+= "Nessuna informazione attualmente disponibile";
+		else if (status==Shipment.LABEL_CREATED)
+			state+="LA SPEDIZIONE E' STATA CREATA";
+		else if (status==Shipment.OUT_FOR_DELIVERY)
+			state+="LA SPEDIZIONE E' PRONTA PER LA CONSEGNA";		
+		else if (status==Shipment.SHIPPED)
+			state+="LA SPEDIZIONE E' PARTITA";		
+		else if (status==Shipment.DELIVERY)
+			state+="LA SPEDIZIONE E' IN CONSEGNA";
+		else if (status==Shipment.COMPLETED)
+			state+="LA SPEDIZIONE E' STATA COMPLETATA";		
+		else if (status==Shipment.CANCELED)
+			state+="LA SPEDIZIONE E' STATA ANNULLATA";		
+
+		
+		return state;
+	}
+	
+	public String localita() {
+		
+		if (status>=Shipment.SHIPPED && status<=Shipment.COMPLETED)
+			return "PRESSO: " + this.last_location;
+		
+		return "LOCALIZZAZIONE NON DISPONIBILE";
+			
 	}
 	
 	

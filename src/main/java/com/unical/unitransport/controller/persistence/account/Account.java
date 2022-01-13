@@ -10,12 +10,18 @@ public class Account {
 	private String password;
 	private Timestamp created_on;
 	private Timestamp last_login;
-
-	public Account( int user_id, String email, String password, Timestamp created_on, Timestamp last_login ) {
-
-	}
 	
+	public Account(int user_id, String email, String password, Timestamp created_on, Timestamp last_login) {
+		this.user_id = user_id;
+		this.email = email;
+		this.password = password;
+		this.created_on = created_on;
+		this.last_login = last_login;
+	}
+
 	public Account( String email, String password ) {
+		this.email = email;
+		this.password = password;
 		this.created_on = Timestamp.from( Instant.now() );
 	}
 
@@ -59,6 +65,10 @@ public class Account {
 		this.last_login = last_login;
 	}
 	
+	@Override
+	public String toString() {
+		return email + " " + password + " " + created_on;
+	}
 	
 	
 }

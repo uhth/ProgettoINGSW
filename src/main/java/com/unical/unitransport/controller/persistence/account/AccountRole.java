@@ -22,7 +22,6 @@ public class AccountRole {
 		this.grant_date = Timestamp.from( Instant.now() );
 	}
 
-
 	public int getUserId() {
 		return user_id;
 	}

@@ -16,6 +16,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.unical.unitransport.controller.persistence.shipment.Shipment;
+import com.unical.unitransport.controller.persistence.shipment.ShipmentsDAO;
+
 @Controller
 public class Login {
 	
@@ -35,7 +38,6 @@ public class Login {
 	@PostMapping("/loginService")
 	public String login(HttpServletRequest req, HttpServletResponse res, String username, String pass) throws IOException{
 		
-
 		
 		String sql = "select * from users where username = '" + username + "'";
 		HttpSession session = req.getSession(true);

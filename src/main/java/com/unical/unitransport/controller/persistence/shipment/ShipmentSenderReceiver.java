@@ -8,13 +8,11 @@ public class ShipmentSenderReceiver {
 	
 	
 	public ShipmentSenderReceiver(int shipment_id, String sender_email, String receiver_email) {
-		super();
 		this.shipment_id = shipment_id;
 		this.sender_email = sender_email;
 		this.receiver_email = receiver_email;
 	}
-
-
+	
 	public int getShipmentId() {
 		return shipment_id;
 	}
