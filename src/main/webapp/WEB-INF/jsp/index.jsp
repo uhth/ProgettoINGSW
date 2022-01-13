@@ -1,12 +1,12 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-    <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
         <!DOCTYPE html>
         <html lang="en" dir="ltr">
 
         <head>
             <meta charset="utf-8">
             <link rel="icon" href="../immagini/b1.png">
-            <link rel="stylesheet" href="css/style.css">
+            <link rel="stylesheet" href="css/index.css">
             <script src="https://kit.fontawesome.com/eb3e5ce09e.js" crossorigin="anonymous"></script>
             <title>UniTransport</title>
         </head>
@@ -25,6 +25,7 @@
 
                     <c:if test="${username != null}">
                         <p class="intro_benvenuto">Benvenuto ${username}</p>
+                        <a href="profilo_utente" id="profilo_utente" onclick="btnAccedi()" class="btn btn-rounded">Profilo utente</a>
                         <a href="logout" id="prova" onclick="btnAccedi()" class="btn btn-rounded">Logout</a>
                     </c:if>
 
@@ -35,11 +36,11 @@
                 <div class="showcase-content">
                     <h1>Consegne Al Miglior Prezzo.<br>Nazionali e Internazionali.</h1>
                     <p>Paga direttamente alla consegna.</p>
-                    <a href="#" class="btn btn-xl">
+                    <a href="spedisci" class="btn btn-xl">
                         Effettua una spedizione <i class="fas fa-chevron-right btn-icon"></i>
                     </a>
                     <br>
-                    <a href="#" class="btn btn-xl">
+                    <a href="tracking_page" class="btn btn-xl">
                         Traccia una spedizione <i class="fas fa-chevron-right btn-icon"></i>
                     </a>
                 </div>
@@ -180,6 +181,21 @@
 
                             </tbody>
                         </table>
+                    </div>
+                    
+                    <div id="tab-3-content" class="tab-content-item">
+                        <div class="text-center">
+                            <p class="textllg">Esegui la ricerca manuale della spedizione</p>
+                            <a href="tracking_page" class="btn btn-lg">Cerca tramite codice</a>
+                           
+                    <c:if test="${username == null}">
+                    		<br><br><br>
+							<p class="textllg">OPPURE</p><br><br>
+                            <p class="textllg">Esegui la ricerca da profilo utente</p>
+                            <a href="login" class="btn btn-lg">Autenticati</a>                     
+                      </c:if>                              
+                        </div>
+
                     </div>
 
                 </div>

@@ -16,14 +16,12 @@
         <img src="/immagini/avatarPrimary.png" class="avatar">
         <h1>Effettua l'iscrizione</h1>
         <form method="post" action="iscrizioneService">
-            <p>Username:</p>
-            <input type="text" name="username_new" placeholder="Inserisci nome utente"/>
             <p>E-mail:</p>
-            <input type="text" name="email_new" placeholder="Inserisci mail"/>
+            <input type="text" name="email" placeholder="Inserisci mail"/>
             <p>Password:</p>
-            <input type="password" name="pass_new" placeholder="Inserisci password"/>
+            <input type="password" name="password" placeholder="Inserisci password"/>
             <p>Ripeti password:</p>
-            <input type="password" name="passRipetuta_new" placeholder="Inserisci password"/>
+            <input type="password" name="password_ripetuta" placeholder="Inserisci password"/>
 
             <input type="submit" value="Iscriviti" />
             <br><br>
