@@ -9,22 +9,35 @@ public interface AccountsManager {
 		BCryptPasswordEncoder pwEncoder = new BCryptPasswordEncoder();
 		String encodedPw = pwEncoder.encode(password);
 		Role role = RolesDAO.getByName( role_name );
-		if( role == null ) return null;
+		if( role == null ) { 
+			return null; 
+		}
 		Account account = new Account( email, encodedPw );
 		if( AccountsDAO.insert( account ) ) {
 			account = AccountsDAO.getByEmail( email );
-			AccountRole accountRole = new AccountRole( AccountsDAO.getByEmail( email ).getUserId(), role.getRoleId() );
-			if ( AccountRoleDAO.insert( accountRole ) )
-				return account;
-			else
+			if( !changeAccountRole( account.getEmail(), role_name ) ) {
 				AccountsDAO.remove( account );
+				return null;
+			}
+			return account;
+		}
+		return null;
+	}
+	
+	public static Account registerAccount( String email, String password ) {
+		if( AccountsDAO.getByEmail( email ) != null ) return null;
+		BCryptPasswordEncoder pwEncoder = new BCryptPasswordEncoder();
+		String encodedPw = pwEncoder.encode(password);
+		Account account = new Account( email, encodedPw );
+		if( AccountsDAO.insert( account ) ) {
+			account = AccountsDAO.getByEmail( email );
+			return account;
 		}
 		return null;
 	}
 	
 	public static void unregisterAccount( String email ) {
 		Account account = AccountsDAO.getByEmail( email );
-		AccountRoleDAO.remove( account );
 		AccountsDAO.remove( account );
 	}
 	

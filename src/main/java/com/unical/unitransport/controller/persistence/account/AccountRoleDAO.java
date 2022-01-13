@@ -31,9 +31,9 @@ public class AccountRoleDAO {
 					+ "grant_date TIMESTAMP, "
 					+ "PRIMARY KEY (user_id), "
 					+ "FOREIGN KEY (role_id) "
-					+ "    REFERENCES unitransport.roles (role_id), "
+					+ "    REFERENCES unitransport.roles (role_id) ON DELETE CASCADE, "
 					+ "FOREIGN KEY (user_id) "
-					+ "    REFERENCES unitransport.accounts (user_id) );" ;
+					+ "    REFERENCES unitransport.accounts (user_id) ON DELETE CASCADE ) ; " ;
 			statement.executeUpdate( sql );	
 			statement.close();
 		} catch (SQLException e) { 
@@ -53,10 +53,11 @@ public class AccountRoleDAO {
 			statement.setTimestamp( 3, accountRole.getGrantDate() );
 			statement.setInt( 4 , accountRole.getRoleId() );
 			statement.setTimestamp( 5, accountRole.getGrantDate() );
-			statement.executeUpdate( sql );				
+			statement.executeUpdate();				
 			statement.close();
 			return true;
 		} catch (SQLException e) {
+			System.out.println("insert bad");
 			return false;
 		}
 	}
@@ -78,7 +79,7 @@ public class AccountRoleDAO {
 	public static boolean remove( Role role ) {
 		initialize();
 		try {
-			String sql = "remove from unitransport.account_roles where role_id = ? ;";
+			String sql = "delete from unitransport.account_roles where role_id = ? ;";
 			PreparedStatement statement = DatabaseManager.getConnection().prepareStatement( sql );
 			statement.setInt( 1 , role.getRoleId() );
 			statement.executeUpdate( sql );			
@@ -105,6 +106,20 @@ public class AccountRoleDAO {
 			e.printStackTrace();
 		}
 		return accountRole;
+	}
+	
+	public static boolean removeAll() {
+		initialize();
+		try {
+			String sql = "delete from unitransport.account_roles ;";
+			Statement statement = DatabaseManager.getConnection().createStatement();
+			statement.executeUpdate( sql );
+			statement.close();
+			return true;
+		} catch ( SQLException e ) {
+			e.printStackTrace();
+			return false;
+		}
 	}
 	
 	public static List<AccountRole> getAll() {

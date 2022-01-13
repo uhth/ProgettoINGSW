@@ -1,10 +1,6 @@
 package com.unical.unitransport;
 
-import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertThrows;
-
-import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -12,6 +8,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 import com.unical.unitransport.controller.persistence.account.Account;
 import com.unical.unitransport.controller.persistence.account.AccountsDAO;
+import com.unical.unitransport.controller.persistence.account.AccountsManager;
 import com.unical.unitransport.controller.persistence.account.Role;
 import com.unical.unitransport.controller.persistence.account.RolesDAO;
 
@@ -20,8 +17,9 @@ class UniTransportApplicationTests {
 		
 	@BeforeAll
 	public static void resetRoles() {
-		RolesDAO.removeAll();
-		AccountsDAO.removeAll();
+		AccountsDAO.removeAll(); //AccountsRole should be updated to due to its constraints
+		RolesDAO.removeAll(); //AccountsRole should be updated to due to its constraints
+		RolesDAO.insert( new Role( "test1" ) );
 	}
 	
 	@Test
@@ -52,6 +50,22 @@ class UniTransportApplicationTests {
 		assertEquals( nRawPassword, AccountsDAO.getByEmail(newEmail).getPassword() );
 		//insert existing account
 		assertEquals( false, AccountsDAO.insert( new Account( "newMockEmail", "rawPassword" ) ) );
+		
+	}
+	
+	@Test
+	@DisplayName( "AccountsManager test" )
+	void accountManagerTest() {
+		//add new account
+		assertEquals( Account.class, AccountsManager.registerAccount( "mail@mail.com", "rawPass", "test1" ).getClass() );
+		//insert existing account
+		assertEquals( null, AccountsManager.registerAccount( "mail@mail.com", "xasd", "test1" ) );
+		//add new account with wrong role
+		assertEquals( null, AccountsManager.registerAccount( "nmail@mail.com", "xasd", "nop" ) );
+		//good login
+		assertEquals( true, AccountsManager.login( "mail@mail.com", "rawPass") );
+		//bad login
+		assertEquals( false, AccountsManager.login( "mail@mail.com", "badRawPass") );
 		
 	}
 
