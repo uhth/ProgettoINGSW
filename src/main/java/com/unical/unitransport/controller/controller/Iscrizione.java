@@ -1,5 +1,7 @@
 package com.unical.unitransport.controller.controller;
 
+import java.io.IOException;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -15,10 +17,20 @@ public class Iscrizione {
 	
 
 	@PostMapping("/iscrizioneService")
-	public String login( HttpServletRequest req, @RequestParam( value = "email", required = true ) String email, @RequestParam( value = "password", required = true ) String password, @RequestParam( value = "password_ripetuta", required = true ) String password_ripetuta ) {
-				
+	public String login( HttpServletResponse res,
+			HttpServletRequest req,
+			@RequestParam( value = "email", required = true ) String email,
+			@RequestParam( value = "password", required = true ) String password,
+			@RequestParam( value = "password_ripetuta", required = true ) String password_ripetuta ) throws IOException {
 		
-		Account account = AccountsManager.registerAccount( email, password, "user" );
+		
+		int diff = password.compareTo( password_ripetuta );
+		if( diff != 0 ) {
+			System.out.println( password + " " + password_ripetuta );
+			res.sendError( HttpServletResponse.SC_BAD_REQUEST );
+		}
+		
+		Account account = AccountsManager.registerAccount( email, password );
 		if( account == null ) return "iscrizione";
 				
 		AccountsManager.login( account.getEmail(), account.getPassword() );
