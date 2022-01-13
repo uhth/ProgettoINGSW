@@ -30,7 +30,9 @@ public class ShipmentsSenderReceiverDAO {
 					+ "receiver_email VARCHAR ( 255 ) NOT NULL, "
 					+ "PRIMARY KEY (shipment_id, sender_email, receiver_email), "
 					+ "FOREIGN KEY (sender_email) "
-					+ "		REFERENCES unitransport.accounts (email) ); ";
+					+ "		REFERENCES unitransport.accounts (email) ON DELETE CASCADE, "
+					+ "FOREIGN KEY (shipment_id) "
+					+ "		REFERENCES unitransport.shipments (shipment_id) ON DELETE CASCADE );";
 			statement.executeUpdate( sql );	
 			statement.close();
 		} catch (SQLException e) {

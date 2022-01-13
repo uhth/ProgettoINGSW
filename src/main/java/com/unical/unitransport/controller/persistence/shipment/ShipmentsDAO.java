@@ -31,7 +31,8 @@ public class ShipmentsDAO {
 					+ "tracking_number VARCHAR ( 255 ) UNIQUE NOT NULL, "
 					+ "status INT NOT NULL, "
 					+ "created_on TIMESTAMP NOT NULL, "
-				    + "last_update TIMESTAMP );";
+				    + "last_update TIMESTAMP ), "
+				    + "last_location VARCHAR ( 255 ) DEFAULT 'UNKNOWN'; ";
 			statement.executeUpdate( sql );	
 			statement.close();
 		} catch (SQLException e) {
@@ -66,7 +67,7 @@ public class ShipmentsDAO {
 			statement.setString( 1, tacking_number );
 			ResultSet rs = statement.executeQuery( sql );
 			while( rs.next() ) {
-				shipment = new Shipment( rs.getInt( 1 ), rs.getString( 2 ), rs.getInt( 3 ), rs.getTimestamp( 4 ), rs.getTimestamp( 5 ) );
+				shipment = new Shipment( rs.getInt( 1 ), rs.getString( 2 ), rs.getInt( 3 ), rs.getTimestamp( 4 ), rs.getTimestamp( 5 ), rs.getString( 6 ) );
 			}					
 			statement.close();
 		} catch (SQLException e) {
@@ -79,11 +80,11 @@ public class ShipmentsDAO {
 		initialize();
 		List<Shipment> shipments = new ArrayList<Shipment>();
 		try {
-			String sql = "select * from unitransport.accounts";
+			String sql = "select * from unitransport.shipments";
 			Statement statement = DatabaseManager.getConnection().createStatement();
 			ResultSet rs = statement.executeQuery( sql );
 			while( rs.next() ) {
-				Shipment shipment = new Shipment( rs.getInt( 1 ), rs.getString( 2 ), rs.getInt( 3 ), rs.getTimestamp( 4 ), rs.getTimestamp( 5 ) );
+				Shipment shipment = new Shipment( rs.getInt( 1 ), rs.getString( 2 ), rs.getInt( 3 ), rs.getTimestamp( 4 ), rs.getTimestamp( 5 ), rs.getString( 6 ) );
 				shipments.add( shipment );
 			}					
 			statement.close();
@@ -96,7 +97,7 @@ public class ShipmentsDAO {
 	public static boolean remove( Shipment shipment ) {
 		initialize();
 		try {
-			String sql = "remove from unitransport.accounts where tracking_number = ? ;";
+			String sql = "delete from unitransport.shipments where tracking_number = ? ;";
 			PreparedStatement statement = DatabaseManager.getConnection().prepareStatement(sql);
 			statement.setString( 1, shipment.getTrackingNumber() );
 			statement.executeUpdate();			

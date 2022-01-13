@@ -17,18 +17,20 @@ public class Shipment {
 	private int status;
 	private Timestamp created_on;
 	private Timestamp last_update;
+	private String last_location;
 	
 	public Shipment( String tracking_number ) {
 		this.tracking_number = tracking_number;
 		this.status = LABEL_CREATED;
 	}
 	
-	public Shipment(int shipment_id, String tracking_number, int status, Timestamp created_on, Timestamp last_update) {
+	public Shipment(int shipment_id, String tracking_number, int status, Timestamp created_on, Timestamp last_update, String last_location ) {
 		this.shipment_id = shipment_id;
 		this.tracking_number = tracking_number;
 		this.status = status;
 		this.created_on = created_on;
 		this.last_update = last_update;
+		this.last_location = last_location;
 	}
 
 	public int getShipmentId() {
@@ -71,5 +73,12 @@ public class Shipment {
 		this.created_on = created_on;
 	}
 	
+	public String getLastLocation() {
+		return last_location;
+	}
+	
+	public void setLastLocation( String last_location ) {
+		this.last_location = last_location;
+	}
 	
 }
