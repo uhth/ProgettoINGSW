@@ -16,10 +16,11 @@
         <img src="/immagini/avatarPrimary.png" class="avatar">
         <h1>Effettua il login</h1>
         <form method="post" action="loginService">
-            <p>Email:</p>
-            <input type="text" name="email" placeholder="Inserisci email"/>
+            <p>Username:</p>
+            <input type="text" name="email" placeholder="Inserisci nome utente"/>
             <p>Password:</p>
-            <input type="password" name="password" value="" placeholder="Inserisci password"/>
+            <input type="password" name="password" placeholder="Inserisci password"/>
+
             <input type="submit" value="Accedi" />
             <br><br>
             <a href="iscrizione" id="a_iscriviti">Non hai un account? Iscriviti!</a>
@@ -28,8 +29,6 @@
     </div>
 
 
-
-    <script src="js/main.js"></script>
 </body>
 
 </html>

@@ -36,11 +36,14 @@
             
         <div class="showcase-content">
             <h1>Inserisci il codice della tua spedizione</p>
-                <input type="text" id="tracking_box" placeholder="Inserisci numero di tracking" name="track_box"><br>
-                <a href="/" class="btn btn-xl" id="button_procedi">
-                    PROCEDI <i class="fas fa-chevron-right btn-icon"></i>
-                </a>
+
                 
+                <form method="post" action="trackingService">
+                <input type="text" id="tracking_box" placeholder="Inserisci numero di tracking" name="codice_inserito" action="trackingService"><br>
+
+		            <input  class="btn btn-xl" d= "button_procedi" type="submit" value="Cerca" />
+		
+	     	   </form>
         
                 
           </div>
@@ -50,3 +53,27 @@
 </body>
 
 </html>
+
+
+<!-- 
+
+        <div class="showcase-content">
+            <h1>Inserisci il codice della tua spedizione</p>
+                <input type="text" id="tracking_box" placeholder="Inserisci numero di tracking" name="codice_inserito" action="trackingService"><br>
+                <a href="tracking_information" class="btn btn-xl" id="button_procedi" name="truck_code" method="post" type="button" >
+                    PROCEDI <i class="fas fa-chevron-right btn-icon"></i>
+                </a>
+                
+                <form method="post" action="trackingService">
+		            <p>Username:</p>
+		            <input type="text" name="username" placeholder="Inserisci nome utente"/>
+		            <p>Password:</p>
+		            <input type="password" name="pass" placeholder="Inserisci password"/>
+		
+		            <input type="submit" value="Accedi" />
+		
+	     	   </form>
+        
+                
+          </div>
+ -->
