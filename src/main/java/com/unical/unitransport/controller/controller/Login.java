@@ -49,7 +49,6 @@ public class Login {
 			@RequestParam( value = "password", required = true ) String password ) throws IOException {
 		
 		HttpSession session;
-		System.out.println("s");
 		
 		if( AccountsManager.login( email, password ) ) { 
 			session = req.getSession(false);
