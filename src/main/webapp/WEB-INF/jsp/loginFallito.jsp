@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <link rel="icon" href="../immagini/b1.png">
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/index.css">
     <script src="https://kit.fontawesome.com/eb3e5ce09e.js" crossorigin="anonymous"></script>
     <title>UniTransport</title>
 </head>

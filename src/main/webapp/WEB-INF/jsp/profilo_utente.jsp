@@ -28,7 +28,7 @@
 
           <c:if test="${username != null}">
             <p class="intro_benvenuto">Benvenuto ${username}</p>
-            <a href="" id="home" onclick="btnAccedi()" class="btn btn-rounded">HomePage</a>
+            <a href="/" id="home" onclick="btnAccedi()" class="btn btn-rounded">HomePage</a>
             <a href="logout" id="prova" onclick="btnAccedi()" class="btn btn-rounded">Logout</a>
           </c:if>
 

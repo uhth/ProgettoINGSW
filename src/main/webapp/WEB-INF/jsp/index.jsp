@@ -15,7 +15,8 @@
 
             <header class="showcase">
                 <div class="showcase-top">
-                    <img src="/immagini/b1.png" alt="">
+                
+                   <img src="/immagini/b1.png" alt="">
 
 
                     <c:if test="${username == null}">
@@ -80,8 +81,8 @@
                             <thead>
                                 <tr>
                                     <th></th>
-                                    <th>NON TRACCIABILE</th>
                                     <th>TRACCIABILE</th>
+                                    <th>TRACCIABILE EXPRESS</th>
                                     <th>TRACCIABILE ASSICURATA</th>
                                 </tr>
                             </thead>
@@ -90,25 +91,25 @@
                                     <td>Fino a 10Kg</td>
                                     <td>5.99€</td>
                                     <td>9.99€</td>
-                                    <td>15.99€ + 2% Valore Assicurato</td>
+                                    <td>15.99€</td>
                                 </tr>
                                 <tr>
                                     <td>Fino a 15Kg</td>
                                     <td>7.99€</td>
                                     <td>11.99€</td>
-                                    <td>17.99€ + 2% Valore Assicurato</td>
+                                    <td>17.99€</td>
                                 </tr>
                                 <tr>
                                     <td>Fino a 25Kg</td>
                                     <td>9.99€</td>
                                     <td>12.99€</td>
-                                    <td>19.99€ + 2% Valore Assicurato</td>
+                                    <td>19.99€</td>
                                 </tr>
                                 <tr>
                                     <td>Oltre 20Kg</td>
                                     <td>15.99€</td>
                                     <td>19.99€</td>
-                                    <td>26.99€ + 2% Valore Assicurato</td>
+                                    <td>26.99€</td>
                                 </tr>
                                 <tr>
                                     <td>Assistenza</td>
@@ -118,13 +119,13 @@
                                 </tr>
                                 <tr>
                                     <td>Tracciamento pacco</td>
-                                    <td><i class="fas fa-times"></i></td>
+                                    <td><i class="fas fa-check"></i></td>
                                     <td><i class="fas fa-check"></i></td>
                                     <td><i class="fas fa-check"></i></td>
                                 </tr>
                                 <tr>
                                     <td>Modifica dati spedizione gratuita</td>
-                                    <td><i class="fas fa-times"></i></td>
+                                    <td><i class="fas fa-check"></i></td>
                                     <td><i class="fas fa-check"></i></td>
                                     <td><i class="fas fa-check"></i></td>
                                 </tr>
@@ -140,47 +141,16 @@
 
                     <div id="tab-2-content" class="tab-content-item">
                         <div class="text-center">
-                            <p class="textllg">Valuta il tipo di servizio che cerchi e procedi</p>
-                            <a href="" class="btn btn-lg">Effettua una spedizione</a>
+                            <p class="textllg">Se vuoi modificare una spedizione come cliente passa alla sezione</p>
+                            <a href="" class="btn btn-lg">Effettua una modifica</a><br><br>
                         </div>
+                        
+                        <div class="text-center">
+                            <p class="textllg">Se vuoi modificare lo stato di una spedizione come corriere passa alla sezione</p>
+                            <a href="aggiornaStato" class="btn btn-lg">Aggiorna stato</a>
+                        </div>                        
 
-                        <table class="table">
-                            <thead>
-                                <tr>
-                                    <th></th>
-                                    <th>NON TRACCIABILE</th>
-                                    <th>TRACCIABILE</th>
-                                    <th>TRACCIABILE ASSICURATA</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>Fino a 10Kg</td>
-                                    <td>5.99€</td>
-                                    <td>9.99€</td>
-                                    <td>15.99€ + 2% Valore Assicurato</td>
-                                </tr>
-                                <tr>
-                                    <td>Fino a 15Kg</td>
-                                    <td>7.99€</td>
-                                    <td>11.99€</td>
-                                    <td>17.99€ + 2% Valore Assicurato</td>
-                                </tr>
-                                <tr>
-                                    <td>Fino a 25Kg</td>
-                                    <td>9.99€</td>
-                                    <td>12.99€</td>
-                                    <td>19.99€ + 2% Valore Assicurato</td>
-                                </tr>
-                                <tr>
-                                    <td>Oltre 20Kg</td>
-                                    <td>15.99€</td>
-                                    <td>19.99€</td>
-                                    <td>26.99€ + 2% Valore Assicurato</td>
-                                </tr>
-
-                            </tbody>
-                        </table>
+                        
                     </div>
                     
                     <div id="tab-3-content" class="tab-content-item">
@@ -206,19 +176,15 @@
                 <div class="footer-cols">
                     <ul>
                         <li><a href="">FAQ</a></li>
-                        <li><a href="">Burocrazia</a></li>
                     </ul>
                     <ul>
-                        <li><a href="">Lavora con noi</a></li>
                         <li><a href="">Chi siamo</a></li>
                     </ul>
                     <ul>
-                        <li><a href="">Sito Unical</a></li>
-                        <li><a href="">Dove siamo</a></li>
+                        <li><a href="http://www.unical.it">Sito Unical</a></li>
                     </ul>
                     <ul>
-                        <li><a href="">Account</a></li>
-                        <li><a href="">Privacy</a></li>
+                        <li><a href="profilo_utente">Account</a></li>
                     </ul>
                 </div>
             </footer>
