@@ -7,9 +7,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 public class TrackingGMaps {
 	
 	
-	@GetMapping("tracking_gmap")
+	@GetMapping("tracking_gmaps")
 	public String map() {
-		return "tracking_gmap";
+		return "tracking_gmaps";
 	}
 
 }
