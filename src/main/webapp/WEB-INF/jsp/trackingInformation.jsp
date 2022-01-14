@@ -14,6 +14,7 @@
     <title>Sezione tracking</title>
   </head>
   <body>
+  <div class="background">
   <nav class="navbar navbar-dark bg-primary">
   <div class="container-fluid">
     <a class="navbar-brand" href="#">
@@ -73,9 +74,23 @@
 				  				  
      	 </div>
       </div>
+  </div>
 
 <!-- 						<p style="text-align: center;"></p><br>
  -->
 
   </body>
+  
+  
+      <style>
+
+      .background {
+        background-image: url("../immagini/mappa_sfocata.png")  ;
+ 		background-size: contain;
+        background-repeat: no-repeat;
+      }
+
+     
+	</style>
+  
 </html>

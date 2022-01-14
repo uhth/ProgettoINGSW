@@ -141,9 +141,14 @@
 
                     <div id="tab-2-content" class="tab-content-item">
                         <div class="text-center">
-                            <p class="textllg">Se vuoi modificare una spedizione passa alla sezione</p>
-                            <a href="" class="btn btn-lg">Effettua una modifica</a>
+                            <p class="textllg">Se vuoi modificare una spedizione come cliente passa alla sezione</p>
+                            <a href="" class="btn btn-lg">Effettua una modifica</a><br><br>
                         </div>
+                        
+                        <div class="text-center">
+                            <p class="textllg">Se vuoi modificare lo stato di una spedizione come corriere passa alla sezione</p>
+                            <a href="aggiornaStato" class="btn btn-lg">Aggiorna stato</a>
+                        </div>                        
 
                         
                     </div>

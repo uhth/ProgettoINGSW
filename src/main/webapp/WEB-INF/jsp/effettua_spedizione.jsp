@@ -14,6 +14,7 @@
     <title>Acquista spedizione</title>
   </head>
   <body>
+  <div class="background">
   <nav class="navbar navbar-dark bg-primary">
   <div class="container-fluid">
     <a class="navbar-brand" href="#">
@@ -22,6 +23,9 @@
     </a>
   </div>
 </nav>
+
+
+
 
 <div class="container my-5 text-center" style="max-width: 580px;">
     <img src="../immagini/logoNome.png" alt="" style="width:30%;">
@@ -81,6 +85,20 @@
      	 </div>
       
       </div>
+      
+      
+    </div>  
 
   </body>
+  
+      <style>
+
+      .background {
+        background-image: url("../immagini/mappa_sfocata.png")  ;
+ 		background-size: contain;
+        background-repeat: no-repeat;
+      }
+
+     
+	</style>
 </html>
