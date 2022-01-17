@@ -46,8 +46,8 @@ public class TrackingPageController {
 			session.setAttribute("stato", spedizione.stato());
 			session.setAttribute("luogo", spedizione.localita());
 		} else {
-			session.setAttribute("stato",  "Spedizione inesistente");
-			session.setAttribute("luogo",  "SCONOSCIUTO");
+			session.setAttribute("stato", "Spedizione inesistente");
+			session.setAttribute("luogo", "SCONOSCIUTO");
 		}
 
 		return "trackingInformation";
