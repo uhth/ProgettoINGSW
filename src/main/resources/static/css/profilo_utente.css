@@ -14,7 +14,7 @@ body {
     -webkit-font-smoothing: antialiased;
     background: #fff;
     color: #fff;
-        background: url('../immagini/login.png') no-repeat center center/cover;
+        background: url('../immagini/mappa_sfocata.png') no-repeat center center/cover;
     
 }
 
@@ -23,11 +23,11 @@ ul {
 }
 
 h1, h2, h3, h4 {
-    color: #fff;
+    color: #000;
 }
 
 a {
-    color: #fff;
+    color: #000;
     text-decoration: none;
 }
 
