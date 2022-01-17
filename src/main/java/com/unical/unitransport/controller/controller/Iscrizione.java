@@ -26,7 +26,6 @@ public class Iscrizione {
 		
 		int diff = password.compareTo( password_ripetuta );
 		if( diff != 0 ) {
-			System.out.println( password + " " + password_ripetuta );
 			res.sendError( HttpServletResponse.SC_BAD_REQUEST );
 		}
 		
