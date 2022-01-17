@@ -235,6 +235,7 @@
                 </div>
             </footer>
             <script src="js/main.js"></script>
+            <script src="login.js"></script>
         </body>
 
         </html>
