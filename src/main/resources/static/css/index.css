@@ -38,10 +38,10 @@ img {
 }
 
 form {
-	position: relative;
+	/*position: relative;*/
 	top: 500;
 	left: 150px;
-	padding: 250px;
+	/*padding: 250px;*/
 }
 
 .intro_benvenuto {

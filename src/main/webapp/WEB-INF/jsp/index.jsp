@@ -4,9 +4,11 @@
         <html lang="en" dir="ltr">
 
         <head>
+            <link href="https://chatcompose.azureedge.net/static/all/global/export/css/main.5b1bd1fd.css" rel="stylesheet">    <script async type="text/javascript" src="https://chatcompose.azureedge.net/static/all/global/export/js/main.a7059cb5.js?user=unitransport&lang=IT" user="unitransport" lang="IT"></script>    
             <meta charset="utf-8">
             <link rel="icon" href="../immagini/b1.png">
             <link rel="stylesheet" href="css/index.css">
+            <link rel="stylesheet" href="css/login.css">
             <script src="https://kit.fontawesome.com/eb3e5ce09e.js" crossorigin="anonymous"></script>
             <title>UniTransport</title>
         </head>
@@ -17,10 +19,9 @@
                 <div class="showcase-top">
                     <img src="/immagini/b1.png" alt="">
 
-
                     <c:if test="${username == null}">
                         <p class="intro_benvenuto">Benvenuto utente</p>
-                        <a href="login" id="prova" onclick="btnAccedi()" class="btn btn-rounded">Accedi</a>
+                        <a id="prova" onclick="document.getElementById('divLogin').style.display='block'" class="btn btn-rounded">Accedi</a>
                     </c:if>
 
                     <c:if test="${username != null}">
@@ -28,11 +29,9 @@
                         <a href="profilo_utente" id="profilo_utente" onclick="btnAccedi()" class="btn btn-rounded">Profilo utente</a>
                         <a href="logout" id="prova" onclick="btnAccedi()" class="btn btn-rounded">Logout</a>
                     </c:if>
-
-
-
-
                 </div>
+
+                
                 <div class="showcase-content">
                     <h1>Consegne Al Miglior Prezzo.<br>Nazionali e Internazionali.</h1>
                     <p>Paga direttamente alla consegna.</p>
@@ -43,6 +42,54 @@
                     <a href="tracking_page" class="btn btn-xl">
                         Traccia una spedizione <i class="fas fa-chevron-right btn-icon"></i>
                     </a>
+                    <br>
+                    <a href="paypal" class="btn btn-xl">
+                        Pagamento <i class="fas fa-chevron-right btn-icon"></i>
+                    </a>
+
+                    <!-- LOGIN -->
+                    <div id="divLogin" class="modal">  
+                        <form class="modal-content animate" action="/login_page.php" method="post">
+                        <div class="imgcontainer">
+                            <span onclick="document.getElementById('divLogin').style.display='none'" class="close" title="Close Modal">&times;</span>
+                            <img src="img/b1.png" alt="Avatar" class="avatar">
+                        </div>              
+                        <div class="container">
+                            <label for="uname"><b>Username</b></label>
+                            <input type="text" placeholder="Inserisci Username" name="uname" required>              
+                            <label for="psw"><b>Password</b></label>
+                            <input type="password" placeholder="Inserisci Password" name="psw" required>                      
+                            <button type="submit">Login</button>                    
+                        </div>              
+                        <div class="container" style="background-color:#f1f1f1">
+                            <button type="button" onclick="document.getElementById('divLogin').style.display='none'; document.getElementById('divRegister').style.display='block' " class="cancelbtn">Registrati</button>
+                            <span class="psw"><a href="#" id="forgotPassw">Password dimenticata?</a></span>
+                        </div>
+                        </form>
+                    </div>  
+                    <!-- FINE LOGIN --> 
+                    <!-- REGISTER -->
+                    <div id="divRegister" class="modal">  
+                        <form class="modal-content animate" action="/login_page.php" method="post">
+                        <div class="imgcontainer">
+                            <span onclick="document.getElementById('divRegister').style.display='none'" class="close" title="Close Modal">&times;</span>
+                            <img src="img/b1.png" alt="Avatar" class="avatar">
+                        </div>              
+                        <div class="container">
+                            <label for="uname"><b>Username</b></label>
+                            <input type="text" placeholder="Inserisci Username" name="uname" required>             
+                            <label for="uname"><b>Email</b></label>
+                            <input type="email" placeholder="Inserisci Email" name="email" required>        
+                            <label for="psw"><b>Password</b></label>
+                            <input type="password" placeholder="Inserisci Password" name="psw" required>                      
+                            <button type="submit">Registrati</button>                    
+                        </div>              
+                        <div class="container" style="background-color:#f1f1f1">
+                            <button type="button" onclick="document.getElementById('divRegister').style.display='none'; document.getElementById('divLogin').style.display='block';" class="cancelbtn">Login</button>                    
+                        </div>
+                        </form>
+                    </div>  
+                    <!-- FINE REGISTER --> 
                 </div>
             </header>
 
@@ -192,7 +239,7 @@
                     		<br><br><br>
 							<p class="textllg">OPPURE</p><br><br>
                             <p class="textllg">Esegui la ricerca da profilo utente</p>
-                            <a href="login" class="btn btn-lg">Autenticati</a>                     
+                            <a id="prova" onclick="document.getElementById('divLogin').style.display='block'" class="btn btn-lg">Accedi</a>                     
                       </c:if>                              
                         </div>
 
