@@ -81,4 +81,36 @@ public class Shipment {
 		this.last_location = last_location;
 	}
 	
+	public String stato() {
+		String state = "";
+		if(status==Shipment.UNKNOWN)
+			state+= "Nessuna informazione attualmente disponibile";
+		else if (status==Shipment.LABEL_CREATED)
+			state+="LA SPEDIZIONE E' STATA CREATA";
+		else if (status==Shipment.OUT_FOR_DELIVERY)
+			state+="LA SPEDIZIONE E' PRONTA PER LA CONSEGNA";		
+		else if (status==Shipment.SHIPPED)
+			state+="LA SPEDIZIONE E' PARTITA";		
+		else if (status==Shipment.DELIVERY)
+			state+="LA SPEDIZIONE E' IN CONSEGNA";
+		else if (status==Shipment.COMPLETED)
+			state+="LA SPEDIZIONE E' STATA COMPLETATA";		
+		else if (status==Shipment.CANCELED)
+			state+="LA SPEDIZIONE E' STATA ANNULLATA";		
+
+		
+		return state;
+	}
+	
+	public String localita() {
+		
+		if (status>=Shipment.SHIPPED && status<=Shipment.COMPLETED)
+			return "PRESSO: " + this.last_location;
+		
+		return "LOCALIZZAZIONE NON DISPONIBILE";
+			
+	}
+	
+
+	
 }
