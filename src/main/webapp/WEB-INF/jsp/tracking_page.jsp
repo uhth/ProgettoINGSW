@@ -19,13 +19,13 @@
                     <img src="/immagini/b1.png" alt="">
 
 
-                    <c:if test="${username == null}">
+                    <c:if test="${email == null}">
                         <p class="intro_benvenuto">Benvenuto utente</p>
                         <a href="login" id="prova" onclick="btnAccedi()" class="btn btn-rounded">Accedi</a>
                     </c:if>
 
-                    <c:if test="${username != null}">
-                        <p class="intro_benvenuto">Benvenuto ${username}</p>
+                    <c:if test="${email != null}">
+                        <p class="intro_benvenuto">Benvenuto ${email}</p>
                         <a href="profilo_utente" id="profilo_utente" onclick="btnAccedi()" class="btn btn-rounded">Profilo utente</a>
                         <a href="logout" id="prova" onclick="btnAccedi()" class="btn btn-rounded">Logout</a>
                     </c:if>
@@ -65,8 +65,8 @@
                 </a>
                 
                 <form method="post" action="trackingService">
-		            <p>Username:</p>
-		            <input type="text" name="username" placeholder="Inserisci nome utente"/>
+		            <p>email:</p>
+		            <input type="text" name="email" placeholder="Inserisci l'email"/>
 		            <p>Password:</p>
 		            <input type="password" name="pass" placeholder="Inserisci password"/>
 		

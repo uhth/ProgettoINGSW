@@ -16,7 +16,6 @@
         <img src="/immagini/avatarPrimary.png" class="avatar">
         <h1>Effettua l'iscrizione</h1>
         <form method="post" action="iscrizioneService">
-            <p>Username:</p>
             <p>E-mail:</p>
             <input type="text" name="email" placeholder="Inserisci mail"/>
             <p>Password:</p>

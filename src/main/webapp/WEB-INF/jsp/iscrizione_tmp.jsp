@@ -20,29 +20,23 @@
         <div id="errorMessage"></div>
 
 
-        <form method="post" action="iscrizioneService" id="form" onSubmit="return validate();">
-
-            <div class="form-group">
-                <label for="username_new">Username:</label>
-                <input type="text" class="form-control" name="username_new" id="user" placeholder="Inserisci nome utente" />
-            </div>
-            
+        <form method="post" action="iscrizioneService" id="form" onSubmit="return validate();">          
 
 
             <div class="form-group">
-                <label for="email_new">Email:</label>
-                <input type="text" class="form-control" name="email_new" id="mail" placeholder="Inserisci mail" />
+                <label for="email">Email:</label>
+                <input type="text" class="form-control" name="email" id="mail" placeholder="Inserisci mail" />
             </div>
 
             <div class="form-group">
                 <label for="password">Password:</label>
-                <input type="password" class="form-control" name="pass_new" id="pass"
+                <input type="password" class="form-control" name="password" id="pass"
                     placeholder="Inserisci mail" />
             </div>
 
             <div class="form-group">
                 <label for="password">Conferma password:</label>
-                <input type="password" class="form-control" name="passRipetuta_new" id="passConf"
+                <input type="password" class="form-control" name="password_ripetuta" id="passConf"
                     placeholder="Inserisci mail" />
             </div>
 

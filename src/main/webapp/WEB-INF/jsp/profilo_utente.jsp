@@ -20,14 +20,14 @@
           <img src="/immagini/b1.png" alt="">
 
 
-          <c:if test="${username == null}">
+          <c:if test="${email == null}">
             <p class="intro_benvenuto">Benvenuto utente</p>
             <a href="login" id="prova" onclick="btnAccedi()" class="btn btn-rounded">Accedi</a>
 
           </c:if>
 
-          <c:if test="${username != null}">
-            <p class="intro_benvenuto">Benvenuto ${username}</p>
+          <c:if test="${email != null}">
+            <p class="intro_benvenuto">Benvenuto ${email}</p>
             <a href="/" id="home" onclick="btnAccedi()" class="btn btn-rounded">HomePage</a>
             <a href="logout" id="prova" onclick="btnAccedi()" class="btn btn-rounded">Logout</a>
           </c:if>
@@ -35,7 +35,7 @@
         </div>
 
 
-        <c:if test="${username == null}">
+        <c:if test="${email == null}">
           <div class="showcase-content">
             <h1>Non dovresti essere qui!</h1>
             <p>Devi prima autenticarti.</p>
@@ -46,12 +46,12 @@
           </div>
         </c:if>
 
-        <c:if test="${username != null}">
+        <c:if test="${email != null}">
           <div class="showcase-content">
 
             <!-- Zona menù -->
 
-            <!--      	<nav class=”barra_navigazione”>
+                  	<nav class=”barra_navigazione”>
 					  <ul class="menu">
 					    <li><a href="/" class="active">Profilo<span class="fa fa-angle-down"></span></a>
 					      <ul class="submenu">
@@ -68,9 +68,9 @@
 					    <li><a href="/">Visualizza spedizioni</a></li>
 					    <li><a href="/">Modifica spedizioni</a></li>
 					  </ul>
-					</nav> -->
+					</nav>
 
-            <!-- 	<div class="d-flex align-items-start">
+            	<div class="d-flex align-items-start">
 					  <div class="nav flex-column nav-pills me-3" id="v-pills-tab" role="tablist" aria-orientation="vertical">
 					    <button class="nav-link active" id="v-pills-home-tab" data-bs-toggle="pill" data-bs-target="#v-pills-home" type="button" role="tab" aria-controls="v-pills-home" aria-selected="true">PROFILO</button>
 					    <button class="nav-link" id="v-pills-messages-tab" data-bs-toggle="pill" data-bs-target="#v-pills-messages" type="button" role="tab" aria-controls="v-pills-messages" aria-selected="false">MODIFICA PROFILO</button>
@@ -83,7 +83,7 @@
 					    <div class="tab-pane fade" id="v-pills-settings" role="tabpanel" aria-labelledby="v-pills-settings-tab">...</div>
 					  </div>
 					</div>
-				-->
+
 
 		<section class="tabs">
             <div class="barra">

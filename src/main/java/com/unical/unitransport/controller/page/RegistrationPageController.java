@@ -1,4 +1,4 @@
-package com.unical.unitransport.controller.controller;
+package com.unical.unitransport.controller.page;
 
 import java.io.IOException;
 
@@ -13,7 +13,7 @@ import com.unical.unitransport.controller.persistence.account.Account;
 import com.unical.unitransport.controller.persistence.account.AccountsManager;
 
 @Controller
-public class Iscrizione {
+public class RegistrationPageController {
 	
 
 	@PostMapping("/iscrizioneService")
