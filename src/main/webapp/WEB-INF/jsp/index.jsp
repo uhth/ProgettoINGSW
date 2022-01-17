@@ -19,7 +19,6 @@
                 <div class="showcase-top"> 
                    <img src="/immagini/b1.png" alt="">
 
-
                     <c:if test="${email == null}">
                         <p class="intro_benvenuto">Benvenuto utente</p>
                         <a id="prova" onclick="document.getElementById('divLogin').style.display='block'" class="btn btn-rounded">Accedi</a>
@@ -30,11 +29,9 @@
                         <a href="profilo_utente" id="profilo_utente" onclick="btnAccedi()" class="btn btn-rounded">Profilo utente</a>
                         <a href="logout" id="prova" onclick="btnAccedi()" class="btn btn-rounded">Logout</a>
                     </c:if>
-
-
-
-
                 </div>
+
+                
                 <div class="showcase-content">
                     <h1>Consegne Al Miglior Prezzo.<br>Nazionali e Internazionali.</h1>
                     <p>Paga direttamente alla consegna.</p>
