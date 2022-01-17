@@ -42,9 +42,9 @@ public class TrackingPageController {
 		// draw on js
 
 			if (spedizione!=null) {
-			session.setAttribute("codice",  tracking);
-			session.setAttribute("stato",  spedizione.stato());
-			session.setAttribute("luogo",  spedizione.localita());
+			session.setAttribute("codice", tracking);
+			session.setAttribute("stato", spedizione.stato());
+			session.setAttribute("luogo", spedizione.localita());
 		} else {
 			session.setAttribute("stato",  "Spedizione inesistente");
 			session.setAttribute("luogo",  "SCONOSCIUTO");
