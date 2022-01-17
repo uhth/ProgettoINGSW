@@ -28,7 +28,7 @@ public class TrackingPageController {
 		System.out.println("NTracking: " + tracking);
 		System.out.println(spedizione);
 
-		HttpSession session;
+		HttpSession session = req.getSession(true);
 		if (spedizione == null) {
 			return "tracking_gmapsError";
 		}
@@ -41,8 +41,16 @@ public class TrackingPageController {
 
 		// draw on js
 
+			if (spedizione!=null) {
+			session.setAttribute("codice",  tracking);
+			session.setAttribute("stato",  spedizione.stato());
+			session.setAttribute("luogo",  spedizione.localita());
+		} else {
+			session.setAttribute("stato",  "Spedizione inesistente");
+			session.setAttribute("luogo",  "SCONOSCIUTO");
+		}
 
-		return "tracking_gmaps";
+		return "trackingInformation";
 	}
 
 
