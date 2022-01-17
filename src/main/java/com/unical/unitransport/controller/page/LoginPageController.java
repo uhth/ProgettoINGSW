@@ -1,4 +1,4 @@
-package com.unical.unitransport.controller.controller;
+package com.unical.unitransport.controller.page;
 
 import java.io.IOException;
 import java.sql.Connection;
@@ -23,10 +23,14 @@ import com.unical.unitransport.controller.persistence.account.AccountsDAO;
 import com.unical.unitransport.controller.persistence.account.AccountsManager;
 
 @Controller
-public class Login {
+public class LoginPageController {
 	
 	@GetMapping("/login")
-	public String loginPage() {
+	public String loginPage( HttpServletRequest req ) {
+		if( req.isRequestedSessionIdValid() ) {
+			if( req.getAttribute( "email " ) != null )
+				return "index";
+		}
 		return "login";
 	}
 	
@@ -55,7 +59,7 @@ public class Login {
 			if( session != null ) session.invalidate();
 		}
 		
-		else res.sendRedirect("login");
+		else return "loginFallito";
 		
 		session = req.getSession( true );
 		session.setAttribute( "email", email );
