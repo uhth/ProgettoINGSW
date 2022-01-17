@@ -36,15 +36,16 @@
             
             
         <div class="showcase-content">
-            <h1>Inserisci il codice della tua spedizione</h1>
-            <form method="post" action="trackingService">
-                <input type="text" id="tracking_box" name="tracking_box" placeholder="Inserisci numero di tracking" name="track_box">
-                <input type="submit" class="btn btn-xl" id="button_procedi" value="Procedi" />
-            </form>
-            <div id="map"></div>
-        
-
-            <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD35CvNGS9oIaIaa-MSQsKf1i4JxrInTf4&callback=initMap&libraries=&v=weekly" async></script>
+            <h1>[Errore] Il codice inserito non appartiene a nessuna spedizione</h1>
+            <h2>Inserisci il codice della tua spedizione</h2></p>
+                <form method="post" action="trackingService">
+                    <input type="text" id="tracking_box" name="tracking_box" placeholder="Inserisci numero di tracking" name="track_box">
+                    <input type="submit" class="btn btn-xl" id="button_procedi" value="Procedi" />
+                <!-- <a href="/" class="btn btn-xl" id="button_procedi"> PROCEDI <i class="fas fa-chevron-right btn-icon"></i>        </a> -->
+                </form>
+                <div id="map"></div>
+  
+                <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD35CvNGS9oIaIaa-MSQsKf1i4JxrInTf4&callback=initMap&libraries=&v=weekly" async></script>
           </div>
     </header>
 
