@@ -27,18 +27,20 @@ public class Tracking {
 		
 		HttpSession session;
 		if (spedizione == null) {
-			return "tracking_gmapsError";
+			return "tracking_gmapsFallito";
 		}
 		
 		// check spedizione e draw coordinate
-		String posAttuale = spedizione.getLastLocation();
+		String posCorriere = spedizione.getLastLocation();
 		String posDestinatario = spedizione.getLastLocation();
 		String posMittente = spedizione.getLastLocation();
 		
+		session = req.getSession( true );
+		session.setAttribute( "posCorriere", posCorriere );
+		session.setAttribute( "posDestinatario", posDestinatario );
+		session.setAttribute( "posMittente", posMittente );
 		
-		// draw on js
 		
-		
-		return "tracking_gmaps";
+		return "tracking_gmapsPositivo";
 	}
 }

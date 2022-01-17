@@ -36,12 +36,13 @@
             
             
         <div class="showcase-content">
-            <h1>Inserisci il codice della tua spedizione</h1>
-            <form method="post" action="trackingService">
-                <input type="text" id="tracking_box" name="tracking_box" placeholder="Inserisci numero di tracking" name="track_box">
-                <input type="submit" class="btn btn-xl" id="button_procedi" value="Procedi" />
-            </form>
-            
+            <h1>Il codice inserito non appartiene a nessuna spedizione</h1>
+            <h2>Inserisci un codice valido</h2></p>
+                <form method="post" action="trackingService">
+                    <input type="text" id="tracking_box" name="tracking_box" placeholder="Inserisci numero di tracking" name="track_box">
+                    <input type="submit" class="btn btn-xl" id="button_procedi" value="Procedi" />
+                <!-- <a href="/" class="btn btn-xl" id="button_procedi"> PROCEDI <i class="fas fa-chevron-right btn-icon"></i>        </a> -->
+                </form>
           </div>
     </header>
 
