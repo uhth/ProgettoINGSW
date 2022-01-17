@@ -26,7 +26,6 @@
             <input type="submit" value="Iscriviti" />
             <br><br>
             <a href="login" id="a_iscriviti">Hai già un account? Entra</a>
-
         </form>
     </div>
 
