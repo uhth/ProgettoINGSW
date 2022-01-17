@@ -20,13 +20,13 @@
                     <img src="/immagini/b1.png" alt="">
 
 
-                    <c:if test="${username == null}">
+                    <c:if test="${email == null}">
                         <p class="intro_benvenuto">Benvenuto utente</p>
                         <a href="login" id="prova" onclick="btnAccedi()" class="btn btn-rounded">Accedi</a>
                     </c:if>
 
-                    <c:if test="${username != null}">
-                        <p class="intro_benvenuto">Benvenuto ${username}</p>
+                    <c:if test="${email != null}">
+                        <p class="intro_benvenuto">Benvenuto ${email}</p>
                         <a href="profilo_utente" id="profilo_utente" onclick="btnAccedi()" class="btn btn-rounded">Profilo utente</a>
                         <a href="logout" id="prova" onclick="btnAccedi()" class="btn btn-rounded">Logout</a>
                     </c:if>
