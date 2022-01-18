@@ -20,30 +20,53 @@
                     <img src="/immagini/b1.png" alt="">
 
 
-                    <c:if test="${email == null}">
+                    <c:if test="${username == null}">
                         <p class="intro_benvenuto">Benvenuto utente</p>
                         <a href="login" id="prova" onclick="btnAccedi()" class="btn btn-rounded">Accedi</a>
                     </c:if>
 
-                    <c:if test="${email != null}">
-                        <p class="intro_benvenuto">Benvenuto ${email}</p>
+                    <c:if test="${username != null}">
+                        <p class="intro_benvenuto">Benvenuto ${username}</p>
                         <a href="profilo_utente" id="profilo_utente" onclick="btnAccedi()" class="btn btn-rounded">Profilo utente</a>
                         <a href="logout" id="prova" onclick="btnAccedi()" class="btn btn-rounded">Logout</a>
                     </c:if>
                 </div>  
-                     
+
             </div>
-            
-            
+
+
         <div class="showcase-content">
-                        <h1>Inserisci il codice della tua spedizione</h1>
+            <h1>Spedizione trovata!</h1>
+            <h3>Cerca una nuova spedizione</h3>
             <form method="post" action="trackingService">
                 <input type="text" id="tracking_box" name="tracking_box" placeholder="Inserisci numero di tracking" name="track_box">
                 <input type="submit" class="btn btn-xl" id="button_procedi" value="Procedi" />
             </form>
-        </div>
+            <div id="map"></div>
+
+
+            <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD35CvNGS9oIaIaa-MSQsKf1i4JxrInTf4&callback=initMap&libraries=&v=weekly" async></script>
+
+            <table class="table">
+                <thead class="thead-light">
+                  <tr>                      
+                    <th scope="col">Data e ora</th>
+                    <th scope="col">Stato</th>
+                    <th scope="col">Luogo</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <th scope="row">..</th>
+                    <td>..</td>
+                    <td>..</td>
+                  </tr>
+                </tbody>
+              </table>
+          </div>
     </header>
+
 
 </body>
 
-</html>
+</html> 

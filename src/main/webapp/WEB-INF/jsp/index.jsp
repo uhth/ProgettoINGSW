@@ -39,7 +39,7 @@
                         Effettua una spedizione <i class="fas fa-chevron-right btn-icon"></i>
                     </a>
                     <br>
-                    <a href="tracking_page" class="btn btn-xl">
+                    <a href="tracking_gmaps" class="btn btn-xl">
                         Traccia una spedizione <i class="fas fa-chevron-right btn-icon"></i>
                     </a>
                     <br>

@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 public class TrackingGMapsPageController {
 	
 	
-	@GetMapping("tracking_page")
+	@GetMapping("tracking_gmaps")
 	public String map() {
 		return "tracking_gmaps";
 	}
