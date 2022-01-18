@@ -43,20 +43,10 @@
 										<form  method="post" action="prenotaService">
 										  <div class="form-group">
 										    <label for="formLuogo">Ritiro presso:</label>
-										    <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="es. Via Roma n.31 Milano (MI)" name="luogoRitiro">
+										    <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="es. Via Roma n.31 Milano (MI)" name="luogo">
 										  </div>
 										  <br>
-										  <div class="form-group">
-										    <label for="formLuogo">Consegna presso:</label>
-										    <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="es. Via Riccardo Misasi n.31 Cosenza (CS)" name="luogoConsegna">
-										  </div>
-										  <br>	
-										  <div class="form-group">
-										    <label for="formLuogo">Email destinatario:</label>
-										    <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="es. Via Roma n.31 Milano (MI)" name="emailDestinatario">
-										  </div>
-										  <br>								  										  
-										    <input  class="btn btn-primary" type="submit" value="Prenota"/>
+										  <input  class="btn btn-primary" type="submit" value="Prenota"/>
 										</form>
 
 

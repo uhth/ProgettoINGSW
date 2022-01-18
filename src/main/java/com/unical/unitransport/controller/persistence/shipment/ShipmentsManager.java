@@ -1,13 +1,13 @@
 package com.unical.unitransport.controller.persistence.shipment;
 
-import java.util.UUID;
+import java.security.SecureRandom;
 
 public interface ShipmentsManager {
 	
 	public static Shipment registerShipment( String sender_email, String receiver_email ) {
-		String tracking_number = UUID.randomUUID().toString();
+		String tracking_number = trackingCasuale();
 		while( ShipmentsDAO.getByTrackingNumber( tracking_number ) != null )
-			tracking_number = UUID.randomUUID().toString();
+			tracking_number = trackingCasuale();
 		
 		Shipment shipment = new Shipment( tracking_number );
 		if( !ShipmentsDAO.insert( shipment ) ) return null;
@@ -19,6 +19,20 @@ public interface ShipmentsManager {
 		}
 		return shipment;
 	}
+	
+	public static Shipment registerShipment( String tracking,  String sender_email, String receiver_email ) {
+
+
+		if( ShipmentsDAO.getByTrackingNumber(tracking)==null ) return null;
+		Shipment shipment = ShipmentsDAO.getByTrackingNumber( tracking );
+		ShipmentSenderReceiver shipmentSenderReceiver = new ShipmentSenderReceiver( shipment.getShipmentId(), sender_email, receiver_email );
+		if( !ShipmentsSenderReceiverDAO.insert( shipmentSenderReceiver ) ) {
+			ShipmentsDAO.remove( shipment );
+			return null;
+		}
+		return shipment;
+	}
+	
 	
 	public static boolean unregisterShipment( String trackingNumber ) {
 		Shipment shipment = ShipmentsDAO.getByTrackingNumber( trackingNumber );
@@ -41,6 +55,27 @@ public interface ShipmentsManager {
 		Shipment shipment = ShipmentsDAO.getByTrackingNumber( trackingNumber );
 		if( shipment == null ) return false;
 		return ShipmentsDAO.update( shipment, shipment.getStatus(), last_location );
+	}
+	
+	public static String trackingCasuale() {
+		String tracking;
+        String lower = "abcdefghijklmnopqrstuvwxyz";
+        String upper = lower.toUpperCase();
+        String numeri = "0123456789";
+        String perRandom = upper + lower + numeri;
+        int lunghezzaRandom = 10;
+
+        SecureRandom sr = new SecureRandom();
+        StringBuilder sb = new StringBuilder(lunghezzaRandom);
+        for (int i = 0; i < lunghezzaRandom; i++) {
+            int randomInt = sr.nextInt(perRandom.length());
+            char randomChar = perRandom.charAt(randomInt);
+            sb.append(randomChar);
+        }
+        
+        tracking = sb.toString();
+        return tracking;
+		
 	}
 	
 }

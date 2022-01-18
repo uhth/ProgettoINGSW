@@ -4,14 +4,12 @@ public class SpedizioneUtente {
 	
 	private String email;
 	private String tracking_code;
-	private String luogo_ritiro;
 	
 	
-	public SpedizioneUtente(String tracking_code, String email, String luogo_ritiro) {
+	public SpedizioneUtente(String tracking_code, String email) {
 		super();
 		this.email = email;
 		this.tracking_code = tracking_code;
-		this.luogo_ritiro=luogo_ritiro;
 	}
 
 
@@ -34,15 +32,6 @@ public class SpedizioneUtente {
 		this.tracking_code = tracking_code;
 	}
 
-
-	public String getLuogo_ritiro() {
-		return luogo_ritiro;
-	}
-
-
-	public void setLuogo_ritiro(String luogo_ritiro) {
-		this.luogo_ritiro = luogo_ritiro;
-	}
 
 	
 	

@@ -27,8 +27,8 @@ public class SpedizioneUtenteDAO {
 			String sql = "create table if not exists "
 					+ "unitransport.spedizioni_utenti( "
 					+ "tracking_number VARCHAR ( 255 ) PRIMARY KEY, "
-					+ "email VARCHAR ( 255 ) NOT NULL,"
-					+ "luogo_ritiro VARCHAR ( 255 ) NOT NULL); ";
+					+ "email VARCHAR ( 255 ) NOT NULL"
+					+ "); ";
 			statement.executeUpdate( sql );	
 			statement.close();
 		} catch (SQLException e) {
@@ -39,11 +39,10 @@ public class SpedizioneUtenteDAO {
 	public static boolean insert(SpedizioneUtente spedizione) {
 		initialize();
 		try {
-			String sql = "insert into unitransport.spedizioni_utenti( tracking_number, email, luogo_ritiro) values( ?, ?, ? ) ;";
+			String sql = "insert into unitransport.spedizioni_utenti( tracking_number, email) values( ?, ?) ;";
 			PreparedStatement statement = DatabaseManager.getConnection().prepareStatement( sql );
 			statement.setString( 1, spedizione.getTracking_code() );
 			statement.setString( 2, spedizione.getEmail());
-			statement.setString( 3, spedizione.getLuogo_ritiro());
 			statement.executeUpdate();
 			statement.close();
 			return true;
@@ -53,24 +52,24 @@ public class SpedizioneUtenteDAO {
 		}
 	}
 	
-		public static boolean update( SpedizioneUtente spedizione, String luogo_ritiro ) {
-		initialize();
-		try {
-			String sql = "update unitransport.spedizioni_utenti set luogo_ritiro = ? where tracking_number = ? ;";
-			PreparedStatement statement = DatabaseManager.getConnection().prepareStatement( sql );
-			statement.setString( 1, luogo_ritiro );
-			statement.setString( 2, spedizione.getTracking_code() );
-			int rows_updated = statement.executeUpdate();
-			statement.close();
-			if( rows_updated == 0 ) return false;
-			return true;
-		} catch (SQLException e) {
-			e.printStackTrace();
-			return false;
-		}
-		
-		
-	}
+//		public static boolean update( SpedizioneUtente spedizione, String luogo_ritiro ) {
+//		initialize();
+//		try {
+//			String sql = "update unitransport.spedizioni_utenti set luogo_ritiro = ? where tracking_number = ? ;";
+//			PreparedStatement statement = DatabaseManager.getConnection().prepareStatement( sql );
+//			statement.setString( 1, luogo_ritiro );
+//			statement.setString( 2, spedizione.getTracking_code() );
+//			int rows_updated = statement.executeUpdate();
+//			statement.close();
+//			if( rows_updated == 0 ) return false;
+//			return true;
+//		} catch (SQLException e) {
+//			e.printStackTrace();
+//			return false;
+//		}
+//		
+//		
+//	}
 	
 	public static boolean remove( SpedizioneUtente spedizione ) {
 		initialize();
@@ -101,7 +100,7 @@ public class SpedizioneUtenteDAO {
 			statement.setString(1, utente);
 			ResultSet rs = statement.executeQuery( sql );
 			while( rs.next() ) {
-				SpedizioneUtente spedizione = new SpedizioneUtente(rs.getString(2), rs.getString(1), rs.getString(3));
+				SpedizioneUtente spedizione = new SpedizioneUtente(rs.getString(2), rs.getString(1));
 				spedizioni.add( spedizione );
 			}					
 			statement.close();

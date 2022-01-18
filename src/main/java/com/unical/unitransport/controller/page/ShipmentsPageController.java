@@ -13,7 +13,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.unical.unitransport.controller.persistence.shipment.Shipment;
+import com.unical.unitransport.controller.persistence.shipment.ShipmentSenderReceiver;
 import com.unical.unitransport.controller.persistence.shipment.ShipmentsDAO;
+import com.unical.unitransport.controller.persistence.shipment.ShipmentsManager;
 import com.unical.unitransport.controller.persistence.spedizioniUtente.SpedizioneUtente;
 import com.unical.unitransport.controller.persistence.spedizioniUtente.SpedizioneUtenteDAO;
 
@@ -48,7 +50,9 @@ public class ShipmentsPageController {
 	@PostMapping("/prenotaService")
 	public String prenota( HttpServletRequest req,
 						 HttpServletResponse res, 
-						 @RequestParam( value = "luogo", required = true ) String luogo ) throws IOException {
+						 @RequestParam( value = "luogoRitiro", required = true ) String luogoRitiro,
+						 @RequestParam( value = "luogoConsegna", required = true ) String luogoConsegna,
+						 @RequestParam( value = "emailDestinatario", required = true ) String emailDestinatario ) throws IOException {
 
 		HttpSession session = req.getSession(true);
 
@@ -57,16 +61,24 @@ public class ShipmentsPageController {
 			tracking = trackingCasuale();
 		}
         
-        System.out.println(tracking);
-        
 
         Shipment spedizione = new Shipment(tracking);
+		spedizione.setSender_location(luogoRitiro);
+        spedizione.setReceiver_location(luogoConsegna);
         ShipmentsDAO.insert(spedizione);
         
-        System.out.println(req.getSession().getAttribute("email"));
-        System.out.println(luogo);
+        ShipmentsManager.registerShipment(tracking,(String) req.getSession().getAttribute("email"), emailDestinatario);
         
-        SpedizioneUtente spedizione_utente = new SpedizioneUtente(tracking, (String) req.getSession().getAttribute("email"), luogo);
+        System.out.println(spedizione.getTrackingNumber());
+        
+        System.out.println(req.getSession().getAttribute("email"));
+        System.out.println(luogoRitiro);
+        System.out.println(luogoConsegna);
+        System.out.println(emailDestinatario);
+        
+        
+        
+        SpedizioneUtente spedizione_utente = new SpedizioneUtente(spedizione.getTrackingNumber(), (String) req.getSession().getAttribute("email"));
         if (SpedizioneUtenteDAO.insert(spedizione_utente))
         	return "index";
         else return "prenota_ritiro";

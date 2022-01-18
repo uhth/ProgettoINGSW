@@ -18,19 +18,23 @@ public class Shipment {
 	private Timestamp created_on;
 	private Timestamp last_update;
 	private String last_location;
+	private String sender_location;
+	private String receiver_location;
 	
 	public Shipment( String tracking_number ) {
 		this.tracking_number = tracking_number;
 		this.status = LABEL_CREATED;
 	}
 	
-	public Shipment(int shipment_id, String tracking_number, int status, Timestamp created_on, Timestamp last_update, String last_location ) {
+	public Shipment(int shipment_id, String tracking_number, int status, Timestamp created_on, Timestamp last_update, String last_location, String sender_location, String receiver_location ) {
 		this.shipment_id = shipment_id;
 		this.tracking_number = tracking_number;
 		this.status = status;
 		this.created_on = created_on;
 		this.last_update = last_update;
 		this.last_location = last_location;
+		this.sender_location = sender_location;
+		this.receiver_location = receiver_location;
 	}
 
 	public int getShipmentId() {
@@ -81,6 +85,23 @@ public class Shipment {
 		this.last_location = last_location;
 	}
 	
+	
+	public String getSender_location() {
+		return sender_location;
+	}
+
+	public void setSender_location(String sender_location) {
+		this.sender_location = sender_location;
+	}
+
+	public String getReceiver_location() {
+		return receiver_location;
+	}
+
+	public void setReceiver_location(String receiver_location) {
+		this.receiver_location = receiver_location;
+	}
+
 	public String stato() {
 		String state = "";
 		if(status==Shipment.UNKNOWN)
