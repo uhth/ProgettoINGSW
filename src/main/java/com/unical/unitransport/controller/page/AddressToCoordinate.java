@@ -17,6 +17,8 @@ public class AddressToCoordinate {
 	}
 
 	public String getLatitude() {
+		if (address.isEmpty())
+			return "";
 		String theUrl = URL + address;
 		StringBuilder content = new StringBuilder();
 		try {
@@ -46,7 +48,8 @@ public class AddressToCoordinate {
 	}
 
 	public String getLongitude() {
-
+		if (address.isEmpty())
+			return "";
 		String theUrl = URL + address;
 		StringBuilder content = new StringBuilder();
 		try {

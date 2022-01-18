@@ -41,12 +41,10 @@ public class TrackingPageController {
 		String posMittente = spedizione.getLastLocation();
 		System.out.println(posCorriere);
 		
-		
 		AddressToCoordinate indirizzo = new AddressToCoordinate(posCorriere);
 		System.out.println(indirizzo.getLatitude());
 		System.out.println(indirizzo.getLongitude());
-				
-				
+			
 	
 
 		return "tracking_gmapsPositivo";
