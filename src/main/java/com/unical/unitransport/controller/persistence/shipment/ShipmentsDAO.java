@@ -64,6 +64,7 @@ public class ShipmentsDAO {
 		}
 	}
 	
+
 	public static boolean update( Shipment shipment, int status, String last_location ) {
 		initialize();
 		try {
@@ -81,6 +82,8 @@ public class ShipmentsDAO {
 			return false;
 		}
 	}
+	
+	
 	
 	
 	public static Shipment getByTrackingNumber( String tacking_number ) {

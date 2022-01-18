@@ -110,5 +110,23 @@ public class SpedizioneUtenteDAO {
 		return spedizioni;
 	}
 	
+	public static List<String> getAllString(String utente) {
+		initialize();
+		List<String> spedizioni = new ArrayList<String>();
+		try {
+			String sql = "select * from unitransport.spedizioni_utenti where email = ?;";
+			PreparedStatement statement = DatabaseManager.getConnection().prepareStatement(sql);
+			statement.setString(1, utente);
+			ResultSet rs = statement.executeQuery( sql );
+			while( rs.next() ) {
+				spedizioni.add( rs.getString(2) );
+			}					
+			statement.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return spedizioni;
+	}
+	
 
 }

@@ -42,6 +42,8 @@
 
 				    <div class="col">
 				      <p style="color: blue; border-style: outset; border-color: lightblue; text-align: center; font-size: 32px; font-family: Copperplate, Papyrus, fantasy;">EMAIL</p>
+				
+						<p style="text-align: center; font-family: monospace; border-style: double;  font-size: 16px;">${email}</p><br>
 						
 
 				  </div>
@@ -50,15 +52,15 @@
 				   <div class="col">
 				      <p style="color: blue; border-style: outset; border-color: lightblue; text-align: center; font-size: 32px; font-family: Copperplate, Papyrus, fantasy;">PASSWORD</p>
 				 	
-						<p style="text-align: center; font-family: monospace; border-style: double;  font-size: 16px;">${stato}</p><br>
+						<p style="text-align: center; font-family: monospace; border-style: double;  font-size: 16px;"><a href="/"> Resetta password</a></p><br>
 				 
 				  </div>
 				  
 				   <div class="col">
 				      <p style="color: blue; border-style: outset; border-color: lightblue; text-align: center; font-size: 32px; font-family: Copperplate, Papyrus, fantasy;">SPEDIZIONI ATTIVE</p>
-						<p style="text-align: center; font-family: monospace; border-style: double;">${luogo}</p><br>
-						
-						
+						<p style="text-align: center; font-family: monospace; border-style: double;"></p>	
+
+											
 				  </div>
 				  	
 				  		  	
