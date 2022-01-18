@@ -4,7 +4,7 @@
         <html lang="en" dir="ltr">
 
         <head>
-            <link href="https://chatcompose.azureedge.net/static/all/global/export/css/main.5b1bd1fd.css" rel="stylesheet">    <script async type="text/javascript" src="https://chatcompose.azureedge.net/static/all/global/export/js/main.a7059cb5.js?user=unitransport&lang=IT" user="unitransport" lang="IT"></script>    
+            <link href="https://chatcompose.azureedge.net/static/all/global/export/css/main.5b1bd1fd.css" rel="stylesheet">    <script async type="text/javascript" src="https://chatcompose.azureedge.net/static/all/global/export/js/main.a7059cb5.js?user=unitransport&lang=IT" user="unitransport" lang="IT"></script>   
             <meta charset="utf-8">
             <link rel="icon" href="../immagini/b1.png">
             <link rel="stylesheet" href="css/index.css">
@@ -59,7 +59,7 @@
                             <input type="text" placeholder="Inserisci Email" name="email" required>              
                             <label for="psw"><b>Password</b></label>
                             <input type="password" placeholder="Inserisci Password" name="password" required>                      
-                            <button type="submit">Login</button>                    
+                            <button type="submit" id="button">Login</button>                    
                         </div>              
                         <div class="container" style="background-color:#f1f1f1">
                             <button type="button" onclick="document.getElementById('divLogin').style.display='none'; document.getElementById('divRegister').style.display='block' " class="cancelbtn">Registrati</button>
@@ -81,7 +81,7 @@
                             <input type="password" placeholder="Inserisci Password" name="password" required>
                             <label for="password_ripetuta"><b>Conferma Password</b></label>
                             <input type="password" placeholder="Inserisci Password" name="password_ripetuta" required>                      
-                            <button type="submit">Registrati</button>                    
+                            <button type="submit" id="button">Registrati</button>                    
                         </div>              
                         <div class="container" style="background-color:#f1f1f1">
                             <button type="button" onclick="document.getElementById('divRegister').style.display='none'; document.getElementById('divLogin').style.display='block';" class="cancelbtn">Login</button>                    
