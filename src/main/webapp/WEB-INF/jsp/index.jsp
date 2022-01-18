@@ -49,16 +49,16 @@
 
                     <!-- LOGIN -->
                     <div id="divLogin" class="modal">  
-                        <form class="modal-content animate" action="/login_page.php" method="post">
+                        <form class="modal-content animate" action="/loginService" method="post">
                         <div class="imgcontainer">
                             <span onclick="document.getElementById('divLogin').style.display='none'" class="close" title="Close Modal">&times;</span>
                             <img src="img/b1.png" alt="Avatar" class="avatar">
                         </div>              
                         <div class="container">
-                            <label for="uname"><b>Username</b></label>
-                            <input type="text" placeholder="Inserisci Username" name="uname" required>              
+                            <label for="uname"><b>Email</b></label>
+                            <input type="text" placeholder="Inserisci Email" name="email" required>              
                             <label for="psw"><b>Password</b></label>
-                            <input type="password" placeholder="Inserisci Password" name="psw" required>                      
+                            <input type="password" placeholder="Inserisci Password" name="password" required>                      
                             <button type="submit">Login</button>                    
                         </div>              
                         <div class="container" style="background-color:#f1f1f1">
@@ -70,18 +70,17 @@
                     <!-- FINE LOGIN --> 
                     <!-- REGISTER -->
                     <div id="divRegister" class="modal">  
-                        <form class="modal-content animate" action="/login_page.php" method="post">
+                        <form class="modal-content animate" action="/iscrizioneService" method="post">
                         <div class="imgcontainer">
                             <span onclick="document.getElementById('divRegister').style.display='none'" class="close" title="Close Modal">&times;</span>
                             <img src="img/b1.png" alt="Avatar" class="avatar">
                         </div>              
                         <div class="container">
-                            <label for="uname"><b>Username</b></label>
-                            <input type="text" placeholder="Inserisci Username" name="uname" required>             
-                            <label for="uname"><b>Email</b></label>
                             <input type="email" placeholder="Inserisci Email" name="email" required>        
-                            <label for="psw"><b>Password</b></label>
-                            <input type="password" placeholder="Inserisci Password" name="psw" required>                      
+                            <label for="password"><b>Password</b></label>
+                            <input type="password" placeholder="Inserisci Password" name="password" required>
+                            <label for="password_ripetuta"><b>Conferma Password</b></label>
+                            <input type="password" placeholder="Inserisci Password" name="password_ripetuta" required>                      
                             <button type="submit">Registrati</button>                    
                         </div>              
                         <div class="container" style="background-color:#f1f1f1">
@@ -202,7 +201,7 @@
                     <div id="tab-3-content" class="tab-content-item">
                         <div class="text-center">
                             <p class="textllg">Esegui la ricerca manuale della spedizione</p>
-                            <a href="tracking_page" class="btn btn-lg">Cerca tramite codice</a>
+                            <a href="tracking_gmaps" class="btn btn-lg">Cerca tramite codice</a>
                            
                     <c:if test="${email == null}">
                     		<br><br><br>
