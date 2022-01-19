@@ -2,10 +2,8 @@ package com.unical.unitransport.controller.page;
 
 import java.io.IOException;
 
-import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -15,9 +13,7 @@ import com.unical.unitransport.controller.persistence.shipment.Shipment;
 import com.unical.unitransport.controller.persistence.shipment.ShipmentsDAO;
 
 @Controller
-public class TrackingPageController extends HttpServlet {
-
-	private static final long serialVersionUID = 1L;
+public class TrackingPageController {
 
 	
 	@PostMapping("/trackingService")
@@ -34,25 +30,39 @@ public class TrackingPageController extends HttpServlet {
 			return "tracking_gmapsFallito";
 		}
 
-		// address		
-		AddressToCoordinate indCorriere = new AddressToCoordinate(spedizione.getLastLocation());
-		AddressToCoordinate indDestinatario = new AddressToCoordinate(spedizione.getLastLocation());
-		AddressToCoordinate indMittente = new AddressToCoordinate(spedizione.getLastLocation());
-
-		req.setAttribute("corrierelat", indCorriere.getLatitude());
-		req.setAttribute("corrierelong", indCorriere.getLongitude());
-		
-		req.setAttribute("destinatariolat", indDestinatario.getLatitude());
-		req.setAttribute("destinatariolong", indDestinatario.getLongitude());
-		
-		req.setAttribute("mittentelat", indMittente.getLatitude());
-		req.setAttribute("mittentelong", indMittente.getLongitude());
-		
-		System.out.println(indCorriere.getLatitude());
+	
+		loadMarkers(spedizione,req);
+		loadTable(spedizione,req);
 		
 		return "tracking_gmapsPositivo";
 	}
 
+	public void loadTable(Shipment spedizione,HttpServletRequest req) {
+		// String dataOra = spedizione.getData();
+		String stato = spedizione.stato();
+		String luogo = spedizione.getLastLocation();
+	
+		req.setAttribute("statosped", stato);
+		req.setAttribute("luogosped", luogo);
+		
+	}
+	
+	public void loadMarkers(Shipment spedizione,HttpServletRequest req) {
+		AddressToCoordinate coordCorriere = new AddressToCoordinate(spedizione.getLastLocation());
+		AddressToCoordinate coordDestinatario = new AddressToCoordinate(spedizione.getLastLocation());
+		AddressToCoordinate coordMittente = new AddressToCoordinate(spedizione.getLastLocation());
+
+		req.setAttribute("corrierelat", coordCorriere.getLatitude());
+		req.setAttribute("corrierelong", coordCorriere.getLongitude());
+		
+		req.setAttribute("destinatariolat", coordDestinatario.getLatitude());
+		req.setAttribute("destinatariolong", coordDestinatario.getLongitude());
+		
+		req.setAttribute("mittentelat", coordMittente.getLatitude());
+		req.setAttribute("mittentelong", coordMittente.getLongitude());
+		
+		System.out.println(coordCorriere.getLatitude());
+	}
 
 }
 
