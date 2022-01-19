@@ -15,9 +15,8 @@
 <body>
     <header class="showcase">
         <div class="showcase-top">
-            <img src="/immagini/b1.png" alt="">
                 <div class="showcase-top">
-                    <img src="/immagini/b1.png" alt="">
+                   <a id="posLogo" href="/"><img id="posLogo" src="/immagini/b1.png"></a>
 
 
                     <c:if test="${email == null}">
@@ -42,6 +41,7 @@
                 <input type="text" id="tracking_box" name="tracking_box" placeholder="Inserisci numero di tracking" name="track_box">
                 <input type="submit" class="btn btn-xl" id="button_procedi" value="Procedi" />
             </form>
+            <br>
             <div id="map"></div>
 
             <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD35CvNGS9oIaIaa-MSQsKf1i4JxrInTf4&callback=initMap&libraries=&v=weekly" async></script>
@@ -104,7 +104,8 @@
                   <tr>                      
                     <th scope="col">Data e ora</th>
                     <th scope="col">Stato</th>
-                    <th scope="col">Luogo</th>
+                    <th scope="col">Luogo attuale</th>
+                    <th scope="col">Destinazione finale</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -112,6 +113,7 @@
                     <th scope="row">${dataeora}</th>
                     <td>${statosped}</td>
                     <td>${luogosped}</td>
+                    <td>${destinazioneFinale}</td>
                   </tr>
                 </tbody>
               </table>

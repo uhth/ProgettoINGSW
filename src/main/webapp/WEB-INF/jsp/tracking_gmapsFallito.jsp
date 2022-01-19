@@ -15,9 +15,8 @@
 <body>
     <header class="showcase">
         <div class="showcase-top">
-            <img src="/immagini/b1.png" alt="">
                 <div class="showcase-top">
-                    <img src="/immagini/b1.png" alt="">
+                   <a id="posLogo" href="/"><img id="posLogo" src="/immagini/b1.png"></a>
 
 
                     <c:if test="${email == null}">

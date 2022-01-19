@@ -52,7 +52,7 @@ form {
 	top:12%;
 	left: 1%;
 	font-size: 14px;
-	width: 115px;
+	width: 190px;
 	height: 64px;
 	padding: 15px;
 	border-style: inset;
@@ -96,10 +96,33 @@ form {
     left: 50%;
     transform: translate(-50%, -50%);
 }
+
+#posLogo{
+	width: 170px;
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
 .showcase-top a {
     position: absolute;
     top: 50%;
     right: 0;
+    transform: translate(-50%, -50%);
+}
+
+
+#adminZone{
+    position: absolute;
+    top: 92%;
+    right: -2.33%;
+    transform: translate(-50%, -50%);
+}
+#corriereZone{
+    position: absolute;
+    top: 92%;
+    right: -1.85%;
     transform: translate(-50%, -50%);
 }
 
@@ -434,12 +457,12 @@ form {
 }
 
 #profilo_utente {
-	position: absolute;
-	top:93.9%;
+	position: relative;
+	top:96.9%;
 	left: 92.32%;
-	font-size: 12px;
+	font-size: 14px;
 	width: 80px;
-	height: 41px;
+	height: 47px;
 	padding: 6px;
 }
 
