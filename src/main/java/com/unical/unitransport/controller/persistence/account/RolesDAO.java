@@ -79,6 +79,25 @@ public class RolesDAO {
 		}
 	}
 	
+	
+	public static Role getById( int id ) {
+		initialize();
+		Role role = null;
+		try {
+			String sql = "select * from unitransport.roles where role_id = ? ; ";
+			PreparedStatement statement = DatabaseManager.getConnection().prepareStatement( sql );
+			statement.setInt( 1, id );
+			ResultSet rs = statement.executeQuery();
+			while( rs.next() ) {
+				role = new Role( rs.getInt( 1 ), rs.getString( 2 ) );
+			}
+			statement.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return role;
+	}
+	
 	public static Role getByName( String name ) {
 		initialize();
 		Role role = null;
