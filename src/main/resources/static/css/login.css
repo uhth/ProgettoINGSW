@@ -49,7 +49,7 @@ img.avatar {
 
 span.psw {
   float: right;
-  padding-top: 16px;
+  padding-top: 12px;
 }
 
 /* The Modal (background) */
@@ -116,7 +116,7 @@ span.psw {
 
 }
 /* Change styles for span and cancel button on extra small screens */
-@media screen and (max-width: 300px) {
+@media screen and (max-width: 200px) {
   span.psw {
     display: block;
     float: none;

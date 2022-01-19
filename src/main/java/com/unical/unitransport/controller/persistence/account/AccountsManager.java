@@ -43,7 +43,6 @@ public interface AccountsManager {
 		if( ac == null ) return null;
 		Role role = RolesDAO.getById( ac.getRoleId() );
 		return role;
-		
 	}
 	
 	public static boolean unregisterAccount( String email ) {

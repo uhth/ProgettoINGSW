@@ -22,33 +22,35 @@
             <header class="showcase">
                 <div class="showcase-top">
                     <a id="posLogo" href="/"><img id="posLogo" src="/immagini/b1.png"></a>
-
-                    <c:if test="${email == null}">
-                        <p class="intro_benvenuto">Benvenuto utente</p>
-                        <a id="prova" onclick="document.getElementById('divLogin').style.display='block'"
-                            class="btn btn-rounded">Accedi</a>
-
-                    </c:if>
-
-                    <c:if test="${email != null}">
-		                        <p class="intro_benvenuto">Benvenuto ${email}</p>
-              		      <c:if test="${utente != null}">
+					
+					<c:choose>  
+	                    <c:when test="${email == null}">
+	                        <p class="intro_benvenuto">Benvenuto utente</p>
+	                        <a id="prova" onclick="document.getElementById('divLogin').style.display='block'"
+	                            class="btn btn-rounded">Accedi</a>
+	
+	                    </c:when>
+	                    <c:when test="${email != null}">
+			                        <p class="intro_benvenuto">Benvenuto ${email}</p>
+			            </c:when>
+		            </c:choose>           
+		            <c:choose>      
+              		      <c:when test="${role == 'user'}">
 
 		                        <a href="profilo_utente" id="profilo_utente" onclick="btnAccedi()"
 		                            class="btn btn-rounded">Profilo utente</a>
-	                       </c:if>
-              		      <c:if test="${corriere != null}">
+	                       </c:when>
+              		      <c:when test="${role == 'corriere'}">
 
                     		    <a id="corriereZone" href="areaCorriere"
                             class="btn btn-rounded">Area Corriere</a>
-	                       </c:if>
-              		      <c:if test="${admin != null}">
-
+	                       </c:when>
+              		      <c:when test="${role == 'admin'}">
                    		     <a id="adminZone" onclick="document.getElementById('divLogin').style.display='block'"
-                            class="btn btn-rounded">Amministratore</a>	                       </c:if>
-	                       	                       		                            
-		                        <a href="logout" id="prova" onclick="btnAccedi()" class="btn btn-rounded">Logout</a>
-                    </c:if>
+                            class="btn btn-rounded">Amministratore</a>
+                    	  <a href="logout" id="prova" onclick="btnAccedi()" class="btn btn-rounded">Logout</a>
+	                     </c:when>   
+                    </c:choose>	                                         		                            
                 </div>
 
 
@@ -160,12 +162,8 @@
             
             
             
-                       <c:choose>
-				            <c:when test="${corriere != null}">
-				                
-
-				            </c:when>    
-				            <c:when test="${admin != null}">
+                       <c:choose>		                  
+				            <c:when test="${role != null}">
 
 				            </c:when>    				           
 				             <c:otherwise>

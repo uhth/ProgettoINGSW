@@ -20,10 +20,25 @@ public interface ShipmentsManager {
 		return shipment;
 	}
 	
+	public static Shipment registerShipment( String sender_email, String receiver_email, String sender_address, String receiver_address ) {
+		String tracking_number = trackingCasuale();
+		while( ShipmentsDAO.getByTrackingNumber( tracking_number ) != null )
+			tracking_number = trackingCasuale();
+		
+		Shipment shipment = new Shipment( tracking_number, sender_address, sender_address, receiver_address );
+		if( !ShipmentsDAO.insert( shipment ) ) return null;
+		shipment = ShipmentsDAO.getByTrackingNumber( tracking_number );
+		ShipmentSenderReceiver shipmentSenderReceiver = new ShipmentSenderReceiver( shipment.getShipmentId(), sender_email, receiver_email );
+		if( !ShipmentsSenderReceiverDAO.insert( shipmentSenderReceiver ) ) {
+			ShipmentsDAO.remove( shipment );
+			return null;
+		}
+		return shipment;
+	}
+	
 	public static Shipment registerShipment( String tracking,  String sender_email, String receiver_email ) {
 
-
-		if( ShipmentsDAO.getByTrackingNumber(tracking)==null ) return null;
+		if( ShipmentsDAO.getByTrackingNumber( tracking ) != null ) return null;
 		Shipment shipment = ShipmentsDAO.getByTrackingNumber( tracking );
 		ShipmentSenderReceiver shipmentSenderReceiver = new ShipmentSenderReceiver( shipment.getShipmentId(), sender_email, receiver_email );
 		if( !ShipmentsSenderReceiverDAO.insert( shipmentSenderReceiver ) ) {
