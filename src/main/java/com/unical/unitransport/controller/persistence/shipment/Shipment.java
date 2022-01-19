@@ -26,6 +26,15 @@ public class Shipment {
 		this.status = LABEL_CREATED;
 	}
 	
+	public Shipment( String tracking_number, String last_location, String sender_location, String receiver_location ) {
+		this.tracking_number = tracking_number;
+		this.status = LABEL_CREATED;
+		this.last_location = last_location;
+		this.sender_location = sender_location;
+		this.receiver_location = receiver_location;
+	}
+	
+	//intended for dao's use only
 	public Shipment(int shipment_id, String tracking_number, int status, Timestamp created_on, Timestamp last_update, String last_location, String sender_location, String receiver_location ) {
 		this.shipment_id = shipment_id;
 		this.tracking_number = tracking_number;
@@ -86,19 +95,19 @@ public class Shipment {
 	}
 	
 	
-	public String getSender_location() {
+	public String getSenderLocation() {
 		return sender_location;
 	}
 
-	public void setSender_location(String sender_location) {
+	public void setSenderLocation(String sender_location) {
 		this.sender_location = sender_location;
 	}
 
-	public String getReceiver_location() {
+	public String getReceiverLocation() {
 		return receiver_location;
 	}
 
-	public void setReceiver_location(String receiver_location) {
+	public void setReceiverLocation(String receiver_location) {
 		this.receiver_location = receiver_location;
 	}
 
