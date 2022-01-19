@@ -1,6 +1,8 @@
 package com.unical.unitransport.controller.page;
 
 import java.io.IOException;
+import java.text.DateFormat;
+import java.util.Date;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -45,6 +47,7 @@ public class TrackingPageController {
 	
 		model.addAttribute("statosped", stato);
 		model.addAttribute("luogosped", luogo);
+		model.addAttribute( "dataeora", spedizione.getCreatedOn().toString().substring(0, 19) );
 		
 	}
 	
