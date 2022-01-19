@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.unical.unitransport.controller.persistence.account.Account;
+import com.unical.unitransport.controller.persistence.account.AccountRole;
+import com.unical.unitransport.controller.persistence.account.AccountRoleDAO;
 import com.unical.unitransport.controller.persistence.account.AccountsManager;
 
 @Controller
@@ -37,6 +39,11 @@ public class RegistrationPageController {
 		HttpSession session = req.getSession(true);
 		
 		session.setAttribute( "user_id", account.getUserId() );		
+		
+		AccountRole ruolo = new AccountRole(account.getUserId(), 0);
+		AccountRoleDAO.insert(ruolo);
+		
+		System.out.println(account.getUserId());
 		
 		return "iscrizionePositiva";
 	}

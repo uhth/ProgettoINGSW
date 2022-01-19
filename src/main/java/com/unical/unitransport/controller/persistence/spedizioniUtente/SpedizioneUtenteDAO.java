@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.unical.unitransport.controller.persistence.DatabaseManager;
+import com.unical.unitransport.controller.persistence.shipment.Shipment;
 
 public class SpedizioneUtenteDAO {
 	
@@ -114,12 +115,12 @@ public class SpedizioneUtenteDAO {
 		initialize();
 		List<String> spedizioni = new ArrayList<String>();
 		try {
-			String sql = "select * from unitransport.spedizioni_utenti where email = ?;";
-			PreparedStatement statement = DatabaseManager.getConnection().prepareStatement(sql);
-			statement.setString(1, utente);
+			String sql = "select * from unitransport.spedizioni_utenti ;";
+			Statement statement = DatabaseManager.getConnection().createStatement();
 			ResultSet rs = statement.executeQuery( sql );
 			while( rs.next() ) {
-				spedizioni.add( rs.getString(2) );
+				if (rs.getString(2).equals(utente))
+				spedizioni.add( rs.getString(1) );
 			}					
 			statement.close();
 		} catch (SQLException e) {
@@ -127,6 +128,7 @@ public class SpedizioneUtenteDAO {
 		}
 		return spedizioni;
 	}
-	
+
+
 
 }
