@@ -11,6 +11,8 @@ import java.util.List;
 import com.unical.unitransport.controller.persistence.DatabaseManager;
 
 public class ShipmentsDAO {
+//	private String sender_location;
+//	private String receiver_location;
 
 	private ShipmentsDAO() {}
 	private static ShipmentsDAO instance;
@@ -32,7 +34,10 @@ public class ShipmentsDAO {
 					+ "status INT NOT NULL, "
 					+ "created_on TIMESTAMP NOT NULL, "
 				    + "last_update TIMESTAMP, "
-				    + "last_location VARCHAR ( 255 ) DEFAULT 'UNKNOWN' ) ; ";
+				    + "last_location VARCHAR ( 255 ) DEFAULT 'UNKNOWN', "
+				    + "sender_location VARCHAR ( 255 ) DEFAULT 'UNKNOWN', "
+				    + "receiver_location VARCHAR ( 255 ) DEFAULT 'UNKNOWN' "
+				    + ") ; ";
 			statement.executeUpdate( sql );	
 			statement.close();
 		} catch (SQLException e) {
@@ -43,12 +48,14 @@ public class ShipmentsDAO {
 	public static boolean insert( Shipment shipment ) {
 		initialize();
 		try {
-			String sql = "insert into unitransport.shipments( tracking_number, status, created_on ) values( ?, ?, ? ) ;";
+			String sql = "insert into unitransport.shipments( tracking_number, status, created_on, sender_location, receiver_location ) values( ?, ?, ?, ?, ? ) ;";
 			PreparedStatement statement = DatabaseManager.getConnection().prepareStatement( sql );
 			statement.setString( 1, shipment.getTrackingNumber() );
 			statement.setInt( 2, shipment.getStatus() );
 			statement.setTimestamp( 3, Timestamp.from( Instant.now() ) );
-			statement.executeUpdate();
+			statement.setString( 4, shipment.getSender_location() );
+			statement.setString( 5, shipment.getReceiver_location() );
+		statement.executeUpdate();
 			statement.close();
 			return true;
 		} catch (SQLException e) {
@@ -57,6 +64,7 @@ public class ShipmentsDAO {
 		}
 	}
 	
+
 	public static boolean update( Shipment shipment, int status, String last_location ) {
 		initialize();
 		try {
@@ -76,6 +84,8 @@ public class ShipmentsDAO {
 	}
 	
 	
+	
+	
 	public static Shipment getByTrackingNumber( String tacking_number ) {
 		initialize();
 		Shipment shipment = null;
@@ -85,7 +95,7 @@ public class ShipmentsDAO {
 			statement.setString( 1, tacking_number );
 			ResultSet rs = statement.executeQuery();
 			while( rs.next() ) {
-				shipment = new Shipment( rs.getInt( 1 ), rs.getString( 2 ), rs.getInt( 3 ), rs.getTimestamp( 4 ), rs.getTimestamp( 5 ), rs.getString( 6 ) );
+				shipment = new Shipment( rs.getInt( 1 ), rs.getString( 2 ), rs.getInt( 3 ), rs.getTimestamp( 4 ), rs.getTimestamp( 5 ), rs.getString( 6 ), rs.getString( 7 ), rs.getString( 8 ) );
 			}					
 			statement.close();
 		} catch (SQLException e) {
@@ -102,7 +112,7 @@ public class ShipmentsDAO {
 			Statement statement = DatabaseManager.getConnection().createStatement();
 			ResultSet rs = statement.executeQuery( sql );
 			while( rs.next() ) {
-				Shipment shipment = new Shipment( rs.getInt( 1 ), rs.getString( 2 ), rs.getInt( 3 ), rs.getTimestamp( 4 ), rs.getTimestamp( 5 ), rs.getString( 6 ) );
+				Shipment shipment = new Shipment( rs.getInt( 1 ), rs.getString( 2 ), rs.getInt( 3 ), rs.getTimestamp( 4 ), rs.getTimestamp( 5 ), rs.getString( 6 ), rs.getString( 7 ), rs.getString( 8 ) );
 				shipments.add( shipment );
 			}					
 			statement.close();
