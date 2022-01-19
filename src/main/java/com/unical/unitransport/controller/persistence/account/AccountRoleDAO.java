@@ -89,16 +89,17 @@ public class AccountRoleDAO {
 			return false;
 		}
 	}
+
 		
 	public static AccountRole getFor( Account account ) {
 		initialize();
 		AccountRole accountRole = null;
 		try {
-			String sql = "select * from unitransport.account_roles where user_id = ? ;";
-			PreparedStatement statement = DatabaseManager.getConnection().prepareStatement( sql );
-			statement.setInt( 1, account.getUserId() );
+			String sql = "select * from unitransport.account_roles ;";
+			Statement statement = DatabaseManager.getConnection().createStatement();		
 			ResultSet rs = statement.executeQuery( sql );
 			while( rs.next() ) {
+				if(account.getUserId()==rs.getInt(1))
 				accountRole = new AccountRole( rs.getInt( 1 ), rs.getInt( 2 ), rs.getTimestamp( 3 ) );
 			}					
 			statement.close();

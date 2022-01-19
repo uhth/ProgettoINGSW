@@ -45,7 +45,12 @@
 							  <div class="card-body">
 							    <h5 class="card-title">FINO A 10Kg</h5>
 							    <p class="card-text" style="color: black;">15.99€</p>
-							    <a href="#" class="btn btn-primary">Acquista</a>
+			                    <c:if test="${email != null}">
+			                	    <a href="prenotaRitiro" class="btn btn-primary">Acquista</a>
+			                    </c:if>
+			                    <c:if test="${email == null}">
+			                	    <a href="login" class="btn btn-primary">Accedi e acquista</a>
+			                    </c:if>
 							  </div>
 						</div>     
 
@@ -59,8 +64,13 @@
 							  <div class="card-body">
 							    <h5 class="card-title">FINO A 15Kg</h5>
 							    <p class="card-text" style="color: black;">17.99€</p>
-							    <a href="#" class="btn btn-primary">Acquista</a>
-							  </div>
+			                    <c:if test="${email != null}">
+			                	    <a href="prenotaRitiro" class="btn btn-primary">Acquista</a>
+			                    </c:if>
+			                    <c:if test="${email == null}">
+			                	    <a href="login" class="btn btn-primary">Accedi e acquista</a>
+			                    </c:if>
+			              	  </div>
 						</div>     
 
 
@@ -73,7 +83,14 @@
 							  <div class="card-body">
 							    <h5 class="card-title">OLTRE 25Kg</h5>
 							    <p class="card-text" style="color: black;">26.99€</p>
-							    <a href="#" class="btn btn-primary">Acquista</a>
+							    
+			                    <c:if test="${email != null}">
+			                	    <a href="prenotaRitiro" class="btn btn-primary">Acquista</a>
+			                    </c:if>
+			                    <c:if test="${email == null}">
+			                	    <a href="login" class="btn btn-primary">Accedi e acquista</a>
+			                    </c:if>
+			               							    
 							  </div>
 						</div>     
 

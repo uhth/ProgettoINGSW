@@ -19,6 +19,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.unical.unitransport.controller.persistence.account.Account;
+import com.unical.unitransport.controller.persistence.account.AccountRole;
+import com.unical.unitransport.controller.persistence.account.AccountRoleDAO;
 import com.unical.unitransport.controller.persistence.account.AccountsDAO;
 import com.unical.unitransport.controller.persistence.account.AccountsManager;
 
@@ -64,7 +67,46 @@ public class LoginPageController {
 		session = req.getSession( true );
 		session.setAttribute( "email", email );
 		
+		Account account = AccountsDAO.getByEmail(email);
+		AccountRole role = AccountRoleDAO.getFor(account);
+		System.out.println(role.getUserId());
+		if (isUser(account))
+			session.setAttribute( "utente", account.getEmail() );
+		else if (isCorriere(account))
+			session.setAttribute( "corriere", account.getEmail() );
+		else
+			session.setAttribute( "admin", account.getEmail() );
+
+		
 		return "index";
+		
+	}
+	
+
+	
+	private boolean isUser(Account account) {
+		AccountRole role = AccountRoleDAO.getFor(account);
+		if (role.getRoleId()==0)
+			return true;
+		return false;
+		
+	}
+
+	
+	private boolean isCorriere(Account account) {
+		AccountRole role = AccountRoleDAO.getFor(account);
+		if (role.getRoleId()==1)
+			return true;
+		return false;
+		
+	}
+
+	
+	private boolean isAdmin(Account account) {
+		AccountRole role = AccountRoleDAO.getFor(account);
+		if (role.getRoleId()==2)
+			return true;
+		return false;
 		
 	}
 

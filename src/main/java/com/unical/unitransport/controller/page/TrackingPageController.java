@@ -38,12 +38,16 @@ public class TrackingPageController {
 	}
 
 	public void loadTable(Shipment spedizione,HttpServletRequest req) {
-		// String dataOra = spedizione.getData();
+		String dataOra = spedizione.getLastUpdate().toString();
 		String stato = spedizione.stato();
 		String luogo = spedizione.getLastLocation();
-	
+		String destinazioneFinale = spedizione.getReceiver_location();
+		
+		
+		req.setAttribute("dataeora", dataOra);
 		req.setAttribute("statosped", stato);
 		req.setAttribute("luogosped", luogo);
+		req.setAttribute("destinazioneFinale", destinazioneFinale);
 		
 	}
 	

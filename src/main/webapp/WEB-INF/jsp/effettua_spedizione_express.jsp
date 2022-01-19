@@ -45,7 +45,12 @@
 							  <div class="card-body">
 							    <h5 class="card-title">FINO A 10KG</h5>
 							    <p class="card-text" style="color: black;">9.99€</p>
-							    <a href="#" class="btn btn-primary">Acquista</a>
+			                    <c:if test="${email != null}">
+			                	    <a href="prenotaRitiro" class="btn btn-primary">Acquista</a>
+			                    </c:if>
+			                    <c:if test="${email == null}">
+			                	    <a href="login" class="btn btn-primary">Accedi e acquista</a>
+			                    </c:if>
 							  </div>
 						</div>     
 
@@ -59,7 +64,12 @@
 							  <div class="card-body">
 							    <h5 class="card-title">FINO A 15KG</h5>
 							    <p class="card-text" style="color: black;">11.99€</p>
-							    <a href="#" class="btn btn-primary">Acquista</a>
+			                    <c:if test="${email != null}">
+			                	    <a href="prenotaRitiro" class="btn btn-primary">Acquista</a>
+			                    </c:if>
+			                    <c:if test="${email == null}">
+			                	    <a href="login" class="btn btn-primary">Accedi e acquista</a>
+			                    </c:if>
 							  </div>
 						</div>     
 
@@ -73,7 +83,12 @@
 							  <div class="card-body">
 							    <h5 class="card-title">OLTRE 25KG</h5>
 							    <p class="card-text" style="color: black;">19.99€</p>
-							    <a href="#" class="btn btn-primary">Acquista</a>
+			                    <c:if test="${email != null}">
+			                	    <a href="prenotaRitiro" class="btn btn-primary">Acquista</a>
+			                    </c:if>
+			                    <c:if test="${email == null}">
+			                	    <a href="login" class="btn btn-primary">Accedi e acquista</a>
+			                    </c:if>
 							  </div>
 						</div>     
 
