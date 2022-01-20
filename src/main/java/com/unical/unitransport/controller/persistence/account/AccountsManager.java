@@ -1,5 +1,8 @@
 package com.unical.unitransport.controller.persistence.account;
 
+import java.sql.Timestamp;
+import java.time.Instant;
+
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -62,7 +65,10 @@ public interface AccountsManager {
 		BCryptPasswordEncoder pwEncoder = new BCryptPasswordEncoder();
 		Account account = AccountsDAO.getByEmail( email );
 		if( account == null ) return false;
-		return pwEncoder.matches( password, account.getPassword() );
+		boolean res = pwEncoder.matches( password, account.getPassword() );
+		account.setLastLogin( Timestamp.from( Instant.now() ) );
+		AccountsDAO.updateLastLogin( account );
+		return res;
 	}
 	
 	public static boolean changeAccountRole( String email, String role_name ) {

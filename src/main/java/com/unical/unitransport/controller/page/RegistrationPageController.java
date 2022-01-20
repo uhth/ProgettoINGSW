@@ -28,11 +28,10 @@ public class RegistrationPageController {
 		
 		int diff = password.compareTo( password_ripetuta );
 		if( diff != 0 ) {
-			System.out.println( password + " " + password_ripetuta );
 			res.sendError( HttpServletResponse.SC_BAD_REQUEST );
 		}
 		
-		Account account = AccountsManager.registerAccount( email, password );
+		Account account = AccountsManager.registerAccount( email, password, "user" );
 		if( account == null ) return "iscrizione";
 				
 		AccountsManager.login( account.getEmail(), account.getPassword() );
@@ -40,10 +39,6 @@ public class RegistrationPageController {
 		
 		session.setAttribute( "user_id", account.getUserId() );		
 		
-		AccountRole ruolo = new AccountRole(account.getUserId(), 0);
-		AccountRoleDAO.insert(ruolo);
-		
-		System.out.println(account.getUserId());
 		
 		return "iscrizionePositiva";
 	}

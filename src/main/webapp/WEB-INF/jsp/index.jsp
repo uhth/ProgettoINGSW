@@ -33,6 +33,7 @@
 	                    </c:when>
 	                    <c:when test="${email != null}">
 			                        <p class="intro_benvenuto">Benvenuto ${email}</p>
+			                        <a href="logout" id="prova" onclick="btnAccedi()" class="btn btn-rounded">Logout</a>
 			            </c:when>
 		            </c:choose>           
 		            <c:choose>      
@@ -49,7 +50,6 @@
               		      <c:when test="${role == 'admin'}">
                    		     <a id="adminZone" onclick="document.getElementById('divLogin').style.display='block'"
                             class="btn btn-rounded">Amministratore</a>
-                    	  <a href="logout" id="prova" onclick="btnAccedi()" class="btn btn-rounded">Logout</a>
 	                     </c:when>   
                     </c:choose>	                                         		                            
                 </div>

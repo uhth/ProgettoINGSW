@@ -4,6 +4,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -61,6 +62,23 @@ public class AccountsDAO {
 			String sql = "update unitransport.accounts set email = ? where email = ? ;";
 			PreparedStatement statement = DatabaseManager.getConnection().prepareStatement( sql );
 			statement.setString( 1, newEmail );
+			statement.setString( 2, account.getEmail() );
+			int rows_updated = statement.executeUpdate();
+			statement.close();
+			if( rows_updated == 0 ) return false;
+			return true;
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return false;
+		}
+	}
+	
+	public static boolean updateLastLogin( Account account ) {
+		initialize();
+		try {
+			String sql = "update unitransport.accounts set last_login = ? where email = ? ;";
+			PreparedStatement statement = DatabaseManager.getConnection().prepareStatement( sql );
+			statement.setTimestamp( 1, account.getLastLogin() );
 			statement.setString( 2, account.getEmail() );
 			int rows_updated = statement.executeUpdate();
 			statement.close();
