@@ -22,6 +22,7 @@
             <header class="showcase">
                 <div class="showcase-top">
                     <a id="posLogo" href="/"><img id="posLogo" src="/immagini/b1.png"></a>
+
 					
 					<c:choose>  
 	                    <c:when test="${email == null}">
@@ -136,6 +137,7 @@
                                 <img src="img/b1.png" alt="Avatar" class="avatar">
                             </div>
                             <div class="container">
+                                <label for="email"><b>Email</b></label>
                                 <input type="email" placeholder="Inserisci Email" name="email" required>
                                 <label for="password"><b>Password</b></label>
                                 <input type="password" placeholder="Inserisci Password" name="password" required>
@@ -308,7 +310,6 @@
 
 
             <footer class="footer">
-                <p>Problemi? Contatta l'assistenza</p>
                 <div class="footer-cols">
                     <ul>
                         <li><a href="">FAQ</a></li>
@@ -320,7 +321,9 @@
                         <li><a href="http://www.unical.it">Sito Unical</a></li>
                     </ul>
                     <ul>
-                        <li><a href="profilo_utente">Account</a></li>
+                        <c:if test="${email == null}">
+                            <li><a id="prova" onclick="document.getElementById('divLogin').style.display='block'">Account</a></li>
+                        </c:if>  
                     </ul>
                 </div>
             </footer>
