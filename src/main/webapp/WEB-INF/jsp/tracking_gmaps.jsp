@@ -98,6 +98,24 @@
 
     </header>
     <script src="login.js"></script>
+    <footer class="footer">
+        <div class="footer-cols">
+            <ul>
+                <li><a href="">FAQ</a></li>
+            </ul>
+            <ul>
+                <li><a href="">Chi siamo</a></li>
+            </ul>
+            <ul>
+                <li><a href="http://www.unical.it">Sito Unical</a></li>
+            </ul>
+            <ul>
+                <c:if test="${email == null}">
+                    <li><a id="prova" onclick="document.getElementById('divLogin').style.display='block'">Account</a></li>
+                </c:if> 
+            </ul>
+        </div>
+    </footer>
 </body>
 
 </html>
