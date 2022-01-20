@@ -62,8 +62,8 @@ public class ShipmentsPageController {
         
 
         Shipment spedizione = new Shipment(tracking);
-		spedizione.setSender_location(luogoRitiro);
-        spedizione.setReceiver_location(luogoConsegna);
+		spedizione.setSenderLocation(luogoRitiro);
+        spedizione.setReceiverLocation(luogoConsegna);
         ShipmentsDAO.insert(spedizione);
         
         ShipmentsManager.registerShipment(tracking,(String) req.getSession().getAttribute("email"), emailDestinatario);
