@@ -25,9 +25,7 @@
 
                     <c:if test="${email == null}">
                         <p class="intro_benvenuto">Benvenuto utente</p>
-                        <a id="prova" onclick="document.getElementById('divLogin').style.display='block'"
-                            class="btn btn-rounded">Accedi</a>
-
+                        <a id="prova" onclick="document.getElementById('divLogin').style.display='block'" class="btn btn-rounded">Accedi</a>
                     </c:if>
 
                     <c:if test="${email != null}">
@@ -134,6 +132,7 @@
                                 <img src="img/b1.png" alt="Avatar" class="avatar">
                             </div>
                             <div class="container">
+                                <label for="email"><b>Email</b></label>
                                 <input type="email" placeholder="Inserisci Email" name="email" required>
                                 <label for="password"><b>Password</b></label>
                                 <input type="password" placeholder="Inserisci Password" name="password" required>
