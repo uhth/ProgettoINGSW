@@ -53,7 +53,7 @@
 										  <br>	
 										  <div class="form-group">
 										    <label for="formLuogo">Email destinatario:</label>
-										    <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="es. Via Roma n.31 Milano (MI)" name="emailDestinatario">
+										    <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="es. email@address.com" name="emailDestinatario">
 										  </div>
 										  <br>								  										  
 										    <input  class="btn btn-primary" type="submit" value="Prenota"/>

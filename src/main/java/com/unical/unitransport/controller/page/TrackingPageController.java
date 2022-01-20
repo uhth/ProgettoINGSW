@@ -25,14 +25,10 @@ public class TrackingPageController {
 
 		Shipment spedizione = ShipmentsDAO.getByTrackingNumber(tracking);
 
-		System.out.println("NTracking: " + tracking);
-		System.out.println(spedizione);
-
 		// HttpSession session;
 		if (spedizione == null) {
 			return "tracking_gmapsFallito";
 		}
-
 	
 		loadMarkers( spedizione, model );
 		loadTable( spedizione, model );
@@ -52,20 +48,26 @@ public class TrackingPageController {
 	}
 	
 	public void loadMarkers( Shipment spedizione, Model model ) {
-		AddressToCoordinate coordCorriere = new AddressToCoordinate(spedizione.getLastLocation());
+		
+		AddressToCoordinate coordCorriere = new AddressToCoordinate();
+
+		if (spedizione.getLastLocation() != null ) {
+			coordCorriere = new AddressToCoordinate(spedizione.getLastLocation());
+		}
+		
 		AddressToCoordinate coordDestinatario = new AddressToCoordinate(spedizione.getReceiverLocation());
 		AddressToCoordinate coordMittente = new AddressToCoordinate(spedizione.getSenderLocation());
 
-		model.addAttribute("corrierelat", coordCorriere.getLatitude());
-		model.addAttribute("corrierelong", coordCorriere.getLongitude());
+		if (spedizione.getLastLocation() == null || spedizione.getLastLocation().isEmpty()) {
+			model.addAttribute("corrierelat", coordCorriere.getLatitude());
+			model.addAttribute("corrierelong", coordCorriere.getLongitude());
+		}
 		
 		model.addAttribute("destinatariolat", coordDestinatario.getLatitude());
 		model.addAttribute("destinatariolong", coordDestinatario.getLongitude());
 		
 		model.addAttribute("mittentelat", coordMittente.getLatitude());
-		model.addAttribute("mittentelong", coordMittente.getLongitude());
-		
-		System.out.println(coordCorriere.getLatitude());
+		model.addAttribute("mittentelong", coordMittente.getLongitude());	
 	}
 
 }
