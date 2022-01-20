@@ -25,7 +25,7 @@
 
                     <c:if test="${email == null}">
                         <p class="intro_benvenuto">Benvenuto utente</p>
-                        <a id="prova" onclick="document.getElementById('divLogin').style.display='block'" class="btn btn-rounded">Accedi</a>
+                        <a id="prova" onclick="document.getElementById('divLogin').style.display='block'" class="btn btn-rounded">Accedi <i class="fas fa-sign-in-alt"></i></a>
                     </c:if>
 
                     <c:if test="${email != null}">
@@ -33,19 +33,20 @@
               		      <c:if test="${utente != null}">
 
 		                        <a href="profilo_utente" id="profilo_utente" onclick="btnAccedi()"
-		                            class="btn btn-rounded">Profilo utente</a>
+		                            class="btn btn-rounded">Profilo utente <i class="far fa-user"></i></a>
 	                       </c:if>
               		      <c:if test="${corriere != null}">
 
                     		    <a id="corriereZone" href="areaCorriere"
-                            class="btn btn-rounded">Area Corriere</a>
+                            class="btn btn-rounded">Area Corriere <i class="fas fa-people-carry"></i></a>
 	                       </c:if>
               		      <c:if test="${admin != null}">
 
                    		     <a id="adminZone" onclick="document.getElementById('divLogin').style.display='block'"
-                            class="btn btn-rounded">Amministratore</a>	                       </c:if>
+                            class="btn btn-rounded">Amministratore <i class="fas fa-user-lock"></i></a>	                      
+                             </c:if>
 	                       	                       		                            
-		                        <a href="logout" id="prova" onclick="btnAccedi()" class="btn btn-rounded">Logout</a>
+		                        <a href="logout" id="prova" onclick="btnAccedi()" class="btn btn-rounded">Logout <i class="fas fa-sign-out-alt"></i></a>
                     </c:if>
                 </div>
 
@@ -57,42 +58,53 @@
 				                 <h1>Il lavoro che hai sempre desiderato.<br>Reso più semplice.</h1>
 				                    <p>Assistenza h24</p>
 				                    <a href="aggiornaStato" class="btn btn-xl">
-				                       Aggiorna stato spedizione <i class="fas fa-chevron-right btn-icon"></i>
+				                       Aggiorna stato spedizione <i class="fas fa-sync"></i>
 				                    </a>
 				                    <br>
 				                    <a href="areaCorriere" class="btn btn-xl">
-				                        Visualizza spedizioni <i class="fas fa-chevron-right btn-icon"></i>
+				                        Visualizza spedizioni <i class="fas fa-history"></i>
 				                    </a>
 				                <br />
 				            </c:when>    
 				            <c:when test="${admin != null}">
-				                 <h1>AMMINISTRATORE<br></h1>
+				                 <h1>Pannello Amministratore<br></h1>
 				                    <a href="/" class="btn btn-xl">
-				                       Aggiungi corriere <i class="fas fa-chevron-right btn-icon"></i>
+				                       Aggiungi corriere <i class="fas fa-user-plus"></i>
 				                    </a>
 				                    <br>
 				                    <a href="/" class="btn btn-xl">
-				                        Rimuovi corriere <i class="fas fa-chevron-right btn-icon"></i>
+				                        Rimuovi corriere <i class="fas fa-user-slash"></i>
 				                    </a>
 				                    <br>
 				                    <a href="/" class="btn btn-xl">
-				                        Fornisci assistenza <i class="fas fa-chevron-right btn-icon"></i>
+				                        Fornisci assistenza <i class="fas fa-headset"></i>
 				                    </a>
 				                <br />
-				            </c:when>    				           
+				            </c:when>    	
+				            <c:when test="${email != null}">
+				                 <h1>Consegne Al Miglior Prezzo.<br>Nazionali e Internazionali.</h1>
+				                    <p>Paga direttamente alla consegna.</p>
+				                    <a href="spedisci" class="btn btn-xl">
+				                        Effettua una spedizione <i class="fas fa-truck"></i>
+				                    </a>
+				                    <br>
+				                    <a href="tracking_gmaps" class="btn btn-xl">
+				                        Traccia una spedizione <i class="fas fa-map-marker-alt"></i>
+				                    </a>
+				                    <br>
+				                    <a href="paypal" class="btn btn-xl">
+				                        Pagamento <i class="fab fa-paypal"></i>
+				                    </a>
+				            </c:when>    				            			           
 				             <c:otherwise>
 				                 <h1>Consegne Al Miglior Prezzo.<br>Nazionali e Internazionali.</h1>
 				                    <p>Paga direttamente alla consegna.</p>
 				                    <a href="spedisci" class="btn btn-xl">
-				                        Effettua una spedizione <i class="fas fa-chevron-right btn-icon"></i>
+				                        Effettua una spedizione <i class="fas fa-truck"></i>
 				                    </a>
 				                    <br>
 				                    <a href="tracking_gmaps" class="btn btn-xl">
-				                        Traccia una spedizione <i class="fas fa-chevron-right btn-icon"></i>
-				                    </a>
-				                    <br>
-				                    <a href="paypal" class="btn btn-xl">
-				                        Pagamento <i class="fas fa-chevron-right btn-icon"></i>
+				                        Traccia una spedizione <i class="fas fa-map-pin"></i>
 				                    </a>
 				            </c:otherwise>
 				        </c:choose>
@@ -269,7 +281,8 @@
 						                        <div class="text-center">
 						                            <p class="textllg">Se vuoi modificare lo stato di una spedizione come corriere passa alla
 						                                sezione</p>
-						                            <a href="aggiornaStato" class="btn btn-lg">Aggiorna stato</a>
+                							        <a onclick="document.getElementById('divLogin').style.display='block'" class="btn btn-lg" >Aggiorna stato</a>
+
 						                        </div>
 						
 						

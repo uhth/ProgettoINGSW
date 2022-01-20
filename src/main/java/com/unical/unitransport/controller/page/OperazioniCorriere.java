@@ -11,12 +11,14 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import com.unical.unitransport.controller.persistence.account.Account;
+import com.unical.unitransport.controller.persistence.account.AccountRole;
 import com.unical.unitransport.controller.persistence.account.AccountRoleDAO;
 import com.unical.unitransport.controller.persistence.account.AccountsDAO;
 import com.unical.unitransport.controller.persistence.account.AccountsManager;
 import com.unical.unitransport.controller.persistence.account.Role;
 import com.unical.unitransport.controller.persistence.shipment.Shipment;
 import com.unical.unitransport.controller.persistence.shipment.ShipmentsDAO;
+import com.unical.unitransport.controller.persistence.spedizioniCorriere.SpedizioneCorriereDAO;
 
 @Controller
 public class OperazioniCorriere {
@@ -26,13 +28,17 @@ public class OperazioniCorriere {
 	@GetMapping("/aggiornaStato")
 	public String aggiornaStato( HttpServletRequest req ) {
 		
+		HttpSession session = req.getSession(true);
 		if( !AccountsManager.isLoggedIn( req ) ) return "login";
+		
 	
 		Account account =  AccountsDAO.getByEmail( (String) req.getSession().getAttribute( "email" ) );
 		Role role = AccountsManager.getUserRole( account );
-		if( role == null || role.getRoleName() != "corriere" )
+		if( role == null || !isCorriere(account) )
 			return "index";
 		
+		session.setAttribute("last_code", null);
+		session.setAttribute("luogoAttuale", null);
 		return "gestioneSpedizioneCorriere";
 	}
 	
@@ -49,9 +55,11 @@ public class OperazioniCorriere {
 			session.setAttribute("last_code", codice);
 			last_code=codice;
 			session.setAttribute("luogoAttuale", spedizione.localita());
+			return "gestioneSpedizioneCorriere";
 		}
 		
-		return "gestioneSpedizioneCorriere";
+		session.setAttribute("erroreGenerico", "LA SPEDIZIONE NON ESISTE");
+		return "erroreGenerico";
 		
 	}
 	
@@ -66,15 +74,32 @@ public class OperazioniCorriere {
 		String scelta = req.getParameter("scelta");
 		
 		int scelta_cod = Integer.parseInt(scelta);
+		System.out.println(scelta_cod);
 		
-		if (spedizione!=null) {
+		if (spedizione!=null && SpedizioneCorriereDAO.spedizioneAppartenenteCorriere(last_code, (String) session.getAttribute("email"))) {
 			ShipmentsDAO.update(spedizione, scelta_cod, luogo);
+			return "gestioneSpedizioneCorriere";
 		}
 		
-
 		
-		return "gestioneSpedizioneCorriere";
+		session.setAttribute("erroreGenerico", "LA SPEDIZIONE NON È AFFIDATA A TE");
+		session.setAttribute("erroreGenerico_p", "Verifica se non è stata ancora presa in carico da altri operatori e prendi in carico la spedizione");
+		return "erroreGenerico";
 		
 	}
+	
+	
+
+
+	
+	private boolean isCorriere(Account account) {
+		AccountRole role = AccountRoleDAO.getFor(account);
+		if (role.getRoleId()==1)
+			return true;
+		return false;
+		
+	}
+
+
 
 }

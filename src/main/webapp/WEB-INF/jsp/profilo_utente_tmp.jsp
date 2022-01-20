@@ -74,7 +74,7 @@
 				   <div class="col text-center">
 				      <p class="p">GESTISCI RITIRO</p>
 				 	
-						<button type="button" class="btn btn-success"><a href="spedisci" class="text-decoration-none" style="color: white;">Pannello gestione</a></button>
+						<button type="button" class="btn btn-success"><a href="gestisciRitiro" class="text-decoration-none" style="color: white;">Pannello gestione</a></button>
 				 
 				  </div>
 				  		  	

@@ -8,6 +8,7 @@
     <meta charset="utf-8">
     <link rel="icon" href="../immagini/b1.png">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="css/login.css">
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 
@@ -49,7 +50,7 @@
 			                	    <a href="prenotaRitiro" class="btn btn-primary">Acquista</a>
 			                    </c:if>
 			                    <c:if test="${email == null}">
-			                	    <a href="login" class="btn btn-primary">Accedi e acquista</a>
+			                	    <a onclick="document.getElementById('divLogin').style.display='block'" class="btn btn-primary">Accedi e acquista</a>
 			                    </c:if>
 							  </div>
 						</div>     
@@ -68,7 +69,7 @@
 			                	    <a href="prenotaRitiro" class="btn btn-primary">Acquista</a>
 			                    </c:if>
 			                    <c:if test="${email == null}">
-			                	    <a href="login" class="btn btn-primary">Accedi e acquista</a>
+			                	    <a onclick="document.getElementById('divLogin').style.display='block'" class="btn btn-primary">Accedi e acquista</a>
 			                    </c:if>
 							  </div>
 						</div>     
@@ -87,7 +88,7 @@
 			                	    <a href="prenotaRitiro" class="btn btn-primary">Acquista</a>
 			                    </c:if>
 			                    <c:if test="${email == null}">
-			                	    <a href="login" class="btn btn-primary">Accedi e acquista</a>
+			                	    <a onclick="document.getElementById('divLogin').style.display='block'" class="btn btn-primary">Accedi e acquista</a>
 			                    </c:if>
 							  </div>
 						</div>     
@@ -98,7 +99,63 @@
   		   </div>
       
       </div>
+      
    </div>
+   
+                       <!-- LOGIN -->
+                    <div id="divLogin" class="modal">
+                        <form class="modal-content animate" action="/loginService" method="post">
+                            <div class="imgcontainer">
+                                <span onclick="document.getElementById('divLogin').style.display='none'" class="close"
+                                    title="Close Modal">&times;</span>
+                                <img src="img/b1.png" alt="Avatar" class="avatar">
+                            </div>
+                            <div class="container">
+                                <label for="uname"><b>Email</b></label>
+                                <input type="text" placeholder="Inserisci Email" name="email" required>
+                                <label for="psw"><b>Password</b></label>
+                                <input type="password" placeholder="Inserisci Password" name="password" required>
+                                <button type="submit" id="button">Login</button>
+                            </div>
+                            <div class="container" style="background-color:#f1f1f1">
+                                <button type="button"
+                                    onclick="document.getElementById('divLogin').style.display='none'; document.getElementById('divRegister').style.display='block' "
+                                    class="cancelbtn">Registrati</button>
+                                <span class="psw"><a href="#" id="forgotPassw">Password dimenticata?</a></span>
+                            </div>
+                        </form>
+                    </div>
+                    <!-- FINE LOGIN -->
+                    <!-- REGISTER -->
+                    <div id="divRegister" class="modal">
+                        <form class="modal-content animate" action="/iscrizioneService" method="post">
+                            <div class="imgcontainer">
+                                <span onclick="document.getElementById('divRegister').style.display='none'"
+                                    class="close" title="Close Modal">&times;</span>
+                                <img src="img/b1.png" alt="Avatar" class="avatar">
+                            </div>
+                            <div class="container">
+                                <label for="email"><b>Email</b></label>
+                                <input type="email" placeholder="Inserisci Email" name="email" required>
+                                <label for="password"><b>Password</b></label>
+                                <input type="password" placeholder="Inserisci Password" name="password" required>
+                                <label for="password_ripetuta"><b>Conferma Password</b></label>
+                                <input type="password" placeholder="Inserisci Password" name="password_ripetuta"
+                                    required>
+                                <button type="submit" id="button">Registrati</button>
+                            </div>
+                            <div class="container" style="background-color:#f1f1f1">
+                                <button type="button"
+                                    onclick="document.getElementById('divRegister').style.display='none'; document.getElementById('divLogin').style.display='block';"
+                                    class="cancelbtn">Login</button>
+                            </div>
+                        </form>
+                    </div>
+                    <!-- FINE REGISTER -->
+   
+   
+   
+   <script src="login.js"></script>
 
   </body>
   
