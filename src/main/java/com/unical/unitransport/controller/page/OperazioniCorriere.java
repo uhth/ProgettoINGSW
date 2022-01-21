@@ -37,7 +37,7 @@ public class OperazioniCorriere {
 		if( role == null || !isCorriere(account) )
 			return "index";
 		
-		session.setAttribute("last_code", null);
+		session.setAttribute("codiceRichiestoCorriere", null);
 		session.setAttribute("luogoAttuale", null);
 		return "gestioneSpedizioneCorriere";
 	}
@@ -73,8 +73,15 @@ public class OperazioniCorriere {
 		
 		String scelta = req.getParameter("scelta");
 		
+		if (scelta==null) {
+			session.setAttribute("erroreGenerico", "NON HAI SELEZIONATO ALCUN AGGIORNAMENTO");
+			session.setAttribute("erroreGenerico_p", "Assicurati di selezionare uno stato di aggiornamento");
+			return "erroreGenerico";
+		}
+		
 		int scelta_cod = Integer.parseInt(scelta);
-		System.out.println(scelta_cod);
+		
+
 		
 		if (spedizione!=null && SpedizioneCorriereDAO.spedizioneAppartenenteCorriere(last_code, (String) session.getAttribute("email"))) {
 			ShipmentsDAO.update(spedizione, scelta_cod, luogo);

@@ -61,10 +61,12 @@
 				                       Aggiorna stato spedizione <i class="fas fa-sync"></i>
 				                    </a>
 				                    <br>
-				                    <a href="/areaCorriere" class="btn btn-xl">
+
+				                    <a href="spedizioniCorriere" class="btn btn-xl">
 				                        Visualizza spedizioni <i class="fas fa-history"></i>
 				                    </a>
 				                <br />
+								<br><br>
 				            </c:when>    
 				            <c:when test="${role == 'admin'}">
 				                 <h1>Pannello Amministratore<br></h1>
@@ -80,6 +82,7 @@
 				                        Fornisci assistenza <i class="fas fa-headset"></i>
 				                    </a>
 				                <br />
+				                    <br><br>
 				            </c:when>    	
 				            <c:when test="${email != null}">
 				                 <h1>Consegne Al Miglior Prezzo.<br>Nazionali e Internazionali.</h1>
@@ -95,6 +98,7 @@
 				                    <a href="paypal" class="btn btn-xl">
 				                        Pagamento <i class="fab fa-paypal"></i>
 				                    </a>
+				                    <br><br>
 				            </c:when>    				            			           
 				             <c:otherwise>
 				                 <h1>Consegne Al Miglior Prezzo.<br>Nazionali e Internazionali.</h1>
@@ -106,6 +110,7 @@
 				                    <a href="tracking_gmaps" class="btn btn-xl">
 				                        Traccia una spedizione <i class="fas fa-map-pin"></i>
 				                    </a>
+				                    <br><br>
 				            </c:otherwise>
 				        </c:choose>
                    
