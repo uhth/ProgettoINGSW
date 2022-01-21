@@ -1,6 +1,8 @@
 package com.unical.unitransport.controller.page;
 
 import java.io.IOException;
+import java.sql.Timestamp;
+import java.util.Arrays;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -36,14 +38,26 @@ public class TrackingPageController {
 	}
 
 	public void loadTable(Shipment spedizione, Model model ) {
-		// String dataOra = spedizione.getData();
-		String stato = spedizione.stato();
-		String luogo = spedizione.getLastLocation();
-	
-		model.addAttribute("statosped", stato);
-		model.addAttribute("luogosped", luogo);
-		model.addAttribute( "dataeora", spedizione.getCreatedOn().toString().substring(0, 19) );
 		
+		/* TEST STATE/UPDATE/TIME
+		spedizione.setStatus(1);
+		spedizione.setStatus(2);
+		spedizione.setStatus(3);		
+		spedizione.setLastUpdate(new Timestamp(0));
+		spedizione.setLastUpdate(new Timestamp(0));
+		spedizione.setLastUpdate(new Timestamp(0));
+		spedizione.setLastLocation("Milano MI");
+		spedizione.setLastLocation("ROMA RM");
+		*/
+		
+		int[] x = {spedizione.getRegisterState().size(), spedizione.getRegisterLocation().size(), spedizione.getRegisterDate().size()};
+        Arrays.sort(x);
+        
+		model.addAttribute("sizeofevents", x[0]-1); //da testare
+		model.addAttribute("statosped", spedizione.getRegisterState());
+		model.addAttribute("luogosped", spedizione.getRegisterLocation());
+		model.addAttribute("dataeora", spedizione.getRegisterDate()); // spedizione.getCreatedOn().toString().substring(0, 19) );
+		model.addAttribute("destFinale", spedizione.getReceiverLocation());
 	}
 	
 	public void loadMarkers( Shipment spedizione, Model model ) {
