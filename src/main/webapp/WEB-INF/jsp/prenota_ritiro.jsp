@@ -55,7 +55,14 @@
 										    <label for="formLuogo">Email destinatario:</label>
 										    <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="es. email@address.com" name="emailDestinatario">
 										  </div>
-										  <br>								  										  
+										  <br>
+                      <p>Seleziona il tuo metodo di pagamento:</p>
+                      <input type="radio" id="Online" name="fav_language" value="Online">
+                      <label for="Online">Online</label>
+                      <br>
+                      <input type="radio" id="Contrassegno" name="fav_language" value="Contrassegno">
+                      <label for="Contrassegno">Contrassegno</label>
+                      <br>								  										  
 										    <input  class="btn btn-primary" type="submit" value="Prenota"/>
 										</form>
 
