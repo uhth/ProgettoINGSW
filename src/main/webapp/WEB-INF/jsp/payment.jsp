@@ -11,7 +11,7 @@
 <body>
     <main id="cart-main">
         <div class="site-title text-center">
-            <h1 class="font-title">Carrello</h1>
+            <h1 class="font-title">Carrello &#128722;</h1>
         </div>
 
         <div class="container">
@@ -23,12 +23,8 @@
                                 <img src="../immagini/camionUnicalTracciabile.png" alt=""> <!--immagine spedizione-->
                             </div>
                             <div class="title">
-                                <h3>Canon EOS 1500D</h3> <!--qui inserire il nome del acquisto-->
-                                <span>Electronics</span> <!--qui mettere la sottolabel-->
-
-                                <div class="buttons">
-                                    <input type="text" class="font-title" value="1"> <!--qui inserire i dettgli della spedizione-->
-                                </div>
+                                <h3>Spedizione Tracciabile Massimo 10kg</h3> <!--qui inserire il nome del acquisto-->
+                                <span>Qui inserire i dettagli della spedizione(via ritiro,ecc)</span> <!--qui mettere la sottolabel-->
                             </div>
                         </div>
                         <div class="price">
@@ -42,7 +38,7 @@
 
                         <ul>
                             <li class="flex justify-content-between">
-                                <label for="price">Products ( 3 items ) : </label> 
+                                <label for="price">Spedizione : </label> 
                                 <span>$399</span>   <!--riprendere il prezzo dell'item-->
                             </li>
                             <li class="flex justify-content-between">

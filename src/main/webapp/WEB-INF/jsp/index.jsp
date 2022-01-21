@@ -96,7 +96,7 @@
 				                        Traccia una spedizione <i class="fas fa-chevron-right btn-icon"></i>
 				                    </a>
 				                    <br>
-				                    <a href="paypal" class="btn btn-xl">
+				                    <a href="payment" class="btn btn-xl">
 				                        Pagamento <i class="fas fa-chevron-right btn-icon"></i>
 				                    </a>
 				            </c:otherwise>
