@@ -20,6 +20,7 @@
                 <div class="showcase-top">
                     <a id="posLogo" href="/"><img id="posLogo" src="/immagini/b1.png"></a>
 
+
 					
 					<c:choose>  
 	                    <c:when test="${email == null}">
@@ -49,6 +50,7 @@
                             class="btn btn-rounded">Amministratore</a>
 	                     </c:when>   
                     </c:choose>	                                         		                            
+
                 </div>
 
 
@@ -59,40 +61,56 @@
 				                 <h1>Il lavoro che hai sempre desiderato.<br>Reso più semplice.</h1>
 				                    <p>Assistenza h24</p>
 				                    <a href="aggiornaStato" class="btn btn-xl">
-				                       Aggiorna stato spedizione <i class="fas fa-chevron-right btn-icon"></i>
+				                       Aggiorna stato spedizione <i class="fas fa-sync"></i>
 				                    </a>
 				                    <br>
 				                    <a href="areaCorriere" class="btn btn-xl">
-				                        Visualizza spedizioni <i class="fas fa-chevron-right btn-icon"></i>
+				                        Visualizza spedizioni <i class="fas fa-history"></i>
 				                    </a>
 				                <br />
 				            </c:when>    
 				            <c:when test="${admin != null}">
-				                 <h1>AMMINISTRATORE<br></h1>
+				                 <h1>Pannello Amministratore<br></h1>
 				                    <a href="/" class="btn btn-xl">
-				                       Aggiungi corriere <i class="fas fa-chevron-right btn-icon"></i>
+				                       Aggiungi corriere <i class="fas fa-user-plus"></i>
 				                    </a>
 				                    <br>
 				                    <a href="/" class="btn btn-xl">
-				                        Rimuovi corriere <i class="fas fa-chevron-right btn-icon"></i>
+				                        Rimuovi corriere <i class="fas fa-user-slash"></i>
 				                    </a>
 				                    <br>
 				                    <a href="/" class="btn btn-xl">
-				                        Fornisci assistenza <i class="fas fa-chevron-right btn-icon"></i>
+				                        Fornisci assistenza <i class="fas fa-headset"></i>
 				                    </a>
 				                <br />
-				            </c:when>    				           
+				            </c:when>    	
+				            <c:when test="${email != null}">
+				                 <h1>Consegne Al Miglior Prezzo.<br>Nazionali e Internazionali.</h1>
+				                    <p>Paga direttamente alla consegna.</p>
+				                    <a href="spedisci" class="btn btn-xl">
+				                        Effettua una spedizione <i class="fas fa-truck"></i>
+				                    </a>
+				                    <br>
+				                    <a href="tracking_gmaps" class="btn btn-xl">
+				                        Traccia una spedizione <i class="fas fa-map-marker-alt"></i>
+				                    </a>
+				                    <br>
+
+				                    <a href="paypal" class="btn btn-xl">
+				                        Pagamento <i class="fab fa-paypal"></i>
+				                    </a>
+				            </c:when>    				            			           
 				             <c:otherwise>
 				                 <h1>Consegne Al Miglior Prezzo.<br>Nazionali e Internazionali.</h1>
 				                    <p>Paga direttamente alla consegna.</p>
 				                    <a href="spedisci" class="btn btn-xl">
-				                        Effettua una spedizione <i class="fas fa-chevron-right btn-icon"></i>
+				                        Effettua una spedizione <i class="fas fa-truck"></i>
 				                    </a>
 				                    <br>
 				                    <a href="tracking_gmaps" class="btn btn-xl">
-				                        Traccia una spedizione <i class="fas fa-chevron-right btn-icon"></i>
+				                        Traccia una spedizione <i class="fas fa-map-pin"></i>
 				                    </a>
-				                    <br>
+
 				            </c:otherwise>
 				        </c:choose>
                    
@@ -264,7 +282,8 @@
 						                        <div class="text-center">
 						                            <p class="textllg">Se vuoi modificare lo stato di una spedizione come corriere passa alla
 						                                sezione</p>
-						                            <a href="aggiornaStato" class="btn btn-lg">Aggiorna stato</a>
+                							        <a onclick="document.getElementById('divLogin').style.display='block'" class="btn btn-lg" >Aggiorna stato</a>
+
 						                        </div>
 						
 						

@@ -113,7 +113,7 @@
                     <th scope="row">${dataeora}</th>
                     <td>${statosped}</td>
                     <td>${luogosped}</td>
-                    <td>${destinazioneFinale}</td>
+                    <td>${destFinale}</td>
                   </tr>
                 </tbody>
               </table>

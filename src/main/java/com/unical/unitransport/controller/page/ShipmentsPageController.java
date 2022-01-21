@@ -78,8 +78,11 @@ public class ShipmentsPageController {
         
         
         SpedizioneUtente spedizione_utente = new SpedizioneUtente(spedizione.getTrackingNumber(), (String) req.getSession().getAttribute("email"));
-        if (SpedizioneUtenteDAO.insert(spedizione_utente))
-        	return "index";
+        if (SpedizioneUtenteDAO.insert(spedizione_utente)) {
+        	session.setAttribute("validoGenerico", tracking);
+        	session.setAttribute("validoGenerico_p", "Ti servirà per monitorare il pacco, ma non preoccuparti se lasci la pagina,<br> potrai sempre visionarlo nel tuo profilo!");
+        	return "validoGenerico";
+        }
         else return "prenota_ritiro";
 	}
 	

@@ -20,6 +20,17 @@ public class IndexPageController {
 			model.addAttribute( "email", req.getSession().getAttribute( "email" ) );
 		return "index";
 	}
+	
+	@GetMapping("errore")
+	public String erroreGenerico() {
+		return "erroreGenerico";
+	}
+	
+	@GetMapping("valido")
+	public String validoGenerico() {
+		return "validoGenerico";
+	}
+	
 
 }
 

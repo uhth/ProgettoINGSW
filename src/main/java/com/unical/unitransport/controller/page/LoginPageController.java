@@ -94,13 +94,6 @@ public class LoginPageController {
 		
 	}
 
-	
-	private boolean isAdmin(Account account) {
-		AccountRole role = AccountRoleDAO.getFor(account);
-		if (role.getRoleId()==2)
-			return true;
-		return false;
-		
-	}
+
 
 }

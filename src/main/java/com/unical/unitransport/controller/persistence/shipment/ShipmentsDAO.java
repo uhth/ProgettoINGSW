@@ -48,14 +48,17 @@ public class ShipmentsDAO {
 	public static boolean insert( Shipment shipment ) {
 		initialize();
 		try {
-			String sql = "insert into unitransport.shipments( tracking_number, status, created_on, last_location, sender_location, receiver_location ) values( ?, ?, ?, ?, ?, ? ) ;";
+			String sql = "insert into unitransport.shipments( tracking_number, status, created_on, last_update, last_location, sender_location, receiver_location ) values( ?, ?, ?, ?, ?, ?, ? ) ;";
 			PreparedStatement statement = DatabaseManager.getConnection().prepareStatement( sql );
 			statement.setString( 1, shipment.getTrackingNumber() );
 			statement.setInt( 2, shipment.getStatus() );
 			statement.setTimestamp( 3, Timestamp.from( Instant.now() ) );
-			statement.setString( 4, null );
-			statement.setString( 5, shipment.getSenderLocation() );
-			statement.setString( 6, shipment.getReceiverLocation() );
+
+			statement.setTimestamp( 4, shipment.getLastUpdate() );
+			statement.setString( 5, shipment.getLastLocation() );
+			statement.setString( 6, shipment.getSenderLocation() );
+			statement.setString( 7, shipment.getReceiverLocation() );
+
 			statement.executeUpdate();
 			statement.close();
 			return true;

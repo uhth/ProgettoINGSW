@@ -56,6 +56,20 @@
 				  </div>
 				  
 				   <div class="col">
+				      <p class="p">SPEDIZIONI DISPONIBILI</p>
+						<div class="info">
+							<ul>
+							<c:forEach items="${listaSpedizioniTotale}" var="spedizioneDisponibile">
+								<li>${spedizioneDisponibile}</li>
+							</c:forEach>
+							</ul>
+						</div>	
+
+											
+				  </div>
+				  	
+				  		  					  
+				   <div class="col">
 				      <p class="p">SPEDIZIONI ATTIVE</p>
 						<div class="info">
 							<ul>
@@ -63,6 +77,23 @@
 								<li>${singolaSpedizione}</li>
 							</c:forEach>
 							</ul>
+						</div>	
+
+											
+				  </div>
+				  	
+				  		  					  
+				   <div class="col">
+				      <p class="p">PRENDI IN CARICO</p>
+						<div class="richiesta">
+							<form  method="post" action="richiestaCorriere">
+									  <div class="form-group">
+									    <label for="formLuogo"></label>
+									    <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="es. un1tr4$p0rT" name="richiestaSpedizione">
+								 	 </div>
+								  <br>								  										  
+							    <input  class="btn btn-success" type="submit" value="CONFERMA"/>
+							</form>
 						</div>	
 
 											
@@ -94,6 +125,10 @@
       
       .info {
       	text-align: center; font-family: monospace; border-style: inset;  font-size: 16px;
+      }
+      
+       .richiesta {
+      	text-align: center; font-family: monospace;   font-size: 16px;
       }
 
      

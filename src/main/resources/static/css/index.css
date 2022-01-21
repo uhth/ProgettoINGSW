@@ -125,6 +125,12 @@ form {
     right: -1.85%;
     transform: translate(-50%, -50%);
 }
+#profilo_utente{
+    position: absolute;
+    top: 92%;
+    right: -1.65%;
+    transform: translate(-50%, -50%);
+}
 
 .showcase-content {
     position: relative;
@@ -456,13 +462,4 @@ form {
 
 }
 
-#profilo_utente {
-	position: relative;
-	top:96.9%;
-	left: 92.32%;
-	font-size: 14px;
-	width: 80px;
-	height: 47px;
-	padding: 6px;
-}
 
