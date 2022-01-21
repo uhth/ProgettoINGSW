@@ -225,7 +225,7 @@ img {
 }
 
 .table {
-    width: 100%;
+    width: 60%;
     margin-top: 2rem;
     border-collapse: collapse;
     border-spacing: 0;
@@ -234,6 +234,9 @@ img {
 .table thead th {
     text-transform: uppercase;
     padding: 0.8rem;
+    background: rgb(0, 98, 244);
+    color:white;
+    
 }
 
 .table tbody tr td {
