@@ -31,8 +31,8 @@
     <img src="../immagini/logoNome.png" alt="" style="width:30%;">
     <p class="lead">Prenota un ritito ${email}</p>
     <button type="button" class="btn btn-primary"><a href="/" class="text-decoration-none" style="color: white;">Home Page</a></button>
-	<button type="button" class="btn btn-success"><a href="profilo_utente" class="text-decoration-none" style="color: white;">Profilo</a></button>
-	<button type="button" class="btn btn-secondary"><a href="tracking_page" class="text-decoration-none" style="color: white;">Traccia spedizione</a></button>
+	  <button type="button" class="btn btn-success"><a href="profilo_utente" class="text-decoration-none" style="color: white;">Profilo</a></button>
+	  <button type="button" class="btn btn-secondary"><a href="tracking_page" class="text-decoration-none" style="color: white;">Traccia spedizione</a></button>
 </div>
 
 
@@ -63,7 +63,8 @@
                       <input type="radio" id="Contrassegno" name="fav_language" value="Contrassegno">
                       <label for="Contrassegno">Contrassegno</label>
                       <br>								  										  
-										    <input  class="btn btn-primary" type="submit" value="Prenota"/>
+										    <!--<input class="btn btn-primary" type="submit" value="Prenota"/>-->
+                        <button type="button" class="btn btn-primary"><a href="paypal" class="text-decoration-none" style="color: white;">Prosegui</a></button>
 										</form>
 
 
