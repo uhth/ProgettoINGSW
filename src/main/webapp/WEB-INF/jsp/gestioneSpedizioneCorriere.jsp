@@ -46,7 +46,7 @@
   										<form  method="post" action="corriereServiceCode">
 										  <div class="form-group">
 										    <label for="formCodice">Codice</label>
-										    <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Codice Tracking" name="codice" value="${last_code}">
+										    <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Codice Tracking" name="codice" value="${codiceRichiestoCorriere}">
 										  </div>
 										  <br>
 										  <input  class="btn btn-success" type="submit" value="Cerca" />										  

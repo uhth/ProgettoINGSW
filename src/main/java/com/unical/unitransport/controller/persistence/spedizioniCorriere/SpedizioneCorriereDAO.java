@@ -112,6 +112,7 @@ public class SpedizioneCorriereDAO {
 		return spedizioni;
 	}
 	
+	
 	public static List<String> getAllSpedizioniString() {
 		initialize();
 		List<String> spedizioni = new ArrayList<String>();
