@@ -79,5 +79,4 @@ public class AddressToCoordinate {
 
 		return finalLong;
 	}
-
 }

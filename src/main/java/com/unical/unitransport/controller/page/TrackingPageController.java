@@ -1,8 +1,6 @@
 package com.unical.unitransport.controller.page;
 
 import java.io.IOException;
-import java.text.DateFormat;
-import java.util.Date;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -58,7 +56,7 @@ public class TrackingPageController {
 		AddressToCoordinate coordDestinatario = new AddressToCoordinate(spedizione.getReceiverLocation());
 		AddressToCoordinate coordMittente = new AddressToCoordinate(spedizione.getSenderLocation());
 
-		if (spedizione.getLastLocation() == null || spedizione.getLastLocation().isEmpty()) {
+		if (spedizione.getLastLocation() == null || !(spedizione.getLastLocation().isEmpty())) {
 			model.addAttribute("corrierelat", coordCorriere.getLatitude());
 			model.addAttribute("corrierelong", coordCorriere.getLongitude());
 		}
