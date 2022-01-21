@@ -269,7 +269,7 @@
 						                    	<c:choose> 
 						                            	<c:when test="${email == null}">
 						                            		<div class="text-center">
-						                            			p class="textllg">Se vuoi modificare una spedizione come cliente passa alla sezione</p>
+						                            			<p class="textllg">Se vuoi modificare una spedizione come cliente passa alla sezione</p>
 						                            			<a onclick="document.getElementById('divLogin').style.display='block'" class="btn btn-lg" >Effettua una modifica</a><br><br>
 						                            		</div>
 						                            		<div class="text-center">
