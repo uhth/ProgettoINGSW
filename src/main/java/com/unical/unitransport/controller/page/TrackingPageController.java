@@ -30,7 +30,8 @@ public class TrackingPageController {
 	
 		loadMarkers( spedizione, model );
 		loadTable( spedizione, model );
-		
+		model.addAttribute("tracking_number", spedizione.getTrackingNumber());
+
 		return "tracking_gmapsPositivo";
 	}
 
@@ -51,19 +52,15 @@ public class TrackingPageController {
 
 		if (spedizione.getLastLocation() != null ) {
 			coordCorriere = new AddressToCoordinate(spedizione.getLastLocation());
-		}
-		
-		AddressToCoordinate coordDestinatario = new AddressToCoordinate(spedizione.getReceiverLocation());
-		AddressToCoordinate coordMittente = new AddressToCoordinate(spedizione.getSenderLocation());
-
-		if (spedizione.getLastLocation() == null || !(spedizione.getLastLocation().isEmpty())) {
 			model.addAttribute("corrierelat", coordCorriere.getLatitude());
 			model.addAttribute("corrierelong", coordCorriere.getLongitude());
 		}
 		
-		model.addAttribute("destinatariolat", coordDestinatario.getLatitude());
-		model.addAttribute("destinatariolong", coordDestinatario.getLongitude());
+		AddressToCoordinate coordDestinatario = new AddressToCoordinate(spedizione.getReceiverLocation());
+		AddressToCoordinate coordMittente = new AddressToCoordinate(spedizione.getSenderLocation());
 		
+		model.addAttribute("destinatariolat", coordDestinatario.getLatitude());
+		model.addAttribute("destinatariolong", coordDestinatario.getLongitude());		
 		model.addAttribute("mittentelat", coordMittente.getLatitude());
 		model.addAttribute("mittentelong", coordMittente.getLongitude());	
 	}

@@ -36,7 +36,8 @@
 
         <div class="showcase-content">
             <h1>Spedizione trovata!</h1>
-            <h3>Cerca una nuova spedizione</h3>
+            <h2>Codice: ${tracking_number}</h2><br>
+            <h4>Cerca una nuova spedizione</h3>
             <form method="post" action="trackingService">
                 <input type="text" id="tracking_box" name="tracking_box" placeholder="Inserisci numero di tracking" name="track_box">
                 <input type="submit" class="btn btn-xl" id="button_procedi" value="Procedi" />
