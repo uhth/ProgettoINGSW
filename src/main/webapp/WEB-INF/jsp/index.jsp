@@ -57,10 +57,11 @@
 				            <c:when test="${role == 'corriere'}">
 				                 <h1>Il lavoro che hai sempre desiderato.<br>Reso più semplice.</h1>
 				                    <p>Assistenza h24</p>
-				                    <a href="aggiornaStato" class="btn btn-xl">
+				                    <a href="/gestioneSpedizioneCorriere" class="btn btn-xl">
 				                       Aggiorna stato spedizione <i class="fas fa-sync"></i>
 				                    </a>
 				                    <br>
+
 				                    <a href="spedizioniCorriere" class="btn btn-xl">
 				                        Visualizza spedizioni <i class="fas fa-history"></i>
 				                    </a>
@@ -174,17 +175,7 @@
             
             
             
-            
-                       <c:choose>
-				            <c:when test="${role == 'corriere'}">
-				                
-
-				            </c:when>    
-				            <c:when test="${role == 'admin'}">
-
-				            </c:when>    				           
-				             <c:otherwise>
-						            <section class="tabs">
+            			            <section class="tabs">
 						                <div class="container">
 						                    <div id="tab-1" class="tab-item tab-border">
 						                        <i class="fas fa-tags fa-3x">
@@ -211,7 +202,9 @@
 						                    <div id="tab-1-content" class="tab-content-item">
 						                        <div class="text-center">
 						                            <p class="textllg">Valuta il tipo di servizio che cerchi e procedi</p>
-						                            <a href="spedisci" class="btn btn-lg">Effettua una spedizione</a>
+						                            <c:if test="${ email == null || role == 'user' }">
+						                            	<a href="spedisci" class="btn btn-lg">Effettua una spedizione</a>
+						                            </c:if>
 						                        </div>
 						
 						                        <table class="table">
@@ -277,19 +270,31 @@
 						                    </div>
 						
 						                    <div id="tab-2-content" class="tab-content-item">
-						                        <div class="text-center">
-						                            <p class="textllg">Se vuoi modificare una spedizione come cliente passa alla sezione</p>
-						                            <a href="" class="btn btn-lg">Effettua una modifica</a><br><br>
-						                        </div>
-						
-						                        <div class="text-center">
-						                            <p class="textllg">Se vuoi modificare lo stato di una spedizione come corriere passa alla
-						                                sezione</p>
-                							        <a onclick="document.getElementById('divLogin').style.display='block'" class="btn btn-lg" >Aggiorna stato</a>
-
-						                        </div>
-						
-						
+						                    	<c:choose> 
+						                            	<c:when test="${email == null}">
+						                            		<div class="text-center">
+						                            			p class="textllg">Se vuoi modificare una spedizione come cliente passa alla sezione</p>
+						                            			<a onclick="document.getElementById('divLogin').style.display='block'" class="btn btn-lg" >Effettua una modifica</a><br><br>
+						                            		</div>
+						                            		<div class="text-center">
+						                            			<p class="textllg">Se vuoi modificare lo stato di una spedizione come corriere passa alla sezione</p>
+                							       				 <a onclick="document.getElementById('divLogin').style.display='block'" class="btn btn-lg" >Aggiorna stato</a>
+						                        			</div>
+						                            	</c:when>
+					                        			<c:when test="${role == 'corriere'}">
+						                            		<div class="text-center">
+						                            			<p class="textllg">Se vuoi modificare lo stato di una spedizione come corriere passa alla sezione</p>
+                							       				 <a href="/gestioneSpedizioneCorriere" class="btn btn-lg" >Aggiorna stato</a>
+						                        			</div>
+					                        			</c:when>
+					                        			<c:when test="${role == 'user'}">
+						                            		<div class="text-center">
+						                            			<p class="textllg">Se vuoi modificare lo stato di una spedizione come corriere passa alla sezione</p>
+                							       				 <a href="/gestisciRitiro" class="btn btn-lg" >Effettua una modifica</a>
+						                        			</div>
+					                        			</c:when>
+						                            </c:choose>	
+											
 						                    </div>
 						
 						                    <div id="tab-3-content" class="tab-content-item">
@@ -309,11 +314,7 @@
 						                    </div>
 						
 						                </div>
-						            </section>
-
-				            </c:otherwise>
-				        </c:choose>
-            
+						            </section>          
             
             
             
