@@ -94,10 +94,6 @@
 				                    <a href="tracking_gmaps" class="btn btn-xl">
 				                        Traccia una spedizione <i class="fas fa-map-marker-alt"></i>
 				                    </a>
-				                    <br>
-				                    <a href="paypal" class="btn btn-xl">
-				                        Pagamento <i class="fab fa-paypal"></i>
-				                    </a>
 				                    <br><br>
 				            </c:when>    				            			           
 				             <c:otherwise>
