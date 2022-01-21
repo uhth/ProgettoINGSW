@@ -64,7 +64,7 @@
                       <label for="Contrassegno">Contrassegno</label>
                       <br>								  										  
 										    <!--<input class="btn btn-primary" type="submit" value="Prenota"/>-->
-                        <button type="button" class="btn btn-primary"><a href="paypal" class="text-decoration-none" style="color: white;">Prosegui</a></button>
+                        <button type="button" class="btn btn-primary"><a href="payment" class="text-decoration-none" style="color: white;">Prosegui</a></button>
 										</form>
 
 
