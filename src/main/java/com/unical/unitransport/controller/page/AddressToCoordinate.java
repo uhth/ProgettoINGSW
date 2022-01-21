@@ -19,7 +19,7 @@ public class AddressToCoordinate {
 	public AddressToCoordinate() {	}
 	
 	public String getLatitude() {
-		if (address == null)
+		if (address == null || address.isEmpty())
 			return "";
 		String theUrl = URL + address;
 		StringBuilder content = new StringBuilder();
@@ -50,7 +50,7 @@ public class AddressToCoordinate {
 	}
 
 	public String getLongitude() {
-		if (address == null)
+		if (address == null || address.isEmpty())
 			return "";
 		String theUrl = URL + address;
 		StringBuilder content = new StringBuilder();
