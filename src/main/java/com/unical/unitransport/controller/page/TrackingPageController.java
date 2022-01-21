@@ -46,7 +46,8 @@ public class TrackingPageController {
 	
 		req.setAttribute("statosped", stato);
 		req.setAttribute("luogosped", luogo);
-		req.setAttribute( "dataeora", spedizione.getLastUpdate().toString().substring(0, 19) );
+		if (spedizione.getLastUpdate()!=null)
+			req.setAttribute( "dataeora", spedizione.getLastUpdate().toString().substring(0, 19) );
 		req.setAttribute( "destFinale", spedizione.getReceiverLocation() );
 		
 	}
