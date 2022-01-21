@@ -4,8 +4,11 @@
         <html lang="en" dir="ltr">
 
         <head>
-            <link href="https://chatcompose.azureedge.net/static/all/global/export/css/main.5b1bd1fd.css" rel="stylesheet"> 
-			<script async type="text/javascript" src="https://chatcompose.azureedge.net/static/all/global/export/js/main.a7059cb5.js?user=unitransport&lang=IT" user="unitransport" lang="IT"></script>  
+            <link href="https://chatcompose.azureedge.net/static/all/global/export/css/main.5b1bd1fd.css"
+                rel="stylesheet">
+            <script async type="text/javascript"
+                src="https://chatcompose.azureedge.net/static/all/global/export/js/main.a7059cb5.js?user=unitransport&lang=IT"
+                user="unitransport" lang="IT"></script>
             <meta charset="utf-8">
             <link rel="icon" href="../immagini/b1.png">
             <link rel="stylesheet" href="css/index.css">
@@ -20,44 +23,38 @@
                 <div class="showcase-top">
                     <a id="posLogo" href="/"><img id="posLogo" src="/immagini/b1.png"></a>
 
+                    <c:if test="${email == null}">
+                        <p class="intro_benvenuto">Benvenuto utente</p>
+                        <a id="prova" onclick="document.getElementById('divLogin').style.display='block'" class="btn btn-rounded">Accedi <i class="fas fa-sign-in-alt"></i></a>
+                    </c:if>
 
-					
-					<c:choose>  
-	                    <c:when test="${email == null}">
-	                        <p class="intro_benvenuto">Benvenuto utente</p>
-	                        <a id="prova" onclick="document.getElementById('divLogin').style.display='block'"
-	                            class="btn btn-rounded">Accedi</a>
-	
-	                    </c:when>
-	                    <c:when test="${email != null}">
-			                        <p class="intro_benvenuto">Benvenuto ${email}</p>
-			                        <a href="logout" id="prova" onclick="btnAccedi()" class="btn btn-rounded">Logout</a>
-			            </c:when>
-		            </c:choose>           
-		            <c:choose>      
-              		      <c:when test="${role == 'user'}">
+                    <c:if test="${email != null}">
+		                        <p class="intro_benvenuto">Benvenuto ${email}</p>
+              		      <c:if test="${role == 'utente'}">
 
 		                        <a href="profilo_utente" id="profilo_utente" onclick="btnAccedi()"
-		                            class="btn btn-rounded">Profilo utente</a>
-	                       </c:when>
-              		      <c:when test="${role == 'corriere'}">
+		                            class="btn btn-rounded">Profilo utente <i class="far fa-user"></i></a>
+	                       </c:if>
+              		      <c:if test="${role == 'corriere'}">
 
                     		    <a id="corriereZone" href="areaCorriere"
-                            class="btn btn-rounded">Area Corriere</a>
-	                       </c:when>
-              		      <c:when test="${role == 'admin'}">
-                   		     <a id="adminZone" onclick="document.getElementById('divLogin').style.display='block'"
-                            class="btn btn-rounded">Amministratore</a>
-	                     </c:when>   
-                    </c:choose>	                                         		                            
+                            class="btn btn-rounded">Area Corriere <i class="fas fa-people-carry"></i></a>
+	                       </c:if>
+              		      <c:if test="${role == 'admin'}">
 
+                   		     <a id="adminZone" onclick="document.getElementById('divLogin').style.display='block'"
+                            class="btn btn-rounded">Amministratore <i class="fas fa-user-lock"></i></a>	                      
+                             </c:if>
+	                       	                       		                            
+		                        <a href="logout" id="prova" onclick="btnAccedi()" class="btn btn-rounded">Logout <i class="fas fa-sign-out-alt"></i></a>
+                    </c:if>
                 </div>
 
 
                 <div class="showcase-content">
 
                            <c:choose>
-				            <c:when test="${corriere != null}">
+				            <c:when test="${role == 'corriere'}">
 				                 <h1>Il lavoro che hai sempre desiderato.<br>Reso più semplice.</h1>
 				                    <p>Assistenza h24</p>
 				                    <a href="aggiornaStato" class="btn btn-xl">
@@ -69,7 +66,7 @@
 				                    </a>
 				                <br />
 				            </c:when>    
-				            <c:when test="${admin != null}">
+				            <c:when test="${role == 'admin'}">
 				                 <h1>Pannello Amministratore<br></h1>
 				                    <a href="/" class="btn btn-xl">
 				                       Aggiungi corriere <i class="fas fa-user-plus"></i>
@@ -95,7 +92,6 @@
 				                        Traccia una spedizione <i class="fas fa-map-marker-alt"></i>
 				                    </a>
 				                    <br>
-
 				                    <a href="paypal" class="btn btn-xl">
 				                        Pagamento <i class="fab fa-paypal"></i>
 				                    </a>
@@ -110,7 +106,6 @@
 				                    <a href="tracking_gmaps" class="btn btn-xl">
 				                        Traccia una spedizione <i class="fas fa-map-pin"></i>
 				                    </a>
-
 				            </c:otherwise>
 				        </c:choose>
                    
@@ -176,8 +171,12 @@
             
             
             
-                       <c:choose>		                  
-				            <c:when test="${role != null}">
+                       <c:choose>
+				            <c:when test="${role == 'corriere'}">
+				                
+
+				            </c:when>    
+				            <c:when test="${role == 'admin'}">
 
 				            </c:when>    				           
 				             <c:otherwise>
