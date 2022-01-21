@@ -21,12 +21,12 @@ public class IndexPageController {
 		return "index";
 	}
 	
-	@GetMapping("errore")
+	@GetMapping("/errore")
 	public String erroreGenerico() {
 		return "erroreGenerico";
 	}
 	
-	@GetMapping("valido")
+	@GetMapping("/valido")
 	public String validoGenerico() {
 		return "validoGenerico";
 	}

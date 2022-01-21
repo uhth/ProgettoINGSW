@@ -13,14 +13,14 @@ import com.unical.unitransport.controller.persistence.spedizioniUtente.Spedizion
 @Controller
 public class GestisciRitiro {
 	
-	@GetMapping("gestisciRitiro")
+	@GetMapping("/gestisciRitiro")
 	public String gestisciRitiro(HttpServletRequest req) {
 		HttpSession session = req.getSession(true);
 		session.setAttribute("codiceDaAggiornare", null);
 		return "gestisciRitiro";
 	}
 	
-	@PostMapping("cercaTrackingModifica")
+	@PostMapping("/cercaTrackingModifica")
 	public String controllaTrackingModifica(HttpServletRequest req, String trackingModifica) {
 		HttpSession session = req.getSession(true);
 		
@@ -41,7 +41,7 @@ public class GestisciRitiro {
 		
 	}
 	
-	@PostMapping("aggiornaRitiro")
+	@PostMapping("/aggiornaRitiro")
 	public String aggiornaRitiro(HttpServletRequest req, String luogoRitiroNuovo) {
 		HttpSession session = req.getSession(true);
 		

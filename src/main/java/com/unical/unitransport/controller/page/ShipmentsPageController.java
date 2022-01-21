@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -15,8 +16,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.unical.unitransport.controller.persistence.shipment.Shipment;
 import com.unical.unitransport.controller.persistence.shipment.ShipmentsDAO;
 import com.unical.unitransport.controller.persistence.shipment.ShipmentsManager;
-import com.unical.unitransport.controller.persistence.spedizioniUtente.SpedizioneUtente;
-import com.unical.unitransport.controller.persistence.spedizioniUtente.SpedizioneUtenteDAO;
+import com.unical.unitransport.controller.persistence.shipment.ShipmentsSenderReceiverDAO;
 
 @Controller
 public class ShipmentsPageController {
@@ -46,12 +46,14 @@ public class ShipmentsPageController {
 		return "prenota_ritiro";
 	}
 	
+	
 	@PostMapping("/prenotaService")
-	public String prenota( HttpServletRequest req,
-						 HttpServletResponse res, 
-						 @RequestParam( value = "luogoRitiro", required = true ) String luogoRitiro,
-						 @RequestParam( value = "luogoConsegna", required = true ) String luogoConsegna,
-						 @RequestParam( value = "emailDestinatario", required = true ) String emailDestinatario ) throws IOException {
+	public String prenota(	Model model,
+							HttpServletRequest req,
+							HttpServletResponse res, 
+							@RequestParam( value = "luogoRitiro", required = true ) String luogoRitiro,
+							@RequestParam( value = "luogoConsegna", required = true ) String luogoConsegna,
+							@RequestParam( value = "emailDestinatario", required = true ) String emailDestinatario ) throws IOException {
 
 		HttpSession session = req.getSession(true);
 
@@ -60,13 +62,8 @@ public class ShipmentsPageController {
 			tracking = trackingCasuale();
 		}
         
-
-        Shipment spedizione = new Shipment(tracking);
-		spedizione.setSenderLocation(luogoRitiro);
-        spedizione.setReceiverLocation(luogoConsegna);
-        ShipmentsDAO.insert(spedizione);
         
-        ShipmentsManager.registerShipment(tracking,(String) req.getSession().getAttribute("email"), emailDestinatario);
+        Shipment spedizione = ShipmentsManager.registerShipment( (String) req.getSession().getAttribute("email"), emailDestinatario, luogoRitiro, luogoConsegna);
         
         System.out.println(spedizione.getTrackingNumber());
         
@@ -77,10 +74,9 @@ public class ShipmentsPageController {
         
         
         
-        SpedizioneUtente spedizione_utente = new SpedizioneUtente(spedizione.getTrackingNumber(), (String) req.getSession().getAttribute("email"));
-        if (SpedizioneUtenteDAO.insert(spedizione_utente)) {
-        	session.setAttribute("validoGenerico", tracking);
-        	session.setAttribute("validoGenerico_p", "Ti servirà per monitorare il pacco, ma non preoccuparti se lasci la pagina,<br> potrai sempre visionarlo nel tuo profilo!");
+        if ( ShipmentsSenderReceiverDAO.getBySenderEmail( (String) session.getAttribute( "email" ) ) != null ) {
+        	model.addAttribute("validoGenerico", tracking);
+        	model.addAttribute("validoGenerico_p", "Ti servirà per monitorare il pacco, ma non preoccuparti se lasci la pagina,<br> potrai sempre visionarlo nel tuo profilo!");
         	return "validoGenerico";
         }
         else return "prenota_ritiro";

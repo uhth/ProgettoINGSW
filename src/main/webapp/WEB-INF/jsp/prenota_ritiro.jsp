@@ -40,7 +40,7 @@
         <div class="row">
 
 				    <div class="col">
-										<form  method="post" action="prenotaService">
+										<form  method="post" action="/prenotaService">
 										  <div class="form-group">
 										    <label for="formLuogo">Ritiro presso:</label>
 										    <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="es. Via Roma n.31 Milano (MI)" name="luogoRitiro">
@@ -64,7 +64,7 @@
                       <label for="Contrassegno">Contrassegno</label>
                       <br>								  										  
 										    <!--<input class="btn btn-primary" type="submit" value="Prenota"/>-->
-                        <button type="button" class="btn btn-primary"><a href="payment" class="text-decoration-none" style="color: white;">Prosegui</a></button>
+                        <button type="button" class="btn btn-primary"><a href="/payment" class="text-decoration-none" style="color: white;">Prosegui</a></button>
 										</form>
 
 
