@@ -53,10 +53,12 @@ public class ShipmentsDAO {
 			statement.setString( 1, shipment.getTrackingNumber() );
 			statement.setInt( 2, shipment.getStatus() );
 			statement.setTimestamp( 3, Timestamp.from( Instant.now() ) );
+
 			statement.setTimestamp( 4, shipment.getLastUpdate() );
 			statement.setString( 5, shipment.getLastLocation() );
 			statement.setString( 6, shipment.getSenderLocation() );
 			statement.setString( 7, shipment.getReceiverLocation() );
+
 			statement.executeUpdate();
 			statement.close();
 			return true;

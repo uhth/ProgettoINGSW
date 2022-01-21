@@ -4,10 +4,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
-public class Paypal {
+public class Payment {
 
-	@GetMapping("paypal")
+	@GetMapping("/payment")
 	public String payment() {
-		return "paypal";
+		return "payment";
 	}
 }
