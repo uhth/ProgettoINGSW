@@ -57,7 +57,7 @@
 				            <c:when test="${role == 'corriere'}">
 				                 <h1>Il lavoro che hai sempre desiderato.<br>Reso più semplice.</h1>
 				                    <p>Assistenza h24</p>
-				                    <a href="/gestioneSpedizioneCorriere" class="btn btn-xl">
+				                    <a href="aggiornaStato" class="btn btn-xl">
 				                       Aggiorna stato spedizione <i class="fas fa-sync"></i>
 				                    </a>
 				                    <br>
