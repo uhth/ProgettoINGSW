@@ -11,8 +11,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import com.unical.unitransport.controller.persistence.account.Account;
-import com.unical.unitransport.controller.persistence.account.AccountRole;
-import com.unical.unitransport.controller.persistence.account.AccountRoleDAO;
 import com.unical.unitransport.controller.persistence.account.AccountsDAO;
 import com.unical.unitransport.controller.persistence.account.AccountsManager;
 import com.unical.unitransport.controller.persistence.account.Role;

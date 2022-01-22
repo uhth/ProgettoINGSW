@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="css/gmaps.css">
     <link rel="stylesheet" href="css/login.css">
     <script src="js/gmaps.js"></script>
+    <script src="js/login.js"></script>
     <script src="https://kit.fontawesome.com/eb3e5ce09e.js" crossorigin="anonymous"></script>
     <title>UniTransport</title>
 </head>
@@ -32,8 +33,7 @@
                     </c:if>
                 </div>  
                      
-            </div>
-            
+            </div>   
             
         <div class="showcase-content">
             <h1>Inserisci il codice della tua spedizione</h1>
@@ -97,7 +97,6 @@
          
 
     </header>
-    <script src="js/login.js"></script>
     <footer class="footer">
         <div class="footer-cols">
             <ul>
