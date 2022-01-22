@@ -49,89 +49,98 @@
 
             <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD35CvNGS9oIaIaa-MSQsKf1i4JxrInTf4&callback=initMap&libraries=&v=weekly" async></script>
             <script th:inline="javascript">
-            function initMap() {
-            const roma = { lat: 41.77, lng: 12.94 }; 
-            const map = new google.maps.Map(document.getElementById("map"), {
-                zoom: 5.5,
-                center: roma,
-            });
 
-    
-            const icons = {
-                mittente: {
-                icon: "immagini/gmaps_mittente.png",
-                },
-                destinatario: {
-                icon: "immagini/gmaps_destinatario.png",
-                },
-                corriere: {
-                icon: "immagini/gmaps_corriere.png",
-                },
-            };
-            
-            /*<![CDATA[*/
-            const features = [
-            {
-            position: new google.maps.LatLng([[${corrierelat}]],  [[${corrierelong}]]),
-            type: "corriere",
-            },
-            {
-            position: new google.maps.LatLng([[${mittentelat}]],  [[${mittentelong}]]),
-            type: "mittente",
-            },
-            {
-            position: new google.maps.LatLng([[${destinatariolat}]],  [[${destinatariolong}]]),
-            type: "destinatario",
-            },
-            ];
-              
-                
-            const mittenteCorriere = [
-                new google.maps.LatLng([[${corrierelat}]],  [[${corrierelong}]]),
-                new google.maps.LatLng([[${mittentelat}]],  [[${mittentelong}]])
-            ];
-            const mitCor = new google.maps.Polyline({
-                path: mittenteCorriere,
-                geodesic: true,
-                strokeColor: "#FF0000",
-                strokeOpacity: 0.5,
-                strokeWeight: 2,
-            });
-            const corDestinatario = [
-                new google.maps.LatLng([[${corrierelat}]],  [[${corrierelong}]]),
-                new google.maps.LatLng([[${destinatariolat}]],  [[${destinatariolong}]])
-            ];
-            const corDest = new google.maps.Polyline({
-                path: corDestinatario,
-                geodesic: true,
-                strokeColor: "#12d400",
-                strokeOpacity: 0.5,
-                strokeWeight: 2,
-            });
+                function initMap() {
+                    const roma = { lat: 41.77, lng: 12.94 }; 
+                    const map = new google.maps.Map(document.getElementById("map"), {
+                        zoom: 5.5,
+                        center: roma,
+                    });        
+                    const icons = {
+                        mittente: {
+                        icon: "immagini/gmaps_mittente.png",
+                        },
+                        destinatario: {
+                        icon: "immagini/gmaps_destinatario.png",
+                        },
+                        corriere: {
+                        icon: "immagini/gmaps_corriere.png",
+                        },
+                    };                    
+                    /*<![CDATA[*/
+                        const features = [
+                        {
+                        position: new google.maps.LatLng([[${corrierelat}]],  [[${corrierelong}]]),
+                        type: "corriere",
+                        },
+                        {
+                        position: new google.maps.LatLng([[${mittentelat}]],  [[${mittentelong}]]),
+                        type: "mittente",
+                        },
+                        {
+                        position: new google.maps.LatLng([[${destinatariolat}]],  [[${destinatariolong}]]),
+                        type: "destinatario",
+                        },];                  
+                            
+                        const mittenteCorriere = [
+                            new google.maps.LatLng([[${corrierelat}]],  [[${corrierelong}]]),
+                            new google.maps.LatLng([[${mittentelat}]],  [[${mittentelong}]])
+                        ];
+                        const mitCor = new google.maps.Polyline({
+                            path: mittenteCorriere,
+                            geodesic: true,
+                            strokeColor: "#FF0000",
+                            strokeOpacity: 0.5,
+                            strokeWeight: 2,
+                        });
+                        const corDestinatario = [
+                            new google.maps.LatLng([[${corrierelat}]],  [[${corrierelong}]]),
+                            new google.maps.LatLng([[${destinatariolat}]],  [[${destinatariolong}]])
+                        ];
+                        const corDest = new google.maps.Polyline({
+                            path: corDestinatario,
+                            geodesic: true,
+                            strokeColor: "#12d400",
+                            strokeOpacity: 0.5,
+                            strokeWeight: 2,
+                        });
 
-            mitCor.setMap(map); 
-            corDest.setMap(map); 
-            /*]]>*/
+                        mitCor.setMap(map); 
+                        corDest.setMap(map); 
+                    /*]]>*/
+                    
             
-       
-            // Creazione markers.
-            for (let i = 0; i < features.length; i++) {
-                const marker = new google.maps.Marker({
-                position: features[i].position,
-                icon: icons[features[i].type].icon,
-                map: map,
-               // title: features[i].type,
+                    // Creazione markers.
+                    for (let i = 0; i < features.length; i++) {
+                        const marker = new google.maps.Marker({
+                            position: features[i].position,
+                            icon: icons[features[i].type].icon,
+                            map: map,
+                            title: "we",
+                        });
+                        if (features[i].type == "corriere")
+                            addInfoWindow(marker, "Corriere");
+                        if (features[i].type == "mittente")
+                            addInfoWindow(marker, "Mittente");
+                        if (features[i].type == "destinatario")
+                            addInfoWindow(marker, "Destinatario");
+                    }
+                /*          
+                map.addListener("click", (mapsMouseEvent) => {    
+                    console.log(mapsMouseEvent.latLng.toJSON()) // print posizione              
                 });
-            }
-            
-            map.addListener("click", (mapsMouseEvent) => {    
-            //  console.log(mapsMouseEvent.latLng.toJSON()) /* posizione  */
-              infoWindow.open(map); infowindow 
-            });
-            }
+                */                
+                }
 
+                function addInfoWindow(marker, message) {
+                    var infoWindow = new google.maps.InfoWindow({
+                        content: message
+                    });
 
-            
+                    google.maps.event.addListener(marker, 'click', function () {
+                        infoWindow.open(map, marker);
+                    });
+                }
             </script>
 
             
