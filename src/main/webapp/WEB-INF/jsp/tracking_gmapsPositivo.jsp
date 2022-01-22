@@ -54,7 +54,7 @@
             function initMap() {
             const roma = { lat: 41.77, lng: 12.94 }; 
             const map = new google.maps.Map(document.getElementById("map"), {
-                zoom: 4,
+                zoom: 5.5,
                 center: roma,
             });
                 
