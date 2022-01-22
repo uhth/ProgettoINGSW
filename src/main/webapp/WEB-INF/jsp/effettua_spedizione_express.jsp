@@ -47,7 +47,19 @@
 							    <h5 class="card-title">FINO A 10KG</h5>
 							    <p class="card-text" style="color: black;">9.99€</p>
 			                    <c:if test="${email != null}">
-			                	    <a href="prenotaRitiro" class="btn btn-primary">Acquista</a>
+			                	    <!--<a href="prenotaRitiro" class="btn btn-primary">Acquista</a>-->
+                            <script>
+                              function store(){
+                                var costo=9.99;
+                                var spedizione="Spedizione tracciabile express fino a 10kg.";
+                                var img="../immagini/camionUnicalTracciabileExpress.png";
+                                sessionStorage.setItem("first",costo);
+                                sessionStorage.setItem("second",spedizione);
+                                sessionStorage.setItem("third",img);
+                                location.href = "payment.jsp";
+                              }
+                            </script>
+                            <a href="prenotaRitiro" class="btn btn-primary" onclick="store()">Acquista</a>
 			                    </c:if>
 			                    <c:if test="${email == null}">
 			                	    <a onclick="document.getElementById('divLogin').style.display='block'" class="btn btn-primary">Accedi e acquista</a>
@@ -66,7 +78,19 @@
 							    <h5 class="card-title">FINO A 15KG</h5>
 							    <p class="card-text" style="color: black;">11.99€</p>
 			                    <c:if test="${email != null}">
-			                	    <a href="prenotaRitiro" class="btn btn-primary">Acquista</a>
+			                	    <!--<a href="prenotaRitiro" class="btn btn-primary">Acquista</a>-->
+                            <script>
+                              function store2(){
+                                var costo=11.99;
+                                var spedizione="Spedizione tracciabile express fino a 15kg.";
+                                var img="../immagini/camionUnicalTracciabileExpress.png";
+                                sessionStorage.setItem("first",costo);
+                                sessionStorage.setItem("second",spedizione);
+                                sessionStorage.setItem("third",img);
+                                location.href = "payment.jsp";
+                              }
+                            </script>
+                            <a href="prenotaRitiro" class="btn btn-primary" onclick="store2()">Acquista</a>
 			                    </c:if>
 			                    <c:if test="${email == null}">
 			                	    <a onclick="document.getElementById('divLogin').style.display='block'" class="btn btn-primary">Accedi e acquista</a>
@@ -85,7 +109,19 @@
 							    <h5 class="card-title">OLTRE 25KG</h5>
 							    <p class="card-text" style="color: black;">19.99€</p>
 			                    <c:if test="${email != null}">
-			                	    <a href="prenotaRitiro" class="btn btn-primary">Acquista</a>
+			                	    <!--<a href="prenotaRitiro" class="btn btn-primary">Acquista</a>-->
+                            <script>
+                              function store3(){
+                                var costo=19.99;
+                                var spedizione="Spedizione tracciabile express oltre i 25kg.";
+                                var img="../immagini/camionUnicalTracciabileExpress.png";
+                                sessionStorage.setItem("first",costo);
+                                sessionStorage.setItem("second",spedizione);
+                                sessionStorage.setItem("third",img);
+                                location.href = "payment.jsp";
+                              }
+                            </script>
+                            <a href="prenotaRitiro" class="btn btn-primary" onclick="store3()">Acquista</a>
 			                    </c:if>
 			                    <c:if test="${email == null}">
 			                	    <a onclick="document.getElementById('divLogin').style.display='block'" class="btn btn-primary">Accedi e acquista</a>
