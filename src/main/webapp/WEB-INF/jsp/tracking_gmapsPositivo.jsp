@@ -55,7 +55,8 @@
                 zoom: 5.5,
                 center: roma,
             });
-                
+
+    
             const icons = {
                 mittente: {
                 icon: "immagini/gmaps_mittente.png",
@@ -69,36 +70,68 @@
             };
             
             /*<![CDATA[*/
-                const features = [
-                {
-                position: new google.maps.LatLng([[${corrierelat}]],  [[${corrierelong}]]),
-                type: "corriere",
-                },
-                {
-                position: new google.maps.LatLng([[${mittentelat}]],  [[${mittentelong}]]),
-                type: "mittente",
-                },
-                {
-                position: new google.maps.LatLng([[${destinatariolat}]],  [[${destinatariolong}]]),
-                type: "destinatario",
-                },
-                ];
-                /*]]>*/
+            const features = [
+            {
+            position: new google.maps.LatLng([[${corrierelat}]],  [[${corrierelong}]]),
+            type: "corriere",
+            },
+            {
+            position: new google.maps.LatLng([[${mittentelat}]],  [[${mittentelong}]]),
+            type: "mittente",
+            },
+            {
+            position: new google.maps.LatLng([[${destinatariolat}]],  [[${destinatariolong}]]),
+            type: "destinatario",
+            },
+            ];
+              
                 
-            // Create markers.
+            const mittenteCorriere = [
+                new google.maps.LatLng([[${corrierelat}]],  [[${corrierelong}]]),
+                new google.maps.LatLng([[${mittentelat}]],  [[${mittentelong}]])
+            ];
+            const mitCor = new google.maps.Polyline({
+                path: mittenteCorriere,
+                geodesic: true,
+                strokeColor: "#FF0000",
+                strokeOpacity: 0.5,
+                strokeWeight: 2,
+            });
+            const corDestinatario = [
+                new google.maps.LatLng([[${corrierelat}]],  [[${corrierelong}]]),
+                new google.maps.LatLng([[${destinatariolat}]],  [[${destinatariolong}]])
+            ];
+            const corDest = new google.maps.Polyline({
+                path: corDestinatario,
+                geodesic: true,
+                strokeColor: "#12d400",
+                strokeOpacity: 0.5,
+                strokeWeight: 2,
+            });
+
+            mitCor.setMap(map); 
+            corDest.setMap(map); 
+            /*]]>*/
+            
+       
+            // Creazione markers.
             for (let i = 0; i < features.length; i++) {
                 const marker = new google.maps.Marker({
                 position: features[i].position,
                 icon: icons[features[i].type].icon,
                 map: map,
+               // title: features[i].type,
                 });
             }
             
             map.addListener("click", (mapsMouseEvent) => {    
-                console.log(mapsMouseEvent.latLng.toJSON()) /* posizione  */
-            /*  infoWindow.open(map); infowindow */ 
+            //  console.log(mapsMouseEvent.latLng.toJSON()) /* posizione  */
+              infoWindow.open(map); infowindow 
             });
             }
+
+
+            
             </script>
 
             
