@@ -46,7 +46,7 @@ public class AccountPageController {
 		return "area_corriere";
 	}
 	
-	@GetMapping("spedizioniCorriere")
+	@GetMapping("/spedizioniCorriere")
 	public String spedizioniAttive(HttpServletRequest req) {
 		HttpSession session = req.getSession(true);
 		session.setAttribute("listaSpedizioniAnteprima", null);
@@ -75,7 +75,7 @@ public class AccountPageController {
 		return "spedizioni_corriere";
 	}
 	
-	@PostMapping("richiestaTrackingCorriere")
+	@PostMapping("/richiestaTrackingCorriere")
 	public String setTracking(HttpServletRequest req, HttpServletResponse res, String trackingRichiesto) throws IOException {
 		HttpSession session = req.getSession(true);
 		session.setAttribute("trackingRichiesto", trackingRichiesto);
@@ -85,7 +85,7 @@ public class AccountPageController {
 
 	}
 	
-	@PostMapping("richiestaTrackingCorriereModifica")
+	@PostMapping("/richiestaTrackingCorriereModifica")
 	public String setTrackingGestione(HttpServletRequest req, HttpServletResponse res, String modificaCodiceTracking) throws IOException {
 		HttpSession session = req.getSession(true);
 		session.setAttribute("codiceRichiestoCorriere", modificaCodiceTracking);
@@ -96,7 +96,7 @@ public class AccountPageController {
 
 	}
 	
-	@PostMapping("richiestaCorriere")
+	@PostMapping("/richiestaCorriere")
 	public String richiestaConsegna(HttpServletRequest req, HttpServletResponse res, String richiestaSpedizione) throws IOException {
 		HttpSession session = req.getSession(true);
 		
