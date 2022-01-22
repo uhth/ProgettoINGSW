@@ -47,7 +47,19 @@
 							    <h5 class="card-title">FINO A 10Kg</h5>
 							    <p class="card-text" style="color: black;">15.99€</p>
 			                    <c:if test="${email != null}">
-			                	    <a href="prenotaRitiro" class="btn btn-primary">Acquista</a>
+			                	    <!--<a href="prenotaRitiro" class="btn btn-primary">Acquista</a>-->
+                            <script>
+                              function store(){
+                                var costo=15.99;
+                                var spedizione="Spedizione tracciabile assicurata fino a 10kg.";
+                                var img="../immagini/camionUnicalTracciabileExpressAssicurata.png";
+                                sessionStorage.setItem("first",costo);
+                                sessionStorage.setItem("second",spedizione);
+                                sessionStorage.setItem("third",img);
+                                location.href = "payment.jsp";
+                              }
+                            </script>
+                            <a href="prenotaRitiro" class="btn btn-primary" onclick="store()">Acquista</a>
 			                    </c:if>
 			                    <c:if test="${email == null}">
 			                	    <a onclick="document.getElementById('divLogin').style.display='block'" class="btn btn-primary">Accedi e acquista</a>
@@ -66,7 +78,19 @@
 							    <h5 class="card-title">FINO A 15Kg</h5>
 							    <p class="card-text" style="color: black;">17.99€</p>
 			                    <c:if test="${email != null}">
-			                	    <a href="prenotaRitiro" class="btn btn-primary">Acquista</a>
+			                	    <!--<a href="prenotaRitiro" class="btn btn-primary">Acquista</a>-->
+                            <script>
+                              function store2(){
+                                var costo=17.99;
+                                var spedizione="Spedizione tracciabile assicurata fino a 15kg.";
+                                var img="../immagini/camionUnicalTracciabileExpressAssicurata.png";
+                                sessionStorage.setItem("first",costo);
+                                sessionStorage.setItem("second",spedizione);
+                                sessionStorage.setItem("third",img);
+                                location.href = "payment.jsp";
+                              }
+                            </script>
+                            <a href="prenotaRitiro" class="btn btn-primary" onclick="store2()">Acquista</a>
 			                    </c:if>
 			                    <c:if test="${email == null}">
 			                	    <a onclick="document.getElementById('divLogin').style.display='block'" class="btn btn-primary">Accedi e acquista</a>
@@ -86,7 +110,19 @@
 							    <p class="card-text" style="color: black;">26.99€</p>
 							    
 			                    <c:if test="${email != null}">
-			                	    <a href="prenotaRitiro" class="btn btn-primary">Acquista</a>
+			                	    <!--<a href="prenotaRitiro" class="btn btn-primary">Acquista</a>-->
+                            <script>
+                              function store3(){
+                                var costo=26.99;
+                                var spedizione="Spedizione tracciabile assicurata oltre i 25kg.";
+                                var img="../immagini/camionUnicalTracciabileExpressAssicurata.png";
+                                sessionStorage.setItem("first",costo);
+                                sessionStorage.setItem("second",spedizione);
+                                sessionStorage.setItem("third",img);
+                                location.href = "payment.jsp";
+                              }
+                            </script>
+                            <a href="prenotaRitiro" class="btn btn-primary" onclick="store3()">Acquista</a>
 			                    </c:if>
 			                    <c:if test="${email == null}">
 			                	    <a onclick="document.getElementById('divLogin').style.display='block'" class="btn btn-primary">Accedi e acquista</a>
@@ -156,7 +192,7 @@
    
    
    
-   <script src="login.js"></script>
+   <script src="js/login.js"></script>
 
 
   </body>

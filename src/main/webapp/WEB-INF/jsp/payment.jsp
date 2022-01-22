@@ -20,15 +20,31 @@
                     <div class="flex item justify-content-between">
                         <div class="flex">
                             <div class="img text-center">
-                                <img src="../immagini/camionUnicalTracciabile.png" alt=""> <!--immagine spedizione-->
+                                <img src="" id="img" alt=""> <!--immagine spedizione-->
+                                <script>
+                                    var img= sessionStorage.getItem("third");
+                                    document.getElementById("img").src=img;
+                                    //sessionStorage.clear();
+                                </script>
                             </div>
                             <div class="title">
-                                <h3>Spedizione Tracciabile Massimo 10kg</h3> <!--qui inserire il nome del acquisto-->
+                                <h3 id="Spedizione"></h3>
+                                <script>
+                                    var spedizione= sessionStorage.getItem("second");
+                                    document.getElementById("Spedizione").innerHTML= spedizione;
+                                    //sessionStorage.clear();
+                                </script>
                                 <span>Qui inserire i dettagli della spedizione(via ritiro,ecc)</span> <!--qui mettere la sottolabel-->
                             </div>
                         </div>
                         <div class="price">
-                            <h4 class="text-red">$349</h4> <!--qui mettere il prezzo-->
+                            <p id="costo"></p>
+                            <script>
+                                var costo= sessionStorage.getItem("first");
+                                document.getElementById("costo").innerHTML= costo+" "+ "&euro;";
+                                //sessionStorage.clear();
+                            </script>
+                            <!--<h4 class="text-red"></h4>-->
                         </div>
                     </div>
                 </div>
@@ -39,7 +55,11 @@
                         <ul>
                             <li class="flex justify-content-between">
                                 <label for="price">Spedizione : </label> 
-                                <span>$399</span>   <!--riprendere il prezzo dell'item-->
+                                <span id="costo2"></span><!--riprendere il prezzo dell'item-->
+                                <script>
+                                    var costo= sessionStorage.getItem("first");
+                                    document.getElementById("costo2").innerHTML= costo+" "+ "&euro;";
+                                </script>   
                             </li>
                             <li class="flex justify-content-between">
                                 <label for="price">IVA : </label> 

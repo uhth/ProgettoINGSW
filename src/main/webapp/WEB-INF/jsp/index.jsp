@@ -57,20 +57,21 @@
 				            <c:when test="${role == 'corriere'}">
 				                 <h1>Il lavoro che hai sempre desiderato.<br>Reso più semplice.</h1>
 				                    <p>Assistenza h24</p>
-				                    <a href="/gestioneSpedizioneCorriere" class="btn btn-xl">
+				                    <a href="aggiornaStato" class="btn btn-xl">
 				                       Aggiorna stato spedizione <i class="fas fa-sync"></i>
 				                    </a>
 				                    <br>
-				                    <a href="/areaCorriere" class="btn btn-xl">
+
+				                    <a href="spedizioniCorriere" class="btn btn-xl">
 				                        Visualizza spedizioni <i class="fas fa-history"></i>
 				                    </a>
 				                <br />
+								<br><br>
 				            </c:when>    
 				            <c:when test="${role == 'admin'}">
 				                 <h1>Pannello Amministratore<br></h1>
-				                    <a href="/" class="btn btn-xl">
-				                       Aggiungi corriere <i class="fas fa-user-plus"></i>
-				                    </a>
+				                    <a id="addCorriere" onclick="document.getElementById('divRegisterCorr').style.display='block'" class="btn btn-xl">Aggiungi Corriere <i class="fas fa-user-lock"></i>
+                            		</a>	
 				                    <br>
 				                    <a href="/" class="btn btn-xl">
 				                        Rimuovi corriere <i class="fas fa-user-slash"></i>
@@ -80,6 +81,7 @@
 				                        Fornisci assistenza <i class="fas fa-headset"></i>
 				                    </a>
 				                <br />
+				                    <br><br>
 				            </c:when>    	
 				            <c:when test="${email != null}">
 				                 <h1>Consegne Al Miglior Prezzo.<br>Nazionali e Internazionali.</h1>
@@ -91,10 +93,7 @@
 				                    <a href="tracking_gmaps" class="btn btn-xl">
 				                        Traccia una spedizione <i class="fas fa-map-marker-alt"></i>
 				                    </a>
-				                    <br>
-				                    <a href="paypal" class="btn btn-xl">
-				                        Pagamento <i class="fab fa-paypal"></i>
-				                    </a>
+				                    <br><br>
 				            </c:when>    				            			           
 				             <c:otherwise>
 				                 <h1>Consegne Al Miglior Prezzo.<br>Nazionali e Internazionali.</h1>
@@ -106,9 +105,30 @@
 				                    <a href="tracking_gmaps" class="btn btn-xl">
 				                        Traccia una spedizione <i class="fas fa-map-pin"></i>
 				                    </a>
+				                    <br><br>
 				            </c:otherwise>
 				        </c:choose>
                    
+                   <!-- add Corriere -->
+                   <div id="divRegisterCorr" class="modal">
+                        <form class="modal-content animate" action="/iscrizioneCorriereService" method="post">
+                            <div class="imgcontainer">
+                                <span onclick="document.getElementById('divRegisterCorr').style.display='none'"
+                                    class="close" title="Close Modal">&times;</span>
+                                <img src="img/b1.png" alt="Avatar" class="avatar">
+                            </div>
+                            <div class="container">
+                                <label for="email"><b>Email corriere</b></label>
+                                <input type="email" placeholder="Inserisci Email" name="email" required>
+                                <label for="password"><b>Password</b></label>
+                                <input type="password" placeholder="Inserisci Password" name="password" required>
+                                <label for="password_ripetuta"><b>Conferma Password</b></label>
+                                <input type="password" placeholder="Inserisci Password" name="password_ripetuta"
+                                    required>
+                                <button type="submit" id="button">Registra</button>
+                            </div>
+                        </form>
+                    </div>
                    
 
                     <!-- LOGIN -->
@@ -268,7 +288,7 @@
 						                    	<c:choose> 
 						                            	<c:when test="${email == null}">
 						                            		<div class="text-center">
-						                            			p class="textllg">Se vuoi modificare una spedizione come cliente passa alla sezione</p>
+						                            			<p class="textllg">Se vuoi modificare una spedizione come cliente passa alla sezione</p>
 						                            			<a onclick="document.getElementById('divLogin').style.display='block'" class="btn btn-lg" >Effettua una modifica</a><br><br>
 						                            		</div>
 						                            		<div class="text-center">
@@ -340,7 +360,7 @@
                 </div>
             </footer>
             <script src="js/main.js"></script>
-            <script src="login.js"></script>
+            <script src="js/login.js"></script>
         </body>
 
         </html>

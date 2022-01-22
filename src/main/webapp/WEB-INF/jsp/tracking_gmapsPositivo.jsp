@@ -36,7 +36,10 @@
 
         <div class="showcase-content">
             <h1>Spedizione trovata!</h1>
-            <h3>Cerca una nuova spedizione</h3>
+            <h2>Codice: ${tracking_number}</h2>            
+            <hr align="left" size="1" width="300" color="gray" noshade><br>
+
+            <h4>Cerca una nuova spedizione</h3>
             <form method="post" action="trackingService">
                 <input type="text" id="tracking_box" name="tracking_box" placeholder="Inserisci numero di tracking" name="track_box">
                 <input type="submit" class="btn btn-xl" id="button_procedi" value="Procedi" />
@@ -99,8 +102,8 @@
             </script>
 
             
-            <table class="table">
-                <thead class="thead-light">
+            <table class="table" id="tabsped">
+                <thead>
                   <tr>                      
                     <th scope="col">Data e ora</th>
                     <th scope="col">Stato</th>
@@ -108,18 +111,20 @@
                     <th scope="col">Destinazione finale</th>
                   </tr>
                 </thead>
-                <tbody>
-                  <tr>
-                    <th scope="row">${dataeora}</th>
-                    <td>${statosped}</td>
-                    <td>${luogosped}</td>
-                    <td>${destFinale}</td>
-                  </tr>
+                <tbody> 
+                    <c:forEach var = "i" begin = "0" end = "${sizeofevents}">
+                    <tr>
+                        <th scope="col">${dataeora.get(i)}</th>
+                        <th scope="col">${statosped.get(i)}</th>
+                        <th scope="col">${luogosped.get(i)}</th>
+                        <th scope="col">${destFinale}</th>
+                    </tr>
+                </c:forEach>
                 </tbody>
               </table>
           </div>
     </header>
-
+ 
 
 </body>
 

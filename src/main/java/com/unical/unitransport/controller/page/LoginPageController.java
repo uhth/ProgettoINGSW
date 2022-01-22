@@ -69,31 +69,9 @@ public class LoginPageController {
 		if( role == null ) role = RolesDAO.getByName( "user" );
 		session.setAttribute( "role" , role.getRoleName() );
 		
-		
-		
 		return "index";
 		
 	}
 	
-
-	
-	private boolean isUser(Account account) {
-		AccountRole role = AccountRoleDAO.getFor(account);
-		if (role.getRoleId()==0)
-			return true;
-		return false;
-		
-	}
-
-	
-	private boolean isCorriere(Account account) {
-		AccountRole role = AccountRoleDAO.getFor(account);
-		if (role.getRoleId()==1)
-			return true;
-		return false;
-		
-	}
-
-
 
 }

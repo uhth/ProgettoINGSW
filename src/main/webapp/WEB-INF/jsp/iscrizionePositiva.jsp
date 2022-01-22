@@ -13,7 +13,9 @@
     <header class="showcase">
         <div class="showcase-top">
             <img src="/immagini/b1.png" alt="">
-            <a href="login" id="prova" onclick="btnAccedi()" class="btn btn-rounded">Accedi</a>
+            <c:if test="${ email == null }">
+            	<a href="login" id="prova" onclick="btnAccedi()" class="btn btn-rounded">Accedi</a>
+            </c:if>
         </div>
         <div class="showcase-content">
             <h1>Hai creato con successo l'account</p>

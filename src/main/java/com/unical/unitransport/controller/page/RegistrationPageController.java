@@ -8,18 +8,33 @@ import javax.servlet.http.HttpSession;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-
 import com.unical.unitransport.controller.persistence.account.Account;
-import com.unical.unitransport.controller.persistence.account.AccountRole;
-import com.unical.unitransport.controller.persistence.account.AccountRoleDAO;
 import com.unical.unitransport.controller.persistence.account.AccountsManager;
 
 @Controller
 public class RegistrationPageController {
 	
+	@PostMapping("/iscrizioneCorriereService")
+	public String registerCorriere(	HttpServletResponse res,	
+		HttpServletRequest req,
+		@RequestParam( value = "email", required = true ) String email,
+		@RequestParam( value = "password", required = true ) String password,
+		@RequestParam( value = "password_ripetuta", required = true ) String password_ripetuta ) throws IOException {
+
+
+	int diff = password.compareTo( password_ripetuta );
+	if( diff != 0 ) {
+		res.sendError( HttpServletResponse.SC_BAD_REQUEST );
+	}
+	
+	Account account = AccountsManager.registerAccount( email, password, "corriere" );
+	if( account == null ) return "iscrizione";
+					
+	return "iscrizionePositiva";
+}
 
 	@PostMapping("/iscrizioneService")
-	public String login( HttpServletResponse res,
+	public String registerUser( HttpServletResponse res,
 			HttpServletRequest req,
 			@RequestParam( value = "email", required = true ) String email,
 			@RequestParam( value = "password", required = true ) String password,

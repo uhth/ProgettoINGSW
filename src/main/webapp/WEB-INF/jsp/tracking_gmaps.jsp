@@ -38,7 +38,7 @@
         <div class="showcase-content">
             <h1>Inserisci il codice della tua spedizione</h1>
             <form method="post" action="trackingService">
-                <input type="text" id="tracking_box" name="tracking_box" placeholder="Inserisci numero di tracking" name="track_box">
+                <input type="text" id="tracking_box" name="tracking_box" placeholder="Inserisci numero di tracking" name="track_box" value="${trackingRichiesto}">
                 <input type="submit" class="btn btn-xl" id="button_procedi" value="Procedi" />
             </form>
 
@@ -97,7 +97,7 @@
          
 
     </header>
-    <script src="login.js"></script>
+    <script src="js/login.js"></script>
     <footer class="footer">
         <div class="footer-cols">
             <ul>

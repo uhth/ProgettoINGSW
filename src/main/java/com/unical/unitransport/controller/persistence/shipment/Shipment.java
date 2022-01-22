@@ -1,6 +1,7 @@
 package com.unical.unitransport.controller.persistence.shipment;
 
 import java.sql.Timestamp;
+import java.util.ArrayList;
 
 public class Shipment {
 	
@@ -11,6 +12,10 @@ public class Shipment {
 	public static final int DELIVERY = 3;
 	public static final int COMPLETED = 4;
 	public static final int CANCELED = 5;
+	
+	private ArrayList<Timestamp> registerDate = new ArrayList<Timestamp>();
+	private ArrayList<String> registerState = new ArrayList<String>();;
+	private ArrayList<String> registerLocation = new ArrayList<String>();;
 	
 	private int shipment_id;
 	private String tracking_number;
@@ -31,7 +36,7 @@ public class Shipment {
 		this.status = LABEL_CREATED;
 		this.last_location = last_location;
 		this.sender_location = sender_location;
-		this.receiver_location = receiver_location;
+		this.receiver_location = receiver_location;		
 	}
 	
 	//intended for dao's use only
@@ -44,6 +49,11 @@ public class Shipment {
 		this.last_location = last_location;
 		this.sender_location = sender_location;
 		this.receiver_location = receiver_location;
+		
+		// load register
+		registerDate.add(created_on);
+		registerState.add(getStato(status));
+		registerLocation.add(last_location);
 	}
 
 	public int getShipmentId() {
@@ -67,6 +77,7 @@ public class Shipment {
 	}
 
 	public void setStatus(int status) {
+		registerState.add(getStato(status));
 		this.status = status;
 	}
 	
@@ -75,6 +86,7 @@ public class Shipment {
 	}
 	
 	public void setLastUpdate( Timestamp last_update ) {
+		registerDate.add(last_update);
 		this.last_update = last_update;
 	}
 	
@@ -91,6 +103,7 @@ public class Shipment {
 	}
 	
 	public void setLastLocation( String last_location ) {
+		registerLocation.add(last_location);
 		this.last_location = last_location;
 	}
 	
@@ -131,7 +144,25 @@ public class Shipment {
 		
 		return state;
 	}
-	
+	public String getStato(int x) {
+		String state = "";
+		if(x==Shipment.UNKNOWN)
+			state = "Nessuna informazione attualmente disponibile";
+		else if (x==Shipment.LABEL_CREATED)
+			state ="LA SPEDIZIONE E' STATA CREATA";
+		else if (x==Shipment.OUT_FOR_DELIVERY)
+			state ="LA SPEDIZIONE E' PRONTA PER LA CONSEGNA";		
+		else if (x==Shipment.SHIPPED)
+			state ="LA SPEDIZIONE E' PARTITA";		
+		else if (x==Shipment.DELIVERY)
+			state ="LA SPEDIZIONE E' IN CONSEGNA";
+		else if (x==Shipment.COMPLETED)
+			state ="LA SPEDIZIONE E' STATA COMPLETATA";		
+		else if (x==Shipment.CANCELED)
+			state ="LA SPEDIZIONE E' STATA ANNULLATA";		
+		
+		return state;
+	}
 	public String localita() {
 		
 		if (status>=Shipment.SHIPPED && status<=Shipment.COMPLETED)
@@ -139,6 +170,18 @@ public class Shipment {
 		
 		return "LOCALIZZAZIONE NON DISPONIBILE";
 			
+	}
+
+	public ArrayList<Timestamp> getRegisterDate() {
+		return registerDate;
+	}
+
+	public ArrayList<String> getRegisterState() {
+		return registerState;
+	}
+
+	public ArrayList<String> getRegisterLocation() {
+		return registerLocation;
 	}
 	
 
