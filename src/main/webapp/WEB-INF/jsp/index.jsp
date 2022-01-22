@@ -70,9 +70,8 @@
 				            </c:when>    
 				            <c:when test="${role == 'admin'}">
 				                 <h1>Pannello Amministratore<br></h1>
-				                    <a href="/" class="btn btn-xl">
-				                       Aggiungi corriere <i class="fas fa-user-plus"></i>
-				                    </a>
+				                    <a id="addCorriere" onclick="document.getElementById('divRegisterCorr').style.display='block'" class="btn btn-xl">Aggiungi Corriere <i class="fas fa-user-lock"></i>
+                            		</a>	
 				                    <br>
 				                    <a href="/" class="btn btn-xl">
 				                        Rimuovi corriere <i class="fas fa-user-slash"></i>
@@ -110,6 +109,26 @@
 				            </c:otherwise>
 				        </c:choose>
                    
+                   <!-- add Corriere -->
+                   <div id="divRegisterCorr" class="modal">
+                        <form class="modal-content animate" action="/iscrizioneCorriereService" method="post">
+                            <div class="imgcontainer">
+                                <span onclick="document.getElementById('divRegisterCorr').style.display='none'"
+                                    class="close" title="Close Modal">&times;</span>
+                                <img src="img/b1.png" alt="Avatar" class="avatar">
+                            </div>
+                            <div class="container">
+                                <label for="email"><b>Email corriere</b></label>
+                                <input type="email" placeholder="Inserisci Email" name="email" required>
+                                <label for="password"><b>Password</b></label>
+                                <input type="password" placeholder="Inserisci Password" name="password" required>
+                                <label for="password_ripetuta"><b>Conferma Password</b></label>
+                                <input type="password" placeholder="Inserisci Password" name="password_ripetuta"
+                                    required>
+                                <button type="submit" id="button">Registra</button>
+                            </div>
+                        </form>
+                    </div>
                    
 
                     <!-- LOGIN -->
