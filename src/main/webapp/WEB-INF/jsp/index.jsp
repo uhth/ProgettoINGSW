@@ -30,7 +30,7 @@
 
                     <c:if test="${email != null}">
 		                        <p class="intro_benvenuto">Benvenuto ${email}</p>
-              		      <c:if test="${role == 'utente'}">
+              		      <c:if test="${role == 'user'}">
 
 		                        <a href="profilo_utente" id="profilo_utente" onclick="btnAccedi()"
 		                            class="btn btn-rounded">Profilo utente <i class="far fa-user"></i></a>
@@ -42,8 +42,8 @@
 	                       </c:if>
               		      <c:if test="${role == 'admin'}">
 
-                   		     <a id="adminZone" onclick="document.getElementById('divLogin').style.display='block'"
-                            class="btn btn-rounded">Amministratore <i class="fas fa-user-lock"></i></a>	                      
+		                        <a href="profiloAmministratore" id="profilo_utente" onclick="btnAccedi()"
+		                            class="btn btn-rounded">Amministratore  <i class="fas fa-user-lock"></i></a>	                      
                              </c:if>
 	                       	                       		                            
 		                        <a href="logout" id="prova" onclick="btnAccedi()" class="btn btn-rounded">Logout <i class="fas fa-sign-out-alt"></i></a>
@@ -70,10 +70,11 @@
 				            </c:when>    
 				            <c:when test="${role == 'admin'}">
 				                 <h1>Pannello Amministratore<br></h1>
-				                    <a id="addCorriere" onclick="document.getElementById('divRegisterCorr').style.display='block'" class="btn btn-xl">Aggiungi Corriere <i class="fas fa-user-lock"></i>
-                            		</a>	
+				                    <a href="aggiungiCorriere" class="btn btn-xl">
+				                        Aggiungi corriere <i class="fas fa-user-slash"></i>
+				                    </a>                            		</a>	
 				                    <br>
-				                    <a href="/" class="btn btn-xl">
+				                    <a href="rimuoviCorriere" class="btn btn-xl">
 				                        Rimuovi corriere <i class="fas fa-user-slash"></i>
 				                    </a>
 				                    <br>

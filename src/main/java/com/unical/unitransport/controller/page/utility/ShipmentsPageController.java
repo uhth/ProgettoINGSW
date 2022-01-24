@@ -1,4 +1,4 @@
-package com.unical.unitransport.controller.page;
+package com.unical.unitransport.controller.page.utility;
 
 import java.io.IOException;
 import java.security.SecureRandom;

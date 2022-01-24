@@ -46,6 +46,12 @@ public class AccountPageController {
 		return "area_corriere";
 	}
 	
+	@GetMapping("/profiloAmministratore")
+	public String areaAmministratore(HttpServletRequest req) {
+		
+		return "profilo_amministratore";
+	}
+	
 	@GetMapping("/spedizioniCorriere")
 	public String spedizioniAttive(HttpServletRequest req) {
 		HttpSession session = req.getSession(true);
