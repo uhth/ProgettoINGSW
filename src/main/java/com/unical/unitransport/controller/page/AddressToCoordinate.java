@@ -39,19 +39,24 @@ public class AddressToCoordinate {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		String c = content.toString();
-		String[] parts = c.split(Pattern.quote(":"));
+		try {
+			String c = content.toString();
+			String[] parts = c.split(Pattern.quote(":"));
 
-		String lat = parts[2];
-		String lng = parts[3];
-		String[] splitlat = lat.split(Pattern.quote(","));
-		String[] splitlong = lng.split(Pattern.quote(","));
+			String lat = parts[2];
+			String lng = parts[3];
+			String[] splitlat = lat.split(Pattern.quote(","));
+			String[] splitlong = lng.split(Pattern.quote(","));
 
-		String finalLat = splitlat[0];
-		String finalLong = splitlong[0];
-		
-		setLatitude(finalLat);
-		setLongitude(finalLong);
+			String finalLat = splitlat[0];
+			String finalLong = splitlong[0];
+			
+			setLatitude(finalLat);
+			setLongitude(finalLong);
+		} catch (Exception e) {
+			System.out.println("Errore nell'indirizzo");
+			return;
+		}
 	}
 	
 	public String getLatitude() {	

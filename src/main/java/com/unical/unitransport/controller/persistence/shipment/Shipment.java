@@ -46,7 +46,7 @@ public class Shipment {
 		this.status = status;
 		this.created_on = created_on;
 		this.last_update = last_update;
-		this.last_location = last_location;
+		this.last_location = sender_location; //last_location
 		this.sender_location = sender_location;
 		this.receiver_location = receiver_location;
 		
