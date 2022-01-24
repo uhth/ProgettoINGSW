@@ -113,12 +113,14 @@ public class AccountPageController {
 				res.sendRedirect("/areaCorriere");
 				} else { 
 					session.setAttribute("erroreGenerico", "HAI GIÀ PRESO IN CARICO QUESTA SPEDIZIONE");
+					session.setAttribute("erroreGenerico_p", null);
 					return "erroreGenerico";
 				}
 					
 		}
 		
 		session.setAttribute("erroreGenerico", "LA SPEDIZIONE NON ESISTE");
+		session.setAttribute("erroreGenerico_p", null);
 		return "erroreGenerico";
 	}
 	

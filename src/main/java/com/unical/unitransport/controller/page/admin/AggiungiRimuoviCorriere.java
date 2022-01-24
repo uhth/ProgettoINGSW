@@ -83,8 +83,24 @@ public class AggiungiRimuoviCorriere {
 	public void rimuoviCorrieri (HttpServletRequest req, HttpServletResponse res, String richiestaRimozioneCorriere) throws IOException {
 		HttpSession session = req.getSession(true);
 		
-		AccountsManager.changeAccountRole(richiestaRimozioneCorriere, "user");
-		res.sendRedirect("rimuoviCorriere");
+		
+		if (AccountsDAO.getByEmail(richiestaRimozioneCorriere)!=null) {
+			Account utente = AccountsDAO.getByEmail(richiestaRimozioneCorriere);
+			if (AccountRoleDAO.getFor(utente).getRoleId()==2) {
+		
+				AccountsManager.changeAccountRole(richiestaRimozioneCorriere, "user");
+				res.sendRedirect("rimuoviCorriere");
+			} else {
+				session.setAttribute("erroreGenerico", "L'utente selezionato non è un corriere");
+				session.setAttribute("erroreGenerico_p", null);
+				res.sendRedirect("errore");
+			}
+		
+		} else {
+			session.setAttribute("erroreGenerico", "L'UTENTE NON ESISTE");
+			session.setAttribute("erroreGenerico_p", null);
+			res.sendRedirect("errore");
+		}
 		
 	
 	}

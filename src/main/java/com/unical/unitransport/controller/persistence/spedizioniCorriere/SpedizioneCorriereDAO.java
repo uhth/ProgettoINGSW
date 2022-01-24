@@ -74,6 +74,8 @@ public class SpedizioneCorriereDAO {
 		}
 	}
 	
+
+	
 	public static List<SpedizioneCorriere> getAll(String corriere) {
 		initialize();
 		List<SpedizioneCorriere> spedizioni = new ArrayList<SpedizioneCorriere>();
