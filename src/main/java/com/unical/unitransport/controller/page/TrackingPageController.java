@@ -1,7 +1,6 @@
 package com.unical.unitransport.controller.page;
 
 import java.io.IOException;
-import java.sql.Timestamp;
 import java.util.Arrays;
 
 import javax.servlet.http.HttpServletRequest;
@@ -29,16 +28,6 @@ public class TrackingPageController {
 		if (spedizione == null) {
 			return "tracking_gmapsFallito";
 		}
-	
-		loadMarkers( spedizione, model );
-		loadTable( spedizione, model );
-		model.addAttribute("tracking_number", spedizione.getTrackingNumber());
-
-		return "tracking_gmapsPositivo";
-	}
-
-	public void loadTable(Shipment spedizione, Model model ) {
-		
 		/* TEST STATE/UPDATE/TIME
 		spedizione.setStatus(1);
 		spedizione.setStatus(2);
@@ -48,8 +37,19 @@ public class TrackingPageController {
 		spedizione.setLastUpdate(new Timestamp(0));
 		spedizione.setLastLocation("Milano MI");
 		spedizione.setLastLocation("ROMA RM");
-		*/
+		*/ 
 		
+		
+		loadMarkers( spedizione, model );
+		loadTable( spedizione, model );
+		model.addAttribute("tracking_number", spedizione.getTrackingNumber());
+
+		return "tracking_gmapsPositivo";
+	}
+
+	public void loadTable(Shipment spedizione, Model model ) {
+		
+		System.out.println(spedizione.getRegisterState().size() + " - " + spedizione.getRegisterLocation().size() + " - " + spedizione.getRegisterDate().size());
 		int[] x = {spedizione.getRegisterState().size(), spedizione.getRegisterLocation().size(), spedizione.getRegisterDate().size()};
         Arrays.sort(x);
         
@@ -64,7 +64,13 @@ public class TrackingPageController {
 		
 		AddressToCoordinate coordCorriere = new AddressToCoordinate();
 
-		if (spedizione.getLastLocation() != null ) {
+		if (spedizione.getRegisterLocation().size() == 1) { 
+			coordCorriere = new AddressToCoordinate(spedizione.getLastLocation());
+	        double str1 = Double.parseDouble( coordCorriere.getLatitude());
+	        double str2 = Double.parseDouble( coordCorriere.getLongitude());
+			model.addAttribute("corrierelat", str1 - 0.1 );
+			model.addAttribute("corrierelong", str2- 0.1 );
+		} else {
 			coordCorriere = new AddressToCoordinate(spedizione.getLastLocation());
 			model.addAttribute("corrierelat", coordCorriere.getLatitude());
 			model.addAttribute("corrierelong", coordCorriere.getLongitude());
