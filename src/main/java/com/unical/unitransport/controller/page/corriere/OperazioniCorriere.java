@@ -1,4 +1,4 @@
-package com.unical.unitransport.controller.page;
+package com.unical.unitransport.controller.page.corriere;
 
 import java.io.IOException;
 

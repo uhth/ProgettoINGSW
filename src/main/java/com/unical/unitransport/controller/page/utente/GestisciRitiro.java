@@ -1,4 +1,4 @@
-package com.unical.unitransport.controller.page;
+package com.unical.unitransport.controller.page.utente;
 
 import java.util.List;
 import javax.servlet.http.HttpServletRequest;
