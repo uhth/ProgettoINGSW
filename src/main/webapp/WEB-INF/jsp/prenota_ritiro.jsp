@@ -40,20 +40,20 @@
         <div class="row">
 
 				    <div class="col">
-										<form  method="post" action="/prenotaService">
+										<form  method="post" action="/prenotaService" id="form">
 										  <div class="form-group">
 										    <label for="formLuogo">Ritiro presso:</label>
-										    <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="es. Via Roma n.31 Milano (MI)" name="luogoRitiro">
+										    <input type="text" class="form-control" id="ViaRitiro" placeholder="es. Via Roma n.31 Milano (MI)" name="luogoRitiro">
 										  </div>
 										  <br>
 										  <div class="form-group">
 										    <label for="formLuogo">Consegna presso:</label>
-										    <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="es. Via Riccardo Misasi n.31 Cosenza (CS)" name="luogoConsegna">
+										    <input type="text" class="form-control" id="ViaConsegna" placeholder="es. Via Riccardo Misasi n.31 Cosenza (CS)" name="luogoConsegna">
 										  </div>
 										  <br>	
 										  <div class="form-group">
 										    <label for="formLuogo">Email destinatario:</label>
-										    <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="es. email@address.com" name="emailDestinatario">
+										    <input type="text" class="form-control" id="EmailDest" placeholder="es. email@address.com" name="emailDestinatario">
 										  </div>
 										  <br>
                       <p>Seleziona il tuo metodo di pagamento:</p>
@@ -62,9 +62,10 @@
                       <br>
                       <input type="radio" id="Contrassegno" name="fav_language" value="Contrassegno">
                       <label for="Contrassegno">Contrassegno</label>
-                      <br>								  										  
-										    <!--<input class="btn btn-primary" type="submit" value="Prenota"/>-->
-                        <button type="button" class="btn btn-primary"><a href="/payment" class="text-decoration-none" style="color: white;">Prosegui</a></button>
+                      <br>
+                      <button type="button" class="btn btn-primary" onclick="prosegui()">Procedi</button>
+                      <!--<button type="button" class="btn btn-primary"><a href="/payment" class="text-decoration-none" style="color: white;">Prosegui</a></button>-->								  										  
+                      <!--<input class="btn btn-primary" type="submit" value="Prenota"/>-->
 										</form>
 
 
@@ -78,7 +79,7 @@
       
       
     </div>  
-
+    <script src="js/prenota_ritiro.js"></script>
   </body>
   
       <style>
