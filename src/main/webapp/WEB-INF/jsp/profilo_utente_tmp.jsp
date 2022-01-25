@@ -56,6 +56,10 @@
 				 
 				  </div>
 				  
+		</div>
+				  
+	    <div class="row">
+				  
 				   <div class="col">
 				      <p class="p">SPEDIZIONI ATTIVE</p>
 						<div class="info">
@@ -78,7 +82,7 @@
 				 
 				  </div>
 				  		  	
-				  	
+			 	
 				  	
 				  				  
      	 </div>

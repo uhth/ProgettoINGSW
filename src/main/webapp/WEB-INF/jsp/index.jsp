@@ -299,13 +299,13 @@
 						                            	</c:when>
 					                        			<c:when test="${role == 'corriere'}">
 						                            		<div class="text-center">
-						                            			<p class="textllg">Se vuoi modificare lo stato di una spedizione come corriere passa alla sezione</p>
+						                            			<p class="textllg">Se vuoi modificare lo stato di una spedizione </p>
                 							       				 <a href="/gestioneSpedizioneCorriere" class="btn btn-lg" >Aggiorna stato</a>
 						                        			</div>
 					                        			</c:when>
 					                        			<c:when test="${role == 'user'}">
 						                            		<div class="text-center">
-						                            			<p class="textllg">Se vuoi modificare lo stato di una spedizione come corriere passa alla sezione</p>
+						                            			<p class="textllg">Se vuoi modificare lo stato di un ritiro </p>
                 							       				 <a href="/gestisciRitiro" class="btn btn-lg" >Effettua una modifica</a>
 						                        			</div>
 					                        			</c:when>
