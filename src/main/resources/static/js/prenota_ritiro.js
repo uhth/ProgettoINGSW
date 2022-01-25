@@ -3,6 +3,6 @@ function prosegui() {
   		window.location.href = "/payment";
 	}
  	else if(document.getElementById("Contrassegno").checked == true){
-		window.location.href = "";
+		document.getElementById('form').submit();
 	}
 }

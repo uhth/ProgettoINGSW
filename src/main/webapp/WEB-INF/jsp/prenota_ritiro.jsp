@@ -40,7 +40,7 @@
         <div class="row">
 
 				    <div class="col">
-										<form  method="post" action="/prenotaService">
+										<form  method="post" action="/prenotaService" id="form">
 										  <div class="form-group">
 										    <label for="formLuogo">Ritiro presso:</label>
 										    <input type="text" class="form-control" id="ViaRitiro" placeholder="es. Via Roma n.31 Milano (MI)" name="luogoRitiro">
@@ -63,10 +63,9 @@
                       <input type="radio" id="Contrassegno" name="fav_language" value="Contrassegno">
                       <label for="Contrassegno">Contrassegno</label>
                       <br>
-                      <!--<button type="button" class="btn btn-primary" onclick="prosegui()">Procedi</button>-->
-                        <!--<button type="button" class="btn btn-primary"><a href="/payment" class="text-decoration-none" style="color: white;">Prosegui</a></button>-->								  										  
-										    <input class="btn btn-primary" type="submit" value="Prenota"/>
-                       
+                      <button type="button" class="btn btn-primary" onclick="prosegui()">Procedi</button>
+                      <!--<button type="button" class="btn btn-primary"><a href="/payment" class="text-decoration-none" style="color: white;">Prosegui</a></button>-->								  										  
+                      <!--<input class="btn btn-primary" type="submit" value="Prenota"/>-->
 										</form>
 
 
