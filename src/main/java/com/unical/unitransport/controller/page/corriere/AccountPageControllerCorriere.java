@@ -1,4 +1,4 @@
-package com.unical.unitransport.controller.page;
+package com.unical.unitransport.controller.page.corriere;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -20,19 +20,9 @@ import com.unical.unitransport.controller.persistence.spedizioniCorriere.Spedizi
 import com.unical.unitransport.controller.persistence.spedizioniUtente.SpedizioneUtenteDAO;
 
 @Controller
-public class AccountPageController {
+public class AccountPageControllerCorriere {
 	
 	List<String> spedizioniCorriere = null;
-	
-	@GetMapping("/profilo_utente")
-	public String profilo(HttpServletRequest req) {
-		HttpSession session = req.getSession(true);
-		List<String> spedizioni = SpedizioneUtenteDAO.getAllString((String)req.getSession().getAttribute("email"));
-		session.setAttribute("listaSpedizioni", spedizioni);
-		
-		return "profilo_utente_tmp";
-	}
-	
 	
 	@GetMapping("/areaCorriere")
 	public String areaCorriere(HttpServletRequest req) {
@@ -44,12 +34,6 @@ public class AccountPageController {
 		session.setAttribute("listaSpedizioni", spedizioniCorriere);
 
 		return "area_corriere";
-	}
-	
-	@GetMapping("/profiloAmministratore")
-	public String areaAmministratore(HttpServletRequest req) {
-		
-		return "profilo_amministratore";
 	}
 	
 	@GetMapping("/spedizioniCorriere")
@@ -67,12 +51,15 @@ public class AccountPageController {
 		for (String anteprimaTracking: spedizioniCorriere) {
 			for (Shipment spedizione: ShipmentsDAO.getAll()) {
 				if (anteprimaTracking.equals(spedizione.getTrackingNumber()) && spedizione.getLastLocation()!=null) {
-					anteprima.add((String) spedizione.getLastLocation());
+					anteprima.add(spedizione.getLastLocation());
 				} else if (anteprimaTracking.equals(spedizione.getTrackingNumber()) && spedizione.getLastLocation()==null) {
 					anteprima.add( "NON ANCORA PARTITO");
 				}
 			}
 		}
+		
+		
+		
 
 		session.setAttribute("listaSpedizioniAnteprima", anteprima);
 
@@ -128,11 +115,3 @@ public class AccountPageController {
 	
 
 }
-
-//
-//codiceRichiestoCorriere
-//
-//
-//<form  method="post" action="richiestaTrackingCorriere">
-//	 <button type="button" name="modificaCodiceTracking" type="submit" class="btn btn-primary btn-sm"><a href="aggiornaStato" class="text-decoration-none" style="color: white;">${singolaSpedizione}</a></button>
-//

@@ -7,7 +7,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import com.unical.unitransport.controller.persistence.shipment.Shipment;
+import com.unical.unitransport.controller.persistence.shipment.ShipmentSenderReceiver;
 import com.unical.unitransport.controller.persistence.shipment.ShipmentsDAO;
+import com.unical.unitransport.controller.persistence.shipment.ShipmentsManager;
+import com.unical.unitransport.controller.persistence.shipment.ShipmentsSenderReceiverDAO;
 import com.unical.unitransport.controller.persistence.spedizioniUtente.SpedizioneUtenteDAO;
 
 @Controller
@@ -47,13 +50,13 @@ public class GestisciRitiro {
 		
 		if (session.getAttribute("codiceDaAggiornare")!=null) {
 			Shipment spedizione = ShipmentsDAO.getByTrackingNumber((String) session.getAttribute("codiceDaAggiornare"));
-			ShipmentsDAO.remove(spedizione);
+			ShipmentsDAO.updateRitiro(spedizione, spedizione.getStatus(), luogoRitiroNuovo);
 			spedizione.setSenderLocation(luogoRitiroNuovo);
-			ShipmentsDAO.insert(spedizione);
+
 			
 		
 
-			List<String> spedizioni = SpedizioneUtenteDAO.getAllString((String)req.getSession().getAttribute("email"));
+			List<String> spedizioni = ShipmentsSenderReceiverDAO.getAllString((String)req.getSession().getAttribute("email"));
 			boolean utenteValido = false;
 			for (String spedizioneUtenteCorrente: spedizioni) {
 				if (spedizioneUtenteCorrente.equals( (String) session.getAttribute("codiceDaAggiornare")))
@@ -62,11 +65,13 @@ public class GestisciRitiro {
 			
 			if(utenteValido) {
 				session.setAttribute("validoGenerico", "LA SPEDIZIONE È STATA CORRETTAMENTE AGGIORNATA");
+				session.setAttribute("validoGenerico_p", null);
 				return "validoGenerico";
 			}
 		}
 
-			session.setAttribute("erroreGenerico", "LA SPEDIZIONE NON APPARTIENE ALL'UTENTE CHE NE FA RICHIESTA");
+		session.setAttribute("erroreGenerico", "LA SPEDIZIONE NON APPARTIENE ALL'UTENTE CHE NE FA RICHIESTA");
+		session.setAttribute("erroreGenerico_p", null);
 			return "erroreGenerico";
 		
 	}

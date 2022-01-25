@@ -1,20 +1,15 @@
-package com.unical.unitransport.controller.page.utility;
+package com.unical.unitransport.controller.page.utente;
 
 import java.io.IOException;
-import java.security.SecureRandom;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-
 import com.unical.unitransport.controller.persistence.shipment.Shipment;
-import com.unical.unitransport.controller.persistence.shipment.ShipmentsDAO;
 import com.unical.unitransport.controller.persistence.shipment.ShipmentsManager;
 import com.unical.unitransport.controller.persistence.shipment.ShipmentsSenderReceiverDAO;
 
@@ -56,52 +51,18 @@ public class ShipmentsPageController {
 							@RequestParam( value = "emailDestinatario", required = true ) String emailDestinatario ) throws IOException {
 
 		HttpSession session = req.getSession(true);
-
-		String tracking = trackingCasuale();
-		while (ShipmentsDAO.getByTrackingNumber( tracking )!=null) {
-			tracking = trackingCasuale();
-		}
-        
-        
+    
         Shipment spedizione = ShipmentsManager.registerShipment( (String) req.getSession().getAttribute("email"), emailDestinatario, luogoRitiro, luogoConsegna);
-        
-        System.out.println(spedizione.getTrackingNumber());
-        
-        System.out.println(req.getSession().getAttribute("email"));
-        System.out.println(luogoRitiro);
-        System.out.println(luogoConsegna);
-        System.out.println(emailDestinatario);
-        
         
         
         if ( ShipmentsSenderReceiverDAO.getBySenderEmail( (String) session.getAttribute( "email" ) ) != null ) {
-        	model.addAttribute("validoGenerico", tracking);
+        	model.addAttribute("validoGenerico", spedizione.getTrackingNumber());
         	model.addAttribute("validoGenerico_p", "Ti servirà per monitorare il pacco, ma non preoccuparti se lasci la pagina,<br> potrai sempre visionarlo nel tuo profilo!");
         	return "validoGenerico";
         }
         else return "prenota_ritiro";
 	}
 	
-	public String trackingCasuale() {
-		String tracking;
-        String lower = "abcdefghijklmnopqrstuvwxyz";
-        String upper = lower.toUpperCase();
-        String numeri = "0123456789";
-        String perRandom = upper + lower + numeri;
-        int lunghezzaRandom = 10;
-
-        SecureRandom sr = new SecureRandom();
-        StringBuilder sb = new StringBuilder(lunghezzaRandom);
-        for (int i = 0; i < lunghezzaRandom; i++) {
-            int randomInt = sr.nextInt(perRandom.length());
-            char randomChar = perRandom.charAt(randomInt);
-            sb.append(randomChar);
-        }
-        
-        tracking = sb.toString();
-        return tracking;
-		
-	}
 
 	
 }

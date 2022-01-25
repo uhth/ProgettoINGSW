@@ -25,7 +25,7 @@
 
                     <c:if test="${email == null}">
                         <p class="intro_benvenuto">Benvenuto utente</p>
-                        <a id="prova" onclick="document.getElementById('divLogin').style.display='block'" class="btn btn-rounded">Accedi <i class="fas fa-sign-in-alt"></i></a>
+                        <a id="prova" onclick="document.getElementById('divLogin').style.display='block'" class="btn btn-rounded" >Accedi <i class="fas fa-sign-in-alt"></i></a>
                     </c:if>
 
                     <c:if test="${email != null}">

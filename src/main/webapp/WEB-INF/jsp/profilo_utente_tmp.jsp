@@ -52,7 +52,7 @@
 				   <div class="col text-center">
 				      <p class="p">PASSWORD</p>
 				 	
-						<button type="button" class="btn btn-success"><a href="spedisci" class="text-decoration-none" style="color: white;">Modifica password</a></button>
+						<button type="button" class="btn btn-success"><a href="/cambiaPassword" class="text-decoration-none" style="color: white;">Modifica password</a></button>
 				 
 				  </div>
 				  
