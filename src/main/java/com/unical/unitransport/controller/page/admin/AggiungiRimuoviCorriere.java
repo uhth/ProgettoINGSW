@@ -109,14 +109,3 @@ public class AggiungiRimuoviCorriere {
 }
 
 
-//<div class="richiesta">
-//<form  method="post" action="rimozioneCorriere">
-//		  <div class="form-group">
-//		    <label for="formCorriere"></label>
-//		    <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="es. mario_rossi@gmail.com" name="richiestaRimozioneCorriere">
-//	 	 </div>
-//	  <br>								  										  
-//    <input  class="btn btn-success" type="submit" value="CONFERMA"/>
-//</form>
-//</div>	
-

@@ -8,6 +8,8 @@ import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+
 import com.unical.unitransport.controller.persistence.DatabaseManager;
 
 public class AccountsDAO {
@@ -92,10 +94,13 @@ public class AccountsDAO {
 	
 	public static boolean updatePassword( Account account, String newPassword ) {
 		initialize();
+		BCryptPasswordEncoder pwEncoder = new BCryptPasswordEncoder();
+		String encodedPw = pwEncoder.encode(newPassword);
+
 		try {
 			String sql = "update unitransport.accounts set password = ? where email = ? ;";
 			PreparedStatement statement = DatabaseManager.getConnection().prepareStatement( sql );
-			statement.setString( 1, newPassword );
+			statement.setString( 1, encodedPw );
 			statement.setString( 2, account.getEmail() );
 			int rows_updated = statement.executeUpdate();
 			statement.close();

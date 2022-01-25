@@ -51,8 +51,8 @@ form {
 	position: absolute;
 	top:12%;
 	left: 1%;
-	font-size: 14px;
-	width: 190px;
+	font-size: 13px;
+	width: 205px;
 	height: 64px;
 	padding: 15px;
 	border-style: inset;
@@ -370,6 +370,18 @@ form {
     text-transform: uppercase;
 }
 
+
+
+
+
+
+
+
+
+
+
+
+
 @media(max-width: 960px) {
     .showcase {
         height: 70vh;
@@ -378,21 +390,26 @@ form {
     .hide-sm {
         display: none;
     }
+    
+    .intro_benvenuto {
+		display:none;
+	}
 
-    .showcase-top img {
+    #posLogo {
         /*ridimensionamento di lato logo*/
+        width: 150px;
         top:30%;
         left: 5%;
         transform: translate(0);
     }
 
     .showcase-content h1 {
-        font-size: 3.7rem;
+        font-size: 2.7rem;
         line-height: 1;
     }
 
     .showcase-content p {
-        font-size: 1.5rem;
+        font-size: 1.1rem;
     }
 
     .btn-xl {
@@ -415,26 +432,66 @@ form {
     .text-md {
         font-size: 1.5rem;
     }
+    
+    
+    #adminZone{
+    position: absolute;
+    top: 92%;
+    right: -6.33%;
+    transform: translate(-50%, -50%);
+	}
+	#corriereZone{
+	    position: absolute;
+	    top: 92%;
+	    right: -3.15%;
+	    transform: translate(-50%, -50%);
+	}
+	#profilo_utente{
+	    position: absolute;
+	    top: 92%;
+	    right: -2.65%;
+	    transform: translate(-50%, -50%);
+	}
+    
+    
 
 }
+
+
+
+
+
+
+
+
 
 
 
 @media(max-width: 700px){
 	
-	.intro_benvenuto {
-	font-family: default;
-	font-weight: bold;
-	color: #fff;
-	position: absolute;
-	top:72%;
-	left: 79%;
-	font-size: 10px;
-	width: 80px;
-	height: 41px;
-	padding: 6px;
-	border-style: inset;
+    
+    .intro_benvenuto {
+		display:none;
 }
+
+
+    #posLogo {
+        /*ridimensionamento di lato logo*/
+		width: 120px;
+		top:30%;
+        left: 5%;
+        transform: translate(0);
+    }
+
+    .showcase-content h1 {
+        font-size: 2.1rem;
+        line-height: 1;
+    }
+
+    .showcase-content p {
+        font-size: 1.1rem;
+    }
+
 
     .showcase::after {
         box-shadow: inset 80px 80px 250px #000, inset -80px -80px -250px #000;
@@ -458,6 +515,26 @@ form {
         grid-gap: 2rem;
         text-align: center;
     }
+    
+    
+    #adminZone{
+    position: absolute;
+    top: 92%;
+    right: -4.33%;
+    transform: translate(-30%, -50%);
+	}
+	#corriereZone{
+	    position: absolute;
+	    top: 92%;
+	    right: -5.00%;
+	    transform: translate(-50%, -50%);
+	}
+	#profilo_utente{
+	    position: absolute;
+	    top: 92%;
+	    right: -4.15%;
+	    transform: translate(-50%, -50%);
+	}
 
 
 }

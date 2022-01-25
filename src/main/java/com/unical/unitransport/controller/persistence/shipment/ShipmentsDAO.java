@@ -86,6 +86,24 @@ public class ShipmentsDAO {
 			return false;
 		}
 	}
+
+	public static boolean updateRitiro( Shipment shipment, int status, String sender_location ) {
+		initialize();
+		try {
+			String sql = "update unitransport.shipments set status = ?, last_update = ?, sender_location = ? where tracking_number = ? ; ";
+			PreparedStatement statement = DatabaseManager.getConnection().prepareStatement( sql );
+			statement.setInt( 1, status );
+			statement.setTimestamp( 2, Timestamp.from( Instant.now() ) );
+			statement.setString( 3, sender_location );
+			statement.setString( 4, shipment.getTrackingNumber() );
+			statement.executeUpdate();
+			statement.close();
+			return true;
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return false;
+		}
+	}
 	
 	
 	
@@ -97,6 +115,25 @@ public class ShipmentsDAO {
 			String sql = "select * from unitransport.shipments where tracking_number = ? ;";
 			PreparedStatement statement = DatabaseManager.getConnection().prepareStatement(sql);
 			statement.setString( 1, tacking_number );
+			ResultSet rs = statement.executeQuery();
+			while( rs.next() ) {
+				shipment = new Shipment( rs.getInt( 1 ), rs.getString( 2 ), rs.getInt( 3 ), rs.getTimestamp( 4 ), rs.getTimestamp( 5 ), rs.getString( 6 ), rs.getString( 7 ), rs.getString( 8 ) );
+			}					
+			statement.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return shipment;
+	}
+	
+	
+	public static Shipment getById( int id ) {
+		initialize();
+		Shipment shipment = null;
+		try {
+			String sql = "select * from unitransport.shipments where shipment_id = ? ;";
+			PreparedStatement statement = DatabaseManager.getConnection().prepareStatement(sql);
+			statement.setInt( 1, id );
 			ResultSet rs = statement.executeQuery();
 			while( rs.next() ) {
 				shipment = new Shipment( rs.getInt( 1 ), rs.getString( 2 ), rs.getInt( 3 ), rs.getTimestamp( 4 ), rs.getTimestamp( 5 ), rs.getString( 6 ), rs.getString( 7 ), rs.getString( 8 ) );

@@ -1,3 +1,5 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
 
@@ -13,15 +15,18 @@
     <header class="showcase">
         <div class="showcase-top">
             <img src="/immagini/b1.png" alt="">
-            <a href="login" id="prova" onclick="btnAccedi()" class="btn btn-rounded">Accedi</a>
+            <c:if test="${ email == null }">
+            	<a href="login" id="prova" onclick="btnAccedi()" class="btn btn-rounded">Accedi</a>
+            </c:if>
         </div>
         <div class="showcase-content">
             <h1>${erroreGenerico}</h1>
             <p>${erroreGenerico_p}</p>
                 <a href="/" class="btn btn-xl">
                     TORNA ALLA HOME <i class="fas fa-chevron-right btn-icon"></i>
-                </a>
+                </a> 
         </div>
+        <br><br>
     </header>
 
 

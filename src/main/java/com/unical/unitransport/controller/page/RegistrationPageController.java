@@ -1,4 +1,4 @@
-package com.unical.unitransport.controller.page.utility;
+package com.unical.unitransport.controller.page;
 
 import java.io.IOException;
 
