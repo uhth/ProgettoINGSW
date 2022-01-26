@@ -59,7 +59,7 @@ $(document).ready(function() {
 				})
 			},
 			onCancel: function(data) {
-				window.location.replace("http://localhost:8080/payment/Oncancel.php")
+				window.location.replace("http://localhost:8080/payment_error")
 			}
 		});
 
