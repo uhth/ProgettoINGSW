@@ -90,12 +90,13 @@ public class ShipmentsDAO {
 	public static boolean updateRitiro( Shipment shipment, int status, String sender_location ) {
 		initialize();
 		try {
-			String sql = "update unitransport.shipments set status = ?, last_update = ?, sender_location = ? where tracking_number = ? ; ";
+			String sql = "update unitransport.shipments set status = ?, last_update = ?, sender_location = ?, last_location = ? where tracking_number = ? ; ";
 			PreparedStatement statement = DatabaseManager.getConnection().prepareStatement( sql );
 			statement.setInt( 1, status );
 			statement.setTimestamp( 2, Timestamp.from( Instant.now() ) );
 			statement.setString( 3, sender_location );
-			statement.setString( 4, shipment.getTrackingNumber() );
+			statement.setString( 4, sender_location );
+			statement.setString( 5, shipment.getTrackingNumber() );			
 			statement.executeUpdate();
 			statement.close();
 			return true;
