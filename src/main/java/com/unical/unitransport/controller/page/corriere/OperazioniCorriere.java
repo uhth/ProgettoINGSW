@@ -2,6 +2,7 @@ package com.unical.unitransport.controller.page.corriere;
 
 import java.io.IOException;
 import java.sql.Timestamp;
+import java.util.Date;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -101,7 +102,8 @@ public class OperazioniCorriere {
 		if (spedizione!=null && SpedizioneCorriereDAO.spedizioneAppartenenteCorriere(last_code, (String) session.getAttribute("email"))) {
 			ShipmentsDAO.update(spedizione, scelta_cod, luogoAggiornato);
 			spedizione.setStatus(scelta_cod);		
-			spedizione.setLastUpdate(new Timestamp(0));
+			Date date = new Date();
+			spedizione.setLastUpdate(new Timestamp(date.getTime()));
 			spedizione.setLastLocation(luogoAggiornato);
 			try {
 				loadMarkers(spedizione, model);
