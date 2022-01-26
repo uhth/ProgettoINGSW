@@ -28,16 +28,15 @@ public class TrackingPageController {
 		if (spedizione == null) {
 			return "tracking_gmapsFallito";
 		}
-		/* TEST STATE/UPDATE/TIME
-		spedizione.setStatus(1);
+		//TEST STATE/UPDATE/TIME
+		/*
 		spedizione.setStatus(2);
 		spedizione.setStatus(3);		
 		spedizione.setLastUpdate(new Timestamp(0));
 		spedizione.setLastUpdate(new Timestamp(0));
-		spedizione.setLastUpdate(new Timestamp(0));
 		spedizione.setLastLocation("Milano MI");
-		spedizione.setLastLocation("ROMA RM");
-		*/ 
+		spedizione.setLastLocation("ROMA RM");*/
+		 
 		
 		
 		loadMarkers( spedizione, model );
@@ -49,7 +48,8 @@ public class TrackingPageController {
 
 	public void loadTable(Shipment spedizione, Model model ) {
 		
-		System.out.println(spedizione.getRegisterState().size() + " - " + spedizione.getRegisterLocation().size() + " - " + spedizione.getRegisterDate().size());
+		System.out.println("SIZE ARRAY: "+spedizione.getRegisterState().size() + " - " + spedizione.getRegisterLocation().size() + " - " + spedizione.getRegisterDate().size());
+		
 		int[] x = {spedizione.getRegisterState().size(), spedizione.getRegisterLocation().size(), spedizione.getRegisterDate().size()};
         Arrays.sort(x);
         
@@ -63,7 +63,6 @@ public class TrackingPageController {
 	public void loadMarkers( Shipment spedizione, Model model ) {
 		
 		AddressToCoordinate coordCorriere = new AddressToCoordinate();
-
 		if (spedizione.getRegisterLocation().size() == 1) { 
 			coordCorriere = new AddressToCoordinate(spedizione.getLastLocation());
 	        double str1 = Double.parseDouble( coordCorriere.getLatitude());

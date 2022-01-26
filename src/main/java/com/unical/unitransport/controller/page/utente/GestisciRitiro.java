@@ -63,9 +63,15 @@ public class GestisciRitiro {
 	public String aggiornaRitiro(HttpServletRequest req, String luogoRitiroNuovo) {
 		HttpSession session = req.getSession(true);
 		
-		if (session.getAttribute("codiceDaAggiornare")!=null) {
+		if (session.getAttribute("codiceDaAggiornare")!=null) {			
 			Shipment spedizione = ShipmentsDAO.getByTrackingNumber((String) session.getAttribute("codiceDaAggiornare"));
+			if (spedizione.getStatus() >= 1)
+				return "erroreGenerico";
+			
 			ShipmentsDAO.updateRitiro(spedizione, spedizione.getStatus(), luogoRitiroNuovo);
+			if (spedizione.getLastLocation().equals(spedizione.getSenderLocation())) {
+				spedizione.setLastLocation(luogoRitiroNuovo);
+			}
 			spedizione.setSenderLocation(luogoRitiroNuovo);
 
 		

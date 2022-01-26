@@ -34,7 +34,11 @@ public class Shipment {
 	public Shipment( String tracking_number, String last_location, String sender_location, String receiver_location ) {
 		this.tracking_number = tracking_number;
 		this.status = LABEL_CREATED;
-		this.last_location = last_location;
+		if (last_location != null) {
+			this.last_location = last_location;
+		}else {
+			this.last_location = sender_location;
+		}
 		this.sender_location = sender_location;
 		this.receiver_location = receiver_location;		
 	}
@@ -46,12 +50,20 @@ public class Shipment {
 		this.status = status;
 		this.created_on = created_on;
 		this.last_update = last_update;
-		this.last_location = last_location;
+		if (last_location != null) {
+			this.last_location = last_location;
+		}else {
+			this.last_location = sender_location;
+		}
 		this.sender_location = sender_location;
 		this.receiver_location = receiver_location;
 		
 		// load register
-		registerDate.add(created_on);
+		if (last_update != null) {
+			registerDate.add(last_update);
+		} else {		
+			registerDate.add(created_on);
+		}
 		registerState.add(getStato(status));
 		registerLocation.add(last_location);
 	}
@@ -165,10 +177,10 @@ public class Shipment {
 	}
 	public String localita() {
 		
-		if (status>=Shipment.SHIPPED && status<=Shipment.COMPLETED)
+		//if (status>=Shipment.SHIPPED && status<=Shipment.COMPLETED)
 			return "PRESSO: " + this.last_location;
 		
-		return "LOCALIZZAZIONE NON DISPONIBILE";
+		//return "LOCALIZZAZIONE NON DISPONIBILE";
 			
 	}
 
