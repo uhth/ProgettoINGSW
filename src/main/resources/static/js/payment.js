@@ -33,7 +33,29 @@ $(document).ready(function() {
 			onApprove: function(data, actions) {
 				return actions.order.capture().then(function(details) {
 					console.log(details)
-					window.location.replace("http://localhost:8080/")
+					    var form = document.createElement("form");
+						var element1 = document.createElement("input"); 
+						var element2 = document.createElement("input");  
+						var element3 = document.createElement("input");
+						
+						form.method = "POST";
+						form.action = "/prenotaService";   
+						
+						element1.value=sessionStorage.getItem("luogoRitiro");
+						element1.name="luogoRitiro";
+						form.appendChild(element1);  
+						
+						element2.value=sessionStorage.getItem("luogoConsegna");
+						element2.name="luogoConsegna";
+						form.appendChild(element2);
+						
+						element3.value=sessionStorage.getItem("emailDestinatario");
+						element3.name="emailDestinatario";
+						form.appendChild(element3);
+						
+						document.body.appendChild(form);
+						
+						form.submit();
 				})
 			},
 			onCancel: function(data) {
