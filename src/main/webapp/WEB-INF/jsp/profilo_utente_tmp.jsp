@@ -29,7 +29,9 @@
     <p class="lead">In questa sezione puoi gestire il tuo profilo </p>
     <button type="button" class="btn btn-primary"><a href="/" class="text-decoration-none" style="color: white;">Home Page</a></button>
 	<button type="button" class="btn btn-success"><a href="spedisci" class="text-decoration-none" style="color: white;">Prenota un ritiro</a></button>
-	<button type="button" class="btn btn-secondary"><a href="tracking_page" class="text-decoration-none" style="color: white;">Traccia un'altra spedizione</a></button>
+	<button type="button" class="btn btn-secondary"><a href="tracking_page" class="text-decoration-none" style="color: white;">Traccia una spedizione</a></button>
+	<button type="button" class="btn btn-danger"><a href="/" class="text-decoration-none" style="color: white;">Torna Indietro</a></button>
+	
 </div>
 
 
@@ -76,9 +78,19 @@
 				  	
 				  					  
 				   <div class="col text-center">
-				      <p class="p">GESTISCI RITIRO</p>
-				 	
-						<button type="button" class="btn btn-success"><a href="gestisciRitiro" class="text-decoration-none" style="color: white;">Pannello gestione</a></button>
+				      <p class="p">GESTISCI SPEDIZIONE</p>
+				 		    <div class="row">
+				 		    	  <div class="col">
+				 		    		<button type="button" class="btn btn-outline-success"><a href="gestisciRitiro" class="text-decoration-none" style="color: black;">Modifica Ritiro</a></button>
+				 		    	  </div>
+				 		    	  <div class="col">
+									<button type="button" class="btn btn-outline-info"><a href="modificaSpedizione" class="text-decoration-none" style="color: black;">Modifica consegna</a></button>				 		    	  
+				 		    	  </div>				 		    	  
+				 		    	  <div class="col">
+				 		    	  	<button type="button" class="btn btn-outline-danger"><a href="cancellaRitiro" class="text-decoration-none" style="color: black;">Elimina Spedizione</a></button>
+				 		    	  </div>	
+				 		    </div>
+				 		    </div>
 				 
 				  </div>
 				  		  	

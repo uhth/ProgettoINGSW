@@ -139,7 +139,7 @@
    
                        <!-- LOGIN -->
                     <div id="divLogin" class="modal">
-                        <form class="modal-content animate" action="/loginService" method="post">
+                        <form class="modal-content animate" action="/loginServiceExpress" method="post">
                             <div class="imgcontainer">
                                 <span onclick="document.getElementById('divLogin').style.display='none'" class="close"
                                     title="Close Modal">&times;</span>
@@ -163,7 +163,7 @@
                     <!-- FINE LOGIN -->
                     <!-- REGISTER -->
                     <div id="divRegister" class="modal">
-                        <form class="modal-content animate" action="/iscrizioneService" method="post">
+                        <form class="modal-content animate" action="/iscrizioneServiceExpress" method="post">
                             <div class="imgcontainer">
                                 <span onclick="document.getElementById('divRegister').style.display='none'"
                                     class="close" title="Close Modal">&times;</span>

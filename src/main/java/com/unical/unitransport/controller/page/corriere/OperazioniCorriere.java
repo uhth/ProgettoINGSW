@@ -100,6 +100,7 @@ public class OperazioniCorriere {
 
 		
 		if (spedizione!=null && SpedizioneCorriereDAO.spedizioneAppartenenteCorriere(last_code, (String) session.getAttribute("email"))) {
+
 			ShipmentsDAO.update(spedizione, scelta_cod, luogoAggiornato);
 			spedizione.setStatus(scelta_cod);		
 			Date date = new Date();
@@ -111,6 +112,7 @@ public class OperazioniCorriere {
 				System.out.println("Errore impossibile caricare la mappa (gestione corriere)");
 			}
 			return "gestioneSpedizioneCorriere";
+
 		}
 		
 		

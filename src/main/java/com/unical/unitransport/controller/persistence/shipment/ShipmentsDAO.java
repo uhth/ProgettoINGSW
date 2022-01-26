@@ -87,6 +87,24 @@ public class ShipmentsDAO {
 		}
 	}
 
+	public static boolean updateLuogoConsegna( Shipment shipment, int status, String receiver_location ) {
+		initialize();
+		try {
+			String sql = "update unitransport.shipments set status = ?, last_update = ?, receiver_location = ? where tracking_number = ? ; ";
+			PreparedStatement statement = DatabaseManager.getConnection().prepareStatement( sql );
+			statement.setInt( 1, status );
+			statement.setTimestamp( 2, Timestamp.from( Instant.now() ) );
+			statement.setString( 3, receiver_location );
+			statement.setString( 4, shipment.getTrackingNumber() );
+			statement.executeUpdate();
+			statement.close();
+			return true;
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return false;
+		}
+	}
+	
 	public static boolean updateRitiro( Shipment shipment, int status, String sender_location ) {
 		initialize();
 		try {
