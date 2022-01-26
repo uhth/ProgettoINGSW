@@ -37,6 +37,7 @@ public class TrackingPageController {
 		spedizione.setLastUpdate(new Timestamp(0));
 		spedizione.setLastLocation("Milano MI");
 		spedizione.setLastLocation("ROMA RM");
+		
 		*/ 
 		
 		

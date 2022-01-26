@@ -49,8 +49,7 @@ public class AddressToCoordinate {
 			String[] splitlong = lng.split(Pattern.quote(","));
 
 			String finalLat = splitlat[0];
-			String finalLong = splitlong[0];
-			
+			String finalLong = splitlong[0];			
 			setLatitude(finalLat);
 			setLongitude(finalLong);
 		} catch (Exception e) {
