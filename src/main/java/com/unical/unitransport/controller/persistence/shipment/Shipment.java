@@ -59,7 +59,11 @@ public class Shipment {
 		this.receiver_location = receiver_location;
 		
 		// load register
-		registerDate.add(created_on);
+		if (last_update != null) {
+			registerDate.add(last_update);
+		} else {		
+			registerDate.add(created_on);
+		}
 		registerState.add(getStato(status));
 		registerLocation.add(last_location);
 	}
