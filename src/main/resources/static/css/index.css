@@ -433,6 +433,15 @@ form {
         font-size: 1.5rem;
     }
     
+    .tabs {
+    	display:none;
+    }
+    
+     .tab-content {
+    	display:none;
+    }
+    
+    
     
     #adminZone{
     position: absolute;
@@ -535,6 +544,16 @@ form {
 	    right: -4.15%;
 	    transform: translate(-50%, -50%);
 	}
+	
+	
+	 .tabs {
+    	display:none;
+    }
+    
+    .tab-content {
+    	display:none;
+    }
+    
 
 
 }
