@@ -68,7 +68,7 @@
                         corriere: {
                         icon: "immagini/gmaps_corriere.png",
                         },
-                    };                    
+                    };                                        
                     /*<![CDATA[*/
                         const features = [
                         {
