@@ -27,7 +27,7 @@ public class CambioPassword {
 	public String inserisciVecchiaPassword(HttpServletRequest req, HttpServletResponse res,
 						@RequestParam( value = "richiediCambioPassword", required = true ) String password ) {
 		
-		HttpSession session = req.getSession();
+		HttpSession session = req.getSession(true);
 		
 		if (AccountsManager.login((String) session.getAttribute("email"), password)) {
 			session.setAttribute("passwordInseritaValida", "true");
@@ -45,7 +45,7 @@ public class CambioPassword {
 			@RequestParam( value = "passwordNuova", required = true ) String password,
 			@RequestParam( value = "passwordNuovaRipeti", required = true ) String passwordRipetuta) {
 		
-		HttpSession session = req.getSession();
+		HttpSession session = req.getSession(true);
 		
 		if (password.equals(passwordRipetuta)) {
 			session.setAttribute("passwordInseritaValida", null);

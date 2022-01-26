@@ -29,20 +29,22 @@
 
 <div class="container my-5 text-center" style="max-width: 580px;">
     <img src="../immagini/logoNome.png" alt="" style="width:30%;">
-    <p class="lead" style="font-size: 32px;">Hai bisogno di modificare un ritiro?</p>
+    <p class="lead" style="font-size: 32px;">Hai bisogno di annullare un ritiro?</p>
     <p class="lead">Inserisci il codice della spedizione che ti interessa e procedi inserendo i nuovi dati.</p>
     <button type="button" class="btn btn-primary"><a href="/" class="text-decoration-none" style="color: white;">Home Page</a></button>
 	<button type="button" class="btn btn-success"><a href="profilo_utente" class="text-decoration-none" style="color: white;">Profilo</a></button>
 	<button type="button" class="btn btn-secondary"><a href="tracking_page" class="text-decoration-none" style="color: white;">Traccia spedizione</a></button>
 	<button type="button" class="btn btn-danger"><a href="profilo_utente" class="text-decoration-none" style="color: white;">Torna Indietro</a></button>
-
 </div>
 
 
       <div class="container">
-        <div class="row">
-        
-        	 <div class="col text-center">
+				  
+	    <div class="row">
+	    
+	    		   <div class="col text-center"></div>
+				  
+				   <div class="col text-center">
 						<div class="info">
 
 
@@ -64,38 +66,30 @@
 				  </div>
 
 				    <div class="col">
-										<form  method="post" action="cercaTrackingModifica">
+										<form  method="post" action="cercaTrackingCancella">
 										  <div class="form-group">
-										    <label for="formLuogo">SPEDIZIONE DA MODIFICARE:</label>
+										    <label for="formLuogo">SPEDIZIONE DA ELIMINARE:</label>
 										    <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="es. un1tr4$p0rt" name="trackingModifica">
 										  </div>
 										  <br>			  
-										    <input  class="btn btn-primary" type="submit" value="CERCA"/>
+										    <input  class="btn btn-outline-danger" type="submit" value="ELIMINA"/>
 										</form>
 
 										<br><br>
-
-
-										<form  method="post" action="aggiornaRitiro">
-										  <div class="form-group">
-										    <label for="formLuogo">Ritiro presso:</label>
-										    <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="es. Via Roma n.31 Milano (MI)" name="luogoRitiroNuovo">
-										  </div>
-										  <br>								  										  
-										    <input  class="btn btn-success" type="submit" value="MODIFICA"/>
-										</form>
-										<br><br>
-
 
 
 
 				    </div>
 				    
+				    
+				       <div class="col text-center"></div>
+				    
+				    
 
 
      	 </div>
       
-      </div>
+      </div> <br><br><br>
       
       
     </div>  
@@ -116,11 +110,10 @@
 	  margin-right: auto;
 	  width: 50%;
 	}
-     
-    table, th, td {
+	
+	table, th, td {
 	  border:2px dotted rgba(0,90,255,255);
 	}
-     
      
 	</style>
 </html>

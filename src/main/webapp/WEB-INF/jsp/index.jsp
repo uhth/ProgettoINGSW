@@ -42,7 +42,7 @@
 	                       </c:if>
               		      <c:if test="${role == 'admin'}">
 
-		                        <a href="profiloAmministratore" id="profilo_utente" onclick="btnAccedi()"
+		                        <a href="profiloAmministratore" id="adminZone" onclick="btnAccedi()"
 		                            class="btn btn-rounded">Amministratore  <i class="fas fa-user-lock"></i></a>	                      
                              </c:if>
 	                       	                       		                            
@@ -71,8 +71,8 @@
 				            <c:when test="${role == 'admin'}">
 				                 <h1>Pannello Amministratore<br></h1>
 				                    <a href="aggiungiCorriere" class="btn btn-xl">
-				                        Aggiungi corriere <i class="fas fa-user-slash"></i>
-				                    </a>                            		</a>	
+				                        Aggiungi corriere <i class="fas fa-user-plus"></i>
+				                    </a>                            	
 				                    <br>
 				                    <a href="rimuoviCorriere" class="btn btn-xl">
 				                        Rimuovi corriere <i class="fas fa-user-slash"></i>

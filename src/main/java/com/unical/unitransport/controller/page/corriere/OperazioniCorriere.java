@@ -85,7 +85,9 @@ public class OperazioniCorriere {
 		
 		if (spedizione!=null && SpedizioneCorriereDAO.spedizioneAppartenenteCorriere(last_code, (String) session.getAttribute("email"))) {
 			ShipmentsDAO.update(spedizione, scelta_cod, luogo);
-			return "gestioneSpedizioneCorriere";
+			session.setAttribute("validoGenerico", "LA SPEDIZIONE È STATA CORRETTAMENTE AGGIORNATA");
+			session.setAttribute("validoGenerico_p", null);
+			return "validoGenerico";
 		}
 		
 		

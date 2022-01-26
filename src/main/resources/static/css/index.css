@@ -437,7 +437,7 @@ form {
     #adminZone{
     position: absolute;
     top: 92%;
-    right: -6.33%;
+    right: -3.33%;
     transform: translate(-50%, -50%);
 	}
 	#corriereZone{
@@ -520,7 +520,7 @@ form {
     #adminZone{
     position: absolute;
     top: 92%;
-    right: -4.33%;
+    right: 0.9%;
     transform: translate(-30%, -50%);
 	}
 	#corriereZone{
