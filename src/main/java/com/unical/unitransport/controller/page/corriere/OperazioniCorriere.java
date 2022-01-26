@@ -1,15 +1,18 @@
 package com.unical.unitransport.controller.page.corriere;
 
 import java.io.IOException;
+import java.sql.Timestamp;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import com.unical.unitransport.controller.page.utility.AddressToCoordinate;
 import com.unical.unitransport.controller.persistence.account.Account;
 import com.unical.unitransport.controller.persistence.account.AccountRole;
 import com.unical.unitransport.controller.persistence.account.AccountRoleDAO;
@@ -23,7 +26,7 @@ import com.unical.unitransport.controller.persistence.spedizioniCorriere.Spedizi
 @Controller
 public class OperazioniCorriere {
 	
-	private String last_code;
+	private String last_code;	
 	
 	@GetMapping("/aggiornaStato")
 	public String aggiornaStato( HttpServletRequest req ) {
@@ -43,21 +46,27 @@ public class OperazioniCorriere {
 	}
 	
 	@PostMapping("/corriereServiceCode")
-	public String searchID( HttpServletRequest req, HttpServletResponse res, String codice) throws IOException {
+	public String searchID(Model model, HttpServletRequest req, HttpServletResponse res, String codice) throws IOException {
 		
 
 		HttpSession session = req.getSession(true);
 		session.setAttribute("luogoAttuale", null);
 
 		Shipment spedizione = ShipmentsDAO.getByTrackingNumber(codice);
-		
+
 		if (spedizione!=null) {
-			session.setAttribute("last_code", codice);
+			session.setAttribute("codiceRichiestoCorriere", codice);
 			last_code=codice;
 			session.setAttribute("luogoAttuale", spedizione.localita());
+			
+			try {
+				loadMarkers(spedizione, model);
+			} catch (Exception e) {
+				System.out.println("Errore impossibile caricare la mappa (gestione corriere)");
+			}
+			
 			return "gestioneSpedizioneCorriere";
 		}
-		
 		session.setAttribute("erroreGenerico", "LA SPEDIZIONE NON ESISTE");
 		return "erroreGenerico";
 		
@@ -65,13 +74,19 @@ public class OperazioniCorriere {
 	
 	
 	@PostMapping("/corriereService")
-	public String changeByID(HttpServletRequest req, HttpServletResponse res, String luogo) throws IOException {
+	public String changeByID(Model model, HttpServletRequest req, HttpServletResponse res, String luogo) throws IOException {
 
 		HttpSession session = req.getSession(true);
 
 		Shipment spedizione = ShipmentsDAO.getByTrackingNumber(last_code);
-		
+
+		String luogoAggiornato = req.getParameter("luogoAggiornato");
 		String scelta = req.getParameter("scelta");
+		if (luogoAggiornato==null) {
+			session.setAttribute("erroreGenerico", "NON HAI INSERITO L'INDIRIZZO AGGIORNATO");
+			session.setAttribute("erroreGenerico_p", "Assicurati di inserire un indirizzo nel campo [Località Aggiornata]");
+			return "erroreGenerico";
+		}
 		
 		if (scelta==null) {
 			session.setAttribute("erroreGenerico", "NON HAI SELEZIONATO ALCUN AGGIORNAMENTO");
@@ -84,7 +99,15 @@ public class OperazioniCorriere {
 
 		
 		if (spedizione!=null && SpedizioneCorriereDAO.spedizioneAppartenenteCorriere(last_code, (String) session.getAttribute("email"))) {
-			ShipmentsDAO.update(spedizione, scelta_cod, luogo);
+			ShipmentsDAO.update(spedizione, scelta_cod, luogoAggiornato);
+			spedizione.setStatus(scelta_cod);		
+			spedizione.setLastUpdate(new Timestamp(0));
+			spedizione.setLastLocation(luogoAggiornato);
+			try {
+				loadMarkers(spedizione, model);
+			} catch (Exception e) {
+				System.out.println("Errore impossibile caricare la mappa (gestione corriere)");
+			}
 			return "gestioneSpedizioneCorriere";
 		}
 		
@@ -108,5 +131,21 @@ public class OperazioniCorriere {
 	}
 
 
-
+public void loadMarkers( Shipment spedizione, Model model ) {
+		
+		AddressToCoordinate coordCorriere = new AddressToCoordinate();
+		if (spedizione.getRegisterLocation() != null) { 
+			coordCorriere = new AddressToCoordinate(spedizione.getLastLocation());
+			model.addAttribute("corrierelat", coordCorriere.getLatitude());
+			model.addAttribute("corrierelong", coordCorriere.getLongitude());
+		}
+		
+		AddressToCoordinate coordDestinatario = new AddressToCoordinate(spedizione.getReceiverLocation());
+		AddressToCoordinate coordMittente = new AddressToCoordinate(spedizione.getSenderLocation());
+		
+		model.addAttribute("destinatariolat", coordDestinatario.getLatitude());
+		model.addAttribute("destinatariolong", coordDestinatario.getLongitude());		
+		model.addAttribute("mittentelat", coordMittente.getLatitude());
+		model.addAttribute("mittentelong", coordMittente.getLongitude());	
+	}
 }

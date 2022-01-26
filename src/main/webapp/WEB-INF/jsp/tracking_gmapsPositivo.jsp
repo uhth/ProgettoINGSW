@@ -118,7 +118,6 @@
                             position: features[i].position,
                             icon: icons[features[i].type].icon,
                             map: map,
-                            title: "we",
                         });
                         if (features[i].type == "corriere")
                             addInfoWindow(marker, "Corriere");
