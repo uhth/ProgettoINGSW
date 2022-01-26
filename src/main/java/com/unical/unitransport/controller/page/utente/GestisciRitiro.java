@@ -50,7 +50,7 @@ public class GestisciRitiro {
 		
 		if (session.getAttribute("codiceDaAggiornare")!=null) {			
 			Shipment spedizione = ShipmentsDAO.getByTrackingNumber((String) session.getAttribute("codiceDaAggiornare"));
-			if (spedizione.getStatus() >= 2)
+			if (spedizione.getStatus() >= 1)
 				return "erroreGenerico";
 			
 			ShipmentsDAO.updateRitiro(spedizione, spedizione.getStatus(), luogoRitiroNuovo);
