@@ -38,8 +38,26 @@
                                     document.getElementById("Spedizione").innerHTML = spedizione;
                                     //sessionStorage.clear();
                                 </script>
-                                <span>Qui inserire i dettagli della spedizione(via ritiro,ecc)</span>
-                                <!--qui mettere la sottolabel-->
+                                <p id="desc"></p>
+                                <script>
+                                    desc = sessionStorage.getItem("luogoRitiro");
+                                    document.getElementById("desc").innerHTML = "Luogo ritiro: " + desc;
+                                </script>
+                                <p id="desc2"></p>
+                                <script>
+                                    desc2 = sessionStorage.getItem("luogoConsegna");
+                                    document.getElementById("desc2").innerHTML = "Luogo consegna: " + desc2;
+                                </script>
+                                <p id="desc3">Email mittente: ${email}</p>
+                                <script>
+                                    //desc3 = sessionStorage.getItem("luogoConsegna");
+                                    //document.getElementById("desc3").innerHTML = "Email mittente: " + ;
+                                </script>
+                                <p id="desc4"></p>
+                                <script>
+                                    desc4 = sessionStorage.getItem("emailDestinatario");
+                                    document.getElementById("desc4").innerHTML = "Email destinatario: " + desc4;
+                                </script>
                             </div>
                         </div>
                         <div class="price">

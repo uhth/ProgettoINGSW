@@ -10,4 +10,8 @@ public class Payment {
 	public String payment() {
 		return "payment";
 	}
+	@GetMapping("/payment_error")
+	public String errore() {
+		return "payment_error";
+	}
 }
