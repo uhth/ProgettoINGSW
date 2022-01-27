@@ -57,10 +57,10 @@
 										  </div>
 										  <br>
                       <p>Seleziona il tuo metodo di pagamento:</p>
-                      <input type="radio" id="Online" name="fav_language" value="Online">
+                      <input type="radio" id="Online" name="Online" value="Online">
                       <label for="Online">Online</label>
                       <br>
-                      <input type="radio" id="Contrassegno" name="fav_language" value="Contrassegno">
+                      <input type="radio" id="Contrassegno" name="Contrassegno" value="Contrassegno">
                       <label for="Contrassegno">Contrassegno</label>
                       <br>
                       <button type="button" class="btn btn-primary" onclick="prosegui()">Procedi</button>

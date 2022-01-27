@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.unical.unitransport.controller.payment.Payment;
+import com.unical.unitransport.controller.payment.PaymentManager;
 import com.unical.unitransport.controller.persistence.account.Account;
 import com.unical.unitransport.controller.persistence.account.AccountsDAO;
 import com.unical.unitransport.controller.persistence.account.AccountsManager;
@@ -56,11 +58,12 @@ public class ShipmentsPageController {
 							@RequestParam( value = "luogoRitiro", required = true ) String luogoRitiro,
 							@RequestParam( value = "luogoConsegna", required = true ) String luogoConsegna,
 							@RequestParam( value = "emailDestinatario", required = true ) String emailDestinatario ) throws IOException {
+		
 
 		HttpSession session = req.getSession(true);
     
         Shipment spedizione = ShipmentsManager.registerShipment( (String) req.getSession().getAttribute("email"), emailDestinatario, luogoRitiro, luogoConsegna);
-        
+        Payment pagamento = PaymentManager.registerPayment(spedizione, 2, 10);//inserire type e amount
         
         if ( ShipmentsSenderReceiverDAO.getBySenderEmail( (String) session.getAttribute( "email" ) ) != null ) {
         	model.addAttribute("validoGenerico", spedizione.getTrackingNumber());
