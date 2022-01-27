@@ -19,7 +19,7 @@
   <nav class="navbar navbar-dark bg-primary">
   <div class="container-fluid">
     <a class="navbar-brand" href="#">
-      <img src="../immagini/b1.png" alt="" width="30" height="24" class="d-inline-block align-text-top">
+      <img src="../immagini/logoBianco.jpeg" alt="" width="30" height="24" class="d-inline-block align-text-top">
       UniTransport
     </a>
   </div>
