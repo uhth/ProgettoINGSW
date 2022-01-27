@@ -24,6 +24,7 @@
 	  		  }).fail(function( xhr, status, error ) {
 	  			alert( selectedMail + "OPERAZIONE FALLITA, RIPROVARE" );
 	  	    });
+	  		
     	}
     	
     	function Menu(emailList) { 
