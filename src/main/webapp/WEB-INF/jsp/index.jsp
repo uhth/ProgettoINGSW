@@ -69,11 +69,7 @@
 				                        Rimuovi corriere <i class="fas fa-user-slash"></i>
 				                    </a>
 				                    <br>
-				                    <a href="/" class="btn btn-xl">
-				                        Fornisci assistenza <i class="fas fa-headset"></i>
-				                    </a>
 				                <br />
-				                    <br><br>
 				            </c:when>    	
 				            <c:when test="${email != null}">
 				                 <h1>Consegne Al Miglior Prezzo.<br>Nazionali e Internazionali.</h1>

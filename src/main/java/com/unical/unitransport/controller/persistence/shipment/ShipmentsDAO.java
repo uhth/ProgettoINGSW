@@ -9,6 +9,7 @@ import java.time.Instant;
 import java.util.ArrayList;
 import java.util.List;
 import com.unical.unitransport.controller.persistence.DatabaseManager;
+import com.unical.unitransport.controller.persistence.shipment.state.Stato;
 
 public class ShipmentsDAO {
 //	private String sender_location;
@@ -137,6 +138,7 @@ public class ShipmentsDAO {
 			ResultSet rs = statement.executeQuery();
 			while( rs.next() ) {
 				shipment = new Shipment( rs.getInt( 1 ), rs.getString( 2 ), rs.getInt( 3 ), rs.getTimestamp( 4 ), rs.getTimestamp( 5 ), rs.getString( 6 ), rs.getString( 7 ), rs.getString( 8 ) );
+				shipment.setStatusManager(new Stato(rs.getInt(3)));
 			}					
 			statement.close();
 		} catch (SQLException e) {

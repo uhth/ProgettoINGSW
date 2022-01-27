@@ -3,6 +3,9 @@ package com.unical.unitransport.controller.persistence.shipment;
 import java.sql.Timestamp;
 import java.util.ArrayList;
 
+import com.unical.unitransport.controller.persistence.shipment.state.LabelCreated;
+import com.unical.unitransport.controller.persistence.shipment.state.Stato;
+
 public class Shipment {
 	
 	public static final int UNKNOWN = -1;
@@ -20,6 +23,7 @@ public class Shipment {
 	private int shipment_id;
 	private String tracking_number;
 	private int status;
+	private Stato statusManager;
 	private Timestamp created_on;
 	private Timestamp last_update;
 	private String last_location;
@@ -28,12 +32,14 @@ public class Shipment {
 	
 	public Shipment( String tracking_number ) {
 		this.tracking_number = tracking_number;
-		this.status = LABEL_CREATED;
+		this.statusManager = new Stato(LABEL_CREATED);
+		this.status = statusManager.getStato();
 	}
 	
 	public Shipment( String tracking_number, String last_location, String sender_location, String receiver_location ) {
 		this.tracking_number = tracking_number;
-		this.status = LABEL_CREATED;
+		this.statusManager = new Stato(LABEL_CREATED);
+		this.status = statusManager.getStato();
 		if (last_location != null) {
 			this.last_location = last_location;
 		}else {
@@ -134,6 +140,14 @@ public class Shipment {
 
 	public void setReceiverLocation(String receiver_location) {
 		this.receiver_location = receiver_location;
+	}
+	
+	public Stato getStatusManager() {
+		return statusManager;
+	}
+	
+	public void setStatusManager(Stato stato) {
+		this.statusManager=stato;
 	}
 
 	public String stato() {

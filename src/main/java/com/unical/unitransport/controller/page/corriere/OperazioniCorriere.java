@@ -22,6 +22,7 @@ import com.unical.unitransport.controller.persistence.account.AccountsManager;
 import com.unical.unitransport.controller.persistence.account.Role;
 import com.unical.unitransport.controller.persistence.shipment.Shipment;
 import com.unical.unitransport.controller.persistence.shipment.ShipmentsDAO;
+import com.unical.unitransport.controller.persistence.shipment.state.Stato;
 import com.unical.unitransport.controller.persistence.spedizioniCorriere.SpedizioneCorriereDAO;
 
 @Controller
@@ -32,6 +33,10 @@ public class OperazioniCorriere {
 	@GetMapping("/aggiornaStato")
 	public String aggiornaStato( HttpServletRequest req ) {
 		
+
+		HttpSession session = req.getSession(true);
+		session.setAttribute("statoPacco", null);
+
 		if( !AccountsManager.isLoggedIn( req ) ) return "login";
 		HttpSession session = req.getSession(false);
 	
@@ -59,6 +64,7 @@ public class OperazioniCorriere {
 			session.setAttribute("codiceRichiestoCorriere", codice);
 			last_code=codice;
 			session.setAttribute("luogoAttuale", spedizione.localita());
+			session.setAttribute("statoPacco", spedizione.getStatus());
 			
 			try {
 				loadMarkers(spedizione, model);
@@ -106,6 +112,10 @@ public class OperazioniCorriere {
 			Date date = new Date();
 			spedizione.setLastUpdate(new Timestamp(date.getTime()));
 			spedizione.setLastLocation(luogoAggiornato);
+			spedizione.setStatusManager(new Stato(scelta_cod));
+			session.setAttribute("statoPacco", null);
+			session.setAttribute("codiceRichiestoCorriere", null);
+
 			try {
 				loadMarkers(spedizione, model);
 			} catch (Exception e) {
