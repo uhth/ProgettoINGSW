@@ -8,8 +8,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.unical.unitransport.controller.persistence.account.Account;
 import com.unical.unitransport.controller.persistence.account.AccountRole;
@@ -26,84 +28,79 @@ import com.unical.unitransport.controller.persistence.spedizioniCorriere.Spedizi
 public class AggiungiRimuoviCorriere {
 	
 	@GetMapping("/aggiungiCorriere")
-	public String aggiungiCorriere(HttpServletRequest req) {
+	public String aggiungiCorrieri(	Model model,
+									HttpServletRequest req,
+									HttpServletResponse res ) {
 		
-		HttpSession session = req.getSession(true);
-		session.setAttribute("listaUtentiConvertibili", null);
-		
-		List<Account> lista = AccountsDAO.getAll();
-		List<String> listaUtenti = new ArrayList<String>();
-		
-		for (Account account: lista) {
-			AccountRole ruolo = AccountRoleDAO.getFor(account);
-			if (ruolo.getRoleId()==3)
-				listaUtenti.add(account.getEmail());
+		//L'admin è loggato?
+		if( !AccountsManager.isLoggedIn( req ) ) {
+			res.setStatus( HttpServletResponse.SC_UNAUTHORIZED );
+			return "/";
 		}
 		
-		session.setAttribute("listaUtentiConvertibili", listaUtenti);
+		//Aggiungo gli utenti alla lista
+		List<Account> lista = AccountsDAO.getAll();
+		List<String> listaUtenti = new ArrayList<String>();
+		for( Account account : lista ) {
+			Role role = AccountsManager.getUserRole( account );
+			if( role != null && role.getRoleName().compareTo( "user" ) == 0 ) {
+				listaUtenti.add( "\"" + account.getEmail() + "\"" );
+			}
+		}
+		
+		//Aggiungo la lista al model
+		model.addAttribute( "listaUtentiConvertibili", listaUtenti );
 
 		return "aggiungi_corriere";
 	}
 	
 	
-	@PostMapping("aggiuntaCorriere")
-	public void aggiornaCorrieri (HttpServletRequest req, HttpServletResponse res, String richiestaAggiuntaCorriere) throws IOException {
-		HttpSession session = req.getSession(true);
+	@PostMapping("/aggiuntaCorriere")
+	public void aggiungiCorriere(	HttpServletRequest req,
+								   	HttpServletResponse res,
+								   	@RequestParam( value = "email", required = true ) String email ) {
 		
-		AccountsManager.changeAccountRole(richiestaAggiuntaCorriere, "corriere");
-		res.sendRedirect("aggiungiCorriere");
-		
-	
-	}
+		AccountsManager.changeAccountRole( email, "corriere");
+		res.setStatus( HttpServletResponse.SC_ACCEPTED );
+}
 	
 	
 	@GetMapping("/rimuoviCorriere")
-	public String rimuoviCorriere(HttpServletRequest req) {
-		
-		HttpSession session = req.getSession(true);
-		session.setAttribute("listaUtentiConvertibili", null);
-		
-		List<Account> lista = AccountsDAO.getAll();
-		List<String> listaUtenti = new ArrayList<String>();
-		
-		for (Account account: lista) {
-			AccountRole ruolo = AccountRoleDAO.getFor(account);
-			if (ruolo.getRoleId()==2)
-				listaUtenti.add(account.getEmail());
+	public String rimuoviCorrieri(	Model model,
+									HttpServletRequest req,
+									HttpServletResponse res ) {
+
+		//L'admin è loggato?
+		if( !AccountsManager.isLoggedIn( req ) ) {
+		res.setStatus( HttpServletResponse.SC_UNAUTHORIZED );
+		return "/";
 		}
 		
-		session.setAttribute("listaUtentiConvertibili", listaUtenti);
-
+		//Aggiungo gli utenti alla lista
+		List<Account> lista = AccountsDAO.getAll();
+		List<String> listaUtenti = new ArrayList<String>();
+		for( Account account : lista ) {
+		Role role = AccountsManager.getUserRole( account );
+			if( role != null && role.getRoleName().compareTo( "corriere" ) == 0 ) {
+			listaUtenti.add( "\"" + account.getEmail() + "\"" );
+			}
+		}
+		
+		//Aggiungo la lista al model
+		model.addAttribute( "listaUtentiConvertibili", listaUtenti );
 
 		return "rimuovi_corriere";
 	}
 	
 	
-	@PostMapping("rimozioneCorriere")
-	public void rimuoviCorrieri (HttpServletRequest req, HttpServletResponse res, String richiestaRimozioneCorriere) throws IOException {
-		HttpSession session = req.getSession(true);
+	@PostMapping("/rimozioneCorriere")
+	public void rimuoviCorriere(	HttpServletRequest req,
+								   	HttpServletResponse res,
+								   	@RequestParam( value = "email", required = true ) String email ) {
 		
-		
-		if (AccountsDAO.getByEmail(richiestaRimozioneCorriere)!=null) {
-			Account utente = AccountsDAO.getByEmail(richiestaRimozioneCorriere);
-			if (AccountRoleDAO.getFor(utente).getRoleId()==2) {
-		
-				AccountsManager.changeAccountRole(richiestaRimozioneCorriere, "user");
-				res.sendRedirect("rimuoviCorriere");
-			} else {
-				session.setAttribute("erroreGenerico", "L'utente selezionato non è un corriere");
-				session.setAttribute("erroreGenerico_p", null);
-				res.sendRedirect("errore");
-			}
-		
-		} else {
-			session.setAttribute("erroreGenerico", "L'UTENTE NON ESISTE");
-			session.setAttribute("erroreGenerico_p", null);
-			res.sendRedirect("errore");
-		}
-		
-	
-	}
+		AccountsManager.changeAccountRole( email, "user");
+		res.setStatus( HttpServletResponse.SC_ACCEPTED );
+}
 	
 
 }
