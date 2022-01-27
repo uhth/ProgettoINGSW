@@ -62,7 +62,6 @@ public class OperazioniCorriere {
 			last_code=codice;
 			session.setAttribute("luogoAttuale", spedizione.localita());
 			session.setAttribute("statoPacco", spedizione.getStatus());
-			System.out.println("valore " + spedizione.getStatus() + " e valore invece di state: "+ spedizione.getStatusManager().getStato());
 			
 			try {
 				loadMarkers(spedizione, model);
@@ -110,9 +109,7 @@ public class OperazioniCorriere {
 			Date date = new Date();
 			spedizione.setLastUpdate(new Timestamp(date.getTime()));
 			spedizione.setLastLocation(luogoAggiornato);
-			spedizione.setStatusManager(new Stato(scelta_cod+1));
-			System.out.println("settato stato " + spedizione.getStatusManager().getStato());
-			System.out.println("status_class " + scelta_cod);
+			spedizione.setStatusManager(new Stato(scelta_cod));
 			session.setAttribute("statoPacco", null);
 			session.setAttribute("codiceRichiestoCorriere", null);
 

@@ -32,13 +32,13 @@ public class Shipment {
 	
 	public Shipment( String tracking_number ) {
 		this.tracking_number = tracking_number;
-		this.statusManager = new Stato(0);
+		this.statusManager = new Stato(LABEL_CREATED);
 		this.status = statusManager.getStato();
 	}
 	
 	public Shipment( String tracking_number, String last_location, String sender_location, String receiver_location ) {
 		this.tracking_number = tracking_number;
-		this.statusManager = new Stato(0);
+		this.statusManager = new Stato(LABEL_CREATED);
 		this.status = statusManager.getStato();
 		if (last_location != null) {
 			this.last_location = last_location;
@@ -148,7 +148,6 @@ public class Shipment {
 	
 	public void setStatusManager(Stato stato) {
 		this.statusManager=stato;
-		System.out.println("stateManager == " + statusManager.getStato());
 	}
 
 	public String stato() {

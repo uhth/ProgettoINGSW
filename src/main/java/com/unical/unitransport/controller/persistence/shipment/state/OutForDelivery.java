@@ -1,17 +1,20 @@
 package com.unical.unitransport.controller.persistence.shipment.state;
 
-public class OutForDelivery extends StatePattern{
+public class OutForDelivery implements StatePattern{
 
 	@Override
-	public int precedente(Stato stato) {
-		this.setStato(1);
-		return this.getStato();
+	public StatePattern precedente() {
+		return new Shipped();
 	}
 
 	@Override
-	public int successivo(Stato stato) {
-		this.setStato(3);
-		return this.getStato();
+	public StatePattern successivo() {
+		return new Delivery();
+	}
+
+	@Override
+	public int getStato() {
+		return 2;
 	}
 
 }
