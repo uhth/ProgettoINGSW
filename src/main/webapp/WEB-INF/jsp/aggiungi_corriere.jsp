@@ -72,7 +72,7 @@
     <p class="lead">In questa sezione puoi gestire il tuo profilo </p>
     <button type="button" class="btn btn-primary"><a href="/" class="text-decoration-none" style="color: white;">Home Page</a></button>
 	<button type="button" class="btn btn-success"><a href="spedisci" class="text-decoration-none" style="color: white;">Prenota un ritiro</a></button>
-	<button type="button" class="btn btn-secondary"><a href="tracking_page" class="text-decoration-none" style="color: white;">Traccia un'altra spedizione</a></button>
+	<button type="button" class="btn btn-secondary"><a href="tracking_gmaps" class="text-decoration-none" style="color: white;">Traccia un'altra spedizione</a></button>
 </div>
 
 
