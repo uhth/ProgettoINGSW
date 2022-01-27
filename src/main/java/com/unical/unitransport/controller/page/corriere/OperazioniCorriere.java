@@ -33,18 +33,21 @@ public class OperazioniCorriere {
 	@GetMapping("/aggiornaStato")
 	public String aggiornaStato( HttpServletRequest req ) {
 		
+
 		HttpSession session = req.getSession(true);
 		session.setAttribute("statoPacco", null);
+
 		if( !AccountsManager.isLoggedIn( req ) ) return "login";
-		
+		HttpSession session = req.getSession(false);
 	
 		Account account =  AccountsDAO.getByEmail( (String) req.getSession().getAttribute( "email" ) );
 		Role role = AccountsManager.getUserRole( account );
-		if( role == null || !isCorriere(account) )
+		if( role == null || role.getRoleName() == "corriere" )
 			return "index";
 		
 		session.setAttribute("codiceRichiestoCorriere", null);
 		session.setAttribute("luogoAttuale", null);
+		
 		return "gestioneSpedizioneCorriere";
 	}
 	
@@ -130,18 +133,6 @@ public class OperazioniCorriere {
 	}
 	
 	
-
-
-	
-	private boolean isCorriere(Account account) {
-		AccountRole role = AccountRoleDAO.getFor(account);
-		if (role.getRoleId()==2)
-			return true;
-		return false;
-		
-	}
-
-
 public void loadMarkers( Shipment spedizione, Model model ) {
 		
 		AddressToCoordinate coordCorriere = new AddressToCoordinate();
