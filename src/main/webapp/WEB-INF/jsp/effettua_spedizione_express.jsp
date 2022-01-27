@@ -30,7 +30,7 @@
     <p class="lead">Scegli, in base al peso, la spedizione express che si adatta alle tue esigenze. </p>
     <button type="button" class="btn btn-primary"><a href="/" class="text-decoration-none" style="color: white;">Home Page</a></button>
 	<button type="button" class="btn btn-success"><a href="profilo_utente" class="text-decoration-none" style="color: white;">Profilo</a></button>
-	<button type="button" class="btn btn-secondary"><a href="tracking_page" class="text-decoration-none" style="color: white;">Traccia spedizione</a></button>
+	<button type="button" class="btn btn-secondary"><a href="tracking_gmaps" class="text-decoration-none" style="color: white;">Traccia spedizione</a></button>
 	<button type="button" class="btn btn-danger"><a href="spedisci" class="text-decoration-none" style="color: white;">Torna indietro</a></button>	
 </div>
 
