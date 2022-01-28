@@ -4,6 +4,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.sql.Timestamp;
+import java.time.Instant;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -28,9 +30,10 @@ public class PaymentDAO {
 			String sql = "create table if not exists "
 					+ "unitransport.payment( "
 					+ "payment_id serial PRIMARY KEY, "
+					+ "sender_email VARCHAR(255) NOT NULL,"
 					+ "type INT NOT NULL, "
 					+ "amount FLOAT NOT NULL, "
-				    + ") ; ";
+					+ "date_payment DATE ); " ;
 			statement.executeUpdate( sql );	
 			statement.close();
 		} catch (SQLException e) {
@@ -38,13 +41,15 @@ public class PaymentDAO {
 		}
 	}
 	
-	public static boolean insert( Payment pay ) {
+	public static boolean insert(Payment pay) {
 		initialize();
 		try {
-			//inserire il tipo
-			String sql = "insert into unitransport.payment( type ) values( ? ) ;";
+			String sql = "insert into unitransport.payment( sender_email, type, amount, date_payment) values( ?, ?, ?, ?) ;";
 			PreparedStatement statement = DatabaseManager.getConnection().prepareStatement( sql );
-			//statement.setInt( 1, pay.getType() );
+			statement.setString(1, pay.getEmail());
+			statement.setInt( 2, pay.getType() );
+			statement.setFloat(3, pay.getAmount());
+			statement.setTimestamp( 4, Timestamp.from( Instant.now() ) );
 			statement.executeUpdate();
 			statement.close();
 			return true;

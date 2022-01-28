@@ -1,5 +1,7 @@
 package com.unical.unitransport.controller.payment;
 
+import java.sql.Timestamp;
+
 public class Payment {
 	public static final int ONLINE = 0;
 	public static final int CONTRASSEGNO = 1;
@@ -7,10 +9,14 @@ public class Payment {
 	private int payment_id;
 	private int type;
 	private float amount;
+	private Timestamp date;
+	private String email;
 	
-	public Payment(int type, float amount) {
+	public Payment(int type, float amount, Timestamp date, String email) {
 		this.type = type;
 		this.amount = amount;
+		this.date = date;
+		this.email = email;
 	}
 	
 	
@@ -31,6 +37,18 @@ public class Payment {
 	}
 	public void setAmount(float amount) {
 		this.amount = amount;
+	}
+	public Timestamp getDate() {
+		return date;
+	}
+	public void setDate(Timestamp date) {
+		this.date = date;
+	}
+	public String getEmail() {
+		return email;
+	}
+	public void setEmail(String email) {
+		this.email = email;
 	}
 	
 }

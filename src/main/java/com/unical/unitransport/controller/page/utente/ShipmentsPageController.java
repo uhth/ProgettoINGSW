@@ -1,9 +1,13 @@
 package com.unical.unitransport.controller.page.utente;
 
 import java.io.IOException;
+import java.sql.Timestamp;
+import java.util.Date;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -11,12 +15,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.unical.unitransport.controller.payment.Payment;
-import com.unical.unitransport.controller.payment.PaymentManager;
-import com.unical.unitransport.controller.persistence.account.Account;
-import com.unical.unitransport.controller.persistence.account.AccountsDAO;
-import com.unical.unitransport.controller.persistence.account.AccountsManager;
-import com.unical.unitransport.controller.persistence.account.Role;
-import com.unical.unitransport.controller.persistence.account.RolesDAO;
+import com.unical.unitransport.controller.payment.PaymentDAO;
 import com.unical.unitransport.controller.persistence.shipment.Shipment;
 import com.unical.unitransport.controller.persistence.shipment.ShipmentsManager;
 import com.unical.unitransport.controller.persistence.shipment.ShipmentsSenderReceiverDAO;
@@ -63,7 +62,12 @@ public class ShipmentsPageController {
 		HttpSession session = req.getSession(true);
     
         Shipment spedizione = ShipmentsManager.registerShipment( (String) req.getSession().getAttribute("email"), emailDestinatario, luogoRitiro, luogoConsegna);
-        Payment pagamento = PaymentManager.registerPayment(spedizione, 2, 10);//inserire type e amount
+        
+        Date data = new Date();
+        //amount
+        System.out.println("Online");
+        Payment pagamento = new Payment(1, (float) 9.99, new Timestamp(data.getTime()), (String) req.getSession().getAttribute("email"));
+        PaymentDAO.insert(pagamento);
         
         if ( ShipmentsSenderReceiverDAO.getBySenderEmail( (String) session.getAttribute( "email" ) ) != null ) {
         	model.addAttribute("validoGenerico", spedizione.getTrackingNumber());
