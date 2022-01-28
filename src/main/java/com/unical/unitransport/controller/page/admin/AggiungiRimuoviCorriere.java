@@ -15,6 +15,7 @@ import com.unical.unitransport.controller.persistence.account.Account;
 import com.unical.unitransport.controller.persistence.account.AccountsDAO;
 import com.unical.unitransport.controller.persistence.account.AccountsManager;
 import com.unical.unitransport.controller.persistence.account.Role;
+import com.unical.unitransport.controller.persistence.spedizioniCorriere.SpedizioneCorriereDAO;
 
 
 @Controller
