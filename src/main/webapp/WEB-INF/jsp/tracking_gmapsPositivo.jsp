@@ -157,10 +157,10 @@
                 <tbody> 
                     <c:forEach var = "i" begin = "0" end = "${sizeofevents}">
                     <tr>
-                        <th scope="col">${dataeora.get(i)}</th>
-                        <th scope="col">${statosped.get(i)}</th>
-                        <th scope="col">${luogosped.get(i)}</th>
-                        <th scope="col">${destFinale}</th>
+                        <th scope="col">${dataeora.get(i).getDataFormatted()}</th>
+                        <th scope="col">${statosped.get(i).getStato()}</th>
+                        <th scope="col">${luogosped.get(i).getLast_location().toUpperCase()}</th>
+                        <th scope="col">${destFinale.toUpperCase()}</th>
                     </tr>
                 </c:forEach>
                 </tbody>
