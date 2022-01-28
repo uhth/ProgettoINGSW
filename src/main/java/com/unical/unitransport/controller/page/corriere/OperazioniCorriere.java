@@ -22,6 +22,8 @@ import com.unical.unitransport.controller.persistence.account.AccountsManager;
 import com.unical.unitransport.controller.persistence.account.Role;
 import com.unical.unitransport.controller.persistence.shipment.Shipment;
 import com.unical.unitransport.controller.persistence.shipment.ShipmentsDAO;
+import com.unical.unitransport.controller.persistence.shipment.state.HistoricalShipment;
+import com.unical.unitransport.controller.persistence.shipment.state.HistoricalShipmentDAO;
 import com.unical.unitransport.controller.persistence.shipment.state.Stato;
 import com.unical.unitransport.controller.persistence.spedizioniCorriere.SpedizioneCorriereDAO;
 
@@ -105,8 +107,10 @@ public class OperazioniCorriere {
 		if (spedizione!=null && SpedizioneCorriereDAO.spedizioneAppartenenteCorriere(last_code, (String) session.getAttribute("email"))) {
 
 			ShipmentsDAO.update(spedizione, scelta_cod, luogoAggiornato);
-			spedizione.setStatus(scelta_cod);		
+	
 			Date date = new Date();
+			HistoricalShipmentDAO.insert(new HistoricalShipment(spedizione.getTrackingNumber(),new Timestamp(date.getTime()),scelta_cod,luogoAggiornato));
+			spedizione.setStatus(scelta_cod);		
 			spedizione.setLastUpdate(new Timestamp(date.getTime()));
 			spedizione.setLastLocation(luogoAggiornato);
 			spedizione.setStatusManager(new Stato(scelta_cod));
@@ -133,7 +137,7 @@ public class OperazioniCorriere {
 public void loadMarkers( Shipment spedizione, Model model ) {
 		
 		AddressToCoordinate coordCorriere = new AddressToCoordinate();
-		if (spedizione.getRegisterLocation() != null) { 
+		if (spedizione.getLastLocation() != null) { 
 			coordCorriere = new AddressToCoordinate(spedizione.getLastLocation());
 			model.addAttribute("corrierelat", coordCorriere.getLatitude());
 			model.addAttribute("corrierelong", coordCorriere.getLongitude());
