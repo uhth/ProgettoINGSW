@@ -37,7 +37,7 @@ public class SpedizioneCorriereDAO {
 		}
 	}
 	
-	public static boolean insert(SpedizioneCorriere spedizione) {
+	public static boolean insert( SpedizioneCorriere spedizione ) {
 		initialize();
 		try {
 			String sql = "insert into unitransport.spedizioni_corrieri( tracking_number, email) values( ?, ?) ;";
@@ -179,7 +179,7 @@ public class SpedizioneCorriereDAO {
 			ResultSet rs = statement.executeQuery( sql );
 			
 			while( rs.next() ) {
-				if (rs.getString(1).equals(tracking))
+				if ( rs.getString(1).equals(tracking) )
 					return true;
 			}					
 			statement.close();
@@ -189,7 +189,7 @@ public class SpedizioneCorriereDAO {
 		return false;
 	}
 	
-	public static boolean spedizioneAppartenenteCorriere(String tracking, String corriere) {
+	public static boolean spedizioneAppartenenteCorriere( String tracking, String corriere ) {
 		initialize();
 		try {
 			String sql = "select * from unitransport.spedizioni_corrieri;";

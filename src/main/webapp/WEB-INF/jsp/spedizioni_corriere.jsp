@@ -28,7 +28,7 @@
     <img src="../immagini/logoNome.png" alt="" style="width:30%;">
     <p class="lead">SPEDIZIONI ATTIVE DI ${email} </p>
     <button type="button" class="btn btn-primary"><a href="/" class="text-decoration-none" style="color: white;">Home Page</a></button>
-	<button type="button" class="btn btn-secondary"><a href="tracking_page" class="text-decoration-none" style="color: white;">Aggiorna stato spedizione</a></button>
+	<button type="button" class="btn btn-secondary"><a href="tracking_gmaps" class="text-decoration-none" style="color: white;">Aggiorna stato spedizione</a></button>
 </div>
 
 

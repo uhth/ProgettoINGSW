@@ -4,11 +4,12 @@
         <html lang="en" dir="ltr">
 
         <head>
-            <link href="https://chatcompose.azureedge.net/static/all/global/export/css/main.5b1bd1fd.css"
+            <!--<link href="https://chatcompose.azureedge.net/static/all/global/export/css/main.5b1bd1fd.css"
                 rel="stylesheet">
             <script async type="text/javascript"
                 src="https://chatcompose.azureedge.net/static/all/global/export/js/main.a7059cb5.js?user=unitransport&lang=IT"
-                user="unitransport" lang="IT"></script>
+                user="unitransport" lang="IT"></script>-->
+				<link href="https://chatcompose.azureedge.net/static/all/global/export/css/main.5b1bd1fd.css" rel="stylesheet">    <script async type="text/javascript" src="https://chatcompose.azureedge.net/static/all/global/export/js/main.a7059cb5.js?user=UnicalTransport&lang=IT" user="UnicalTransport" lang="IT"></script>
             <meta charset="utf-8">
             <link rel="icon" href="../immagini/b1.png">
             <link rel="stylesheet" href="css/index.css">
@@ -30,26 +31,16 @@
 
                     <c:if test="${email != null}">
 		                        <p class="intro_benvenuto">Benvenuto ${email}</p>
-              		      <c:if test="${role == 'user'}">
-
-		                        <a href="profilo_utente" id="profilo_utente" onclick="btnAccedi()"
-		                            class="btn btn-rounded">Profilo utente <i class="far fa-user"></i></a>
-	                       </c:if>
               		      <c:if test="${role == 'corriere'}">
-
-                    		    <a id="corriereZone" href="areaCorriere"
-                            class="btn btn-rounded">Area Corriere <i class="fas fa-people-carry"></i></a>
+                    		    <a id="b0" href="areaCorriere" class="btn btn-rounded">Area Corriere <i class="fas fa-people-carry"></i></a>
 	                       </c:if>
               		      <c:if test="${role == 'admin'}">
-
-		                        <a href="profiloAmministratore" id="adminZone" onclick="btnAccedi()"
-		                            class="btn btn-rounded">Amministratore  <i class="fas fa-user-lock"></i></a>	                      
-                             </c:if>
-	                       	                       		                            
-		                        <a href="logout" id="prova" onclick="btnAccedi()" class="btn btn-rounded">Logout <i class="fas fa-sign-out-alt"></i></a>
+		                        <a href="profiloAmministratore" id="b0" class="btn btn-rounded">Amministratore <i class="fas fa-user-lock"></i></a>	                      
+                             </c:if>	  
+                             	<br><a href="profilo_utente" id="b1" class="btn btn-rounded">Profilo utente <i class="far fa-user"></i></a>                	                       		                            
+		                        <br><a href="logout" id="b2" class="btn btn-rounded">Logout <i class="fas fa-sign-out-alt"></i></a>
                     </c:if>
                 </div>
-
 
                 <div class="showcase-content">
 
