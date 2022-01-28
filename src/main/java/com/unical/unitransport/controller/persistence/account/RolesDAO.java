@@ -30,6 +30,11 @@ public class RolesDAO {
 					+ "role_name VARCHAR ( 255 ) UNIQUE NOT NULL );";
 			statement.executeUpdate( sql );	
 			statement.close();
+			if( getByName( "admin" ) != null ) {
+				RolesDAO.insert( new Role( "admin" ) );
+				RolesDAO.insert( new Role( "corriere" ) );
+				RolesDAO.insert( new Role( "user" ) );
+			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -77,6 +82,25 @@ public class RolesDAO {
 			e.printStackTrace();
 			return false;
 		}
+	}
+	
+	
+	public static Role getById( int id ) {
+		initialize();
+		Role role = null;
+		try {
+			String sql = "select * from unitransport.roles where role_id = ? ; ";
+			PreparedStatement statement = DatabaseManager.getConnection().prepareStatement( sql );
+			statement.setInt( 1, id );
+			ResultSet rs = statement.executeQuery();
+			while( rs.next() ) {
+				role = new Role( rs.getInt( 1 ), rs.getString( 2 ) );
+			}
+			statement.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return role;
 	}
 	
 	public static Role getByName( String name ) {

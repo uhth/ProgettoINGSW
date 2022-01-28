@@ -4,7 +4,7 @@
 <!doctype html>
 <html lang="en">
   <head>
-
+	<link href="https://chatcompose.azureedge.net/static/all/global/export/css/main.5b1bd1fd.css" rel="stylesheet">    <script async type="text/javascript" src="https://chatcompose.azureedge.net/static/all/global/export/js/main.a7059cb5.js?user=UnicalTransport&lang=IT" user="UnicalTransport" lang="IT"></script>
     <meta charset="utf-8">
     <link rel="icon" href="../immagini/b1.png">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -18,7 +18,7 @@
   <nav class="navbar navbar-dark bg-primary">
   <div class="container-fluid">
     <a class="navbar-brand" href="#">
-      <img src="../immagini/b1.png" alt="" width="30" height="24" class="d-inline-block align-text-top">
+      <img src="../immagini/logoBianco.jpeg" alt="" width="30" height="24" class="d-inline-block align-text-top">
       UniTransport
     </a>
   </div>
@@ -32,7 +32,7 @@
     <p class="lead">In questa sezione puoi scegliere il tipo di spedizione che più si adatta alle tue esigenze </p>
     <button type="button" class="btn btn-primary"><a href="/" class="text-decoration-none" style="color: white;">Home Page</a></button>
 	<button type="button" class="btn btn-success"><a href="profilo_utente" class="text-decoration-none" style="color: white;">Profilo</a></button>
-	<button type="button" class="btn btn-secondary"><a href="tracking_page" class="text-decoration-none" style="color: white;">Traccia spedizione</a></button>
+	<button type="button" class="btn btn-secondary"><a href="tracking_gmaps" class="text-decoration-none" style="color: white;">Traccia spedizione</a></button>
 </div>
 
 

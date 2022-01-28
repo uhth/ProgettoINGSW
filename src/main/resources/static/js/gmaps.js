@@ -24,6 +24,7 @@ function initMap() {
     },
   };
   
+  
 	 const features = [
 	{
 	  position: new google.maps.LatLng(40.614924258302516,  15.745457455158864),
@@ -54,3 +55,4 @@ function initMap() {
   /*  infoWindow.open(map); infowindow */ 
   });
 }
+

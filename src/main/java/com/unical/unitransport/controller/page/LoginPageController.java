@@ -1,32 +1,30 @@
-package com.unical.unitransport.controller.controller;
+package com.unical.unitransport.controller.page;
 
 import java.io.IOException;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
-import java.util.Enumeration;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
-
+import com.unical.unitransport.controller.persistence.account.Account;
 import com.unical.unitransport.controller.persistence.account.AccountsDAO;
 import com.unical.unitransport.controller.persistence.account.AccountsManager;
+import com.unical.unitransport.controller.persistence.account.Role;
+import com.unical.unitransport.controller.persistence.account.RolesDAO;
 
 @Controller
-public class Login {
+public class LoginPageController {
 	
 	@GetMapping("/login")
-	public String loginPage() {
+	public String loginPage( HttpServletRequest req ) {
+		if( req.isRequestedSessionIdValid() ) {
+			if( req.getAttribute( "email " ) != null )
+				return "index";
+		}
 		return "login";
 	}
 	
@@ -37,16 +35,20 @@ public class Login {
 	
 	@GetMapping("/logout")
 	public void logout (HttpServletRequest req, HttpServletResponse res) throws IOException {
-		HttpSession session = req.getSession();
-		session.invalidate();
+		HttpSession session = req.getSession(false);
+		if( session != null ) {
+			session.invalidate();
+		}
 		res.sendRedirect("/");
 	}
 	
 	@PostMapping("/loginService")
-	public String login(HttpServletRequest req,
+	public String login(
+			Model model,
+			HttpServletRequest req,
 			HttpServletResponse res,
 			@RequestParam( value = "email", required = true ) String email,
-			@RequestParam( value = "password", required = true ) String password ) throws IOException {
+			@RequestParam( value = "password", required = true ) String password ) {
 		
 		HttpSession session;
 		
@@ -55,13 +57,21 @@ public class Login {
 			if( session != null ) session.invalidate();
 		}
 		
-		else res.sendRedirect("login");
+		else return "loginFallito";
 		
 		session = req.getSession( true );
 		session.setAttribute( "email", email );
 		
+		Account account = AccountsDAO.getByEmail( email );
+		Role role = AccountsManager.getUserRole( account );
+		if( role == null ) role = RolesDAO.getByName( "user" );
+		session.setAttribute( "role" , role.getRoleName() );
+		
 		return "index";
 		
 	}
+	
+	
+	
 
 }

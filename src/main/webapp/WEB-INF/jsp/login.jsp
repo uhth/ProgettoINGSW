@@ -16,7 +16,7 @@
         <img src="/immagini/avatarPrimary.png" class="avatar">
         <h1>Effettua il login</h1>
         <form method="post" action="loginService">
-            <p>Username:</p>
+            <p>Email:</p>
             <input type="text" name="email" placeholder="Inserisci nome utente"/>
             <p>Password:</p>
             <input type="password" name="password" placeholder="Inserisci password"/>
