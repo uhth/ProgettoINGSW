@@ -99,6 +99,7 @@ public class AggiungiRimuoviCorriere {
 								   	@RequestParam( value = "email", required = true ) String email ) {
 		
 		AccountsManager.changeAccountRole( email, "user");
+		SpedizioneCorriereDAO.removeByCorriere(email);
 		res.setStatus( HttpServletResponse.SC_ACCEPTED );
 }
 	

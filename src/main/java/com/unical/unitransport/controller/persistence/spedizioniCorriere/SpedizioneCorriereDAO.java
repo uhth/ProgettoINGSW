@@ -54,25 +54,38 @@ public class SpedizioneCorriereDAO {
 	}
 	
 
-	public static boolean remove( SpedizioneCorriere spedizione ) {
+
+	public static boolean remove( String spedizione ) {
 		initialize();
 		try {
-			String sql = "delete from unitransport.shipments where tracking_number = ? ;";
+			String sql = "delete from unitransport.spedizioni_corrieri where tracking_number = ? ;";
 			PreparedStatement statement = DatabaseManager.getConnection().prepareStatement(sql);
-			statement.setString( 1, spedizione.getTracking_code());
-			statement.executeUpdate();				
+			statement.setString( 1, spedizione );
+			statement.executeUpdate();			
 			statement.close();
- 			String sql2 = "delete from unitransport.spedizioni_corrieri where tracking_number = ? ;";
-			PreparedStatement statement2 = DatabaseManager.getConnection().prepareStatement(sql2);
-			statement2.setString( 1, spedizione.getTracking_code());
-			statement2.executeUpdate();				
-			statement2.close();
 			return true;
 		} catch (SQLException e) {
 			e.printStackTrace();
 			return false;
 		}
 	}
+	
+	public static boolean removeByCorriere( String email ) {
+		initialize();
+		try {
+			String sql = "delete from unitransport.spedizioni_corrieri where email = ? ;";
+			PreparedStatement statement = DatabaseManager.getConnection().prepareStatement(sql);
+			statement.setString( 1, email );
+			statement.executeUpdate();			
+			statement.close();
+			return true;
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return false;
+		}
+	}
+	
+
 	
 
 	
