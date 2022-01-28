@@ -86,14 +86,16 @@ public class AggiungiRimuoviCorriere {
 	}
 	
 	
-		@PostMapping("/rimozioneCorriere")
-		public void rimuoviCorriere(	HttpServletRequest req,
-									   	HttpServletResponse res,
-									   	@RequestParam( value = "email", required = true ) String email ) {
-			
-			AccountsManager.changeAccountRole( email, "user");
-			res.setStatus( HttpServletResponse.SC_ACCEPTED );
-	}
+
+	@PostMapping("/rimozioneCorriere")
+	public void rimuoviCorriere(	HttpServletRequest req,
+								   	HttpServletResponse res,
+								   	@RequestParam( value = "email", required = true ) String email ) {
+		
+		AccountsManager.changeAccountRole( email, "user");
+		SpedizioneCorriereDAO.removeByCorriere(email);
+		res.setStatus( HttpServletResponse.SC_ACCEPTED );
+}
 	
 
 }
