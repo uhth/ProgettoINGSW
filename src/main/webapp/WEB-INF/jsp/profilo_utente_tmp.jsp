@@ -66,8 +66,11 @@
 				      <p class="p">STORICO PAGAMENTI</p>
 						<div class="info">
 							<ul>
-							<c:forEach items="${listaPagamenti}" var="singoloPagamento">
-								<li>${singoloPagamento.date} ${singoloPagamento.amount}</li>
+								<c:forEach var = "i" begin = "0" end = "${sizePagamenti}">
+								<tr>
+									<th scope="col">DATA: ${listaPagamenti.get(i).getDataFormatted()} ||</th>
+									<th scope="col">EURO: ${listaPagamenti.get(i).getAmount()}</th>
+								</tr>
 							</c:forEach>
 							</ul>
 						</div>	
