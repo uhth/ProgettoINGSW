@@ -66,8 +66,8 @@
 				      <p class="p">STORICO PAGAMENTI</p>
 						<div class="info">
 							<ul>
-							<c:forEach items="${listaSpedizioni}" var="singolaSpedizione">
-								<li>${singolaSpedizione}</li>
+							<c:forEach items="${listaPagamenti}" var="singoloPagamento">
+								<li>${singoloPagamento.date} ${singoloPagamento.amount}</li>
 							</c:forEach>
 							</ul>
 						</div>	

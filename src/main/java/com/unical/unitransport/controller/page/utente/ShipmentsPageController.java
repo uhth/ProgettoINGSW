@@ -65,9 +65,18 @@ public class ShipmentsPageController {
         
         Date data = new Date();
         //amount
-        System.out.println("Online");
-        Payment pagamento = new Payment(1, (float) 9.99, new Timestamp(data.getTime()), (String) req.getSession().getAttribute("email"));
-        PaymentDAO.insert(pagamento);
+        System.out.println(req.getParameter("Online"));
+        System.out.println(req.getParameter("Contrassegno"));
+        if(req.getParameter("Contrassegno")=="Contrassegno") {
+        	Payment pagamento = new Payment(1, (float) 0.00, new Timestamp(data.getTime()), (String) req.getSession().getAttribute("email"));
+        	PaymentDAO.insert(pagamento);
+        }
+        else {
+        	Payment pagamento = new Payment(0, (float) 199.00, new Timestamp(data.getTime()), (String) req.getSession().getAttribute("email"));
+        	System.out.println(new Timestamp(data.getTime()));
+        	PaymentDAO.insert(pagamento);
+        }
+        
         
         if ( ShipmentsSenderReceiverDAO.getBySenderEmail( (String) session.getAttribute( "email" ) ) != null ) {
         	model.addAttribute("validoGenerico", spedizione.getTrackingNumber());

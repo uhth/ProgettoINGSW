@@ -18,6 +18,10 @@ public class Payment {
 		this.date = date;
 		this.email = email;
 	}
+	/*public Payment(float amount, Timestamp date) {
+		this.amount = amount;
+		this.date = date;
+	}*/
 	
 	
 	public int getPayment_id() {

@@ -7,6 +7,7 @@ import java.sql.Statement;
 import java.sql.Timestamp;
 import java.time.Instant;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import com.unical.unitransport.controller.persistence.DatabaseManager;
@@ -33,7 +34,7 @@ public class PaymentDAO {
 					+ "sender_email VARCHAR(255) NOT NULL,"
 					+ "type INT NOT NULL, "
 					+ "amount FLOAT NOT NULL, "
-					+ "date_payment DATE ); " ;
+					+ "date_payment TIMESTAMP ); " ;
 			statement.executeUpdate( sql );	
 			statement.close();
 		} catch (SQLException e) {
@@ -73,22 +74,24 @@ public class PaymentDAO {
 		}
 	}
 	
-	public static Payment getById( int id ) {
+	public static List<Payment> getBySender( String sender ) {
 		initialize();
-		Payment pay = null;
+		List<Payment> pagamenti = new ArrayList<Payment>();
 		try {
-			String sql = "select * from unitransport.payment where role_id = ? ; ";
+			String sql = "select * from unitransport.payment where sender_email = ? ; ";
 			PreparedStatement statement = DatabaseManager.getConnection().prepareStatement( sql );
-			statement.setInt( 1, id );
+			statement.setString( 1, sender );
 			ResultSet rs = statement.executeQuery();
 			while( rs.next() ) {
-				//pay = new Payment( rs.getInt( 1 ), rs.getInt( 2 ), rs.getFloat(0.99) );
+				System.out.println(rs.getString(2));
+				Payment p = new Payment(rs.getInt(3) ,rs.getFloat(4), rs.getTimestamp(5), rs.getString(2));
+				pagamenti.add(p);
 			}
 			statement.close();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		return pay;
+		return pagamenti;
 	}
 	
 	public static List<Payment> getAll() {
