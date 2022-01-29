@@ -94,21 +94,4 @@ public class PaymentDAO {
 		return pagamenti;
 	}
 	
-	public static List<Payment> getAll() {
-		initialize();
-		List<Payment> payed = new ArrayList<Payment>();
-		try {
-			String sql = "select * from unitransport.payment";
-			Statement statement = DatabaseManager.getConnection().createStatement();
-			ResultSet rs = statement.executeQuery( sql );
-			while( rs.next() ) {
-				//Payment pay = new Payment( rs.getInt( 1 ), rs.getString( 2 ) );
-				//roles.add( pay );
-			}					
-			statement.close();
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-		return payed;
-	}
 }

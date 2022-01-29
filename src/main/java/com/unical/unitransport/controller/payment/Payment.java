@@ -1,6 +1,7 @@
 package com.unical.unitransport.controller.payment;
 
 import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
 
 public class Payment {
 	public static final int ONLINE = 0;
@@ -18,12 +19,8 @@ public class Payment {
 		this.date = date;
 		this.email = email;
 	}
-	/*public Payment(float amount, Timestamp date) {
-		this.amount = amount;
-		this.date = date;
-	}*/
 	
-	
+
 	public int getPayment_id() {
 		return payment_id;
 	}
@@ -54,5 +51,7 @@ public class Payment {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	
+	public String getDataFormatted() {
+		return new SimpleDateFormat("dd/MM/yyyy HH:mm:ss").format(date);
+	}
 }
