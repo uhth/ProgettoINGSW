@@ -1,12 +1,10 @@
 package com.unical.unitransport.controller.page.admin;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,13 +12,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.unical.unitransport.controller.persistence.account.Account;
-import com.unical.unitransport.controller.persistence.account.AccountRole;
-import com.unical.unitransport.controller.persistence.account.AccountRoleDAO;
 import com.unical.unitransport.controller.persistence.account.AccountsDAO;
 import com.unical.unitransport.controller.persistence.account.AccountsManager;
 import com.unical.unitransport.controller.persistence.account.Role;
-import com.unical.unitransport.controller.persistence.shipment.ShipmentsDAO;
-import com.unical.unitransport.controller.persistence.spedizioniCorriere.SpedizioneCorriere;
 import com.unical.unitransport.controller.persistence.spedizioniCorriere.SpedizioneCorriereDAO;
 
 
@@ -93,12 +87,14 @@ public class AggiungiRimuoviCorriere {
 	}
 	
 	
+
 	@PostMapping("/rimozioneCorriere")
 	public void rimuoviCorriere(	HttpServletRequest req,
 								   	HttpServletResponse res,
 								   	@RequestParam( value = "email", required = true ) String email ) {
 		
 		AccountsManager.changeAccountRole( email, "user");
+		SpedizioneCorriereDAO.removeByCorriere(email);
 		res.setStatus( HttpServletResponse.SC_ACCEPTED );
 }
 	

@@ -16,6 +16,17 @@ body {
     color: #999;
 }
 
+/* Hide scrollbar for Chrome, Safari and Opera */
+body::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+body {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+
 ul {
     list-style: none;
 }
@@ -59,9 +70,9 @@ form {
 }
 
 .divider {
-    width:5px;
-    height:auto;
-    display:inline-block;
+    width: 5px;
+    height: auto;
+    display: inline-block;
 }
 
 .showcase {
@@ -85,8 +96,8 @@ form {
 
 .showcase-top {
     position: relative;
-    z-index: 2;
-    height: 90px;
+    z-index: 3;
+    height: 120px;
 }
 
 .showcase-top img {
@@ -95,6 +106,10 @@ form {
     top: 100%;
     left: 50%;
     transform: translate(-50%, -50%);
+}
+
+.showcase-top img:hover {
+    opacity: 0.92;
 }
 
 #posLogo{
@@ -106,12 +121,15 @@ form {
 }
 
 .showcase-top a {
-    position: absolute;
-    top: 50%;
-    right: 0;
-    transform: translate(-50%, -50%);
+    position: relative;
+    top: 20%;
+	margin-right: 2%;
+	margin-left: 92%;
+	margin-top: 0%;
+	margin-bottom: 0%;
+	display: inline-flex;
+	
 }
-
 
 #adminZone{
     position: absolute;
@@ -332,6 +350,23 @@ form {
 
 
 /* Bottoni */
+
+.btnR {
+    background: var(--primary-color);
+    color: #fff;
+    padding: 0.4rem 1.3rem;
+    font-size: 1rem;
+    text-align: center;
+    border: none;
+    cursor: pointer;
+    margin-right: 0.5rem;
+    outline: none;
+    direction: ltr;
+    box-shadow: 0 1px 0 rgba(0,0,0,0, 0.45);
+    border-radius: 18px;
+    border: 2px solid blue;
+    
+}
 
 .btn {
     display: inline-block;

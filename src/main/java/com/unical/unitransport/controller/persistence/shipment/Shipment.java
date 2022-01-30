@@ -3,6 +3,9 @@ package com.unical.unitransport.controller.persistence.shipment;
 import java.sql.Timestamp;
 import java.util.ArrayList;
 
+import com.unical.unitransport.controller.persistence.shipment.state.LabelCreated;
+import com.unical.unitransport.controller.persistence.shipment.state.Stato;
+
 public class Shipment {
 	
 	public static final int UNKNOWN = -1;
@@ -13,13 +16,10 @@ public class Shipment {
 	public static final int COMPLETED = 4;
 	public static final int CANCELED = 5;
 	
-	private ArrayList<Timestamp> registerDate = new ArrayList<Timestamp>();
-	private ArrayList<String> registerState = new ArrayList<String>();;
-	private ArrayList<String> registerLocation = new ArrayList<String>();;
-	
 	private int shipment_id;
 	private String tracking_number;
 	private int status;
+	private Stato statusManager;
 	private Timestamp created_on;
 	private Timestamp last_update;
 	private String last_location;
@@ -28,12 +28,14 @@ public class Shipment {
 	
 	public Shipment( String tracking_number ) {
 		this.tracking_number = tracking_number;
-		this.status = LABEL_CREATED;
+		this.statusManager = new Stato(LABEL_CREATED);
+		this.status = statusManager.getStato();
 	}
 	
 	public Shipment( String tracking_number, String last_location, String sender_location, String receiver_location ) {
 		this.tracking_number = tracking_number;
-		this.status = LABEL_CREATED;
+		this.statusManager = new Stato(LABEL_CREATED);
+		this.status = statusManager.getStato();
 		if (last_location != null) {
 			this.last_location = last_location;
 		}else {
@@ -58,14 +60,6 @@ public class Shipment {
 		this.sender_location = sender_location;
 		this.receiver_location = receiver_location;
 		
-		// load register
-		if (last_update != null) {
-			registerDate.add(last_update);
-		} else {		
-			registerDate.add(created_on);
-		}
-		registerState.add(getStato(status));
-		registerLocation.add(last_location);
 	}
 
 	public int getShipmentId() {
@@ -89,7 +83,6 @@ public class Shipment {
 	}
 
 	public void setStatus(int status) {
-		registerState.add(getStato(status));
 		this.status = status;
 	}
 	
@@ -98,7 +91,6 @@ public class Shipment {
 	}
 	
 	public void setLastUpdate( Timestamp last_update ) {
-		registerDate.add(last_update);
 		this.last_update = last_update;
 	}
 	
@@ -115,7 +107,6 @@ public class Shipment {
 	}
 	
 	public void setLastLocation( String last_location ) {
-		registerLocation.add(last_location);
 		this.last_location = last_location;
 	}
 	
@@ -134,6 +125,14 @@ public class Shipment {
 
 	public void setReceiverLocation(String receiver_location) {
 		this.receiver_location = receiver_location;
+	}
+	
+	public Stato getStatusManager() {
+		return statusManager;
+	}
+	
+	public void setStatusManager(Stato stato) {
+		this.statusManager=stato;
 	}
 
 	public String stato() {
@@ -156,25 +155,7 @@ public class Shipment {
 		
 		return state;
 	}
-	public String getStato(int x) {
-		String state = "";
-		if(x==Shipment.UNKNOWN)
-			state = "Nessuna informazione attualmente disponibile";
-		else if (x==Shipment.LABEL_CREATED)
-			state ="LA SPEDIZIONE E' STATA CREATA";
-		else if (x==Shipment.OUT_FOR_DELIVERY)
-			state ="LA SPEDIZIONE E' PRONTA PER LA CONSEGNA";		
-		else if (x==Shipment.SHIPPED)
-			state ="LA SPEDIZIONE E' PARTITA";		
-		else if (x==Shipment.DELIVERY)
-			state ="LA SPEDIZIONE E' IN CONSEGNA";
-		else if (x==Shipment.COMPLETED)
-			state ="LA SPEDIZIONE E' STATA COMPLETATA";		
-		else if (x==Shipment.CANCELED)
-			state ="LA SPEDIZIONE E' STATA ANNULLATA";		
-		
-		return state;
-	}
+	
 	public String localita() {
 		
 		//if (status>=Shipment.SHIPPED && status<=Shipment.COMPLETED)
@@ -184,18 +165,6 @@ public class Shipment {
 			
 	}
 
-	public ArrayList<Timestamp> getRegisterDate() {
-		return registerDate;
-	}
-
-	public ArrayList<String> getRegisterState() {
-		return registerState;
-	}
-
-	public ArrayList<String> getRegisterLocation() {
-		return registerLocation;
-	}
-	
 
 	
 }

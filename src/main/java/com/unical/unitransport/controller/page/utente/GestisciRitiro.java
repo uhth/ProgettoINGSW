@@ -11,6 +11,8 @@ import com.unical.unitransport.controller.persistence.shipment.ShipmentSenderRec
 import com.unical.unitransport.controller.persistence.shipment.ShipmentsDAO;
 import com.unical.unitransport.controller.persistence.shipment.ShipmentsManager;
 import com.unical.unitransport.controller.persistence.shipment.ShipmentsSenderReceiverDAO;
+import com.unical.unitransport.controller.persistence.spedizioniCorriere.SpedizioneCorriere;
+import com.unical.unitransport.controller.persistence.spedizioniCorriere.SpedizioneCorriereDAO;
 import com.unical.unitransport.controller.persistence.spedizioniUtente.SpedizioneUtenteDAO;
 
 @Controller
@@ -125,6 +127,7 @@ public class GestisciRitiro {
 			
 				if(utenteValido) {
 					ShipmentsDAO.remove(ShipmentsDAO.getByTrackingNumber(trackingModifica));	
+					SpedizioneCorriereDAO.remove(trackingModifica);
 					session.setAttribute("codiceDaAggiornare", null);
 					session.setAttribute("validoGenerico", "LA SPEDIZIONE E' STATA ELIMINATA CON SUCCESSO");
 					session.setAttribute("validoGenerico_p", null);

@@ -19,6 +19,8 @@ import com.unical.unitransport.controller.payment.PaymentDAO;
 import com.unical.unitransport.controller.persistence.shipment.Shipment;
 import com.unical.unitransport.controller.persistence.shipment.ShipmentsManager;
 import com.unical.unitransport.controller.persistence.shipment.ShipmentsSenderReceiverDAO;
+import com.unical.unitransport.controller.persistence.shipment.state.HistoricalShipment;
+import com.unical.unitransport.controller.persistence.shipment.state.HistoricalShipmentDAO;
 
 @Controller
 public class ShipmentsPageController {
@@ -75,6 +77,10 @@ public class ShipmentsPageController {
         	PaymentDAO.insert(pagamento);
         }
         
+
+		
+        HistoricalShipmentDAO.insert(new HistoricalShipment(spedizione.getTrackingNumber(),spedizione.getCreatedOn(),spedizione.getStatus(),spedizione.getLastLocation()));
+
         
         if ( ShipmentsSenderReceiverDAO.getBySenderEmail( (String) session.getAttribute( "email" ) ) != null ) {
         	model.addAttribute("validoGenerico", spedizione.getTrackingNumber());

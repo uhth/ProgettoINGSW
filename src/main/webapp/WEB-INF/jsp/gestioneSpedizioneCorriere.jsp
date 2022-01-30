@@ -76,11 +76,28 @@
 										  <div class="form-group">
 										    <label for="formStato">Stato</label>
 										    <select multiple class="form-control" id="" name="scelta">
-										      <option value="0">SPEDIZIONE CREATA</option>
-										      <option value="1">SPEDIZIONE AVVIATA</option>
-										      <option value="2">SPEDIZIONE PRONTA PER LA CONSEGNA</option>
-										      <option value="3">SEDIZIONE IN CONSEGNA</option>
-										      <option value="4">SPEZIONE COMPLETATA</option>
+													<c:choose>
+													    <c:when test="${statoPacco == 0}">
+													        <option value="1">SPEDIZIONE AVVIATA</option>
+													        <option value="5">SPEDIZIONE SMARRITA</option>
+													    </c:when>
+													    <c:when test="${statoPacco == 1}">
+													        <option value="2">SPEDIZIONE PRONTA PER LA CONSEGNA</option>
+													        <option value="5">SPEDIZIONE SMARRITA</option>
+													    </c:when>
+													    <c:when test="${statoPacco == 2}">
+													        <option value="3">SEDIZIONE IN CONSEGNA</option>
+													        <option value="5">SPEDIZIONE SMARRITA</option>
+													    </c:when>
+													    <c:when test="${statoPacco == 3}">
+													        <option value="4">SPEZIONE COMPLETATA</option>
+													        <option value="5">SPEDIZIONE SMARRITA</option>
+													    </c:when>
+													    <c:otherwise>
+													        <option value="-1">STATO SCONOSCIUTO</option>
+													    </c:otherwise>
+													</c:choose>
+
 										    </select>
 										  </div>
 										  <br>

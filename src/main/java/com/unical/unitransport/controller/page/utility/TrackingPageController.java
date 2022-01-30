@@ -1,7 +1,7 @@
 package com.unical.unitransport.controller.page.utility;
 
 import java.io.IOException;
-import java.util.Arrays;
+import java.util.ArrayList;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.unical.unitransport.controller.persistence.shipment.Shipment;
 import com.unical.unitransport.controller.persistence.shipment.ShipmentsDAO;
+import com.unical.unitransport.controller.persistence.shipment.state.HistoricalShipment;
+import com.unical.unitransport.controller.persistence.shipment.state.HistoricalShipmentDAO;
 
 @Controller
 public class TrackingPageController {
@@ -24,20 +26,9 @@ public class TrackingPageController {
 
 		Shipment spedizione = ShipmentsDAO.getByTrackingNumber(tracking);
 
-		// HttpSession session;
 		if (spedizione == null) {
 			return "tracking_gmapsFallito";
-		}
-		//TEST STATE/UPDATE/TIME
-		/*
-		spedizione.setStatus(2);
-		spedizione.setStatus(3);		
-		spedizione.setLastUpdate(new Timestamp(0));
-		spedizione.setLastUpdate(new Timestamp(0));
-		spedizione.setLastLocation("Milano MI");
-		spedizione.setLastLocation("ROMA RM");*/
-		 
-		
+		}	 
 		
 		loadMarkers( spedizione, model );
 		loadTable( spedizione, model );
@@ -47,7 +38,17 @@ public class TrackingPageController {
 	}
 
 	public void loadTable(Shipment spedizione, Model model ) {
+	
+		ArrayList<HistoricalShipment> array = new ArrayList<HistoricalShipment>(HistoricalShipmentDAO.getByTrackingNumber(spedizione.getTrackingNumber()));
+		model.addAttribute("sizeofevents", array.size()-1); //da testare
+
+		 
 		
+		model.addAttribute("statosped", array);
+		model.addAttribute("luogosped", array);
+		model.addAttribute("dataeora", array); // spedizione.getCreatedOn().toString().substring(0, 19) );
+		model.addAttribute("destFinale", spedizione.getReceiverLocation());
+		/*
 		System.out.println("SIZE ARRAY: "+spedizione.getRegisterState().size() + " - " + spedizione.getRegisterLocation().size() + " - " + spedizione.getRegisterDate().size());
 		
 		int[] x = {spedizione.getRegisterState().size(), spedizione.getRegisterLocation().size(), spedizione.getRegisterDate().size()};
@@ -58,12 +59,13 @@ public class TrackingPageController {
 		model.addAttribute("luogosped", spedizione.getRegisterLocation());
 		model.addAttribute("dataeora", spedizione.getRegisterDate()); // spedizione.getCreatedOn().toString().substring(0, 19) );
 		model.addAttribute("destFinale", spedizione.getReceiverLocation());
+	*/
 	}
 	
 	public void loadMarkers( Shipment spedizione, Model model ) {
 		
 		AddressToCoordinate coordCorriere = new AddressToCoordinate();
-		if (spedizione.getRegisterLocation().size() == 1) { 
+		if (spedizione.getStatus() <= 1) { 
 			coordCorriere = new AddressToCoordinate(spedizione.getLastLocation());
 	        double str1 = Double.parseDouble( coordCorriere.getLatitude());
 	        double str2 = Double.parseDouble( coordCorriere.getLongitude());
