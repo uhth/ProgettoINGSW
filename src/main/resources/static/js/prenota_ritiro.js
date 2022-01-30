@@ -7,6 +7,13 @@ function prosegui() {
   		window.location.href = "/payment";
 	}
  	else if(document.getElementById("Contrassegno").checked == true){
-		document.getElementById('form').submit();
+		var element4 = document.createElement("input");
+		element4.value=sessionStorage.getItem("costoIva");
+		element4.name="costoIva";
+		form.appendChild(element4);
+		
+		document.body.appendChild(form);
+		form.submit();
+		//document.getElementById('form').submit();
 	}
 }

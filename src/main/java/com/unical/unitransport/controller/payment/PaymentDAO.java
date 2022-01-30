@@ -83,7 +83,6 @@ public class PaymentDAO {
 			statement.setString( 1, sender );
 			ResultSet rs = statement.executeQuery();
 			while( rs.next() ) {
-				System.out.println(rs.getString(2));
 				Payment p = new Payment(rs.getInt(3) ,rs.getFloat(4), rs.getTimestamp(5), rs.getString(2));
 				pagamenti.add(p);
 			}

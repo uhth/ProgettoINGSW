@@ -62,6 +62,15 @@
                       <br>
                       <input type="radio" id="Contrassegno" name="Contrassegno" value="Contrassegno">
                       <label for="Contrassegno">Contrassegno</label>
+                      <p id="desc5" hidden></p>
+                        <script>
+                            var costo2 = parseFloat(sessionStorage.getItem("first"));
+                            var iva = ((costo2 * 22) / 100);
+                            var costoIva = iva + costo2;
+                            sessionStorage.setItem("costoIva", costoIva);
+                            desc5 = sessionStorage.getItem("costoIva");
+                            document.getElementById("desc5").innerHTML = "Costo Iva: " + desc5;
+                        </script>
                       <br>
                       <button type="button" class="btn btn-primary" onclick="prosegui()">Procedi</button>
                       <!--<button type="button" class="btn btn-primary"><a href="/payment" class="text-decoration-none" style="color: white;">Prosegui</a></button>-->								  										  

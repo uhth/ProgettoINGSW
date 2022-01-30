@@ -64,16 +64,14 @@ public class ShipmentsPageController {
         Shipment spedizione = ShipmentsManager.registerShipment( (String) req.getSession().getAttribute("email"), emailDestinatario, luogoRitiro, luogoConsegna);
         
         Date data = new Date();
-        //amount
-        
-        //System.out.println(req.getParameter("Online"));
-        //System.out.println(req.getParameter("Contrassegno"));
+        float costo = Float.parseFloat(req.getParameter("costoIva"));
+        float costofix = (float) (Math.ceil(costo * Math.pow(10, 2)) / Math.pow(10, 2));
         if(req.getParameter("Contrassegno")=="Contrassegno") {
-        	Payment pagamento = new Payment(1, (float) 0.00, new Timestamp(data.getTime()), (String) req.getSession().getAttribute("email"));
+        	Payment pagamento = new Payment(1, costofix, new Timestamp(data.getTime()), (String) req.getSession().getAttribute("email"));
         	PaymentDAO.insert(pagamento);
         }
         else {
-        	Payment pagamento = new Payment(0, (float) 199.00, new Timestamp(data.getTime()), (String) req.getSession().getAttribute("email"));
+        	Payment pagamento = new Payment(0, costofix, new Timestamp(data.getTime()), (String) req.getSession().getAttribute("email"));
         	PaymentDAO.insert(pagamento);
         }
         
