@@ -63,17 +63,31 @@
 	    <div class="row">
 				  
 				   <div class="col">
-				      <p class="p">SPEDIZIONI ATTIVE</p>
+				      <p class="p">STORICO PAGAMENTI</p>
 						<div class="info">
 							<ul>
-							<c:forEach items="${listaSpedizioni}" var="singolaSpedizione">
-								<li>${singolaSpedizione}</li>
+								<c:forEach var = "i" begin = "0" end = "${sizePagamenti}">
+								<tr>
+									<th scope="col">DATA: ${listaPagamenti.get(i).getDataFormatted()} ||</th>
+									<th scope="col">EURO: ${listaPagamenti.get(i).getAmount()}</th>
+								</tr>
 							</c:forEach>
 							</ul>
 						</div>	
 
 											
-				  </div>
+				  	</div>
+
+					<div class="col">
+						<p class="p">SPEDIZIONI ATTIVE</p>
+							<div class="info">
+								<ul>
+								<c:forEach items="${listaSpedizioni}" var="singolaSpedizione">
+									<li>${singolaSpedizione}</li>
+								</c:forEach>
+								</ul>
+							</div>				  
+					</div>
 				  	
 				  	
 				  					  

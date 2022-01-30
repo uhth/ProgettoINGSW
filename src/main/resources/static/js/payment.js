@@ -13,7 +13,7 @@ $(document).ready(function() {
 	var iva = ((costo2 * 22) / 100);
 	var costoIva = iva + costo2;
 	document.getElementById("costoIva").innerHTML = costoIva.toFixed(2) + " " + "&euro;";
-
+	sessionStorage.setItem("costoIva", costoIva);
 
 	// Loop over each funding source/payment method
 	FUNDING_SOURCES.forEach(function(fundingSource) {
@@ -37,6 +37,7 @@ $(document).ready(function() {
 						var element1 = document.createElement("input"); 
 						var element2 = document.createElement("input");  
 						var element3 = document.createElement("input");
+						var element4 = document.createElement("input");
 						
 						form.method = "POST";
 						form.action = "/prenotaService";   
@@ -53,9 +54,13 @@ $(document).ready(function() {
 						element3.name="emailDestinatario";
 						form.appendChild(element3);
 						
-						document.body.appendChild(form);
+						element4.value=sessionStorage.getItem("costoIva");
+						element4.name="costoIva";
+						form.appendChild(element4);
 						
-						form.submit();
+						document.body.appendChild(form);
+
+						form.submit();	
 				})
 			},
 			onCancel: function(data) {

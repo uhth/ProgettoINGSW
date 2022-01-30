@@ -58,6 +58,11 @@
                                     desc4 = sessionStorage.getItem("emailDestinatario");
                                     document.getElementById("desc4").innerHTML = "Email destinatario: " + desc4;
                                 </script>
+                                <p id="desc5" hidden></p>
+                                <script>
+                                    desc5 = sessionStorage.getItem("costoIva");
+                                    document.getElementById("desc5").innerHTML = "Costo Iva: " + desc5;
+                                </script>
                             </div>
                         </div>
                         <div class="price">
