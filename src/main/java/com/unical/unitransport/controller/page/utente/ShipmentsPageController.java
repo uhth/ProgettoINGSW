@@ -62,6 +62,12 @@ public class ShipmentsPageController {
 		
 
 		HttpSession session = req.getSession(true);
+		
+		if (luogoRitiro.equals("") || luogoConsegna.equals("")|| emailDestinatario.equals("")) {
+			session.setAttribute("erroreGenerico", "NON HAI COMPILATO TUTTI I CAMPI");
+			session.setAttribute("erroreGenerico_p", "La spedizione non può essere avviata.");
+			return "erroreGenerico";
+		}
     
         Shipment spedizione = ShipmentsManager.registerShipment( (String) req.getSession().getAttribute("email"), emailDestinatario, luogoRitiro, luogoConsegna);
         

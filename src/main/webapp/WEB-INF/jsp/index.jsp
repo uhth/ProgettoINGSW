@@ -20,21 +20,31 @@
                 <div class="showcase-top">
                     <a id="posLogo" href="/"><img id="posLogo" src="/immagini/b1.png"></a>
 
-                    <c:if test="${email == null}">
+                    
+					<c:if test="${email == null}">
                         <p class="intro_benvenuto">Benvenuto utente</p>
                         <a id="prova" onclick="document.getElementById('divLogin').style.display='block'" class="btn btn-rounded" >Accedi <i class="fas fa-sign-in-alt"></i></a>
                     </c:if>
 
                     <c:if test="${email != null}">
 		                        <p class="intro_benvenuto">Benvenuto ${email}</p>
+              		      <c:if test="${role == 'user'}">
+
+		                        <a href="profilo_utente" id="profilo_utente" onclick="btnAccedi()"
+		                            class="btn btn-rounded">Profilo utente <i class="far fa-user"></i></a>
+	                       </c:if>
               		      <c:if test="${role == 'corriere'}">
-                    		    <a id="b0" href="areaCorriere" class="btn btn-rounded">Area Corriere <i class="fas fa-people-carry"></i></a>
+
+                    		    <a id="corriereZone" href="areaCorriere"
+                            class="btn btn-rounded">Area Corriere <i class="fas fa-people-carry"></i></a>
 	                       </c:if>
               		      <c:if test="${role == 'admin'}">
-		                        <a href="profiloAmministratore" id="b0" class="btn btn-rounded">Amministratore <i class="fas fa-user-lock"></i></a>	                      
-                             </c:if>	  
-                             	<br><a href="profilo_utente" id="b1" class="btn btn-rounded">Profilo utente <i class="far fa-user"></i></a>                	                       		                            
-		                        <br><a href="logout" id="b2" class="btn btn-rounded">Logout <i class="fas fa-sign-out-alt"></i></a>
+
+		                        <a href="profiloAmministratore" id="adminZone" onclick="btnAccedi()"
+		                            class="btn btn-rounded">Amministratore  <i class="fas fa-user-lock"></i></a>	                      
+                             </c:if>
+	                       	                       		                            
+		                        <a href="logout" id="prova" onclick="btnAccedi()" class="btn btn-rounded">Logout <i class="fas fa-sign-out-alt"></i></a>
                     </c:if>
                 </div>
 
