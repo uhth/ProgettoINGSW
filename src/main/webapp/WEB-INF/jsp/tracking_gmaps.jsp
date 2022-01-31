@@ -104,7 +104,7 @@
                 <li><a href="faq">FAQ</a></li>
             </ul>
             <ul>
-                <li><a href="">Chi siamo</a></li>
+                <li><a href="chi_siamo">Chi siamo</a></li>
             </ul>
             <ul>
                 <li><a href="http://www.unical.it">Sito Unical</a></li>
