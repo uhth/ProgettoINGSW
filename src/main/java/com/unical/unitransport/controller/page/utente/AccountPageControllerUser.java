@@ -23,8 +23,10 @@ public class AccountPageControllerUser {
 		List<String> spedizioni = ShipmentsSenderReceiverDAO.getAllString((String)req.getSession().getAttribute("email"));
 		session.setAttribute("listaSpedizioni", spedizioni);
 		List<Payment> pagamenti = PaymentDAO.getBySender((String)req.getSession().getAttribute("email"));
-		model.addAttribute("listaPagamenti", pagamenti);
-		model.addAttribute("sizePagamenti", pagamenti.size()-1);
+		if(pagamenti.size()>0) {
+			model.addAttribute("listaPagamenti", pagamenti);
+			model.addAttribute("sizePagamenti", pagamenti.size()-1);
+		}
 		
 		return "profilo_utente_tmp";
 	}

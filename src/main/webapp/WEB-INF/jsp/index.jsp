@@ -138,7 +138,6 @@
                                 <button type="button"
                                     onclick="document.getElementById('divLogin').style.display='none'; document.getElementById('divRegister').style.display='block' "
                                     class="cancelbtn">Registrati</button>
-                                <span class="psw"><a href="#" id="forgotPassw">Password dimenticata?</a></span>
                             </div>
                         </form>
                     </div>
