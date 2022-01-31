@@ -332,7 +332,7 @@
             <footer class="footer">
                 <div class="footer-cols">
                     <ul>
-                        <li><a href="">FAQ</a></li>
+                        <li><a href="faq">FAQ</a></li>
                     </ul>
                     <ul>
                         <li><a href="">Chi siamo</a></li>
