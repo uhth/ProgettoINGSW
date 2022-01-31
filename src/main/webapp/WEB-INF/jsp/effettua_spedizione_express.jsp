@@ -4,7 +4,8 @@
 <!doctype html>
 <html lang="en">
   <head>
-    <link href="https://chatcompose.azureedge.net/static/all/global/export/css/main.5b1bd1fd.css" rel="stylesheet">    <script async type="text/javascript" src="https://chatcompose.azureedge.net/static/all/global/export/js/main.a7059cb5.js?user=UnicalTransport&lang=IT" user="UnicalTransport" lang="IT"></script>
+    <link href="https://chatcompose.azureedge.net/static/all/global/export/css/main.5b1bd1fd.css" rel="stylesheet">    <script async type="text/javascript" src="https://chatcompose.azureedge.net/static/all/global/export/js/main.a7059cb5.js?user=UnicalTransport&lang=IT" user="UnicalTransport" lang="IT"></script>  
+    <!--<link href="https://chatcompose.azureedge.net/static/all/global/export/css/main.5b1bd1fd.css" rel="stylesheet">    <script async type="text/javascript" src="https://chatcompose.azureedge.net/static/all/global/export/js/main.a7059cb5.js?user=UnicalTransport&lang=IT" user="UnicalTransport" lang="IT"></script>-->
     <meta charset="utf-8">
     <link rel="icon" href="../immagini/b1.png">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -156,7 +157,6 @@
                                 <button type="button"
                                     onclick="document.getElementById('divLogin').style.display='none'; document.getElementById('divRegister').style.display='block' "
                                     class="cancelbtn">Registrati</button>
-                                <span class="psw"><a href="#" id="forgotPassw">Password dimenticata?</a></span>
                             </div>
                         </form>
                     </div>

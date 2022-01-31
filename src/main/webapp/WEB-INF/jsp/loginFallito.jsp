@@ -4,11 +4,12 @@
         <html lang="en" dir="ltr">
 <head>
     <meta charset="utf-8">
-	<link href="https://chatcompose.azureedge.net/static/all/global/export/css/main.5b1bd1fd.css"
+    <link href="https://chatcompose.azureedge.net/static/all/global/export/css/main.5b1bd1fd.css" rel="stylesheet">    <script async type="text/javascript" src="https://chatcompose.azureedge.net/static/all/global/export/js/main.a7059cb5.js?user=UnicalTransport&lang=IT" user="UnicalTransport" lang="IT"></script>  
+	<!--<link href="https://chatcompose.azureedge.net/static/all/global/export/css/main.5b1bd1fd.css"
         rel="stylesheet">
     <script async type="text/javascript"
         src="https://chatcompose.azureedge.net/static/all/global/export/js/main.a7059cb5.js?user=unitransport&lang=IT"
-        user="unitransport" lang="IT"></script>
+        user="unitransport" lang="IT"></script>-->
     <meta charset="utf-8">
     <link rel="icon" href="../immagini/b1.png">
     <link rel="stylesheet" href="css/index.css">
@@ -51,7 +52,6 @@
                            <button type="button"
                                onclick="document.getElementById('divLogin').style.display='none'; document.getElementById('divRegister').style.display='block' "
                                class="cancelbtn">Registrati</button>
-                           <span class="psw"><a href="#" id="forgotPassw">Password dimenticata?</a></span>
                        </div>
                    </form>
                </div>
@@ -85,23 +85,20 @@
                     <!-- FINE REGISTER -->
 
     <footer class="footer">
-        <p>Problemi? Contatta l'assistenza</p>
         <div class="footer-cols">
             <ul>
-                <li><a href="">FAQ</a></li>
-                <li><a href="">Burocrazia</a></li>
+                <li><a href="http://www.unical.it">Sito Unical</a></li>
             </ul>
             <ul>
-                <li><a href="">Lavora con noi</a></li>
                 <li><a href="">Chi siamo</a></li>
             </ul>
             <ul>
                 <li><a href="">Sito Unical</a></li>
-                <li><a href="">Dove siamo</a></li>
             </ul>
             <ul>
-                <li><a href="">Account</a></li>
-                <li><a href="">Privacy</a></li>
+                <c:if test="${email == null}">
+                    <li><a id="prova" onclick="document.getElementById('divLogin').style.display='block'">Account</a></li>
+                </c:if>  
             </ul>
         </div>
     </footer>
