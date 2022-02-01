@@ -86,7 +86,7 @@
 													        <option value="5">SPEDIZIONE SMARRITA</option>
 													    </c:when>
 													    <c:when test="${statoPacco == 2}">
-													        <option value="3">SEDIZIONE IN CONSEGNA</option>
+													        <option value="3">SPEDIZIONE IN CONSEGNA</option>
 													        <option value="5">SPEDIZIONE SMARRITA</option>
 													    </c:when>
 													    <c:when test="${statoPacco == 3}">
