@@ -127,5 +127,25 @@ public class ShipmentsSenderReceiverDAO {
 		}
 	}
 	
+	public static List<String> getAllString(String utente) {
+		initialize();
+		List<String> spedizioni = new ArrayList<String>();
+		try {
+			String sql = "select * from unitransport.shipments_sender_receiver ;";
+			Statement statement = DatabaseManager.getConnection().createStatement();
+			ResultSet rs = statement.executeQuery( sql );
+			while( rs.next() ) {
+				if (rs.getString(2).equals(utente)) {
+					Shipment spedizione = ShipmentsDAO.getById(rs.getInt(1));
+					spedizioni.add( spedizione.getTrackingNumber() );
+				}
+			}					
+			statement.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return spedizioni;
+	}
+	
 	
 }

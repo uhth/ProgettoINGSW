@@ -89,6 +89,7 @@ public class AccountRoleDAO {
 			return false;
 		}
 	}
+
 		
 	public static AccountRole getFor( Account account ) {
 		initialize();
@@ -96,8 +97,8 @@ public class AccountRoleDAO {
 		try {
 			String sql = "select * from unitransport.account_roles where user_id = ? ;";
 			PreparedStatement statement = DatabaseManager.getConnection().prepareStatement( sql );
-			statement.setInt( 1, account.getUserId() );
-			ResultSet rs = statement.executeQuery( sql );
+			statement.setInt( 1 , account.getUserId() );
+			ResultSet rs = statement.executeQuery();
 			while( rs.next() ) {
 				accountRole = new AccountRole( rs.getInt( 1 ), rs.getInt( 2 ), rs.getTimestamp( 3 ) );
 			}					

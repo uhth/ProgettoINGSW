@@ -1,5 +1,10 @@
 package com.unical.unitransport.controller.persistence.account;
 
+import java.sql.Timestamp;
+import java.time.Instant;
+
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 public interface AccountsManager {
@@ -36,6 +41,13 @@ public interface AccountsManager {
 		return null;
 	}
 	
+	public static Role getUserRole( Account account ) {
+		AccountRole ac = AccountRoleDAO.getFor( account );
+		if( ac == null ) return null;
+		Role role = RolesDAO.getById( ac.getRoleId() );
+		return role;
+	}
+	
 	public static boolean unregisterAccount( String email ) {
 		Account account = AccountsDAO.getByEmail( email );
 		return AccountsDAO.remove( account );
@@ -53,7 +65,10 @@ public interface AccountsManager {
 		BCryptPasswordEncoder pwEncoder = new BCryptPasswordEncoder();
 		Account account = AccountsDAO.getByEmail( email );
 		if( account == null ) return false;
-		return pwEncoder.matches( password, account.getPassword() );
+		boolean res = pwEncoder.matches( password, account.getPassword() );
+		account.setLastLogin( Timestamp.from( Instant.now() ) );
+		AccountsDAO.updateLastLogin( account );
+		return res;
 	}
 	
 	public static boolean changeAccountRole( String email, String role_name ) {
@@ -75,6 +90,10 @@ public interface AccountsManager {
 			BCryptPasswordEncoder pwEncoder = new BCryptPasswordEncoder();
 			String encodedPw = pwEncoder.encode(newPassword);
 			return AccountsDAO.updatePassword( account , encodedPw );
+	}
+	
+	public static boolean isLoggedIn( HttpServletRequest req ) {
+		return ( req.isRequestedSessionIdValid() && req.getSession().getAttribute( "email" ) != null );
 	}
 
 }

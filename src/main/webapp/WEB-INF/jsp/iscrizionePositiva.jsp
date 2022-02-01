@@ -13,7 +13,9 @@
     <header class="showcase">
         <div class="showcase-top">
             <img src="/immagini/b1.png" alt="">
-            <a href="login" id="prova" onclick="btnAccedi()" class="btn btn-rounded">Accedi</a>
+            <c:if test="${ email == null }">
+            	<a href="login" id="prova" onclick="btnAccedi()" class="btn btn-rounded">Accedi</a>
+            </c:if>
         </div>
         <div class="showcase-content">
             <h1>Hai creato con successo l'account</p>
@@ -27,19 +29,20 @@
 
 
             <footer class="footer">
-                <p>Problemi? Contatta l'assistenza</p>
                 <div class="footer-cols">
                     <ul>
-                        <li><a href="">FAQ</a></li>
+                        <li><a href="faq">FAQ</a></li>
                     </ul>
                     <ul>
-                        <li><a href="">Chi siamo</a></li>
+                        <li><a href="chi_siamo">Chi siamo</a></li>
                     </ul>
                     <ul>
                         <li><a href="http://www.unical.it">Sito Unical</a></li>
                     </ul>
                     <ul>
-                        <li><a href="profilo_utente">Account</a></li>
+                        <c:if test="${email == null}">
+                            <li><a id="prova" onclick="document.getElementById('divLogin').style.display='block'">Account</a></li>
+                        </c:if>  
                     </ul>
                 </div>
             </footer>

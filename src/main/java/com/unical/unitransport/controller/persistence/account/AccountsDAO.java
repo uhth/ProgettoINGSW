@@ -4,8 +4,11 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
+
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import com.unical.unitransport.controller.persistence.DatabaseManager;
 
@@ -72,12 +75,32 @@ public class AccountsDAO {
 		}
 	}
 	
+	public static boolean updateLastLogin( Account account ) {
+		initialize();
+		try {
+			String sql = "update unitransport.accounts set last_login = ? where email = ? ;";
+			PreparedStatement statement = DatabaseManager.getConnection().prepareStatement( sql );
+			statement.setTimestamp( 1, account.getLastLogin() );
+			statement.setString( 2, account.getEmail() );
+			int rows_updated = statement.executeUpdate();
+			statement.close();
+			if( rows_updated == 0 ) return false;
+			return true;
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return false;
+		}
+	}
+	
 	public static boolean updatePassword( Account account, String newPassword ) {
 		initialize();
+		BCryptPasswordEncoder pwEncoder = new BCryptPasswordEncoder();
+		String encodedPw = pwEncoder.encode(newPassword);
+
 		try {
 			String sql = "update unitransport.accounts set password = ? where email = ? ;";
 			PreparedStatement statement = DatabaseManager.getConnection().prepareStatement( sql );
-			statement.setString( 1, newPassword );
+			statement.setString( 1, encodedPw );
 			statement.setString( 2, account.getEmail() );
 			int rows_updated = statement.executeUpdate();
 			statement.close();
