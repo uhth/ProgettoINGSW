@@ -17,7 +17,7 @@ Per avviarlo è necessario utilizzare eclipse con estensione "spring", avere ins
 ![facets2](https://user-images.githubusercontent.com/78265579/151966287-8c7b1370-cd41-4974-94dc-9a4ec01fa2d7.png)
 
 4) Al primo avvio decommentare l'inizializzazione del database nel main
-5) 
+ 
 ![init](https://user-images.githubusercontent.com/78265579/151967264-919ab3a0-d05f-43dd-bd3f-db3269253949.png)
 
 5) Ricommentare il codice 
