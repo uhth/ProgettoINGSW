@@ -22,7 +22,7 @@ public class AccountsTests {
 		RolesDAO.removeAll(); //AccountsRole should be updated to due to its constraints
 		RolesDAO.insert( new Role( "test1" ) );
 		//test account
-		AccountsManager.registerAccount( "satana", "satana00" );
+		AccountsManager.registerAccount( "ciao", "ciao00" );
 	}
 	
 	@Test

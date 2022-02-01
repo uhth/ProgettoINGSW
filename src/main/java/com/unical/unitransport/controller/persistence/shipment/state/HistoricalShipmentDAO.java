@@ -84,5 +84,18 @@ public class HistoricalShipmentDAO {
 		return array;
 	}
 	
+	public static boolean removeAll() {
+		initialize();
+		try {
+			String sql = "delete from unitransport.historical_shipment ;";
+			Statement statement = DatabaseManager.getConnection().createStatement();
+			statement.executeUpdate( sql );
+			statement.close();
+			return true;
+		} catch ( SQLException e ) {
+			e.printStackTrace();
+			return false;
+		}
+	}
 }
 
