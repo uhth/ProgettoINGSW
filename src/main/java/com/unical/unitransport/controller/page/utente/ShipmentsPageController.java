@@ -2,6 +2,7 @@ package com.unical.unitransport.controller.page.utente;
 
 import java.io.IOException;
 import java.sql.Timestamp;
+import java.util.Date;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -13,6 +14,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.unical.unitransport.controller.payment.Payment;
+import com.unical.unitransport.controller.payment.PaymentDAO;
 import com.unical.unitransport.controller.persistence.shipment.Shipment;
 import com.unical.unitransport.controller.persistence.shipment.ShipmentsManager;
 import com.unical.unitransport.controller.persistence.shipment.ShipmentsSenderReceiverDAO;
@@ -56,10 +59,31 @@ public class ShipmentsPageController {
 							@RequestParam( value = "luogoRitiro", required = true ) String luogoRitiro,
 							@RequestParam( value = "luogoConsegna", required = true ) String luogoConsegna,
 							@RequestParam( value = "emailDestinatario", required = true ) String emailDestinatario ) throws IOException {
+		
 
 		HttpSession session = req.getSession(true);
+		
+		if (luogoRitiro.equals("") || luogoConsegna.equals("")|| emailDestinatario.equals("")) {
+			session.setAttribute("erroreGenerico", "NON HAI COMPILATO TUTTI I CAMPI");
+			session.setAttribute("erroreGenerico_p", "La spedizione non può essere avviata.");
+			return "erroreGenerico";
+		}
     
         Shipment spedizione = ShipmentsManager.registerShipment( (String) req.getSession().getAttribute("email"), emailDestinatario, luogoRitiro, luogoConsegna);
+        
+        Date data = new Date();
+        float costo = Float.parseFloat(req.getParameter("costoIva"));
+        float costofix = (float) (Math.ceil(costo * Math.pow(10, 2)) / Math.pow(10, 2));
+        if(req.getParameter("Contrassegno")=="Contrassegno") {
+        	Payment pagamento = new Payment(1, costofix, new Timestamp(data.getTime()), (String) req.getSession().getAttribute("email"));
+        	PaymentDAO.insert(pagamento);
+        }
+        else {
+        	Payment pagamento = new Payment(0, costofix, new Timestamp(data.getTime()), (String) req.getSession().getAttribute("email"));
+        	PaymentDAO.insert(pagamento);
+        }
+        
+
 		
         HistoricalShipmentDAO.insert(new HistoricalShipment(spedizione.getTrackingNumber(),spedizione.getCreatedOn(),spedizione.getStatus(),spedizione.getLastLocation()));
 

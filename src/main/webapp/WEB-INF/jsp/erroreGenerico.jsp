@@ -33,23 +33,20 @@
 
 
     <footer class="footer">
-        <p>Problemi? Contatta l'assistenza</p>
         <div class="footer-cols">
             <ul>
-                <li><a href="">FAQ</a></li>
-                <li><a href="">Burocrazia</a></li>
+                <li><a href="faq">FAQ</a></li>
             </ul>
             <ul>
-                <li><a href="">Lavora con noi</a></li>
-                <li><a href="">Chi siamo</a></li>
+                <li><a href="chi_siamo">Chi siamo</a></li>
             </ul>
             <ul>
-                <li><a href="">Sito Unical</a></li>
-                <li><a href="">Dove siamo</a></li>
+                <li><a href="http://www.unical.it">Sito Unical</a></li>
             </ul>
             <ul>
-                <li><a href="">Account</a></li>
-                <li><a href="">Privacy</a></li>
+                <c:if test="${email == null}">
+                    <li><a id="prova" onclick="document.getElementById('divLogin').style.display='block'">Account</a></li>
+                </c:if>  
             </ul>
         </div>
     </footer>

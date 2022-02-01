@@ -30,11 +30,6 @@ public class RolesDAO {
 					+ "role_name VARCHAR ( 255 ) UNIQUE NOT NULL );";
 			statement.executeUpdate( sql );	
 			statement.close();
-			if( getByName( "admin" ) != null ) {
-				RolesDAO.insert( new Role( "admin" ) );
-				RolesDAO.insert( new Role( "corriere" ) );
-				RolesDAO.insert( new Role( "user" ) );
-			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
