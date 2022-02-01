@@ -21,6 +21,7 @@ public class RegistrationPageController {
 		@RequestParam( value = "password", required = true ) String password,
 		@RequestParam( value = "password_ripetuta", required = true ) String password_ripetuta ) throws IOException {
 
+		HttpSession session = req.getSession(true);
 
 	int diff = password.compareTo( password_ripetuta );
 	if( diff != 0 ) {
@@ -28,7 +29,11 @@ public class RegistrationPageController {
 	}
 	
 	Account account = AccountsManager.registerAccount( email, password, "corriere" );
-	if( account == null ) return "iscrizione";
+	if( account == null ){
+		session.setAttribute("erroreGenerico", "Si è verificato qualche errore");
+		session.setAttribute("erroreGenerico_p", null);
+		return "erroreGenerico";
+			}
 					
 	return "iscrizionePositiva";
 }
