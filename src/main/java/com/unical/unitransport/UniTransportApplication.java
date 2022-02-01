@@ -12,6 +12,8 @@ import com.unical.unitransport.controller.persistence.shipment.ShipmentsManager;
 public class UniTransportApplication {
 
 	public static void main(String[] args) {
+	//Per la prima volta che si utilizza l'applicazione decommentare (e poi ricommentare) la rigua successiva per inizializzare il db
+	//	UniTransportApplication.initDB();
 		SpringApplication.run(UniTransportApplication.class, args);
 	}
 	
@@ -29,7 +31,7 @@ public class UniTransportApplication {
 		AccountsManager.registerAccount( "user1@unitransport.com", "user1", "user" );
 		AccountsManager.registerAccount( "user2@unitransport.com", "user2", "user" );
 		
-		ShipmentsManager.registerShipment( "user1@unitransport.com", "user2@unitransport.com", "Via Rossini, Rende, 200", "Viale Giacomo Mancini, Cosenza, 100" );
+		ShipmentsManager.registerShipment( "user1@unitransport.com", "user2@unitransport.com", "COSENZA (CS)", "MILANO (MI)" );
 	}
 
 }

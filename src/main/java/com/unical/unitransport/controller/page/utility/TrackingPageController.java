@@ -66,11 +66,16 @@ public class TrackingPageController {
 		
 		AddressToCoordinate coordCorriere = new AddressToCoordinate();
 		if (spedizione.getStatus() <= 1) { 
+			try {
 			coordCorriere = new AddressToCoordinate(spedizione.getLastLocation());
 	        double str1 = Double.parseDouble( coordCorriere.getLatitude());
 	        double str2 = Double.parseDouble( coordCorriere.getLongitude());
 			model.addAttribute("corrierelat", str1 - 0.1 );
 			model.addAttribute("corrierelong", str2- 0.1 );
+			} catch (Exception e){
+				model.addAttribute("corrierelat", 0);
+				model.addAttribute("corrierelong", 0 );
+			}
 		} else {
 			coordCorriere = new AddressToCoordinate(spedizione.getLastLocation());
 			model.addAttribute("corrierelat", coordCorriere.getLatitude());
