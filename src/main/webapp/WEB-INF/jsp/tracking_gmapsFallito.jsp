@@ -29,7 +29,6 @@
 
                     <c:if test="${email != null}">
                         <p class="intro_benvenuto">Benvenuto ${email}</p>
-                        <a href="profilo_utente" id="profilo_utente" onclick="btnAccedi()" class="btn btn-rounded">Profilo utente</a>
                         <a href="logout" id="prova" onclick="btnAccedi()" class="btn btn-rounded">Logout</a>
                     </c:if>
                 </div>  

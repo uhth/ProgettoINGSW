@@ -1,0 +1,146 @@
+
+:root {
+    --primary-color: rgba(0,90,255,255);
+    --dark-color: #141414;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    
+}
+
+html { 
+  background: url('../immagini/login.png') no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+.img_logo {
+    width: 170px;
+    position: absolute;
+    top: 12%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+a {
+
+    text-decoration: none;
+}
+
+#a_iscriviti {
+	    color: #fff;
+}
+
+
+/*.form {
+	position: relative;
+	top: 400;
+	left: 150px;
+	padding: 250px;
+}*/
+
+
+.loginForm {
+	width: 320px;
+	height: 420px;
+	background: #000;
+	color: #fff;
+	top:70%;
+	left: 50%;
+	position: absolute;
+	transform: translate(-50%, -50%);
+	box-sizing: border-box;
+	padding: 70px 30px;
+	border-radius: 25px;
+}
+
+.loginForm p {
+	margin: 0;
+	padding: 0;
+	font-weight: bold;
+}
+
+.loginForm input {
+	width: 100%;
+	margin-bottom: 20px;
+}
+
+.loginForm input[type="text"], input[type="password"]{
+    border: none;
+    border-bottom: 1px solid #fff;
+    background: transparent;
+    outline: none;
+    height: 40px;
+    color: #fff;
+    font-size: 16px;
+}
+
+.loginForm input[type="submit"]{
+	border: none;
+	outline: none;
+	height: 40px;
+	background: rgba(0,90,255,255);
+	color: #fff;
+	font-size: 18px;
+}
+.loginForm input[type="submit"]:hover{
+	opacity: 0.9;
+}
+
+h1 {
+    margin: 0;
+    padding: 0 0 20px;
+    text-align: center;
+    font-size: 22px;
+	
+}
+
+.avatar {
+	width: 100px;
+	height: 100px;
+	border-radius: 50%;
+	position: absolute;
+	top: -94px;
+	left: calc(50% - 50px);
+}
+
+
+/* Bottoni */
+
+.btn {
+    display: inline-block;
+    background: var(--primary-color);
+    color: #fff;
+    padding: 0.4rem 1.3rem;
+    font-size: 1rem;
+    text-align: center;
+    border: none;
+    cursor: pointer;
+    margin-right: 0.5rem;
+    outline: none;
+    box-shadow: 0 1px 0 rgba(0,0,0,0, 0.45);
+    border-radius: 2px;
+}
+
+.btn:hover {
+    opacity: 0.9;
+}
+
+.btn-rounded {
+    border-radius: 5px;
+}
+
+
+
+#btn1 {
+    width: 100px;
+    position: absolute;
+    top: 1.5%;
+    left: 88%;
+}
+

@@ -99,6 +99,19 @@
 											
 				  </div>
 				  
+				  				  		  					  
+				   <div class="col">
+				      <p class="p">PRENDI IN CARICO TUTTE</p>
+						<div class="richiesta">
+							<form  method="post" action="richiestaCorriereTutto">
+								  <br>								  										  
+							    <input  class="btn btn-success" type="submit" value="CONFERMA"/>
+							</form>
+						</div>	
+
+											
+				  </div>
+				  
 				  
 				  	
 				  		  	
@@ -122,7 +135,7 @@
       }
       
       .p{
-      	color: blue; border-style: outset; border: 2px solid; border-radius: 15px; border-color: rgba(12, 19, 216, 0.8); text-align: center; font-size: 32px; font-family: Copperplate, Papyrus, fantasy;
+      	color: blue; border-style: outset; border: 2px solid; border-radius: 15px; border-color: rgba(12, 19, 216, 0.8); text-align: center; font-size: 32px; font-family: Courier, monospace;
       }
       
       .info {
