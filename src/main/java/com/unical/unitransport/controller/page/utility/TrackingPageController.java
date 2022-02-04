@@ -40,26 +40,12 @@ public class TrackingPageController {
 	public void loadTable(Shipment spedizione, Model model ) {
 	
 		ArrayList<HistoricalShipment> array = new ArrayList<HistoricalShipment>(HistoricalShipmentDAO.getByTrackingNumber(spedizione.getTrackingNumber()));
-		model.addAttribute("sizeofevents", array.size()-1); //da testare
-
-		 
+		model.addAttribute("sizeofevents", array.size()-1);  
 		
 		model.addAttribute("statosped", array);
 		model.addAttribute("luogosped", array);
-		model.addAttribute("dataeora", array); // spedizione.getCreatedOn().toString().substring(0, 19) );
+		model.addAttribute("dataeora", array); 
 		model.addAttribute("destFinale", spedizione.getReceiverLocation());
-		/*
-		System.out.println("SIZE ARRAY: "+spedizione.getRegisterState().size() + " - " + spedizione.getRegisterLocation().size() + " - " + spedizione.getRegisterDate().size());
-		
-		int[] x = {spedizione.getRegisterState().size(), spedizione.getRegisterLocation().size(), spedizione.getRegisterDate().size()};
-        Arrays.sort(x);
-        
-		model.addAttribute("sizeofevents", x[0]-1); //da testare
-		model.addAttribute("statosped", spedizione.getRegisterState());
-		model.addAttribute("luogosped", spedizione.getRegisterLocation());
-		model.addAttribute("dataeora", spedizione.getRegisterDate()); // spedizione.getCreatedOn().toString().substring(0, 19) );
-		model.addAttribute("destFinale", spedizione.getReceiverLocation());
-	*/
 	}
 	
 	public void loadMarkers( Shipment spedizione, Model model ) {

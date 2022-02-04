@@ -9,6 +9,17 @@
     padding: 0;
 }
 
+#boxApiMarker{
+	border: 2px solid rgb(13, 101, 172);
+	border-radius: 10px;
+	height: 35px;
+	width: 230px;
+	font-family: 'Arial', sans-serif;
+  	background: transparent;
+  	text-align: center;
+ 	padding-top: 6px;
+}
+
 #map {
   height: 500px;
   /* The height is 400 pixels */
