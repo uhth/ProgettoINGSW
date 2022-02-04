@@ -45,9 +45,9 @@
 	    		   <div class="col text-center"></div>
 				  
 				   <div class="col text-center">
-						<div class="info">
+						<!--<div class="info">
 
-
+						
 						<table>
 						  <tr>
 						    <th> ~CODICI SPEDIZIONI DISPONIBILI~ </th>
@@ -60,19 +60,45 @@
 							</c:forEach>
 						</table>
 
-						</div>	
+						</div>	-->
+
+						<!--<select name="cod" id="cod">
+							<c:forEach items="${listaSpedizioni}" var="singolaSpedizione">
+								<th></th>
+								  <tr>
+									<option value="cod1">${singolaSpedizione}</option>
+								  </tr>								
+							</c:forEach>
+							
+						</select>-->
 
 											
-				  </div>
+				  	</div>
 
 				    <div class="col">
-										<form  method="post" action="cercaTrackingCancella">
+										<form  method="post" action="cercaTrackingCancella" id="form">
 										  <div class="form-group">
 										    <label for="formLuogo">SPEDIZIONE DA ELIMINARE:</label>
-										    <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="es. un1tr4$p0rt" name="trackingModifica">
+											<select name="cod" id="cod">
+												<c:forEach items="${listaSpedizioni}" var="singolaSpedizione">
+													<th></th>
+													  <tr>
+														<option value="cod1" id="ok">${singolaSpedizione}</option>
+													  </tr>								
+												</c:forEach>
+												
+											</select>
+										    <!--<input type="text" class="form-control" id="exampleFormControlInput1" placeholder="es. un1tr4$p0rt" name="trackingModifica">-->
+											<script>
+												function store(){
+												  var valore = document.getElementById("ok");
+												  sessionStorage.setItem("valore",valore);
+												}
+											  </script>
 										  </div>
 										  <br>			  
-										    <input  class="btn btn-outline-danger" type="submit" value="ELIMINA"/>
+										    <!--<input  class="btn btn-outline-danger" type="submit" value="ELIMINA"/>-->
+											<button type="button" class="btn btn-primary" onclick="prosegui()">Elimina</button>
 										</form>
 
 										<br><br>
@@ -93,7 +119,7 @@
       
       
     </div>  
-
+	<script src="js/elimina.js"></script>
   </body>
   
       <style>
@@ -114,6 +140,5 @@
 	table, th, td {
 	  border:2px dotted rgba(0,90,255,255);
 	}
-     
 	</style>
 </html>
