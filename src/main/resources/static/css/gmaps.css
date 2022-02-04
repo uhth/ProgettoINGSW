@@ -352,27 +352,51 @@ img {
     text-transform: uppercase;
 }
 
+
+
+
+
 @media(max-width: 960px) {
+
+
+	
     .showcase {
-        height: 70vh;
+        height: 90vh;
     }
 
     .hide-sm {
         display: none;
     }
+    
+    .intro_benvenuto {
+		display:none;
+	}
 
-    .showcase-top img {
+    #posLogo {
         /*ridimensionamento di lato logo*/
+        width: 130px;
         top:30%;
         left: 5%;
         transform: translate(0);
     }
 
-    .showcase-content h1 {
-        font-size: 3.7rem;
-        line-height: 1;
+
+    .showcase-content p {
+        font-size: 1.1rem;
     }
 
+    .btn-xl {
+        font-size: 1.2rem;
+        padding: 1.4rem 2rem;
+    }
+    
+
+
+
+    .showcase-content h1 {
+        font-size: 2.4rem;
+        line-height: 1;
+    }
     .showcase-content p {
         font-size: 1.5rem;
     }
@@ -397,6 +421,10 @@ img {
     .text-md {
         font-size: 1.5rem;
     }
+    
+    th {
+    	font-size: 8px;
+    }
 
 }
 
@@ -404,19 +432,45 @@ img {
 
 @media(max-width: 700px){
 	
-	.intro_benvenuto {
-	font-family: default;
-	font-weight: bold;
-	color: #fff;
-	position: absolute;
-	top:72%;
-	left: 79%;
-	font-size: 10px;
-	width: 80px;
-	height: 41px;
-	padding: 6px;
-	border-style: inset;
-}
+
+	
+    .showcase {
+        height: 90vh;
+    }
+
+    .hide-sm {
+        display: none;
+    }
+    
+    .intro_benvenuto {
+		display:none;
+	}
+
+    #posLogo {
+        /*ridimensionamento di lato logo*/
+        width: 150px;
+        top:30%;
+        left: 5%;
+        transform: translate(0);
+    }
+
+
+    .showcase-content p {
+        font-size: 1.1rem;
+    }
+
+    .btn-xl {
+        font-size: 1.2rem;
+        padding: 1.4rem 2rem;
+    }
+    
+
+
+
+    .showcase-content h1 {
+        font-size: 2.1rem;
+        line-height: 1;
+    }
 
     .showcase::after {
         box-shadow: inset 80px 80px 250px #000, inset -80px -80px -250px #000;

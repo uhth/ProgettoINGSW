@@ -419,7 +419,7 @@ form {
 
 	
     .showcase {
-        height: 70vh;
+        height: 100vh;
     }
 
     .hide-sm {
@@ -444,7 +444,7 @@ form {
     }
 
     .showcase-content p {
-        font-size: 1.1rem;
+        font-size: 1.2rem;
     }
 
     .btn-xl {
@@ -540,7 +540,7 @@ form {
     }
 
     .showcase-content p {
-        font-size: 1.1rem;
+        font-size: 0.9rem;
     }
 
 

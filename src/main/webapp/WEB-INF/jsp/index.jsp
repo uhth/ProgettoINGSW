@@ -61,7 +61,7 @@
 				                    <a href="spedizioniCorriere" class="btn btn-xl">
 				                        Visualizza spedizioni <i class="fas fa-history"></i>
 				                    </a><br>
-				                    <a href="tutorial" class="btn btn-xl">
+				                    <a id="tutorial1" href="tutorial" class="btn btn-xl">
 				                       Tutorial <i class="fas fa-graduation-cap"></i>
 				                    </a>				                    
 				                <br />
@@ -89,7 +89,7 @@
 				                    <a href="tracking_gmaps" class="btn btn-xl">
 				                        Traccia una spedizione <i class="fas fa-map-marker-alt"></i>
 				                    </a><br>
-				                    <a href="tutorial" class="btn btn-xl">
+				                    <a id="tutorial2" href="tutorial" class="btn btn-xl">
 				                       Tutorial <i class="fas fa-graduation-cap"></i>
 				                    </a>
 				                    <br>				                    
@@ -105,7 +105,7 @@
 				                    <a href="tracking_gmaps" class="btn btn-xl">
 				                        Traccia una spedizione <i class="fas fa-map-pin"></i>
 				                    </a><br>
-				                    <a href="tutorial" class="btn btn-xl">
+				                    <a id="tutorial3" href="tutorial" class="btn btn-xl">
 				                       Tutorial <i class="fas fa-graduation-cap"></i>
 				                    </a>
 				                    <br>

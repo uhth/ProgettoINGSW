@@ -40,7 +40,7 @@
         <div class="row">
 
 				    <div class="col">
-										<form  method="post" action="/prenotaService" id="form">
+										<form name="formAcquisto" method="post" onsubmit="return verificaForm()" action="/prenotaService" id="form">
 										  <div class="form-group">
 										    <label for="formLuogo">Ritiro presso:</label>
 										    <input type="text" class="form-control" id="ViaRitiro" placeholder="es. Via Roma n.31 Milano (MI)" name="luogoRitiro">
@@ -89,6 +89,7 @@
       
     </div>  
     <script src="js/prenota_ritiro.js"></script>
+    <script src="js/validaRitiro.js"></script>
   </body>
   
       <style>
