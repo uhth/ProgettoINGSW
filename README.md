@@ -16,12 +16,14 @@ Per avviarlo è necessario utilizzare eclipse con estensione "spring", avere ins
 
 ![facets2](https://user-images.githubusercontent.com/78265579/151966287-8c7b1370-cd41-4974-94dc-9a4ec01fa2d7.png)
 
-4) Al primo avvio decommentare l'inizializzazione del database nel main
+* A meno che non si importi il database da un backup sono necessari gli ulteriori passaggi, altrimenti ignorarli.
+
+*4) Al primo avvio decommentare l'inizializzazione del database nel main
  
 ![init](https://user-images.githubusercontent.com/78265579/151967264-919ab3a0-d05f-43dd-bd3f-db3269253949.png)
 
-5) Ricommentare il codice 
+*5) Ricommentare il codice 
 
 ![init2](https://user-images.githubusercontent.com/78265579/151967174-a05cc7fd-ed40-410b-8cd8-0dfc4f31b9c5.png)
 
-6) Avviare come programma Java o Spring
+*6) Avviare come programma Java o Spring
