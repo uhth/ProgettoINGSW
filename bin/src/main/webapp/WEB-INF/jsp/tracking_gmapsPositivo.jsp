@@ -28,7 +28,6 @@
 
                     <c:if test="${email != null}">
                         <p class="intro_benvenuto">Benvenuto ${email}</p>
-                        <a href="profilo_utente" id="profilo_utente" onclick="btnAccedi()" class="btn btn-rounded">Profilo utente</a>
                         <a href="logout" id="prova" onclick="btnAccedi()" class="btn btn-rounded">Logout</a>
                     </c:if>
                 </div>  
@@ -47,12 +46,18 @@
                 <input type="submit" class="btn btn-xl" id="button_procedi" value="Procedi" />
             </form>
             <br>
+            <div id="boxApiMarker">
+                <h4><label id="infoApi"></label>
+                <button type="submit" id="buttonRA" onclick=apiRequestStatus()><i class="fas fa-sync-alt"></i></button></h4>
+            </div>
+            <br>
             <div id="map"></div>
-
+            adsadsasdasdasdsd
             <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD35CvNGS9oIaIaa-MSQsKf1i4JxrInTf4&callback=initMap&libraries=&v=weekly" async></script>
             <script th:inline="javascript">
 
                 function initMap() {
+                    apiRequestStatus();
                     const roma = { lat: 41.77, lng: 12.94 }; 
                     const map = new google.maps.Map(document.getElementById("map"), {
                         zoom: 5.5,
@@ -130,9 +135,22 @@
                 map.addListener("click", (mapsMouseEvent) => {    
                     console.log(mapsMouseEvent.latLng.toJSON()) // print posizione              
                 });
-                */                
+                */                            
                 }
 
+                function apiRequestStatus(){
+                    var xhttp = new XMLHttpRequest();
+                    xhttp.onreadystatechange = function(){
+                        if (this.responseText.length > 0){
+                            document.getElementById("infoApi").innerHTML = "API <font size=2>{Positionstack}</font> ONLINE";
+                        } else{
+                            document.getElementById("infoApi").innerHTML = "API <font size=2>{Positionstack}</font> OFFLINE";
+                        }
+                    };
+                    xhttp.open("GET", "http://api.positionstack.com/v1/forward?access_key=3a0f0a316dd93089d6bdfbf66e4a95d4&query=roma(rm)",true)
+                    xhttp.send();
+                }
+                
                 function addInfoWindow(marker, message) {
                     var infoWindow = new google.maps.InfoWindow({
                         content: message
