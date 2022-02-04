@@ -22,11 +22,16 @@ public class AccountPageControllerUser {
 		HttpSession session = req.getSession(true);
 		List<String> spedizioni = ShipmentsSenderReceiverDAO.getAllString((String)req.getSession().getAttribute("email"));
 		session.setAttribute("listaSpedizioni", spedizioni);
-		List<Payment> pagamenti = PaymentDAO.getBySender((String)req.getSession().getAttribute("email"));
-		if(pagamenti.size()>0) {
-			model.addAttribute("listaPagamenti", pagamenti);
-			model.addAttribute("sizePagamenti", pagamenti.size()-1);
+		List<Payment> pagamentiOnline = PaymentDAO.getOnlinePayment((String)req.getSession().getAttribute("email"));
+		List<Payment> pagamentiContrassegno = PaymentDAO.getOnlinePayment((String)req.getSession().getAttribute("email"));
+		if(pagamentiOnline.size()>0) {
+			model.addAttribute("listaPagamenti", pagamentiOnline);
+			model.addAttribute("sizePagamenti", pagamentiOnline.size()-1);
 		}
+		/*else if(pagamentiContrassegno.size()>0) {
+			model.addAttribute("listaPagamenti", pagamentiContrassegno);
+			model.addAttribute("sizePagamenti", pagamentiContrassegno.size()-1);
+		}*/
 		
 		return "profilo_utente_tmp";
 	}

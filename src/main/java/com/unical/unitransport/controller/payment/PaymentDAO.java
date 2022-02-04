@@ -95,7 +95,42 @@ public class PaymentDAO {
 		return pagamenti;
 	}
 	
-	//creare dao prendere per online
-	//creare dao prendere per contrassegno
+	public static List<Payment> getOnlinePayment( String sender ) {
+		initialize();
+		List<Payment> pagamenti = new ArrayList<Payment>();
+		try {
+			String sql = "select * from unitransport.payment where sender_email = ? and type = 0; ";
+			PreparedStatement statement = DatabaseManager.getConnection().prepareStatement( sql );
+			statement.setString( 1, sender );
+			ResultSet rs = statement.executeQuery();
+			while( rs.next() ) {
+				Payment p = new Payment(rs.getInt(4) ,rs.getFloat(5), rs.getTimestamp(6), rs.getString(2), rs.getString(3));
+				pagamenti.add(p);
+			}
+			statement.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return pagamenti;
+	}
+	
+	public static List<Payment> getContrassegnoPayment( String sender ) {
+		initialize();
+		List<Payment> pagamenti = new ArrayList<Payment>();
+		try {
+			String sql = "select * from unitransport.payment where sender_email = ? and type = 1; ";
+			PreparedStatement statement = DatabaseManager.getConnection().prepareStatement( sql );
+			statement.setString( 1, sender );
+			ResultSet rs = statement.executeQuery();
+			while( rs.next() ) {
+				Payment p = new Payment(rs.getInt(4) ,rs.getFloat(5), rs.getTimestamp(6), rs.getString(2), rs.getString(3));
+				pagamenti.add(p);
+			}
+			statement.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return pagamenti;
+	}
 	
 }

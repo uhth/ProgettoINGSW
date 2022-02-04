@@ -70,7 +70,7 @@
                             sessionStorage.setItem("costoIva", costoIva);
                             desc5 = sessionStorage.getItem("costoIva");
                             document.getElementById("desc5").innerHTML = "Costo Iva: " + desc5;
-                        </script>
+                        </script> 
                       <br>
                       <button type="button" class="btn btn-primary" onclick="prosegui()">Procedi</button>
                       <!--<button type="button" class="btn btn-primary"><a href="/payment" class="text-decoration-none" style="color: white;">Prosegui</a></button>-->								  										  
