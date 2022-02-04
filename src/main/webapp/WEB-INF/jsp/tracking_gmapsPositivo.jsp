@@ -31,9 +31,7 @@
                         <a href="logout" id="prova" onclick="btnAccedi()" class="btn btn-rounded">Logout</a>
                     </c:if>
                 </div>  
-
             </div>
-
 
         <div class="showcase-content">
             <h1>Spedizione trovata!</h1>
