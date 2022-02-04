@@ -58,10 +58,12 @@
 				                       Aggiorna stato spedizione <i class="fas fa-sync"></i>
 				                    </a>
 				                    <br>
-
 				                    <a href="spedizioniCorriere" class="btn btn-xl">
 				                        Visualizza spedizioni <i class="fas fa-history"></i>
-				                    </a>
+				                    </a><br>
+				                    <a href="tutorial" class="btn btn-xl">
+				                       Tutorial <i class="fas fa-graduation-cap"></i>
+				                    </a>				                    
 				                <br />
 								<br><br>
 				            </c:when>    
@@ -86,7 +88,11 @@
 				                    <br>
 				                    <a href="tracking_gmaps" class="btn btn-xl">
 				                        Traccia una spedizione <i class="fas fa-map-marker-alt"></i>
+				                    </a><br>
+				                    <a href="tutorial" class="btn btn-xl">
+				                       Tutorial <i class="fas fa-graduation-cap"></i>
 				                    </a>
+				                    <br>				                    
 				                    <br><br>
 				            </c:when>    				            			           
 				             <c:otherwise>
@@ -98,7 +104,11 @@
 				                    <br>
 				                    <a href="tracking_gmaps" class="btn btn-xl">
 				                        Traccia una spedizione <i class="fas fa-map-pin"></i>
+				                    </a><br>
+				                    <a href="tutorial" class="btn btn-xl">
+				                       Tutorial <i class="fas fa-graduation-cap"></i>
 				                    </a>
+				                    <br>
 				                    <br><br>
 				            </c:otherwise>
 				        </c:choose>
@@ -340,15 +350,13 @@
                         <li><a href="faq">FAQ</a></li>
                     </ul>
                     <ul>
+                        <li><a href="tutorial">Tutorial</a></li>
+                    </ul>                    
+                    <ul>
                         <li><a href="chi_siamo">Chi siamo</a></li>
                     </ul>
                     <ul>
                         <li><a href="http://www.unical.it">Sito Unical</a></li>
-                    </ul>
-                    <ul>
-                        <c:if test="${email == null}">
-                            <li><a id="prova" onclick="document.getElementById('divLogin').style.display='block'">Account</a></li>
-                        </c:if>  
                     </ul>
                 </div>
             </footer>

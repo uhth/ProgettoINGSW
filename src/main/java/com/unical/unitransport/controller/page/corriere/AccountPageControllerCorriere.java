@@ -111,6 +111,26 @@ public class AccountPageControllerCorriere {
 		return "erroreGenerico";
 	}
 	
+	@PostMapping("/richiestaCorriereTutto")
+	public String richiestaConsegnaTutte(HttpServletRequest req, HttpServletResponse res, String richiestaSpedizione) throws IOException {
+		
+		HttpSession session = req.getSession(true);
+		
+		List<String> all = SpedizioneCorriereDAO.getAllDisponibiliString();
+		for (String spedizione: all) {
+			SpedizioneCorriere nuova = new SpedizioneCorriere(spedizione,  (String) session.getAttribute("email"));
+			if (!SpedizioneCorriereDAO.spedizioneGiaAssegnata(spedizione)) {
+				SpedizioneCorriereDAO.insert(nuova);
+			}
+		}
+		
+		res.sendRedirect("/areaCorriere");
+		
+		session.setAttribute("erroreGenerico", "NON E' POSSIBILE ESEGUIRE LA RICHIESTA");
+		session.setAttribute("erroreGenerico_p", null);
+		return "erroreGenerico";
+	}
+	
 	
 	
 

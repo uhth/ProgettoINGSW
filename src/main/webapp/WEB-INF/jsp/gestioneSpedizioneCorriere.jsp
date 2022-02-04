@@ -42,7 +42,7 @@
 				    <div class="col">
 				      
 
-							      <p style="color: blue; border-style: outset; border-color: lightblue; text-align: center; font-size: 28px; font-family: Copperplate, Papyrus, fantasy;">SPEDIZIONE N.</p>
+							      <p style="color: blue; border-style: outset; border-color: lightblue; text-align: center; font-size: 28px; font-family: Courier, monospace;">SPEDIZIONE N.</p>
   										<form  method="post" action="corriereServiceCode">
 										  <div class="form-group">
 										    <label for="formCodice">Inserisci il Codice Tracking</label>
@@ -57,7 +57,7 @@
 				    </div>
 					<div class="col">
 				      
-						<p style="color: blue; border-style: outset; border-color: lightblue; text-align: center; font-size: 28px; font-family: Copperplate, Papyrus, fantasy;">POSIZIONE ATTUALE</p>
+						<p style="color: blue; border-style: outset; border-color: lightblue; text-align: center; font-size: 28px; font-family: Courier, monospace;">POSIZIONE ATTUALE</p>
 							<!--<label for="formLuogo" >${luogoAttuale}</label>-->
 							<div id="map"></div>
 
@@ -67,7 +67,7 @@
 
 		 			 </div>
 				    <div class="col">
-							      <p style="color: blue; border-style: outset; border-color: lightblue; text-align: center; font-size: 28px; font-family: Copperplate, Papyrus, fantasy;">MODIFICHE</p>				      
+							      <p style="color: blue; border-style: outset; border-color: lightblue; text-align: center; font-size: 28px; font-family: Courier, monospace;">MODIFICHE</p>				      
 										<form  method="post" action="corriereService">
 										  <div class="form-group">
 										    <label for="formLuogo">Località Aggiornata</label>
