@@ -32,38 +32,29 @@
 	
 </div>
 
+	<div style="height: 700px">
 
-
-	<div class="container">		  
-	    <div class="row">  
-			<div class="col">
-				<h1 class="p">CHI SIAMO?</h1>
-				<h5 align = center>Siamo degli studenti di informatica presso l'università della Calabria.</h5>
-				<h5 align = center>Questo sito è la nostra realizzazione del progetto per il corso di Ingegneria del softwer e Web computing</h5>
-				<br>
-				<br>
-				<br>
-				<br>
-				<br>
-				<h5 align = center>A cura di:</h5>
-				<h5 align = center>Pierpaolo Lopez</h5>	
-				<h5 align = center>Luca Ruffolo</h5>
-				<h5 align = center>Vincenzo Rizzo</h5>	
-				<h5 align = center>Vittorio Matranga</h5>			
-				<br>
-				<br>
-				<br>
-				<br>
-				<br>
-				<br>
-			</div>	  				  
-      	</div>
- 	</div>
+		<div class="container">		  
+			<div class="row">  
+				<div class="col">
+					<h1 class="p">CHI SIAMO?</h1>
+					<h5 align = center>Siamo degli studenti di informatica presso l'università della Calabria.</h5>
+					<h5 align = center>Questo sito è la nostra realizzazione del progetto per il corso di Ingegneria del softwer e Web computing</h5>
+					<h5 align = center>A cura di:</h5>
+					<br><br>
+					<h5 align = center>Pierpaolo Lopez</h5>	
+					<h5 align = center>Luca Ruffolo</h5>
+					<h5 align = center>Vincenzo Rizzo</h5>	
+					<h5 align = center>Vittorio Matranga</h5>			
+				</div>	  				  
+			</div>
+		</div>
+	</div>
 
   </body>
   
   
-      <style>
+    <style>
 
       .background {
         background-image: url("../gif/chisiamo.gif")  ;
@@ -91,7 +82,7 @@
 			COLOR: orange;
 			text-shadow: -1px 0 #FF0000, 0 1px #FF0000, 1px 0 #FF0000, 0 -1px #FF0000;
 		}
-     
+
 	</style>
   
 </html>
