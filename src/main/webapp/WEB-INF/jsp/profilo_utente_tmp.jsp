@@ -74,7 +74,7 @@
 							</ul>
 						</div>	
 
-						<!--bottone switch--><button type="button" class="btn btn-success" id="switch" onclick="cambio()">Cambio</button>	
+						<!--bottone switch--><button type="button" class="btn btn-success" id="switch" onclick="cambio()">Visualizza pagamenti in contrassegno</button>	
 						<script>
 							function cambio() {
 								
@@ -82,11 +82,13 @@
 									$('#pagOnline').hide();
 									$('#pagContr').show();
 									document.getElementById("testoPagamenti").innerHTML = "STORICO PAGAMENTI CONTRASSEGNO";
+									document.getElementById("switch").innerHTML = "Visualizza pagamenti online";
 								}
 								else{
 									$('#pagContr').hide();
 									$('#pagOnline').show();
 									document.getElementById("testoPagamenti").innerHTML = "STORICO PAGAMENTI ONLINE";
+									document.getElementById("switch").innerHTML = "Visualizza pagamenti in contrassegno";
 								}
 							}
 						</script>				
