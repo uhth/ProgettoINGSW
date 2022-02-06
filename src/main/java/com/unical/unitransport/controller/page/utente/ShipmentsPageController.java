@@ -76,12 +76,15 @@ public class ShipmentsPageController {
         Date data = new Date();
         float costo = Float.parseFloat(req.getParameter("costoIva"));
         float costofix = (float) (Math.ceil(costo * Math.pow(10, 2)) / Math.pow(10, 2));
-        if(req.getParameter("Contrassegno")=="Contrassegno") {
-        	Payment pagamento = new Payment(1, costofix, new Timestamp(data.getTime()), (String) req.getSession().getAttribute("email"));
+        System.out.println(req.getParameter("Contrassegno"));
+        if(Boolean.parseBoolean(req.getParameter("Contrassegno"))==true) {
+        	System.out.println("sono qui");
+        	Payment pagamento = new Payment(1, costofix, new Timestamp(data.getTime()), (String) req.getSession().getAttribute("email"), emailDestinatario);
         	PaymentDAO.insert(pagamento);
         }
         else {
-        	Payment pagamento = new Payment(0, costofix, new Timestamp(data.getTime()), (String) req.getSession().getAttribute("email"));
+        	System.out.println("o qui");
+        	Payment pagamento = new Payment(0, costofix, new Timestamp(data.getTime()), (String) req.getSession().getAttribute("email"), emailDestinatario);
         	PaymentDAO.insert(pagamento);
         }
         
