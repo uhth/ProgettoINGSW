@@ -140,12 +140,12 @@
                     var xhttp = new XMLHttpRequest();
                     xhttp.onreadystatechange = function(){
                         if (this.responseText.length > 0){
-                            document.getElementById("infoApi").innerHTML = "API <font size=2>{Positionstack}</font> ONLINE";
+                            document.getElementById("infoApi").innerHTML = "API <font size=2>{Opencagedata}</font> ONLINE";
                         } else{
-                            document.getElementById("infoApi").innerHTML = "API <font size=2>{Positionstack}</font> OFFLINE";
+                            document.getElementById("infoApi").innerHTML = "API <font size=2>{Opencagedata}</font> OFFLINE";
                         }
                     };
-                    xhttp.open("GET", "http://api.positionstack.com/v1/forward?access_key=3a0f0a316dd93089d6bdfbf66e4a95d4&query=roma(rm)",true)
+                    xhttp.open("GET", "https://api.opencagedata.com/geocode/v1/json?q=COSENZA(CS)&key=3f829b18d2d24a10b0e20c68a7a437fd",true)
                     xhttp.send();
                 }
                 
