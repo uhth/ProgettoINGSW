@@ -53,7 +53,7 @@
 				  
 	    <div class="row">
 				   <div class="col">
-				      <p class="p" id="testoPagamenti">STORICO PAGAMENTI</p>
+				      <p class="p" id="testoPagamenti">STORICO PAGAMENTI ONLINE</p>
 						<div class="info">
 							<ul id="pagOnline">
 								<c:forEach var = "i" begin = "0" end = "${sizePagamenti}">
@@ -74,28 +74,20 @@
 							</ul>
 						</div>	
 
-						<!--bittone switch--><button type="button" class="btn btn-success" id="switch" onclick="cambio()">Cambio</button>	
+						<!--bottone switch--><button type="button" class="btn btn-success" id="switch" onclick="cambio()">Cambio</button>	
 						<script>
 							function cambio() {
-								console.log("sono qui");
-								var shout_text = $("input#shout_text").val();
-
-								var shout = $.ajax({
-									type: 'POST',
-									url: "shout.php",
-									data: {message:shout_text},
-									success: function(){ 
-
-									}
-								});
-									if($('#pagOnline').is(':visible')==true){
-										$('#pagOnline').hide();
-										$('#pagContr').show();
-									}
-									else{
-										$('#pagContr').hide();
-										$('#pagOnline').show();
-									}
+								
+								if($('#pagOnline').is(':visible')==true){
+									$('#pagOnline').hide();
+									$('#pagContr').show();
+									document.getElementById("testoPagamenti").innerHTML = "STORICO PAGAMENTI CONTRASSEGNO";
+								}
+								else{
+									$('#pagContr').hide();
+									$('#pagOnline').show();
+									document.getElementById("testoPagamenti").innerHTML = "STORICO PAGAMENTI ONLINE";
+								}
 							}
 						</script>				
 				  	</div>
