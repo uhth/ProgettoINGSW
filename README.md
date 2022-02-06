@@ -17,6 +17,7 @@ Per avviarlo è necessario utilizzare eclipse con estensione "spring", avere ins
 ![facets2](https://user-images.githubusercontent.com/78265579/151966287-8c7b1370-cd41-4974-94dc-9a4ec01fa2d7.png)
 
 * A meno che non si importi il database da un backup sono necessari gli ulteriori passaggi, altrimenti ignorarli.
+** IN OGNI CASO É COMUNQUE CONSIGLIATO USARE IL DUMP 
 
 *4) Al primo avvio decommentare l'inizializzazione del database nel main
  
