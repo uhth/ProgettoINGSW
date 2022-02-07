@@ -9,8 +9,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
-import com.unical.unitransport.controller.payment.Payment;
-import com.unical.unitransport.controller.payment.PaymentDAO;
+import com.unical.unitransport.controller.persistence.payment.Payment;
+import com.unical.unitransport.controller.persistence.payment.PaymentDAO;
 import com.unical.unitransport.controller.persistence.shipment.ShipmentsSenderReceiverDAO;
 
 @Controller

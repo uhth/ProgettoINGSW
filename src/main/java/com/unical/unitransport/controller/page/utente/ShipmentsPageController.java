@@ -14,8 +14,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.unical.unitransport.controller.payment.Payment;
-import com.unical.unitransport.controller.payment.PaymentDAO;
+import com.unical.unitransport.controller.persistence.payment.Payment;
+import com.unical.unitransport.controller.persistence.payment.PaymentDAO;
 import com.unical.unitransport.controller.persistence.shipment.Shipment;
 import com.unical.unitransport.controller.persistence.shipment.ShipmentsManager;
 import com.unical.unitransport.controller.persistence.shipment.ShipmentsSenderReceiverDAO;
@@ -63,11 +63,7 @@ public class ShipmentsPageController {
 
 		HttpSession session = req.getSession(true);
 		
-		if (luogoRitiro.equals("") || luogoConsegna.equals("")|| emailDestinatario.equals("")) {
-//			session.setAttribute("erroreGenerico", "NON HAI COMPILATO TUTTI I CAMPI");
-//			session.setAttribute("erroreGenerico_p", "La spedizione non può essere avviata.");
-//			return "erroreGenerico";
-			
+		if (luogoRitiro.equals("") || luogoConsegna.equals("")|| emailDestinatario.equals("")) {			
 			return "prenota_ritiro";
 		}
     

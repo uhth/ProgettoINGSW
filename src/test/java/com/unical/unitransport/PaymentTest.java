@@ -10,8 +10,8 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import com.unical.unitransport.controller.payment.Payment;
-import com.unical.unitransport.controller.payment.PaymentDAO;
+import com.unical.unitransport.controller.persistence.payment.Payment;
+import com.unical.unitransport.controller.persistence.payment.PaymentDAO;
 
 @SpringBootTest
 public class PaymentTest {
