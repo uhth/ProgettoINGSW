@@ -10,8 +10,7 @@
             <link rel="icon" href="../immagini/b1.png">
             <link rel="stylesheet" href="css/index.css">
             <link rel="stylesheet" href="css/login.css">
-            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-            <script src="js/menu.js"></script>
+            <script src="js/load.js"></script>
             <title>UniTransport</title>
         </head>
 

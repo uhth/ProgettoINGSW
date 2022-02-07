@@ -1,9 +1,9 @@
 
-	
+		
 $( function() {
 	//get session
-var email = "";
-var role = "";
+	var email = "";
+	var role = "";
 	
 	$("head").append( "<script src=\"https://kit.fontawesome.com/eb3e5ce09e.js\" crossorigin=\"anonymous\"></script>" );
 	

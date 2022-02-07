@@ -14,7 +14,7 @@
     <link rel="icon" href="../immagini/b1.png">
     <link rel="stylesheet" href="css/index.css">
     <link rel="stylesheet" href="css/login.css">
-    <script src="https://kit.fontawesome.com/eb3e5ce09e.js" crossorigin="anonymous"></script>
+    <script src="js/load.js"></script>
     <title>UniTransport</title>
 </head>
 

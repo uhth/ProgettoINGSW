@@ -4,13 +4,14 @@
         <html lang="en" dir="ltr">
 
         <head>
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 			<link href="https://chatcompose.azureedge.net/static/all/global/export/css/main.5b1bd1fd.css" rel="stylesheet">    <script async type="text/javascript" src="https://chatcompose.azureedge.net/static/all/global/export/js/main.a7059cb5.js?user=UnicalTransport&lang=IT" user="UnicalTransport" lang="IT"></script>  
 			<!--<link href="https://chatcompose.azureedge.net/static/all/global/export/css/main.5b1bd1fd.css" rel="stylesheet">    <script async type="text/javascript" src="https://chatcompose.azureedge.net/static/all/global/export/js/main.a7059cb5.js?user=UnicalTransport&lang=IT" user="UnicalTransport" lang="IT"></script>-->
             <meta charset="utf-8">
             <link rel="icon" href="../immagini/b1.png">
             <link rel="stylesheet" href="css/tutorial.css">
             <link rel="stylesheet" href="css/login.css">
-            <script src="https://kit.fontawesome.com/eb3e5ce09e.js" crossorigin="anonymous"></script>
+            <script src="js/menu.js"></script>
             <title>UniTransport</title>
         </head>
 
@@ -19,33 +20,66 @@
             <header class="showcase">
                 <div class="showcase-top">
                     <a id="posLogo" href="/"><img id="posLogo" src="/immagini/b1.png"></a>
-
                     
 					<c:if test="${email == null}">
-                        <p class="intro_benvenuto">Benvenuto utente</p>
-                        <a id="prova" onclick="document.getElementById('divLogin').style.display='block'" class="btn btn-rounded" >Accedi <i class="fas fa-sign-in-alt"></i></a>
+                        <p class="intro_benvenuto">Benvenuto utente</p>                  
                     </c:if>
-
                     <c:if test="${email != null}">
-		                        <p class="intro_benvenuto">Benvenuto ${email}</p>
-              		      <c:if test="${role == 'user'}">
-
-		                        <a href="profilo_utente" id="profilo_utente" onclick="btnAccedi()"
-		                            class="btn btn-rounded">Profilo utente <i class="far fa-user"></i></a>
-	                       </c:if>
-              		      <c:if test="${role == 'corriere'}">
-
-                    		    <a id="corriereZone" href="areaCorriere"
-                            class="btn btn-rounded">Area Corriere <i class="fas fa-people-carry"></i></a>
-	                       </c:if>
-              		      <c:if test="${role == 'admin'}">
-
-		                        <a href="profiloAmministratore" id="adminZone" onclick="btnAccedi()"
-		                            class="btn btn-rounded">Amministratore  <i class="fas fa-user-lock"></i></a>	                      
-                             </c:if>
-	                       	                       		                            
-		                        <a href="logout" id="prova" onclick="btnAccedi()" class="btn btn-rounded">Logout <i class="fas fa-sign-out-alt"></i></a>
+		            	<p class="intro_benvenuto">Benvenuto ${email}</p>           
                     </c:if>
+                    
+                    
+                    <!-- LOGIN -->
+                    <div id="divLogin" class="modal">
+                        <form class="modal-content animate" action="/loginService" method="post">
+                            <div class="imgcontainer">
+                                <span onclick="document.getElementById('divLogin').style.display='none'" class="close"
+                                    title="Close Modal">&times;</span>
+                                <img src="img/b1.png" alt="Avatar" class="avatar">
+                            </div>
+                            <div class="container">
+                                <label for="uname"><b>Email</b></label>
+                                <input type="text" placeholder="Inserisci Email" name="email" required>
+                                <label for="psw"><b>Password</b></label>
+                                <input type="password" placeholder="Inserisci Password" name="password" required>
+                                <button type="submit" id="button">Login</button>
+                            </div>
+                            <div class="container" style="background-color:#f1f1f1">
+                                <button type="button"
+                                    onclick="document.getElementById('divLogin').style.display='none'; document.getElementById('divRegister').style.display='block' "
+                                    class="cancelbtn">Registrati</button>
+                            </div>
+                        </form>
+                    </div>
+                    <!-- FINE LOGIN -->
+                    <!-- REGISTER -->
+                    <div id="divRegister" class="modal">
+                        <form class="modal-content animate" action="/iscrizioneService" method="post">
+                            <div class="imgcontainer">
+                                <span onclick="document.getElementById('divRegister').style.display='none'"
+                                    class="close" title="Close Modal">&times;</span>
+                                <img src="img/b1.png" alt="Avatar" class="avatar">
+                            </div>
+                            <div class="container">
+                                <label for="email"><b>Email</b></label>
+                                <input type="email" placeholder="Inserisci Email" name="email" required>
+                                <label for="password"><b>Password</b></label>
+                                <input type="password" placeholder="Inserisci Password" name="password" required>
+                                <label for="password_ripetuta"><b>Conferma Password</b></label>
+                                <input type="password" placeholder="Inserisci Password" name="password_ripetuta"
+                                    required>
+                                <button type="submit" id="button">Registrati</button>
+                            </div>
+                            <div class="container" style="background-color:#f1f1f1">
+                                <button type="button"
+                                    onclick="document.getElementById('divRegister').style.display='none'; document.getElementById('divLogin').style.display='block';"
+                                    class="cancelbtn">Login</button>
+                            </div>
+                        </form>
+                    </div>
+                    <!-- FINE REGISTER -->
+                </div>
+                    
                 </div>
 
                 <div class="showcase-content">

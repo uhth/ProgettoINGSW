@@ -61,7 +61,7 @@ public class ShipmentsPageController {
 							@RequestParam( value = "emailDestinatario", required = true ) String emailDestinatario ) throws IOException {
 		
 
-		HttpSession session = req.getSession(true);
+		HttpSession session = req.getSession(false);
 		
 		if (luogoRitiro.equals("") || luogoConsegna.equals("")|| emailDestinatario.equals("")) {			
 			return "prenota_ritiro";

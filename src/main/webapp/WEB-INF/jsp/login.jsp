@@ -5,6 +5,7 @@
     <meta charset="utf-8">
     <link rel="icon" href="../immagini/b1.png">
     <link rel="stylesheet" href="css/login_page.css">
+    <script src="js/load.js"></script>
     <title>Login</title>
 </head>
 
