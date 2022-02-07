@@ -220,7 +220,7 @@
 						                            <tbody>
 						                                <tr>
 						                                    <td>Fino a 10Kg</td>
-						                                    <td>5.99€</td>
+						                                    <td>5.99€</td>
 						                                    <td>9.99€</td>
 						                                    <td>15.99€</td>
 						                                </tr>

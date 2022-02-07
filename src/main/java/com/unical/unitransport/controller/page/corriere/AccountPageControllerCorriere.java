@@ -82,7 +82,6 @@ public class AccountPageControllerCorriere {
 	public String setTrackingGestione(HttpServletRequest req, HttpServletResponse res, String modificaCodiceTracking) throws IOException {
 		HttpSession session = req.getSession(true);
 		session.setAttribute("codiceRichiestoCorriere", modificaCodiceTracking);
-		System.out.println("FATTO");
 		
 		return "gestioneSpedizioneCorriere";
 		

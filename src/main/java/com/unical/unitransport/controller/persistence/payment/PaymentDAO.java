@@ -1,4 +1,4 @@
-package com.unical.unitransport.controller.payment;
+package com.unical.unitransport.controller.persistence.payment;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;

@@ -1,4 +1,4 @@
-package com.unical.unitransport.controller.payment;
+package com.unical.unitransport.controller.persistence.payment;
 
 import java.sql.Timestamp;
 import java.text.SimpleDateFormat;

@@ -364,28 +364,39 @@ img {
 }
 
 @media(max-width: 960px) {
+	
+	.intro_benvenuto {
+		display: none;
+	}
+	
     .showcase {
-        height: 70vh;
+        height: 90vh;
     }
 
     .hide-sm {
         display: none;
     }
 
-    .showcase-top img {
+    #posLogo {
         /*ridimensionamento di lato logo*/
+        width: 150px;
         top:30%;
         left: 5%;
         transform: translate(0);
     }
 
+
     .showcase-content h1 {
-        font-size: 3.7rem;
+        font-size: 2.8rem;
         line-height: 1;
     }
 
     .showcase-content p {
         font-size: 1.5rem;
+    }
+    
+    table {
+        font-size: 0.7rem;
     }
 
     .btn-xl {
@@ -415,19 +426,14 @@ img {
 
 @media(max-width: 700px){
 	
-	.intro_benvenuto {
-	font-family: default;
-	font-weight: bold;
-	color: #fff;
-	position: absolute;
-	top:72%;
-	left: 79%;
-	font-size: 10px;
-	width: 80px;
-	height: 41px;
-	padding: 6px;
-	border-style: inset;
-}
+	 #posLogo {
+        /*ridimensionamento di lato logo*/
+        width: 130px;
+        top:30%;
+        left: 5%;
+        transform: translate(0);
+    }
+
 
     .showcase::after {
         box-shadow: inset 80px 80px 250px #000, inset -80px -80px -250px #000;

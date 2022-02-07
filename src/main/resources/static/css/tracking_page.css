@@ -340,8 +340,13 @@ form {
 }
 
 @media(max-width: 960px) {
+	
+	.intro_benvenuto {
+		display: none;
+	}
+	
     .showcase {
-        height: 70vh;
+        height: 90vh;
     }
 
     .hide-sm {
