@@ -14,8 +14,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.unical.unitransport.controller.payment.Payment;
-import com.unical.unitransport.controller.payment.PaymentDAO;
+import com.unical.unitransport.controller.persistence.payment.Payment;
+import com.unical.unitransport.controller.persistence.payment.PaymentDAO;
 import com.unical.unitransport.controller.persistence.shipment.Shipment;
 import com.unical.unitransport.controller.persistence.shipment.ShipmentsManager;
 import com.unical.unitransport.controller.persistence.shipment.ShipmentsSenderReceiverDAO;
@@ -61,12 +61,10 @@ public class ShipmentsPageController {
 							@RequestParam( value = "emailDestinatario", required = true ) String emailDestinatario ) throws IOException {
 		
 
-		HttpSession session = req.getSession(true);
+		HttpSession session = req.getSession(false);
 		
-		if (luogoRitiro.equals("") || luogoConsegna.equals("")|| emailDestinatario.equals("")) {
-			session.setAttribute("erroreGenerico", "NON HAI COMPILATO TUTTI I CAMPI");
-			session.setAttribute("erroreGenerico_p", "La spedizione non può essere avviata.");
-			return "erroreGenerico";
+		if (luogoRitiro.equals("") || luogoConsegna.equals("")|| emailDestinatario.equals("")) {			
+			return "prenota_ritiro";
 		}
     
         Shipment spedizione = ShipmentsManager.registerShipment( (String) req.getSession().getAttribute("email"), emailDestinatario, luogoRitiro, luogoConsegna);
@@ -74,12 +72,13 @@ public class ShipmentsPageController {
         Date data = new Date();
         float costo = Float.parseFloat(req.getParameter("costoIva"));
         float costofix = (float) (Math.ceil(costo * Math.pow(10, 2)) / Math.pow(10, 2));
-        if(req.getParameter("Contrassegno")=="Contrassegno") {
-        	Payment pagamento = new Payment(1, costofix, new Timestamp(data.getTime()), (String) req.getSession().getAttribute("email"));
+        System.out.println(req.getParameter("Contrassegno"));
+        if(Boolean.parseBoolean(req.getParameter("Contrassegno"))==true) {
+        	Payment pagamento = new Payment(1, costofix, new Timestamp(data.getTime()), (String) req.getSession().getAttribute("email"), emailDestinatario);
         	PaymentDAO.insert(pagamento);
         }
         else {
-        	Payment pagamento = new Payment(0, costofix, new Timestamp(data.getTime()), (String) req.getSession().getAttribute("email"));
+        	Payment pagamento = new Payment(0, costofix, new Timestamp(data.getTime()), (String) req.getSession().getAttribute("email"), emailDestinatario);
         	PaymentDAO.insert(pagamento);
         }
         

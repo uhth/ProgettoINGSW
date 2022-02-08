@@ -10,7 +10,7 @@
             <link rel="icon" href="../immagini/b1.png">
             <link rel="stylesheet" href="css/index.css">
             <link rel="stylesheet" href="css/login.css">
-            <script src="https://kit.fontawesome.com/eb3e5ce09e.js" crossorigin="anonymous"></script>
+            <script src="js/load.js"></script>
             <title>UniTransport</title>
         </head>
 
@@ -18,34 +18,16 @@
 
             <header class="showcase">
                 <div class="showcase-top">
-                    <a id="posLogo" href="/"><img id="posLogo" src="/immagini/b1.png"></a>
 
                     
 					<c:if test="${email == null}">
                         <p class="intro_benvenuto">Benvenuto utente</p>
-                        <a id="prova" onclick="document.getElementById('divLogin').style.display='block'" class="btn btn-rounded" >Accedi <i class="fas fa-sign-in-alt"></i></a>
                     </c:if>
 
                     <c:if test="${email != null}">
-		                        <p class="intro_benvenuto">Benvenuto ${email}</p>
-              		      <c:if test="${role == 'user'}">
-
-		                        <a href="profilo_utente" id="profilo_utente" onclick="btnAccedi()"
-		                            class="btn btn-rounded">Profilo utente <i class="far fa-user"></i></a>
-	                       </c:if>
-              		      <c:if test="${role == 'corriere'}">
-
-                    		    <a id="corriereZone" href="areaCorriere"
-                            class="btn btn-rounded">Area Corriere <i class="fas fa-people-carry"></i></a>
-	                       </c:if>
-              		      <c:if test="${role == 'admin'}">
-
-		                        <a href="profiloAmministratore" id="adminZone" onclick="btnAccedi()"
-		                            class="btn btn-rounded">Amministratore  <i class="fas fa-user-lock"></i></a>	                      
-                             </c:if>
-	                       	                       		                            
-		                        <a href="logout" id="prova" onclick="btnAccedi()" class="btn btn-rounded">Logout <i class="fas fa-sign-out-alt"></i></a>
-                    </c:if>
+		                <p class="intro_benvenuto">Benvenuto ${email}</p>
+					</c:if>
+					<a id="posLogo" href="/"><img id="posLogo" src="/immagini/b1.png"></a>
                 </div>
 
                 <div class="showcase-content">
@@ -58,10 +40,12 @@
 				                       Aggiorna stato spedizione <i class="fas fa-sync"></i>
 				                    </a>
 				                    <br>
-
 				                    <a href="spedizioniCorriere" class="btn btn-xl">
 				                        Visualizza spedizioni <i class="fas fa-history"></i>
-				                    </a>
+				                    </a><br>
+				                    <a id="tutorial1" href="tutorial" class="btn btn-xl">
+				                       Tutorial <i class="fas fa-graduation-cap"></i>
+				                    </a>				                    
 				                <br />
 								<br><br>
 				            </c:when>    
@@ -86,7 +70,11 @@
 				                    <br>
 				                    <a href="tracking_gmaps" class="btn btn-xl">
 				                        Traccia una spedizione <i class="fas fa-map-marker-alt"></i>
+				                    </a><br>
+				                    <a id="tutorial2" href="tutorial" class="btn btn-xl">
+				                       Tutorial <i class="fas fa-graduation-cap"></i>
 				                    </a>
+				                    <br>				                    
 				                    <br><br>
 				            </c:when>    				            			           
 				             <c:otherwise>
@@ -98,7 +86,11 @@
 				                    <br>
 				                    <a href="tracking_gmaps" class="btn btn-xl">
 				                        Traccia una spedizione <i class="fas fa-map-pin"></i>
+				                    </a><br>
+				                    <a id="tutorial3" href="tutorial" class="btn btn-xl">
+				                       Tutorial <i class="fas fa-graduation-cap"></i>
 				                    </a>
+				                    <br>
 				                    <br><br>
 				            </c:otherwise>
 				        </c:choose>
@@ -227,7 +219,7 @@
 						                            <tbody>
 						                                <tr>
 						                                    <td>Fino a 10Kg</td>
-						                                    <td>5.99€</td>
+						                                    <td>5.99€</td>
 						                                    <td>9.99€</td>
 						                                    <td>15.99€</td>
 						                                </tr>
@@ -340,15 +332,13 @@
                         <li><a href="faq">FAQ</a></li>
                     </ul>
                     <ul>
+                        <li><a href="tutorial">Tutorial</a></li>
+                    </ul>                    
+                    <ul>
                         <li><a href="chi_siamo">Chi siamo</a></li>
                     </ul>
                     <ul>
                         <li><a href="http://www.unical.it">Sito Unical</a></li>
-                    </ul>
-                    <ul>
-                        <c:if test="${email == null}">
-                            <li><a id="prova" onclick="document.getElementById('divLogin').style.display='block'">Account</a></li>
-                        </c:if>  
                     </ul>
                 </div>
             </footer>

@@ -6,7 +6,7 @@
     <link rel="icon" href="../immagini/b1.png">
     <link rel="stylesheet" href="css/iscrizione_page.css">
     <script src="js/iscrizione.js"></script>
-
+    <script src="js/load.js"></script>
     <title>Iscriviti</title>
 </head>
 

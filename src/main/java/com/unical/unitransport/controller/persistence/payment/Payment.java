@@ -1,4 +1,4 @@
-package com.unical.unitransport.controller.payment;
+package com.unical.unitransport.controller.persistence.payment;
 
 import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
@@ -12,12 +12,14 @@ public class Payment {
 	private float amount;
 	private Timestamp date;
 	private String email;
+	private String email_rec;
 	
-	public Payment(int type, float amount, Timestamp date, String email) {
+	public Payment(int type, float amount, Timestamp date, String email, String email_rec) {
 		this.type = type;
 		this.amount = amount;
 		this.date = date;
 		this.email = email;
+		this.email_rec= email_rec;
 	}
 	
 
@@ -53,5 +55,15 @@ public class Payment {
 	}
 	public String getDataFormatted() {
 		return new SimpleDateFormat("dd/MM/yyyy HH:mm:ss").format(date);
+	}
+
+
+	public String getEmail_rec() {
+		return email_rec;
+	}
+
+
+	public void setEmail_rec(String email_rec) {
+		this.email_rec = email_rec;
 	}
 }

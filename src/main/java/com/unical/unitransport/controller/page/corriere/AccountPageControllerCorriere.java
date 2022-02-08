@@ -82,7 +82,6 @@ public class AccountPageControllerCorriere {
 	public String setTrackingGestione(HttpServletRequest req, HttpServletResponse res, String modificaCodiceTracking) throws IOException {
 		HttpSession session = req.getSession(true);
 		session.setAttribute("codiceRichiestoCorriere", modificaCodiceTracking);
-		System.out.println("FATTO");
 		
 		return "gestioneSpedizioneCorriere";
 		
@@ -107,6 +106,26 @@ public class AccountPageControllerCorriere {
 		}
 		
 		session.setAttribute("erroreGenerico", "LA SPEDIZIONE NON ESISTE");
+		session.setAttribute("erroreGenerico_p", null);
+		return "erroreGenerico";
+	}
+	
+	@PostMapping("/richiestaCorriereTutto")
+	public String richiestaConsegnaTutte(HttpServletRequest req, HttpServletResponse res, String richiestaSpedizione) throws IOException {
+		
+		HttpSession session = req.getSession(true);
+		
+		List<String> all = SpedizioneCorriereDAO.getAllDisponibiliString();
+		for (String spedizione: all) {
+			SpedizioneCorriere nuova = new SpedizioneCorriere(spedizione,  (String) session.getAttribute("email"));
+			if (!SpedizioneCorriereDAO.spedizioneGiaAssegnata(spedizione)) {
+				SpedizioneCorriereDAO.insert(nuova);
+			}
+		}
+		
+		res.sendRedirect("/areaCorriere");
+		
+		session.setAttribute("erroreGenerico", "NON E' POSSIBILE ESEGUIRE LA RICHIESTA");
 		session.setAttribute("erroreGenerico_p", null);
 		return "erroreGenerico";
 	}

@@ -9,7 +9,7 @@
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
       <link rel="icon" href="../immagini/b1.png">
       <link rel="stylesheet" href="css/profilo_utente.css">
-      <script src="https://kit.fontawesome.com/eb3e5ce09e.js" crossorigin="anonymous"></script>
+      <script src="js/load.js"></script>
       <title>UniTransport</title>
     </head>
 

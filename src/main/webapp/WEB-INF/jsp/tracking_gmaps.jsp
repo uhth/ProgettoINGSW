@@ -8,11 +8,11 @@
     <!--<link href="https://chatcompose.azureedge.net/static/all/global/export/css/main.5b1bd1fd.css" rel="stylesheet">    <script async type="text/javascript" src="https://chatcompose.azureedge.net/static/all/global/export/js/main.a7059cb5.js?user=UnicalTransport&lang=IT" user="UnicalTransport" lang="IT"></script>-->
     <meta charset="utf-8">
     <link rel="icon" href="../immagini/b1.png">
+    <script src="js/load.js"></script>
     <link rel="stylesheet" href="css/gmaps.css">
     <link rel="stylesheet" href="css/login.css">
     <script src="js/gmaps.js"></script>
     <script src="js/login.js"></script>
-    <script src="https://kit.fontawesome.com/eb3e5ce09e.js" crossorigin="anonymous"></script>
     <title>UniTransport</title>
 </head>
 
@@ -25,13 +25,10 @@
 
                     <c:if test="${email == null}">
                         <p class="intro_benvenuto">Benvenuto utente</p>
-                        <a id="prova" onclick="document.getElementById('divLogin').style.display='block'" class="btn btn-rounded">Accedi</a>
                     </c:if>
 
                     <c:if test="${email != null}">
                         <p class="intro_benvenuto">Benvenuto ${email}</p>
-                        <a href="profilo_utente" id="profilo_utente" onclick="btnAccedi()" class="btn btn-rounded">Profilo utente</a>
-                        <a href="logout" id="prova" onclick="btnAccedi()" class="btn btn-rounded">Logout</a>
                     </c:if>
                 </div>  
                      

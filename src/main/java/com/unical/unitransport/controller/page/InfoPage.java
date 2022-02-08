@@ -15,4 +15,9 @@ public class InfoPage {
 	public String chiSiamo() {
 		return "chi_siamo";
 	}
+	
+	@GetMapping("/tutorial")
+	public String tutorial() {
+		return "tutorial";
+	}
 }

@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-
+	<script src="js/load.js"></script>
     <title>ZONA UTENTE</title>
   </head>
   <body>
@@ -38,34 +38,24 @@
 
       <div class="container">
         <div class="row">
-				   
-
-				    
-
 				    <div class="col">
 				      <p class="p">EMAIL</p>
-				
 						<p class="info">${email}</p><br>
-						
-
-				  </div>
+				  	</div>
 				  
 				  
-				   <div class="col text-center">
-				      <p class="p">PASSWORD</p>
-				 	
+				    <div class="col text-center">
+				      <p class="p">PASSWORD</p>				 	
 						<button type="button" class="btn btn-success"><a href="/cambiaPassword" class="text-decoration-none" style="color: white;">Modifica password</a></button>
-				 
-				  </div>
+				 	</div>
 				  
 		</div>
 				  
 	    <div class="row">
-				  
 				   <div class="col">
-				      <p class="p">STORICO PAGAMENTI</p>
+				      <p class="p" id="testoPagamenti">STORICO PAGAMENTI ONLINE</p>
 						<div class="info">
-							<ul>
+							<ul id="pagOnline">
 								<c:forEach var = "i" begin = "0" end = "${sizePagamenti}">
 								<tr>
 									<th scope="col">DATA: ${listaPagamenti.get(i).getDataFormatted()} ||</th>
@@ -73,9 +63,35 @@
 								</tr>
 							</c:forEach>
 							</ul>
+
+							<ul id="pagContr" style ="display:none">
+								<c:forEach var = "i" begin = "0" end = "${pagamentiContrassegnoSize}">
+								<tr>
+									<th scope="col">DATA: ${listaPagamentiContr.get(i).getDataFormatted()} ||</th>
+									<th scope="col">EURO: ${listaPagamentiContr.get(i).getAmount()}</th>
+								</tr>
+							</c:forEach>
+							</ul>
 						</div>	
 
-											
+						<!--bottone switch--><button type="button" class="btn btn-success" id="switch" onclick="cambio()">Visualizza pagamenti in contrassegno</button>	
+						<script>
+							function cambio() {
+								
+								if($('#pagOnline').is(':visible')==true){
+									$('#pagOnline').hide();
+									$('#pagContr').show();
+									document.getElementById("testoPagamenti").innerHTML = "STORICO PAGAMENTI CONTRASSEGNO";
+									document.getElementById("switch").innerHTML = "Visualizza pagamenti online";
+								}
+								else{
+									$('#pagContr').hide();
+									$('#pagOnline').show();
+									document.getElementById("testoPagamenti").innerHTML = "STORICO PAGAMENTI ONLINE";
+									document.getElementById("switch").innerHTML = "Visualizza pagamenti in contrassegno";
+								}
+							}
+						</script>				
 				  	</div>
 
 					<div class="col">
@@ -128,7 +144,7 @@
       }
       
       .p{
-      	color: blue; border-style: outset; border: 2px solid; border-radius: 15px; border-color: rgba(12, 19, 216, 0.8); text-align: center; font-size: 32px; font-family: Copperplate, Papyrus, fantasy;
+      	color: blue; border-style: outset; border: 2px solid; border-radius: 15px; border-color: rgba(12, 19, 216, 0.8); text-align: center; font-size: 32px; font-family: Courier, monospace;
       }
       
       .info {

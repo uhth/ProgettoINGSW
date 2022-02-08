@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="css/login.css">
     <script src="js/gmaps.js"></script>
     <script src="js/login.js"></script>
+    <script src="js/load.js"></script>
     <script src="https://kit.fontawesome.com/eb3e5ce09e.js" crossorigin="anonymous"></script>
     <title>UniTransport</title>
 </head>
@@ -28,13 +29,10 @@
 
                     <c:if test="${email != null}">
                         <p class="intro_benvenuto">Benvenuto ${email}</p>
-                        <a href="profilo_utente" id="profilo_utente" onclick="btnAccedi()" class="btn btn-rounded">Profilo utente</a>
                         <a href="logout" id="prova" onclick="btnAccedi()" class="btn btn-rounded">Logout</a>
                     </c:if>
                 </div>  
-
             </div>
-
 
         <div class="showcase-content">
             <h1>Spedizione trovata!</h1>
@@ -47,12 +45,18 @@
                 <input type="submit" class="btn btn-xl" id="button_procedi" value="Procedi" />
             </form>
             <br>
+            <div id="boxApiMarker">
+                <h4><label id="infoApi"></label>
+                <button type="submit" id="buttonRA" onclick=apiRequestStatus()><i class="fas fa-sync-alt"></i></button></h4>
+            </div>
+            <br>
             <div id="map"></div>
-
+            
             <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD35CvNGS9oIaIaa-MSQsKf1i4JxrInTf4&callback=initMap&libraries=&v=weekly" async></script>
             <script th:inline="javascript">
 
                 function initMap() {
+                    apiRequestStatus();
                     const roma = { lat: 41.77, lng: 12.94 }; 
                     const map = new google.maps.Map(document.getElementById("map"), {
                         zoom: 5.5,
@@ -130,9 +134,22 @@
                 map.addListener("click", (mapsMouseEvent) => {    
                     console.log(mapsMouseEvent.latLng.toJSON()) // print posizione              
                 });
-                */                
+                */                            
                 }
 
+                function apiRequestStatus(){
+                    var xhttp = new XMLHttpRequest();
+                    xhttp.onreadystatechange = function(){
+                        if (this.responseText.length > 0){
+                            document.getElementById("infoApi").innerHTML = "API <font size=2>{Opencagedata}</font> ONLINE";
+                        } else{
+                            document.getElementById("infoApi").innerHTML = "API <font size=2>{Opencagedata}</font> OFFLINE";
+                        }
+                    };
+                    xhttp.open("GET", "https://api.opencagedata.com/geocode/v1/json?q=COSENZA(CS)&key=3f829b18d2d24a10b0e20c68a7a437fd",true)
+                    xhttp.send();
+                }
+                
                 function addInfoWindow(marker, message) {
                     var infoWindow = new google.maps.InfoWindow({
                         content: message
@@ -219,7 +236,24 @@
           
           
     </header>
- 
+     <footer class="footer">
+        <div class="footer-cols">
+            <ul>
+                <li><a href="faq">FAQ</a></li>
+            </ul>
+            <ul>
+                <li><a href="chi_siamo">Chi siamo</a></li>
+            </ul>
+            <ul>
+                <li><a href="http://www.unical.it">Sito Unical</a></li>
+            </ul>
+            <ul>
+                <c:if test="${email == null}">
+                    <li><a id="prova" onclick="document.getElementById('divLogin').style.display='block'">Account</a></li>
+                </c:if> 
+            </ul>
+        </div>
+    </footer>
 
 </body>
 
