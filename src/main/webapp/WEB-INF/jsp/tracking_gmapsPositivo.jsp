@@ -24,12 +24,12 @@
 
                     <c:if test="${email == null}">
                         <p class="intro_benvenuto">Benvenuto utente</p>
-                        <a id="prova" onclick="document.getElementById('divLogin').style.display='block'" class="btn btn-rounded">Accedi</a>
+           
                     </c:if>
 
                     <c:if test="${email != null}">
                         <p class="intro_benvenuto">Benvenuto ${email}</p>
-                        <a href="logout" id="prova" onclick="btnAccedi()" class="btn btn-rounded">Logout</a>
+
                     </c:if>
                 </div>  
             </div>
