@@ -5,54 +5,13 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <link rel="icon" href="../immagini/b1.png">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <script src="js/load.js"></script>
+    <script type="text/javascript"> const emails = ${listaUtentiConvertibili}; </script>
+    <script type="text/javascript" src="js/addCorriere.js" defer></script>
     <title>ZONA AMMINISTRATORE</title>
-    <script type="text/javascript">
-    	
-    	var selectedMail = "";
-    	
-    	function ValidateCorriere() {
-    		if( selectedMail === "" ) return;
-	  		$.post( "aggiuntaCorriere", { email : selectedMail }, location.reload(true) )
-	  		  .done( function() {
-	  		    alert( selectedMail + " è ora un corriere!" );
-	  		  }).fail(function( xhr, status, error ) {
-	  			alert( selectedMail + "OPERAZIONE FALLITA, RIPROVARE" );
-	  	    });
-	  		
-    	}
-    	
-    	function Menu(emailList) { 
-    		selectedMail = emailList[emailList.selectedIndex].value;
-    	}
-    
-    
-	    $( function() {
-	    	
-	    	const emails = ${listaUtentiConvertibili};  	
-	       	let emails_l = emails.length;
-	       	
-	    	if( emails_l > 0 ) {
-	        	selectedMail = emails[0];
-	    	}
-	    	else
-	    		$(".richiesta" ).hide;
-	 
-	       	
-	    	$(".menu").append( "<div class=\"selLabel\">SELEZIONA EMAIL DA AGGIUNGERE</div>" );
-	    	$(".menu").append( "<br><select class=\"menu_sel\" onChange=\"Menu(this)\">" );
-	    	for( i=0; i<emails_l; i++ ) { 
-	    		$(".menu_sel").append( "<option value=\"" + emails[i] + "\">" + emails[i] + "</option>"); 
-	    	}
-	    	$(".menu").append( "<br><input class=\"btn btn-success\" onClick=ValidateCorriere() value=\"CONFERMA\"/>" );
-	    	$(".menu").append( "</select>" );
-	    //	$("option").hide();
-		} );
-    </script>
     
   </head>
   <body>
